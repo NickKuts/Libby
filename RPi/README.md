@@ -14,23 +14,26 @@ $ sudo systemctl stop AlexaPi.service
 $ /opt/AlexaPi/src/main.py -d
 ```
 
-0.
+## 0. Testing microphone ##
+
 Read from here:
 https://www.raspberrypi.org/forums/viewtopic.php?f=28&t=169622
 Test that microphone is working:
-
+```
 $ arecord -f cd -D hw:1,0 -d 10 test.wav
-
+```
 You can play that with aplay
 
 
-1.
+## 1. Setting the correct sound card ##
+
 Read from here:
 https://raspberrypi.stackexchange.com/questions/37177/best-way-to-setup-usb-mic-as-system-default-on-raspbian-jessie
 
 Now, to set the USB sound card to your default card you will need to edit the file /usr/share/alsa/alsa.conf with the command 
+```
 $ sudo nano /usr/share/alsa/alsa.conf 
-
+```
 scroll down until you find the lines
 ```
 defaults.ctl.card 0
@@ -42,7 +45,8 @@ defaults.ctl.card 1
 defaults.pcm.card 1
 ```
 
-2.
+
+## 2. Modifying config.yaml (might be config.template.yaml) ##
 Read from here:
 https://github.com/alexa-pi/AlexaPi/issues/265
 
@@ -63,4 +67,5 @@ https://github.com/alexa-pi/AlexaPi/issues/265
 
 Issues that might be related and useful:
 https://github.com/alexa-pi/AlexaPi/issues/343
+
 https://github.com/alexa-pi/AlexaPi/issues/335
