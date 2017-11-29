@@ -17,6 +17,9 @@ class TestUtilDate(unittest.TestCase):
         
     def test_failed_upper(self):
         self.assertEqual('foo'.upper(), 'FOo')
+
+def main():
+    print("Main function")
         
 if name == 'main':
     suite = unittest.TestLoader().loadTestsFromTestCase(TestUtilDate)
