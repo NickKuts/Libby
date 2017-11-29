@@ -1,6 +1,7 @@
 import unittest
 
 class TestUtilDate(unittest.TestCase):
+        
     def setUp(self):
         #init_something()
         pass
@@ -21,6 +22,6 @@ class TestUtilDate(unittest.TestCase):
 def main():
     print("Main function")
         
-if name == 'main':
+if __name__ == '__main__':
     suite = unittest.TestLoader().loadTestsFromTestCase(TestUtilDate)
     unittest.TextTestRunner(verbosity=2).run(suite)
