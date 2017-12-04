@@ -18,7 +18,7 @@ def format_time(time):
     return temp
 
 
-start_time = (datetime.now() - timedelta(hours=2)).isoformat()
+start_time = (datetime.now() - timedelta(hours=3)).isoformat()
 end_time = (datetime.now() - timedelta(minutes=15)).isoformat()
 
 time_str = '&starttime=' + format_time(start_time) + '&endtime=' + format_time(end_time)
@@ -33,23 +33,25 @@ datafile_url = "weather_data.xml"
 
 
 def read_data():
+    
     tree = ET.parse(datafile_url)
     root = tree.getroot()
     
     temperatures = {}
+    temps = []
     
     for child in root:
         temp = child[0][3].text
         time = child[0][1].text
         print(time, temp)
         temperatures[time] = float(temp)
+        temps.append(float(temp))
 
-    return temperatures
+    return temps
     
 
 def update_data(web_url, data_url):
     urllib.request.urlretrieve(web_url, data_url)
 
+    
 update_data(url, datafile_url)
-read_data()
-
