@@ -6,7 +6,7 @@ class Router():
 # --------------- Functions that control the skill's behavior ------------------
     def __init__(self, intent):
         print(intent['name'])
-        self.intent = {"name": "Locate","slots": {"restaurant": {"name": "restaurant","value": "Roberts coffee"}}}
+        self.intent = intent#{"name": "Locate","slots": {"restaurant": {"name": "restaurant","value": "Roberts coffee"}}}
         self.intents = {"Roberts_Coffee": robertscoffee.menu_handler,
                         "Locate": self.locate,
                         "Get_Weather": weather.weather_handler,
@@ -15,9 +15,8 @@ class Router():
                         "AMAZON.CancelIntent": self.handle_session_end_request}
     
     def locate(self):
-        print("tomi on paras jeejejej4jej----------------------------------")
+        print("Loacte method")
         restaurants = {"Roberts coffee": "in first floor of learning center", "tomi": "jeejee"}
-        
         name = self.intent['slots']['restaurant']['value']
         card_title = "Locate"
         speech_output = "%s is located %s"%(name, restaurants[name])
@@ -59,5 +58,5 @@ class Router():
             card_title, speech_output, None, should_end_session))
                
     def route(self):
-        return self.intents[self.intent['name']]
+        return self.intents[self.intent['name']]()
 
