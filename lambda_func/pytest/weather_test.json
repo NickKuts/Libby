@@ -1,0 +1,40 @@
+{
+  "session": {
+    "new": true,
+    "sessionId": "SessionId.efe4bfb8-5e45-420e-885b-193b86ca9780",
+    "application": {
+      "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+    },
+    "attributes": {},
+    "user": {
+      "userId": "amzn1.ask.account.AFJ7VUHAUUYLCWAHQGYCHKKDMSFBUL2HNXJFLNTRDCJN6TEFRVBXJDDJ4IUSGEBC4LWLHU653R2OXXBMQD76NIX2CAYTQDVS5K27YX3ZA5LZRYM67WKSD76N6W3V6LB5CN6OIVSDG4QLEKOIV5HQFX44YDVBMXZYGF2L545S2LECQUDCRAJDH5ECWY64VFVFSMQP77HNBKNRMRY"
+    }
+  },
+  "request": {
+    "type": "IntentRequest",
+    "requestId": "EdwRequestId.386172ca-b1e0-4f72-9824-2e5240a4f4be",
+    "intent": {
+      "name": "Get_Weather",
+      "slots": {}
+    },
+    "locale": "en-US",
+    "timestamp": "2017-12-05T12:23:18Z"
+  },
+  "context": {
+    "AudioPlayer": {
+      "playerActivity": "IDLE"
+    },
+    "System": {
+      "application": {
+        "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+      },
+      "user": {
+        "userId": "amzn1.ask.account.AFJ7VUHAUUYLCWAHQGYCHKKDMSFBUL2HNXJFLNTRDCJN6TEFRVBXJDDJ4IUSGEBC4LWLHU653R2OXXBMQD76NIX2CAYTQDVS5K27YX3ZA5LZRYM67WKSD76N6W3V6LB5CN6OIVSDG4QLEKOIV5HQFX44YDVBMXZYGF2L545S2LECQUDCRAJDH5ECWY64VFVFSMQP77HNBKNRMRY"
+      },
+      "device": {
+        "supportedInterfaces": {}
+      }
+    }
+  },
+  "version": "1.0"
+}
