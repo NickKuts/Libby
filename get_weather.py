@@ -29,7 +29,7 @@ parameters_str = '&parameters=temperature'
 
 url = "http://data.fmi.fi/fmi-apikey/"+apikey+"/wfs?request=getFeature&storedquery_id=" + query_str + place_str + time_str  + parameters_str
 print(url)
-datafile_url = "weather_data.xml"
+datafile_url = '/tmp/' + "weather_data.xml"
 
 
 def read_data():
