@@ -4,7 +4,7 @@ import unittest
 #sys.path.append("..")
 
 #import main_handler
-from lambda_func import main_handler
+import main_handler
 import json
 
 class TestUtilDate(unittest.TestCase):
