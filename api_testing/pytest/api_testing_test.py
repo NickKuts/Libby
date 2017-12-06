@@ -1,10 +1,8 @@
 import unittest
 import os
-import sys
-import re
-sys.path.append('..')
 
-import main_handler
+# import main_handler
+from api_testing import main_handler
 from api_testing import api_testing
 import json
 
