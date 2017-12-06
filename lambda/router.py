@@ -6,17 +6,19 @@ class Router():
 # --------------- Functions that control the skill's behavior ------------------
     def __init__(self, intent):
         print(intent['name'])
-        self.intent = intent#{"name": "Locate","slots": {"restaurant": {"name": "restaurant","value": "Roberts coffee"}}}
-        self.intents = {"Roberts_Coffee": robertscoffee.menu_handler,
+        self.intent = intent
+        self.intents = {"Drinks": robertscoffee.drinks,
+                        "Categories": robertscoffee.categories,
                         "Locate": self.locate,
                         "Get_Weather": weather.weather_handler,
+                        "Unhandled": self.unhandled_request,
                         "AMAZON.HelpIntent": self.get_welcome_response,
                         "AMAZON.StopIntent": self.handle_session_end_request,
                         "AMAZON.CancelIntent": self.handle_session_end_request}
     
     def locate(self):
-        print("Loacte method")
-        restaurants = {"Roberts coffee": "in first floor of learning center", "tomi": "jeejee"}
+        print("Locate method")
+        restaurants = {"Roberts coffee": "in first floor of learning center"}
         name = self.intent['slots']['restaurant']['value']
         card_title = "Locate"
         speech_output = "%s is located %s"%(name, restaurants[name])
@@ -58,5 +60,10 @@ class Router():
             card_title, speech_output, None, should_end_session))
                
     def route(self):
-        return self.intents[self.intent['name']]()
+        name = self.intent['name']
+        if name == "Categories": 
+            return self.intents[name](self.intent['slots']['category']['value'])
+        if name == "Drinks":
+            return self.intents[name](self.intent)    
+        return self.intents[name]()
 
