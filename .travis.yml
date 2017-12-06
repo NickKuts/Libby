@@ -3,4 +3,5 @@
     - 3.6
     - nightly
   script:
-    - python pytest_triv.py
+    #    - python pytest_triv.py
+    - cd lambda_func/pytest && python weather_test.py
