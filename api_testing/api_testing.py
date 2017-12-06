@@ -17,6 +17,7 @@ import datetime
 """ This is the URL for the Finna API with a needed header for proper results """
 url = 'https://api.finna.fi/api/v1/'
 headers = {'Accept': 'application/json'}
+json_dir = 'data_files/'
 
 
 def do_request_json(term, method='GET', func='lookfor', pretty_print='0'):
@@ -56,7 +57,8 @@ def do_request_file(term, method='GET', func='lookfor', pretty_print='0'):
     result = do_request_json(term, method, func, pretty_print)
 
     filename = 'data.json-' + str(datetime.datetime.now())
-    with open(filename, 'w') as output:
+    filepath = json_dir + filename
+    with open(filepath, 'w') as output:
         if pretty_print == '1':
             json.dump(result['json'], output, indent=4)
         else:
