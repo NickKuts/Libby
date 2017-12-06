@@ -4,4 +4,4 @@
     - nightly
   script:
     - python pytest_triv.py
-    - python lambda_func/pytest/weather_test.py
+    - python lambda_func/weather_test.py
