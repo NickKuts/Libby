@@ -4,4 +4,4 @@
     - nightly
   script:
     #    - python pytest_triv.py
-    - cd lambda_func && python weather_test.py
+    - cd lambda_func/pytest && python weather_test.py
