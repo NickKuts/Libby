@@ -12,6 +12,7 @@ https://api.finna.fi/swagger-ui/?url=%2Fapi%2Fv1%3Fswagger#
 import requests
 import json
 import datetime
+import os
 
 
 """ This is the URL for the Finna API with a needed header for proper results """
@@ -30,7 +31,7 @@ def do_request_json(term, method='GET', func='lookfor', pretty_print='0'):
     :return: a dictionary with 'status_code' from the request and 'json'
     """
     params = {
-        'id': 'fennica.123',
+        'id': 'fennica.123',  # TODO: this id might not be the right one (wait for AuthAPI)
         'prettyPrint': pretty_print,
         func: term
     }
@@ -67,8 +68,8 @@ def do_request_file(term, method='GET', func='lookfor', pretty_print='0'):
     return {'status_code': result['status_code'], 'filename': filename}
 
 
-response = do_request_json('software', pretty_print='1')
-print(str(response['status_code']) + '\n' + str(response['json']) + '\n')
-
-response = do_request_file('software', pretty_print='1')
-print(response)
+def remove_json_files():
+    """ Removes all JSON files in the `data_files` folder """
+    for f in os.listdir(json_dir):
+        if f.endswith('.json'):
+            os.remove(os.path.join(json_dir, f))
