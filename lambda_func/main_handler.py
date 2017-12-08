@@ -26,14 +26,16 @@ def on_launch(launch_request, session):
     print("on_launch requestId=" + launch_request['requestId'] +
           ", sessionId=" + session['sessionId'])
     # Dispatch to your skill's launch
+    router = Router()
     return router.get_welcome_response()
 
 
 def on_intent(intent_request, session):
     """ Called when the user specifies an intent for this skill """
+    '''
     print("on_intent requestId=" + intent_request['requestId'] +
           ", sessionId=" + session['sessionId'])
-
+    '''
     intent = intent_request['intent']
     rout = Router(intent)
 

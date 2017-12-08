@@ -1,0 +1,1622 @@
+{
+  "classics": {
+    "session": {
+      "new": false,
+      "sessionId": "SessionId.3757d467-e3ec-4747-9f8e-845806fd8afa",
+      "application": {
+        "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+      },
+      "attributes": {},
+      "user": {
+        "userId": "amzn1.ask.account.AFZ2LCXGYJXHTWXPVOOXAIZGO3FSPQ45PVIQG42OPHDWLK4ZKSPETYYSKJ6EDFMIMQ6T6IIVXX3S7MYY3FSCZPBTOTAUQTCEBGQYIJMFEERTK77HPK76XQ6URGMJLSSKALBR56CXFG2DYGK3QQYSQVXPBN4QP33OZ4OH6NUOIUNB76SUD5ANFVK66DWY4N2VXUERRBDD7KC6PEY"
+      }
+    },
+    "request": {
+      "type": "IntentRequest",
+      "requestId": "EdwRequestId.3e8667d1-9f69-4ed0-9a58-af223765f520",
+      "intent": {
+        "name": "Get_Drinks",
+        "slots": {
+          "category": {
+            "name": "category",
+            "value": "classics"
+          }
+        }
+      },
+      "locale": "en-US",
+      "timestamp": "2017-12-07T18:59:55Z"
+    },
+    "context": {
+      "AudioPlayer": {
+        "playerActivity": "IDLE"
+      },
+      "System": {
+        "application": {
+          "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+        },
+        "user": {
+          "userId": "amzn1.ask.account.AFZ2LCXGYJXHTWXPVOOXAIZGO3FSPQ45PVIQG42OPHDWLK4ZKSPETYYSKJ6EDFMIMQ6T6IIVXX3S7MYY3FSCZPBTOTAUQTCEBGQYIJMFEERTK77HPK76XQ6URGMJLSSKALBR56CXFG2DYGK3QQYSQVXPBN4QP33OZ4OH6NUOIUNB76SUD5ANFVK66DWY4N2VXUERRBDD7KC6PEY"
+        },
+        "device": {
+          "supportedInterfaces": {}
+        }
+      }
+    },
+    "version": "1.0"
+  },
+  "coffee": {
+    "session": {
+      "new": false,
+      "sessionId": "SessionId.3757d467-e3ec-4747-9f8e-845806fd8afa",
+      "application": {
+        "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+      },
+      "attributes": {},
+      "user": {
+        "userId": "amzn1.ask.account.AFZ2LCXGYJXHTWXPVOOXAIZGO3FSPQ45PVIQG42OPHDWLK4ZKSPETYYSKJ6EDFMIMQ6T6IIVXX3S7MYY3FSCZPBTOTAUQTCEBGQYIJMFEERTK77HPK76XQ6URGMJLSSKALBR56CXFG2DYGK3QQYSQVXPBN4QP33OZ4OH6NUOIUNB76SUD5ANFVK66DWY4N2VXUERRBDD7KC6PEY"
+      }
+    },
+    "request": {
+      "type": "IntentRequest",
+      "requestId": "EdwRequestId.e314ae3c-e850-434a-a0cf-5aea401fc3cd",
+      "intent": {
+        "name": "Get_Prices",
+        "slots": {
+          "consumable": {
+            "name": "consumable",
+            "value": "coffee"
+          }
+        }
+      },
+      "locale": "en-US",
+      "timestamp": "2017-12-07T18:51:04Z"
+    },
+    "context": {
+      "AudioPlayer": {
+        "playerActivity": "IDLE"
+      },
+      "System": {
+        "application": {
+          "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+        },
+        "user": {
+          "userId": "amzn1.ask.account.AFZ2LCXGYJXHTWXPVOOXAIZGO3FSPQ45PVIQG42OPHDWLK4ZKSPETYYSKJ6EDFMIMQ6T6IIVXX3S7MYY3FSCZPBTOTAUQTCEBGQYIJMFEERTK77HPK76XQ6URGMJLSSKALBR56CXFG2DYGK3QQYSQVXPBN4QP33OZ4OH6NUOIUNB76SUD5ANFVK66DWY4N2VXUERRBDD7KC6PEY"
+        },
+        "device": {
+          "supportedInterfaces": {}
+        }
+      }
+    },
+    "version": "1.0"
+  },
+  "tea": {
+    "session": {
+      "new": false,
+      "sessionId": "SessionId.3757d467-e3ec-4747-9f8e-845806fd8afa",
+      "application": {
+        "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+      },
+      "attributes": {},
+      "user": {
+        "userId": "amzn1.ask.account.AFZ2LCXGYJXHTWXPVOOXAIZGO3FSPQ45PVIQG42OPHDWLK4ZKSPETYYSKJ6EDFMIMQ6T6IIVXX3S7MYY3FSCZPBTOTAUQTCEBGQYIJMFEERTK77HPK76XQ6URGMJLSSKALBR56CXFG2DYGK3QQYSQVXPBN4QP33OZ4OH6NUOIUNB76SUD5ANFVK66DWY4N2VXUERRBDD7KC6PEY"
+      }
+    },
+    "request": {
+      "type": "IntentRequest",
+      "requestId": "EdwRequestId.028a0553-1007-45bf-8403-ff48298bbf3b",
+      "intent": {
+        "name": "Get_Prices",
+        "slots": {
+          "consumable": {
+            "name": "consumable",
+            "value": "tea"
+          }
+        }
+      },
+      "locale": "en-US",
+      "timestamp": "2017-12-07T18:55:36Z"
+    },
+    "context": {
+      "AudioPlayer": {
+        "playerActivity": "IDLE"
+      },
+      "System": {
+        "application": {
+          "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+        },
+        "user": {
+          "userId": "amzn1.ask.account.AFZ2LCXGYJXHTWXPVOOXAIZGO3FSPQ45PVIQG42OPHDWLK4ZKSPETYYSKJ6EDFMIMQ6T6IIVXX3S7MYY3FSCZPBTOTAUQTCEBGQYIJMFEERTK77HPK76XQ6URGMJLSSKALBR56CXFG2DYGK3QQYSQVXPBN4QP33OZ4OH6NUOIUNB76SUD5ANFVK66DWY4N2VXUERRBDD7KC6PEY"
+        },
+        "device": {
+          "supportedInterfaces": {}
+        }
+      }
+    },
+    "version": "1.0"
+  },
+  "lattes": {
+    "session": {
+      "new": true,
+      "sessionId": "SessionId.b05e5a4d-1bb0-4c40-bf39-3d2f88b2a638",
+      "application": {
+        "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+      },
+      "attributes": {},
+      "user": {
+        "userId": "amzn1.ask.account.AGGEHQ273AIM65KM6ZHQAOHWG5A4EYH2JXQNNRZUBAS4SA6SZIAT5VCB7TSVXMSC37VSVC7YZTGP7OFJEJHBKW7QOFVP6EWIE3ZRCENQTEUCMPZTLYX6Q6RZAPR6TM7J4J3LFI36EHGM7V2EP7PDWPLSBWBR27LLWNDKKZVO3SN2D2LBCCJYC4KNIVKPVGRT7C62IKAFGUOB4PA"
+      }
+    },
+    "request": {
+      "type": "IntentRequest",
+      "requestId": "EdwRequestId.7485b1bd-36ab-4773-950a-25e43c7b2645",
+      "intent": {
+        "name": "Get_Drinks",
+        "slots": {
+          "category": {
+            "name": "category",
+            "value": "lattes"
+          }
+        }
+      },
+      "locale": "en-US",
+      "timestamp": "2017-12-08T11:25:11Z"
+    },
+    "context": {
+      "AudioPlayer": {
+        "playerActivity": "IDLE"
+      },
+      "System": {
+        "application": {
+          "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+        },
+        "user": {
+          "userId": "amzn1.ask.account.AGGEHQ273AIM65KM6ZHQAOHWG5A4EYH2JXQNNRZUBAS4SA6SZIAT5VCB7TSVXMSC37VSVC7YZTGP7OFJEJHBKW7QOFVP6EWIE3ZRCENQTEUCMPZTLYX6Q6RZAPR6TM7J4J3LFI36EHGM7V2EP7PDWPLSBWBR27LLWNDKKZVO3SN2D2LBCCJYC4KNIVKPVGRT7C62IKAFGUOB4PA"
+        },
+        "device": {
+          "supportedInterfaces": {}
+        }
+      }
+    },
+    "version": "1.0"
+  },
+  "caffe latte": {
+    "session": {
+      "new": false,
+      "sessionId": "SessionId.b05e5a4d-1bb0-4c40-bf39-3d2f88b2a638",
+      "application": {
+        "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+      },
+      "attributes": {},
+      "user": {
+        "userId": "amzn1.ask.account.AGGEHQ273AIM65KM6ZHQAOHWG5A4EYH2JXQNNRZUBAS4SA6SZIAT5VCB7TSVXMSC37VSVC7YZTGP7OFJEJHBKW7QOFVP6EWIE3ZRCENQTEUCMPZTLYX6Q6RZAPR6TM7J4J3LFI36EHGM7V2EP7PDWPLSBWBR27LLWNDKKZVO3SN2D2LBCCJYC4KNIVKPVGRT7C62IKAFGUOB4PA"
+      }
+    },
+    "request": {
+      "type": "IntentRequest",
+      "requestId": "EdwRequestId.f1979eee-eaf9-4785-8294-9674260d87bc",
+      "intent": {
+        "name": "Get_Prices",
+        "slots": {
+          "consumable": {
+            "name": "consumable",
+            "value": "Caffe latte"
+          }
+        }
+      },
+      "locale": "en-US",
+      "timestamp": "2017-12-08T11:27:10Z"
+    },
+    "context": {
+      "AudioPlayer": {
+        "playerActivity": "IDLE"
+      },
+      "System": {
+        "application": {
+          "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+        },
+        "user": {
+          "userId": "amzn1.ask.account.AGGEHQ273AIM65KM6ZHQAOHWG5A4EYH2JXQNNRZUBAS4SA6SZIAT5VCB7TSVXMSC37VSVC7YZTGP7OFJEJHBKW7QOFVP6EWIE3ZRCENQTEUCMPZTLYX6Q6RZAPR6TM7J4J3LFI36EHGM7V2EP7PDWPLSBWBR27LLWNDKKZVO3SN2D2LBCCJYC4KNIVKPVGRT7C62IKAFGUOB4PA"
+        },
+        "device": {
+          "supportedInterfaces": {}
+        }
+      }
+    },
+    "version": "1.0"
+  },
+  "morning latte": {
+    "session": {
+      "new": false,
+      "sessionId": "SessionId.3757d467-e3ec-4747-9f8e-845806fd8afa",
+      "application": {
+        "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+      },
+      "attributes": {},
+      "user": {
+        "userId": "amzn1.ask.account.AFZ2LCXGYJXHTWXPVOOXAIZGO3FSPQ45PVIQG42OPHDWLK4ZKSPETYYSKJ6EDFMIMQ6T6IIVXX3S7MYY3FSCZPBTOTAUQTCEBGQYIJMFEERTK77HPK76XQ6URGMJLSSKALBR56CXFG2DYGK3QQYSQVXPBN4QP33OZ4OH6NUOIUNB76SUD5ANFVK66DWY4N2VXUERRBDD7KC6PEY"
+      }
+    },
+    "request": {
+      "type": "IntentRequest",
+      "requestId": "EdwRequestId.d0e1fd9f-4d93-4980-9cec-4640a7d94c86",
+      "intent": {
+        "name": "Get_Prices",
+        "slots": {
+          "consumable": {
+            "name": "consumable",
+            "value": "morning latte"
+          }
+        }
+      },
+      "locale": "en-US",
+      "timestamp": "2017-12-07T19:09:58Z"
+    },
+    "context": {
+      "AudioPlayer": {
+        "playerActivity": "IDLE"
+      },
+      "System": {
+        "application": {
+          "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+        },
+        "user": {
+          "userId": "amzn1.ask.account.AFZ2LCXGYJXHTWXPVOOXAIZGO3FSPQ45PVIQG42OPHDWLK4ZKSPETYYSKJ6EDFMIMQ6T6IIVXX3S7MYY3FSCZPBTOTAUQTCEBGQYIJMFEERTK77HPK76XQ6URGMJLSSKALBR56CXFG2DYGK3QQYSQVXPBN4QP33OZ4OH6NUOIUNB76SUD5ANFVK66DWY4N2VXUERRBDD7KC6PEY"
+        },
+        "device": {
+          "supportedInterfaces": {}
+        }
+      }
+    },
+    "version": "1.0"
+  },
+  "coffee drinks": {
+    "session": {
+      "new": false,
+      "sessionId": "SessionId.b05e5a4d-1bb0-4c40-bf39-3d2f88b2a638",
+      "application": {
+        "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+      },
+      "attributes": {},
+      "user": {
+        "userId": "amzn1.ask.account.AGGEHQ273AIM65KM6ZHQAOHWG5A4EYH2JXQNNRZUBAS4SA6SZIAT5VCB7TSVXMSC37VSVC7YZTGP7OFJEJHBKW7QOFVP6EWIE3ZRCENQTEUCMPZTLYX6Q6RZAPR6TM7J4J3LFI36EHGM7V2EP7PDWPLSBWBR27LLWNDKKZVO3SN2D2LBCCJYC4KNIVKPVGRT7C62IKAFGUOB4PA"
+      }
+    },
+    "request": {
+      "type": "IntentRequest",
+      "requestId": "EdwRequestId.8c49b5ff-f8ec-4150-bb9d-77fb024e81e5",
+      "intent": {
+        "name": "Get_Drinks",
+        "slots": {
+          "category": {
+            "name": "category",
+            "value": "coffee drinks"
+          }
+        }
+      },
+      "locale": "en-US",
+      "timestamp": "2017-12-08T11:28:25Z"
+    },
+    "context": {
+      "AudioPlayer": {
+        "playerActivity": "IDLE"
+      },
+      "System": {
+        "application": {
+          "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+        },
+        "user": {
+          "userId": "amzn1.ask.account.AGGEHQ273AIM65KM6ZHQAOHWG5A4EYH2JXQNNRZUBAS4SA6SZIAT5VCB7TSVXMSC37VSVC7YZTGP7OFJEJHBKW7QOFVP6EWIE3ZRCENQTEUCMPZTLYX6Q6RZAPR6TM7J4J3LFI36EHGM7V2EP7PDWPLSBWBR27LLWNDKKZVO3SN2D2LBCCJYC4KNIVKPVGRT7C62IKAFGUOB4PA"
+        },
+        "device": {
+          "supportedInterfaces": {}
+        }
+      }
+    },
+    "version": "1.0"
+  },
+  "caramel latte": {
+    "session": {
+      "new": false,
+      "sessionId": "SessionId.b05e5a4d-1bb0-4c40-bf39-3d2f88b2a638",
+      "application": {
+        "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+      },
+      "attributes": {},
+      "user": {
+        "userId": "amzn1.ask.account.AGGEHQ273AIM65KM6ZHQAOHWG5A4EYH2JXQNNRZUBAS4SA6SZIAT5VCB7TSVXMSC37VSVC7YZTGP7OFJEJHBKW7QOFVP6EWIE3ZRCENQTEUCMPZTLYX6Q6RZAPR6TM7J4J3LFI36EHGM7V2EP7PDWPLSBWBR27LLWNDKKZVO3SN2D2LBCCJYC4KNIVKPVGRT7C62IKAFGUOB4PA"
+      }
+    },
+    "request": {
+      "type": "IntentRequest",
+      "requestId": "EdwRequestId.7d0b3a8f-38f3-4d38-b947-f57593519812",
+      "intent": {
+        "name": "Get_Prices",
+        "slots": {
+          "consumable": {
+            "name": "consumable",
+            "value": "caramel latte"
+          }
+        }
+      },
+      "locale": "en-US",
+      "timestamp": "2017-12-08T11:28:59Z"
+    },
+    "context": {
+      "AudioPlayer": {
+        "playerActivity": "IDLE"
+      },
+      "System": {
+        "application": {
+          "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+        },
+        "user": {
+          "userId": "amzn1.ask.account.AGGEHQ273AIM65KM6ZHQAOHWG5A4EYH2JXQNNRZUBAS4SA6SZIAT5VCB7TSVXMSC37VSVC7YZTGP7OFJEJHBKW7QOFVP6EWIE3ZRCENQTEUCMPZTLYX6Q6RZAPR6TM7J4J3LFI36EHGM7V2EP7PDWPLSBWBR27LLWNDKKZVO3SN2D2LBCCJYC4KNIVKPVGRT7C62IKAFGUOB4PA"
+        },
+        "device": {
+          "supportedInterfaces": {}
+        }
+      }
+    },
+    "version": "1.0"
+  },
+  "chocotoffee latte": {
+    "session": {
+      "new": false,
+      "sessionId": "SessionId.b05e5a4d-1bb0-4c40-bf39-3d2f88b2a638",
+      "application": {
+        "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+      },
+      "attributes": {},
+      "user": {
+        "userId": "amzn1.ask.account.AGGEHQ273AIM65KM6ZHQAOHWG5A4EYH2JXQNNRZUBAS4SA6SZIAT5VCB7TSVXMSC37VSVC7YZTGP7OFJEJHBKW7QOFVP6EWIE3ZRCENQTEUCMPZTLYX6Q6RZAPR6TM7J4J3LFI36EHGM7V2EP7PDWPLSBWBR27LLWNDKKZVO3SN2D2LBCCJYC4KNIVKPVGRT7C62IKAFGUOB4PA"
+      }
+    },
+    "request": {
+      "type": "IntentRequest",
+      "requestId": "EdwRequestId.3f5c5d92-d05f-4ea2-96a9-495ecb4e1d36",
+      "intent": {
+        "name": "Get_Prices",
+        "slots": {
+          "consumable": {
+            "name": "consumable",
+            "value": "chocotoffee latte"
+          }
+        }
+      },
+      "locale": "en-US",
+      "timestamp": "2017-12-08T11:39:12Z"
+    },
+    "context": {
+      "AudioPlayer": {
+        "playerActivity": "IDLE"
+      },
+      "System": {
+        "application": {
+          "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+        },
+        "user": {
+          "userId": "amzn1.ask.account.AGGEHQ273AIM65KM6ZHQAOHWG5A4EYH2JXQNNRZUBAS4SA6SZIAT5VCB7TSVXMSC37VSVC7YZTGP7OFJEJHBKW7QOFVP6EWIE3ZRCENQTEUCMPZTLYX6Q6RZAPR6TM7J4J3LFI36EHGM7V2EP7PDWPLSBWBR27LLWNDKKZVO3SN2D2LBCCJYC4KNIVKPVGRT7C62IKAFGUOB4PA"
+        },
+        "device": {
+          "supportedInterfaces": {}
+        }
+      }
+    },
+    "version": "1.0"
+  },
+  "oriental latte": {
+    "session": {
+      "new": false,
+      "sessionId": "SessionId.3757d467-e3ec-4747-9f8e-845806fd8afa",
+      "application": {
+        "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+      },
+      "attributes": {},
+      "user": {
+        "userId": "amzn1.ask.account.AFZ2LCXGYJXHTWXPVOOXAIZGO3FSPQ45PVIQG42OPHDWLK4ZKSPETYYSKJ6EDFMIMQ6T6IIVXX3S7MYY3FSCZPBTOTAUQTCEBGQYIJMFEERTK77HPK76XQ6URGMJLSSKALBR56CXFG2DYGK3QQYSQVXPBN4QP33OZ4OH6NUOIUNB76SUD5ANFVK66DWY4N2VXUERRBDD7KC6PEY"
+      }
+    },
+    "request": {
+      "type": "IntentRequest",
+      "requestId": "EdwRequestId.bfed1b01-bf5b-4d8c-9520-753b446862ea",
+      "intent": {
+        "name": "Get_Prices",
+        "slots": {
+          "consumable": {
+            "name": "consumable",
+            "value": "oriental latte"
+          }
+        }
+      },
+      "locale": "en-US",
+      "timestamp": "2017-12-07T19:08:52Z"
+    },
+    "context": {
+      "AudioPlayer": {
+        "playerActivity": "IDLE"
+      },
+      "System": {
+        "application": {
+          "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+        },
+        "user": {
+          "userId": "amzn1.ask.account.AFZ2LCXGYJXHTWXPVOOXAIZGO3FSPQ45PVIQG42OPHDWLK4ZKSPETYYSKJ6EDFMIMQ6T6IIVXX3S7MYY3FSCZPBTOTAUQTCEBGQYIJMFEERTK77HPK76XQ6URGMJLSSKALBR56CXFG2DYGK3QQYSQVXPBN4QP33OZ4OH6NUOIUNB76SUD5ANFVK66DWY4N2VXUERRBDD7KC6PEY"
+        },
+        "device": {
+          "supportedInterfaces": {}
+        }
+      }
+    },
+    "version": "1.0"
+  },
+  "roberts mocha": {
+    "session": {
+      "new": false,
+      "sessionId": "SessionId.b05e5a4d-1bb0-4c40-bf39-3d2f88b2a638",
+      "application": {
+        "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+      },
+      "attributes": {},
+      "user": {
+        "userId": "amzn1.ask.account.AGGEHQ273AIM65KM6ZHQAOHWG5A4EYH2JXQNNRZUBAS4SA6SZIAT5VCB7TSVXMSC37VSVC7YZTGP7OFJEJHBKW7QOFVP6EWIE3ZRCENQTEUCMPZTLYX6Q6RZAPR6TM7J4J3LFI36EHGM7V2EP7PDWPLSBWBR27LLWNDKKZVO3SN2D2LBCCJYC4KNIVKPVGRT7C62IKAFGUOB4PA"
+      }
+    },
+    "request": {
+      "type": "IntentRequest",
+      "requestId": "EdwRequestId.ef93e9b1-9814-4532-be5a-9b488983bc37",
+      "intent": {
+        "name": "Get_Prices",
+        "slots": {
+          "consumable": {
+            "name": "consumable",
+            "value": "Roberts mocha"
+          }
+        }
+      },
+      "locale": "en-US",
+      "timestamp": "2017-12-08T11:40:57Z"
+    },
+    "context": {
+      "AudioPlayer": {
+        "playerActivity": "IDLE"
+      },
+      "System": {
+        "application": {
+          "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+        },
+        "user": {
+          "userId": "amzn1.ask.account.AGGEHQ273AIM65KM6ZHQAOHWG5A4EYH2JXQNNRZUBAS4SA6SZIAT5VCB7TSVXMSC37VSVC7YZTGP7OFJEJHBKW7QOFVP6EWIE3ZRCENQTEUCMPZTLYX6Q6RZAPR6TM7J4J3LFI36EHGM7V2EP7PDWPLSBWBR27LLWNDKKZVO3SN2D2LBCCJYC4KNIVKPVGRT7C62IKAFGUOB4PA"
+        },
+        "device": {
+          "supportedInterfaces": {}
+        }
+      }
+    },
+    "version": "1.0"
+  },
+  "mint chocolate mocha": {
+    "session": {
+      "new": false,
+      "sessionId": "SessionId.b05e5a4d-1bb0-4c40-bf39-3d2f88b2a638",
+      "application": {
+        "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+      },
+      "attributes": {},
+      "user": {
+        "userId": "amzn1.ask.account.AGGEHQ273AIM65KM6ZHQAOHWG5A4EYH2JXQNNRZUBAS4SA6SZIAT5VCB7TSVXMSC37VSVC7YZTGP7OFJEJHBKW7QOFVP6EWIE3ZRCENQTEUCMPZTLYX6Q6RZAPR6TM7J4J3LFI36EHGM7V2EP7PDWPLSBWBR27LLWNDKKZVO3SN2D2LBCCJYC4KNIVKPVGRT7C62IKAFGUOB4PA"
+      }
+    },
+    "request": {
+      "type": "IntentRequest",
+      "requestId": "EdwRequestId.59b54064-7110-47ee-a5e2-8d3427519da0",
+      "intent": {
+        "name": "Get_Prices",
+        "slots": {
+          "consumable": {
+            "name": "consumable",
+            "value": "mint chocolate mocha"
+          }
+        }
+      },
+      "locale": "en-US",
+      "timestamp": "2017-12-08T11:44:23Z"
+    },
+    "context": {
+      "AudioPlayer": {
+        "playerActivity": "IDLE"
+      },
+      "System": {
+        "application": {
+          "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+        },
+        "user": {
+          "userId": "amzn1.ask.account.AGGEHQ273AIM65KM6ZHQAOHWG5A4EYH2JXQNNRZUBAS4SA6SZIAT5VCB7TSVXMSC37VSVC7YZTGP7OFJEJHBKW7QOFVP6EWIE3ZRCENQTEUCMPZTLYX6Q6RZAPR6TM7J4J3LFI36EHGM7V2EP7PDWPLSBWBR27LLWNDKKZVO3SN2D2LBCCJYC4KNIVKPVGRT7C62IKAFGUOB4PA"
+        },
+        "device": {
+          "supportedInterfaces": {}
+        }
+      }
+    },
+    "version": "1.0"
+  },
+  "white chocolate orange mocha": {
+    "session": {
+      "new": false,
+      "sessionId": "SessionId.b05e5a4d-1bb0-4c40-bf39-3d2f88b2a638",
+      "application": {
+        "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+      },
+      "attributes": {},
+      "user": {
+        "userId": "amzn1.ask.account.AGGEHQ273AIM65KM6ZHQAOHWG5A4EYH2JXQNNRZUBAS4SA6SZIAT5VCB7TSVXMSC37VSVC7YZTGP7OFJEJHBKW7QOFVP6EWIE3ZRCENQTEUCMPZTLYX6Q6RZAPR6TM7J4J3LFI36EHGM7V2EP7PDWPLSBWBR27LLWNDKKZVO3SN2D2LBCCJYC4KNIVKPVGRT7C62IKAFGUOB4PA"
+      }
+    },
+    "request": {
+      "type": "IntentRequest",
+      "requestId": "EdwRequestId.7bd1a62f-2008-4548-8ee0-3a7d1529a72e",
+      "intent": {
+        "name": "Get_Prices",
+        "slots": {
+          "consumable": {
+            "name": "consumable",
+            "value": "white chocolate orange mocha"
+          }
+        }
+      },
+      "locale": "en-US",
+      "timestamp": "2017-12-08T11:45:41Z"
+    },
+    "context": {
+      "AudioPlayer": {
+        "playerActivity": "IDLE"
+      },
+      "System": {
+        "application": {
+          "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+        },
+        "user": {
+          "userId": "amzn1.ask.account.AGGEHQ273AIM65KM6ZHQAOHWG5A4EYH2JXQNNRZUBAS4SA6SZIAT5VCB7TSVXMSC37VSVC7YZTGP7OFJEJHBKW7QOFVP6EWIE3ZRCENQTEUCMPZTLYX6Q6RZAPR6TM7J4J3LFI36EHGM7V2EP7PDWPLSBWBR27LLWNDKKZVO3SN2D2LBCCJYC4KNIVKPVGRT7C62IKAFGUOB4PA"
+        },
+        "device": {
+          "supportedInterfaces": {}
+        }
+      }
+    },
+    "version": "1.0"
+  },
+  "cappuccinos": {
+    "session": {
+      "new": false,
+      "sessionId": "SessionId.3757d467-e3ec-4747-9f8e-845806fd8afa",
+      "application": {
+        "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+      },
+      "attributes": {},
+      "user": {
+        "userId": "amzn1.ask.account.AFZ2LCXGYJXHTWXPVOOXAIZGO3FSPQ45PVIQG42OPHDWLK4ZKSPETYYSKJ6EDFMIMQ6T6IIVXX3S7MYY3FSCZPBTOTAUQTCEBGQYIJMFEERTK77HPK76XQ6URGMJLSSKALBR56CXFG2DYGK3QQYSQVXPBN4QP33OZ4OH6NUOIUNB76SUD5ANFVK66DWY4N2VXUERRBDD7KC6PEY"
+      }
+    },
+    "request": {
+      "type": "IntentRequest",
+      "requestId": "EdwRequestId.214f7dd3-3133-4344-851f-fa7866a93d9a",
+      "intent": {
+        "name": "Get_Drinks",
+        "slots": {
+          "category": {
+            "name": "category",
+            "value": "cappuccinos"
+          }
+        }
+      },
+      "locale": "en-US",
+      "timestamp": "2017-12-07T19:10:38Z"
+    },
+    "context": {
+      "AudioPlayer": {
+        "playerActivity": "IDLE"
+      },
+      "System": {
+        "application": {
+          "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+        },
+        "user": {
+          "userId": "amzn1.ask.account.AFZ2LCXGYJXHTWXPVOOXAIZGO3FSPQ45PVIQG42OPHDWLK4ZKSPETYYSKJ6EDFMIMQ6T6IIVXX3S7MYY3FSCZPBTOTAUQTCEBGQYIJMFEERTK77HPK76XQ6URGMJLSSKALBR56CXFG2DYGK3QQYSQVXPBN4QP33OZ4OH6NUOIUNB76SUD5ANFVK66DWY4N2VXUERRBDD7KC6PEY"
+        },
+        "device": {
+          "supportedInterfaces": {}
+        }
+      }
+    },
+    "version": "1.0"
+  },
+  "cappuccino": {
+    "session": {
+      "new": false,
+      "sessionId": "SessionId.b05e5a4d-1bb0-4c40-bf39-3d2f88b2a638",
+      "application": {
+        "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+      },
+      "attributes": {},
+      "user": {
+        "userId": "amzn1.ask.account.AGGEHQ273AIM65KM6ZHQAOHWG5A4EYH2JXQNNRZUBAS4SA6SZIAT5VCB7TSVXMSC37VSVC7YZTGP7OFJEJHBKW7QOFVP6EWIE3ZRCENQTEUCMPZTLYX6Q6RZAPR6TM7J4J3LFI36EHGM7V2EP7PDWPLSBWBR27LLWNDKKZVO3SN2D2LBCCJYC4KNIVKPVGRT7C62IKAFGUOB4PA"
+      }
+    },
+    "request": {
+      "type": "IntentRequest",
+      "requestId": "EdwRequestId.5d4a219a-d29b-4002-9110-8599bdbf238e",
+      "intent": {
+        "name": "Get_Prices",
+        "slots": {
+          "consumable": {
+            "name": "consumable",
+            "value": "cappuccino"
+          }
+        }
+      },
+      "locale": "en-US",
+      "timestamp": "2017-12-08T11:48:53Z"
+    },
+    "context": {
+      "AudioPlayer": {
+        "playerActivity": "IDLE"
+      },
+      "System": {
+        "application": {
+          "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+        },
+        "user": {
+          "userId": "amzn1.ask.account.AGGEHQ273AIM65KM6ZHQAOHWG5A4EYH2JXQNNRZUBAS4SA6SZIAT5VCB7TSVXMSC37VSVC7YZTGP7OFJEJHBKW7QOFVP6EWIE3ZRCENQTEUCMPZTLYX6Q6RZAPR6TM7J4J3LFI36EHGM7V2EP7PDWPLSBWBR27LLWNDKKZVO3SN2D2LBCCJYC4KNIVKPVGRT7C62IKAFGUOB4PA"
+        },
+        "device": {
+          "supportedInterfaces": {}
+        }
+      }
+    },
+    "version": "1.0"
+  },
+  "flat white": {
+    "session": {
+      "new": false,
+      "sessionId": "SessionId.3757d467-e3ec-4747-9f8e-845806fd8afa",
+      "application": {
+        "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+      },
+      "attributes": {},
+      "user": {
+        "userId": "amzn1.ask.account.AFZ2LCXGYJXHTWXPVOOXAIZGO3FSPQ45PVIQG42OPHDWLK4ZKSPETYYSKJ6EDFMIMQ6T6IIVXX3S7MYY3FSCZPBTOTAUQTCEBGQYIJMFEERTK77HPK76XQ6URGMJLSSKALBR56CXFG2DYGK3QQYSQVXPBN4QP33OZ4OH6NUOIUNB76SUD5ANFVK66DWY4N2VXUERRBDD7KC6PEY"
+      }
+    },
+    "request": {
+      "type": "IntentRequest",
+      "requestId": "EdwRequestId.2c002a72-63cc-494e-bb8a-324582d04976",
+      "intent": {
+        "name": "Get_Prices",
+        "slots": {
+          "consumable": {
+            "name": "consumable",
+            "value": "flat white"
+          }
+        }
+      },
+      "locale": "en-US",
+      "timestamp": "2017-12-07T19:11:07Z"
+    },
+    "context": {
+      "AudioPlayer": {
+        "playerActivity": "IDLE"
+      },
+      "System": {
+        "application": {
+          "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+        },
+        "user": {
+          "userId": "amzn1.ask.account.AFZ2LCXGYJXHTWXPVOOXAIZGO3FSPQ45PVIQG42OPHDWLK4ZKSPETYYSKJ6EDFMIMQ6T6IIVXX3S7MYY3FSCZPBTOTAUQTCEBGQYIJMFEERTK77HPK76XQ6URGMJLSSKALBR56CXFG2DYGK3QQYSQVXPBN4QP33OZ4OH6NUOIUNB76SUD5ANFVK66DWY4N2VXUERRBDD7KC6PEY"
+        },
+        "device": {
+          "supportedInterfaces": {}
+        }
+      }
+    },
+    "version": "1.0"
+  },
+  "apelsinkyss": {
+    "session": {
+      "new": false,
+      "sessionId": "SessionId.b05e5a4d-1bb0-4c40-bf39-3d2f88b2a638",
+      "application": {
+        "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+      },
+      "attributes": {},
+      "user": {
+        "userId": "amzn1.ask.account.AGGEHQ273AIM65KM6ZHQAOHWG5A4EYH2JXQNNRZUBAS4SA6SZIAT5VCB7TSVXMSC37VSVC7YZTGP7OFJEJHBKW7QOFVP6EWIE3ZRCENQTEUCMPZTLYX6Q6RZAPR6TM7J4J3LFI36EHGM7V2EP7PDWPLSBWBR27LLWNDKKZVO3SN2D2LBCCJYC4KNIVKPVGRT7C62IKAFGUOB4PA"
+      }
+    },
+    "request": {
+      "type": "IntentRequest",
+      "requestId": "EdwRequestId.bca05a5c-32c5-458d-b49f-2f56ff5e34d3",
+      "intent": {
+        "name": "Get_Prices",
+        "slots": {
+          "consumable": {
+            "name": "consumable",
+            "value": "apelsinkyss"
+          }
+        }
+      },
+      "locale": "en-US",
+      "timestamp": "2017-12-08T11:50:18Z"
+    },
+    "context": {
+      "AudioPlayer": {
+        "playerActivity": "IDLE"
+      },
+      "System": {
+        "application": {
+          "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+        },
+        "user": {
+          "userId": "amzn1.ask.account.AGGEHQ273AIM65KM6ZHQAOHWG5A4EYH2JXQNNRZUBAS4SA6SZIAT5VCB7TSVXMSC37VSVC7YZTGP7OFJEJHBKW7QOFVP6EWIE3ZRCENQTEUCMPZTLYX6Q6RZAPR6TM7J4J3LFI36EHGM7V2EP7PDWPLSBWBR27LLWNDKKZVO3SN2D2LBCCJYC4KNIVKPVGRT7C62IKAFGUOB4PA"
+        },
+        "device": {
+          "supportedInterfaces": {}
+        }
+      }
+    },
+    "version": "1.0"
+  },
+  "chococcino": {
+    "session": {
+      "new": false,
+      "sessionId": "SessionId.3757d467-e3ec-4747-9f8e-845806fd8afa",
+      "application": {
+        "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+      },
+      "attributes": {},
+      "user": {
+        "userId": "amzn1.ask.account.AFZ2LCXGYJXHTWXPVOOXAIZGO3FSPQ45PVIQG42OPHDWLK4ZKSPETYYSKJ6EDFMIMQ6T6IIVXX3S7MYY3FSCZPBTOTAUQTCEBGQYIJMFEERTK77HPK76XQ6URGMJLSSKALBR56CXFG2DYGK3QQYSQVXPBN4QP33OZ4OH6NUOIUNB76SUD5ANFVK66DWY4N2VXUERRBDD7KC6PEY"
+      }
+    },
+    "request": {
+      "type": "IntentRequest",
+      "requestId": "EdwRequestId.2110adbc-56b4-428b-af5a-41b26b3d6d26",
+      "intent": {
+        "name": "Get_Prices",
+        "slots": {
+          "consumable": {
+            "name": "consumable",
+            "value": "chococcino"
+          }
+        }
+      },
+      "locale": "en-US",
+      "timestamp": "2017-12-07T19:11:32Z"
+    },
+    "context": {
+      "AudioPlayer": {
+        "playerActivity": "IDLE"
+      },
+      "System": {
+        "application": {
+          "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+        },
+        "user": {
+          "userId": "amzn1.ask.account.AFZ2LCXGYJXHTWXPVOOXAIZGO3FSPQ45PVIQG42OPHDWLK4ZKSPETYYSKJ6EDFMIMQ6T6IIVXX3S7MYY3FSCZPBTOTAUQTCEBGQYIJMFEERTK77HPK76XQ6URGMJLSSKALBR56CXFG2DYGK3QQYSQVXPBN4QP33OZ4OH6NUOIUNB76SUD5ANFVK66DWY4N2VXUERRBDD7KC6PEY"
+        },
+        "device": {
+          "supportedInterfaces": {}
+        }
+      }
+    },
+    "version": "1.0"
+  },
+  "espressos": {
+    "session": {
+      "new": false,
+      "sessionId": "SessionId.b05e5a4d-1bb0-4c40-bf39-3d2f88b2a638",
+      "application": {
+        "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+      },
+      "attributes": {},
+      "user": {
+        "userId": "amzn1.ask.account.AGGEHQ273AIM65KM6ZHQAOHWG5A4EYH2JXQNNRZUBAS4SA6SZIAT5VCB7TSVXMSC37VSVC7YZTGP7OFJEJHBKW7QOFVP6EWIE3ZRCENQTEUCMPZTLYX6Q6RZAPR6TM7J4J3LFI36EHGM7V2EP7PDWPLSBWBR27LLWNDKKZVO3SN2D2LBCCJYC4KNIVKPVGRT7C62IKAFGUOB4PA"
+      }
+    },
+    "request": {
+      "type": "IntentRequest",
+      "requestId": "EdwRequestId.abfe9415-041e-4035-9781-9da4c645e5d0",
+      "intent": {
+        "name": "Get_Drinks",
+        "slots": {
+          "category": {
+            "name": "category",
+            "value": "espressos"
+          }
+        }
+      },
+      "locale": "en-US",
+      "timestamp": "2017-12-08T11:52:07Z"
+    },
+    "context": {
+      "AudioPlayer": {
+        "playerActivity": "IDLE"
+      },
+      "System": {
+        "application": {
+          "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+        },
+        "user": {
+          "userId": "amzn1.ask.account.AGGEHQ273AIM65KM6ZHQAOHWG5A4EYH2JXQNNRZUBAS4SA6SZIAT5VCB7TSVXMSC37VSVC7YZTGP7OFJEJHBKW7QOFVP6EWIE3ZRCENQTEUCMPZTLYX6Q6RZAPR6TM7J4J3LFI36EHGM7V2EP7PDWPLSBWBR27LLWNDKKZVO3SN2D2LBCCJYC4KNIVKPVGRT7C62IKAFGUOB4PA"
+        },
+        "device": {
+          "supportedInterfaces": {}
+        }
+      }
+    },
+    "version": "1.0"
+  },
+  "espresso": {
+    "session": {
+      "new": false,
+      "sessionId": "SessionId.3757d467-e3ec-4747-9f8e-845806fd8afa",
+      "application": {
+        "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+      },
+      "attributes": {},
+      "user": {
+        "userId": "amzn1.ask.account.AFZ2LCXGYJXHTWXPVOOXAIZGO3FSPQ45PVIQG42OPHDWLK4ZKSPETYYSKJ6EDFMIMQ6T6IIVXX3S7MYY3FSCZPBTOTAUQTCEBGQYIJMFEERTK77HPK76XQ6URGMJLSSKALBR56CXFG2DYGK3QQYSQVXPBN4QP33OZ4OH6NUOIUNB76SUD5ANFVK66DWY4N2VXUERRBDD7KC6PEY"
+      }
+    },
+    "request": {
+      "type": "IntentRequest",
+      "requestId": "EdwRequestId.6ab3a01d-095e-4f2a-bca7-f0c34858e1f3",
+      "intent": {
+        "name": "Get_Prices",
+        "slots": {
+          "consumable": {
+            "name": "consumable",
+            "value": "espresso"
+          }
+        }
+      },
+      "locale": "en-US",
+      "timestamp": "2017-12-07T19:12:07Z"
+    },
+    "context": {
+      "AudioPlayer": {
+        "playerActivity": "IDLE"
+      },
+      "System": {
+        "application": {
+          "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+        },
+        "user": {
+          "userId": "amzn1.ask.account.AFZ2LCXGYJXHTWXPVOOXAIZGO3FSPQ45PVIQG42OPHDWLK4ZKSPETYYSKJ6EDFMIMQ6T6IIVXX3S7MYY3FSCZPBTOTAUQTCEBGQYIJMFEERTK77HPK76XQ6URGMJLSSKALBR56CXFG2DYGK3QQYSQVXPBN4QP33OZ4OH6NUOIUNB76SUD5ANFVK66DWY4N2VXUERRBDD7KC6PEY"
+        },
+        "device": {
+          "supportedInterfaces": {}
+        }
+      }
+    },
+    "version": "1.0"
+  },
+  "macchiato": {
+    "session": {
+      "new": false,
+      "sessionId": "SessionId.b05e5a4d-1bb0-4c40-bf39-3d2f88b2a638",
+      "application": {
+        "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+      },
+      "attributes": {},
+      "user": {
+        "userId": "amzn1.ask.account.AGGEHQ273AIM65KM6ZHQAOHWG5A4EYH2JXQNNRZUBAS4SA6SZIAT5VCB7TSVXMSC37VSVC7YZTGP7OFJEJHBKW7QOFVP6EWIE3ZRCENQTEUCMPZTLYX6Q6RZAPR6TM7J4J3LFI36EHGM7V2EP7PDWPLSBWBR27LLWNDKKZVO3SN2D2LBCCJYC4KNIVKPVGRT7C62IKAFGUOB4PA"
+      }
+    },
+    "request": {
+      "type": "IntentRequest",
+      "requestId": "EdwRequestId.fa716d13-f1ae-4903-ad29-b9ab75709c85",
+      "intent": {
+        "name": "Get_Prices",
+        "slots": {
+          "consumable": {
+            "name": "consumable",
+            "value": "macchiato"
+          }
+        }
+      },
+      "locale": "en-US",
+      "timestamp": "2017-12-08T11:54:00Z"
+    },
+    "context": {
+      "AudioPlayer": {
+        "playerActivity": "IDLE"
+      },
+      "System": {
+        "application": {
+          "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+        },
+        "user": {
+          "userId": "amzn1.ask.account.AGGEHQ273AIM65KM6ZHQAOHWG5A4EYH2JXQNNRZUBAS4SA6SZIAT5VCB7TSVXMSC37VSVC7YZTGP7OFJEJHBKW7QOFVP6EWIE3ZRCENQTEUCMPZTLYX6Q6RZAPR6TM7J4J3LFI36EHGM7V2EP7PDWPLSBWBR27LLWNDKKZVO3SN2D2LBCCJYC4KNIVKPVGRT7C62IKAFGUOB4PA"
+        },
+        "device": {
+          "supportedInterfaces": {}
+        }
+      }
+    },
+    "version": "1.0"
+  },
+  "con panna": {
+    "session": {
+      "new": true,
+      "sessionId": "SessionId.12bf8a75-5ff4-4277-9a33-8018dc3195a3",
+      "application": {
+        "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+      },
+      "attributes": {},
+      "user": {
+        "userId": "amzn1.ask.account.AFZ2LCXGYJXHTWXPVOOXAIZGO3FSPQ45PVIQG42OPHDWLK4ZKSPETYYSKJ6EDFMIMQ6T6IIVXX3S7MYY3FSCZPBTOTAUQTCEBGQYIJMFEERTK77HPK76XQ6URGMJLSSKALBR56CXFG2DYGK3QQYSQVXPBN4QP33OZ4OH6NUOIUNB76SUD5ANFVK66DWY4N2VXUERRBDD7KC6PEY"
+      }
+    },
+    "request": {
+      "type": "IntentRequest",
+      "requestId": "EdwRequestId.19f625ef-d444-4fa6-a3ac-bb0cb5707b30",
+      "intent": {
+        "name": "Get_Prices",
+        "slots": {
+          "consumable": {
+            "name": "consumable",
+            "value": "con Panna"
+          }
+        }
+      },
+      "locale": "en-US",
+      "timestamp": "2017-12-07T19:13:18Z"
+    },
+    "context": {
+      "AudioPlayer": {
+        "playerActivity": "IDLE"
+      },
+      "System": {
+        "application": {
+          "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+        },
+        "user": {
+          "userId": "amzn1.ask.account.AFZ2LCXGYJXHTWXPVOOXAIZGO3FSPQ45PVIQG42OPHDWLK4ZKSPETYYSKJ6EDFMIMQ6T6IIVXX3S7MYY3FSCZPBTOTAUQTCEBGQYIJMFEERTK77HPK76XQ6URGMJLSSKALBR56CXFG2DYGK3QQYSQVXPBN4QP33OZ4OH6NUOIUNB76SUD5ANFVK66DWY4N2VXUERRBDD7KC6PEY"
+        },
+        "device": {
+          "supportedInterfaces": {}
+        }
+      }
+    },
+    "version": "1.0"
+  },
+  "americano": {
+    "session": {
+      "new": false,
+      "sessionId": "SessionId.b05e5a4d-1bb0-4c40-bf39-3d2f88b2a638",
+      "application": {
+        "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+      },
+      "attributes": {},
+      "user": {
+        "userId": "amzn1.ask.account.AGGEHQ273AIM65KM6ZHQAOHWG5A4EYH2JXQNNRZUBAS4SA6SZIAT5VCB7TSVXMSC37VSVC7YZTGP7OFJEJHBKW7QOFVP6EWIE3ZRCENQTEUCMPZTLYX6Q6RZAPR6TM7J4J3LFI36EHGM7V2EP7PDWPLSBWBR27LLWNDKKZVO3SN2D2LBCCJYC4KNIVKPVGRT7C62IKAFGUOB4PA"
+      }
+    },
+    "request": {
+      "type": "IntentRequest",
+      "requestId": "EdwRequestId.38dc635b-d00c-492c-aa8d-3e5e51c84aad",
+      "intent": {
+        "name": "Get_Prices",
+        "slots": {
+          "consumable": {
+            "name": "consumable",
+            "value": "Americano"
+          }
+        }
+      },
+      "locale": "en-US",
+      "timestamp": "2017-12-08T11:54:58Z"
+    },
+    "context": {
+      "AudioPlayer": {
+        "playerActivity": "IDLE"
+      },
+      "System": {
+        "application": {
+          "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+        },
+        "user": {
+          "userId": "amzn1.ask.account.AGGEHQ273AIM65KM6ZHQAOHWG5A4EYH2JXQNNRZUBAS4SA6SZIAT5VCB7TSVXMSC37VSVC7YZTGP7OFJEJHBKW7QOFVP6EWIE3ZRCENQTEUCMPZTLYX6Q6RZAPR6TM7J4J3LFI36EHGM7V2EP7PDWPLSBWBR27LLWNDKKZVO3SN2D2LBCCJYC4KNIVKPVGRT7C62IKAFGUOB4PA"
+        },
+        "device": {
+          "supportedInterfaces": {}
+        }
+      }
+    },
+    "version": "1.0"
+  },
+  "hot drinks": {
+    "session": {
+      "new": false,
+      "sessionId": "SessionId.b05e5a4d-1bb0-4c40-bf39-3d2f88b2a638",
+      "application": {
+        "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+      },
+      "attributes": {},
+      "user": {
+        "userId": "amzn1.ask.account.AGGEHQ273AIM65KM6ZHQAOHWG5A4EYH2JXQNNRZUBAS4SA6SZIAT5VCB7TSVXMSC37VSVC7YZTGP7OFJEJHBKW7QOFVP6EWIE3ZRCENQTEUCMPZTLYX6Q6RZAPR6TM7J4J3LFI36EHGM7V2EP7PDWPLSBWBR27LLWNDKKZVO3SN2D2LBCCJYC4KNIVKPVGRT7C62IKAFGUOB4PA"
+      }
+    },
+    "request": {
+      "type": "IntentRequest",
+      "requestId": "EdwRequestId.3e03b743-f836-49a3-bd4a-e1b76a940811",
+      "intent": {
+        "name": "Get_Drinks",
+        "slots": {
+          "category": {
+            "name": "category",
+            "value": "hot drinks"
+          }
+        }
+      },
+      "locale": "en-US",
+      "timestamp": "2017-12-08T11:56:14Z"
+    },
+    "context": {
+      "AudioPlayer": {
+        "playerActivity": "IDLE"
+      },
+      "System": {
+        "application": {
+          "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+        },
+        "user": {
+          "userId": "amzn1.ask.account.AGGEHQ273AIM65KM6ZHQAOHWG5A4EYH2JXQNNRZUBAS4SA6SZIAT5VCB7TSVXMSC37VSVC7YZTGP7OFJEJHBKW7QOFVP6EWIE3ZRCENQTEUCMPZTLYX6Q6RZAPR6TM7J4J3LFI36EHGM7V2EP7PDWPLSBWBR27LLWNDKKZVO3SN2D2LBCCJYC4KNIVKPVGRT7C62IKAFGUOB4PA"
+        },
+        "device": {
+          "supportedInterfaces": {}
+        }
+      }
+    },
+    "version": "1.0"
+  },
+  "chai latte": {
+    "session": {
+      "new": false,
+      "sessionId": "SessionId.b05e5a4d-1bb0-4c40-bf39-3d2f88b2a638",
+      "application": {
+        "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+      },
+      "attributes": {},
+      "user": {
+        "userId": "amzn1.ask.account.AGGEHQ273AIM65KM6ZHQAOHWG5A4EYH2JXQNNRZUBAS4SA6SZIAT5VCB7TSVXMSC37VSVC7YZTGP7OFJEJHBKW7QOFVP6EWIE3ZRCENQTEUCMPZTLYX6Q6RZAPR6TM7J4J3LFI36EHGM7V2EP7PDWPLSBWBR27LLWNDKKZVO3SN2D2LBCCJYC4KNIVKPVGRT7C62IKAFGUOB4PA"
+      }
+    },
+    "request": {
+      "type": "IntentRequest",
+      "requestId": "EdwRequestId.7bd6975e-3e37-469a-a427-fa777a527390",
+      "intent": {
+        "name": "Get_Prices",
+        "slots": {
+          "consumable": {
+            "name": "consumable",
+            "value": "chai latte"
+          }
+        }
+      },
+      "locale": "en-US",
+      "timestamp": "2017-12-08T11:56:55Z"
+    },
+    "context": {
+      "AudioPlayer": {
+        "playerActivity": "IDLE"
+      },
+      "System": {
+        "application": {
+          "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+        },
+        "user": {
+          "userId": "amzn1.ask.account.AGGEHQ273AIM65KM6ZHQAOHWG5A4EYH2JXQNNRZUBAS4SA6SZIAT5VCB7TSVXMSC37VSVC7YZTGP7OFJEJHBKW7QOFVP6EWIE3ZRCENQTEUCMPZTLYX6Q6RZAPR6TM7J4J3LFI36EHGM7V2EP7PDWPLSBWBR27LLWNDKKZVO3SN2D2LBCCJYC4KNIVKPVGRT7C62IKAFGUOB4PA"
+        },
+        "device": {
+          "supportedInterfaces": {}
+        }
+      }
+    },
+    "version": "1.0"
+  },
+  "cocoa": {
+    "session": {
+      "new": true,
+      "sessionId": "SessionId.f7384736-ae4e-4195-88f5-b53b642d00f6",
+      "application": {
+        "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+      },
+      "attributes": {},
+      "user": {
+        "userId": "amzn1.ask.account.AFZ2LCXGYJXHTWXPVOOXAIZGO3FSPQ45PVIQG42OPHDWLK4ZKSPETYYSKJ6EDFMIMQ6T6IIVXX3S7MYY3FSCZPBTOTAUQTCEBGQYIJMFEERTK77HPK76XQ6URGMJLSSKALBR56CXFG2DYGK3QQYSQVXPBN4QP33OZ4OH6NUOIUNB76SUD5ANFVK66DWY4N2VXUERRBDD7KC6PEY"
+      }
+    },
+    "request": {
+      "type": "IntentRequest",
+      "requestId": "EdwRequestId.6709a0ce-b629-4242-917a-250b393286ed",
+      "intent": {
+        "name": "Get_Prices",
+        "slots": {
+          "consumable": {
+            "name": "consumable",
+            "value": "cocoa"
+          }
+        }
+      },
+      "locale": "en-US",
+      "timestamp": "2017-12-07T19:13:36Z"
+    },
+    "context": {
+      "AudioPlayer": {
+        "playerActivity": "IDLE"
+      },
+      "System": {
+        "application": {
+          "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+        },
+        "user": {
+          "userId": "amzn1.ask.account.AFZ2LCXGYJXHTWXPVOOXAIZGO3FSPQ45PVIQG42OPHDWLK4ZKSPETYYSKJ6EDFMIMQ6T6IIVXX3S7MYY3FSCZPBTOTAUQTCEBGQYIJMFEERTK77HPK76XQ6URGMJLSSKALBR56CXFG2DYGK3QQYSQVXPBN4QP33OZ4OH6NUOIUNB76SUD5ANFVK66DWY4N2VXUERRBDD7KC6PEY"
+        },
+        "device": {
+          "supportedInterfaces": {}
+        }
+      }
+    },
+    "version": "1.0"
+  },
+  "steamer": {
+    "session": {
+      "new": false,
+      "sessionId": "SessionId.b05e5a4d-1bb0-4c40-bf39-3d2f88b2a638",
+      "application": {
+        "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+      },
+      "attributes": {},
+      "user": {
+        "userId": "amzn1.ask.account.AGGEHQ273AIM65KM6ZHQAOHWG5A4EYH2JXQNNRZUBAS4SA6SZIAT5VCB7TSVXMSC37VSVC7YZTGP7OFJEJHBKW7QOFVP6EWIE3ZRCENQTEUCMPZTLYX6Q6RZAPR6TM7J4J3LFI36EHGM7V2EP7PDWPLSBWBR27LLWNDKKZVO3SN2D2LBCCJYC4KNIVKPVGRT7C62IKAFGUOB4PA"
+      }
+    },
+    "request": {
+      "type": "IntentRequest",
+      "requestId": "EdwRequestId.bb95a5e4-4c9f-400d-b7c4-86930535c4d2",
+      "intent": {
+        "name": "Get_Prices",
+        "slots": {
+          "consumable": {
+            "name": "consumable",
+            "value": "steamer"
+          }
+        }
+      },
+      "locale": "en-US",
+      "timestamp": "2017-12-08T11:58:10Z"
+    },
+    "context": {
+      "AudioPlayer": {
+        "playerActivity": "IDLE"
+      },
+      "System": {
+        "application": {
+          "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+        },
+        "user": {
+          "userId": "amzn1.ask.account.AGGEHQ273AIM65KM6ZHQAOHWG5A4EYH2JXQNNRZUBAS4SA6SZIAT5VCB7TSVXMSC37VSVC7YZTGP7OFJEJHBKW7QOFVP6EWIE3ZRCENQTEUCMPZTLYX6Q6RZAPR6TM7J4J3LFI36EHGM7V2EP7PDWPLSBWBR27LLWNDKKZVO3SN2D2LBCCJYC4KNIVKPVGRT7C62IKAFGUOB4PA"
+        },
+        "device": {
+          "supportedInterfaces": {}
+        }
+      }
+    },
+    "version": "1.0"
+  },
+  "cold coffee drinks": {
+    "session": {
+      "new": false,
+      "sessionId": "SessionId.f7384736-ae4e-4195-88f5-b53b642d00f6",
+      "application": {
+        "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+      },
+      "attributes": {},
+      "user": {
+        "userId": "amzn1.ask.account.AFZ2LCXGYJXHTWXPVOOXAIZGO3FSPQ45PVIQG42OPHDWLK4ZKSPETYYSKJ6EDFMIMQ6T6IIVXX3S7MYY3FSCZPBTOTAUQTCEBGQYIJMFEERTK77HPK76XQ6URGMJLSSKALBR56CXFG2DYGK3QQYSQVXPBN4QP33OZ4OH6NUOIUNB76SUD5ANFVK66DWY4N2VXUERRBDD7KC6PEY"
+      }
+    },
+    "request": {
+      "type": "IntentRequest",
+      "requestId": "EdwRequestId.d394ada6-2573-4baa-8065-0b9a7b542445",
+      "intent": {
+        "name": "Get_Drinks",
+        "slots": {
+          "category": {
+            "name": "category",
+            "value": "cold coffee drinks"
+          }
+        }
+      },
+      "locale": "en-US",
+      "timestamp": "2017-12-07T19:14:02Z"
+    },
+    "context": {
+      "AudioPlayer": {
+        "playerActivity": "IDLE"
+      },
+      "System": {
+        "application": {
+          "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+        },
+        "user": {
+          "userId": "amzn1.ask.account.AFZ2LCXGYJXHTWXPVOOXAIZGO3FSPQ45PVIQG42OPHDWLK4ZKSPETYYSKJ6EDFMIMQ6T6IIVXX3S7MYY3FSCZPBTOTAUQTCEBGQYIJMFEERTK77HPK76XQ6URGMJLSSKALBR56CXFG2DYGK3QQYSQVXPBN4QP33OZ4OH6NUOIUNB76SUD5ANFVK66DWY4N2VXUERRBDD7KC6PEY"
+        },
+        "device": {
+          "supportedInterfaces": {}
+        }
+      }
+    },
+    "version": "1.0"
+  },
+  "ice latte": {
+    "session": {
+      "new": false,
+      "sessionId": "SessionId.f7384736-ae4e-4195-88f5-b53b642d00f6",
+      "application": {
+        "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+      },
+      "attributes": {},
+      "user": {
+        "userId": "amzn1.ask.account.AFZ2LCXGYJXHTWXPVOOXAIZGO3FSPQ45PVIQG42OPHDWLK4ZKSPETYYSKJ6EDFMIMQ6T6IIVXX3S7MYY3FSCZPBTOTAUQTCEBGQYIJMFEERTK77HPK76XQ6URGMJLSSKALBR56CXFG2DYGK3QQYSQVXPBN4QP33OZ4OH6NUOIUNB76SUD5ANFVK66DWY4N2VXUERRBDD7KC6PEY"
+      }
+    },
+    "request": {
+      "type": "IntentRequest",
+      "requestId": "EdwRequestId.41fda233-d07c-4184-a2df-022c9a30c06b",
+      "intent": {
+        "name": "Get_Prices",
+        "slots": {
+          "consumable": {
+            "name": "consumable",
+            "value": "ice latte"
+          }
+        }
+      },
+      "locale": "en-US",
+      "timestamp": "2017-12-07T19:14:29Z"
+    },
+    "context": {
+      "AudioPlayer": {
+        "playerActivity": "IDLE"
+      },
+      "System": {
+        "application": {
+          "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+        },
+        "user": {
+          "userId": "amzn1.ask.account.AFZ2LCXGYJXHTWXPVOOXAIZGO3FSPQ45PVIQG42OPHDWLK4ZKSPETYYSKJ6EDFMIMQ6T6IIVXX3S7MYY3FSCZPBTOTAUQTCEBGQYIJMFEERTK77HPK76XQ6URGMJLSSKALBR56CXFG2DYGK3QQYSQVXPBN4QP33OZ4OH6NUOIUNB76SUD5ANFVK66DWY4N2VXUERRBDD7KC6PEY"
+        },
+        "device": {
+          "supportedInterfaces": {}
+        }
+      }
+    },
+    "version": "1.0"
+  },
+  "ice mocha": {
+    "session": {
+      "new": false,
+      "sessionId": "SessionId.f7384736-ae4e-4195-88f5-b53b642d00f6",
+      "application": {
+        "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+      },
+      "attributes": {},
+      "user": {
+        "userId": "amzn1.ask.account.AFZ2LCXGYJXHTWXPVOOXAIZGO3FSPQ45PVIQG42OPHDWLK4ZKSPETYYSKJ6EDFMIMQ6T6IIVXX3S7MYY3FSCZPBTOTAUQTCEBGQYIJMFEERTK77HPK76XQ6URGMJLSSKALBR56CXFG2DYGK3QQYSQVXPBN4QP33OZ4OH6NUOIUNB76SUD5ANFVK66DWY4N2VXUERRBDD7KC6PEY"
+      }
+    },
+    "request": {
+      "type": "IntentRequest",
+      "requestId": "EdwRequestId.8eab145e-adf1-415b-8051-237c32fc1196",
+      "intent": {
+        "name": "Get_Prices",
+        "slots": {
+          "consumable": {
+            "name": "consumable",
+            "value": "ice mocha"
+          }
+        }
+      },
+      "locale": "en-US",
+      "timestamp": "2017-12-07T19:14:50Z"
+    },
+    "context": {
+      "AudioPlayer": {
+        "playerActivity": "IDLE"
+      },
+      "System": {
+        "application": {
+          "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+        },
+        "user": {
+          "userId": "amzn1.ask.account.AFZ2LCXGYJXHTWXPVOOXAIZGO3FSPQ45PVIQG42OPHDWLK4ZKSPETYYSKJ6EDFMIMQ6T6IIVXX3S7MYY3FSCZPBTOTAUQTCEBGQYIJMFEERTK77HPK76XQ6URGMJLSSKALBR56CXFG2DYGK3QQYSQVXPBN4QP33OZ4OH6NUOIUNB76SUD5ANFVK66DWY4N2VXUERRBDD7KC6PEY"
+        },
+        "device": {
+          "supportedInterfaces": {}
+        }
+      }
+    },
+    "version": "1.0"
+  },
+  "roberts frappe": {
+    "session": {
+      "new": false,
+      "sessionId": "SessionId.b05e5a4d-1bb0-4c40-bf39-3d2f88b2a638",
+      "application": {
+        "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+      },
+      "attributes": {},
+      "user": {
+        "userId": "amzn1.ask.account.AGGEHQ273AIM65KM6ZHQAOHWG5A4EYH2JXQNNRZUBAS4SA6SZIAT5VCB7TSVXMSC37VSVC7YZTGP7OFJEJHBKW7QOFVP6EWIE3ZRCENQTEUCMPZTLYX6Q6RZAPR6TM7J4J3LFI36EHGM7V2EP7PDWPLSBWBR27LLWNDKKZVO3SN2D2LBCCJYC4KNIVKPVGRT7C62IKAFGUOB4PA"
+      }
+    },
+    "request": {
+      "type": "IntentRequest",
+      "requestId": "EdwRequestId.ad1a2b2e-f985-40b1-ade9-1f68861335a6",
+      "intent": {
+        "name": "Get_Prices",
+        "slots": {
+          "consumable": {
+            "name": "consumable",
+            "value": "Roberts frappe"
+          }
+        }
+      },
+      "locale": "en-US",
+      "timestamp": "2017-12-08T11:59:50Z"
+    },
+    "context": {
+      "AudioPlayer": {
+        "playerActivity": "IDLE"
+      },
+      "System": {
+        "application": {
+          "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+        },
+        "user": {
+          "userId": "amzn1.ask.account.AGGEHQ273AIM65KM6ZHQAOHWG5A4EYH2JXQNNRZUBAS4SA6SZIAT5VCB7TSVXMSC37VSVC7YZTGP7OFJEJHBKW7QOFVP6EWIE3ZRCENQTEUCMPZTLYX6Q6RZAPR6TM7J4J3LFI36EHGM7V2EP7PDWPLSBWBR27LLWNDKKZVO3SN2D2LBCCJYC4KNIVKPVGRT7C62IKAFGUOB4PA"
+        },
+        "device": {
+          "supportedInterfaces": {}
+        }
+      }
+    },
+    "version": "1.0"
+  },
+  "toffee fudge frappe": {
+    "session": {
+      "new": false,
+      "sessionId": "SessionId.b05e5a4d-1bb0-4c40-bf39-3d2f88b2a638",
+      "application": {
+        "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+      },
+      "attributes": {},
+      "user": {
+        "userId": "amzn1.ask.account.AGGEHQ273AIM65KM6ZHQAOHWG5A4EYH2JXQNNRZUBAS4SA6SZIAT5VCB7TSVXMSC37VSVC7YZTGP7OFJEJHBKW7QOFVP6EWIE3ZRCENQTEUCMPZTLYX6Q6RZAPR6TM7J4J3LFI36EHGM7V2EP7PDWPLSBWBR27LLWNDKKZVO3SN2D2LBCCJYC4KNIVKPVGRT7C62IKAFGUOB4PA"
+      }
+    },
+    "request": {
+      "type": "IntentRequest",
+      "requestId": "EdwRequestId.305aa46c-14c9-46ec-86b4-78a6456d8b74",
+      "intent": {
+        "name": "Get_Prices",
+        "slots": {
+          "consumable": {
+            "name": "consumable",
+            "value": "toffee fudge frappe"
+          }
+        }
+      },
+      "locale": "en-US",
+      "timestamp": "2017-12-08T12:00:42Z"
+    },
+    "context": {
+      "AudioPlayer": {
+        "playerActivity": "IDLE"
+      },
+      "System": {
+        "application": {
+          "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+        },
+        "user": {
+          "userId": "amzn1.ask.account.AGGEHQ273AIM65KM6ZHQAOHWG5A4EYH2JXQNNRZUBAS4SA6SZIAT5VCB7TSVXMSC37VSVC7YZTGP7OFJEJHBKW7QOFVP6EWIE3ZRCENQTEUCMPZTLYX6Q6RZAPR6TM7J4J3LFI36EHGM7V2EP7PDWPLSBWBR27LLWNDKKZVO3SN2D2LBCCJYC4KNIVKPVGRT7C62IKAFGUOB4PA"
+        },
+        "device": {
+          "supportedInterfaces": {}
+        }
+      }
+    },
+    "version": "1.0"
+  },
+  "cold drinks": {
+    "session": {
+      "new": false,
+      "sessionId": "SessionId.b05e5a4d-1bb0-4c40-bf39-3d2f88b2a638",
+      "application": {
+        "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+      },
+      "attributes": {},
+      "user": {
+        "userId": "amzn1.ask.account.AGGEHQ273AIM65KM6ZHQAOHWG5A4EYH2JXQNNRZUBAS4SA6SZIAT5VCB7TSVXMSC37VSVC7YZTGP7OFJEJHBKW7QOFVP6EWIE3ZRCENQTEUCMPZTLYX6Q6RZAPR6TM7J4J3LFI36EHGM7V2EP7PDWPLSBWBR27LLWNDKKZVO3SN2D2LBCCJYC4KNIVKPVGRT7C62IKAFGUOB4PA"
+      }
+    },
+    "request": {
+      "type": "IntentRequest",
+      "requestId": "EdwRequestId.b03aec40-f4c1-4b2b-b118-cdcc1d0600f8",
+      "intent": {
+        "name": "Get_Drinks",
+        "slots": {
+          "category": {
+            "name": "category",
+            "value": "cold drinks"
+          }
+        }
+      },
+      "locale": "en-US",
+      "timestamp": "2017-12-08T12:01:22Z"
+    },
+    "context": {
+      "AudioPlayer": {
+        "playerActivity": "IDLE"
+      },
+      "System": {
+        "application": {
+          "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+        },
+        "user": {
+          "userId": "amzn1.ask.account.AGGEHQ273AIM65KM6ZHQAOHWG5A4EYH2JXQNNRZUBAS4SA6SZIAT5VCB7TSVXMSC37VSVC7YZTGP7OFJEJHBKW7QOFVP6EWIE3ZRCENQTEUCMPZTLYX6Q6RZAPR6TM7J4J3LFI36EHGM7V2EP7PDWPLSBWBR27LLWNDKKZVO3SN2D2LBCCJYC4KNIVKPVGRT7C62IKAFGUOB4PA"
+        },
+        "device": {
+          "supportedInterfaces": {}
+        }
+      }
+    },
+    "version": "1.0"
+  },
+  "light shake": {
+    "session": {
+      "new": false,
+      "sessionId": "SessionId.b05e5a4d-1bb0-4c40-bf39-3d2f88b2a638",
+      "application": {
+        "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+      },
+      "attributes": {},
+      "user": {
+        "userId": "amzn1.ask.account.AGGEHQ273AIM65KM6ZHQAOHWG5A4EYH2JXQNNRZUBAS4SA6SZIAT5VCB7TSVXMSC37VSVC7YZTGP7OFJEJHBKW7QOFVP6EWIE3ZRCENQTEUCMPZTLYX6Q6RZAPR6TM7J4J3LFI36EHGM7V2EP7PDWPLSBWBR27LLWNDKKZVO3SN2D2LBCCJYC4KNIVKPVGRT7C62IKAFGUOB4PA"
+      }
+    },
+    "request": {
+      "type": "IntentRequest",
+      "requestId": "EdwRequestId.79d1ca7c-2011-4c22-8535-7e5007118093",
+      "intent": {
+        "name": "Get_Prices",
+        "slots": {
+          "consumable": {
+            "name": "consumable",
+            "value": "light shake"
+          }
+        }
+      },
+      "locale": "en-US",
+      "timestamp": "2017-12-08T12:02:13Z"
+    },
+    "context": {
+      "AudioPlayer": {
+        "playerActivity": "IDLE"
+      },
+      "System": {
+        "application": {
+          "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+        },
+        "user": {
+          "userId": "amzn1.ask.account.AGGEHQ273AIM65KM6ZHQAOHWG5A4EYH2JXQNNRZUBAS4SA6SZIAT5VCB7TSVXMSC37VSVC7YZTGP7OFJEJHBKW7QOFVP6EWIE3ZRCENQTEUCMPZTLYX6Q6RZAPR6TM7J4J3LFI36EHGM7V2EP7PDWPLSBWBR27LLWNDKKZVO3SN2D2LBCCJYC4KNIVKPVGRT7C62IKAFGUOB4PA"
+        },
+        "device": {
+          "supportedInterfaces": {}
+        }
+      }
+    },
+    "version": "1.0"
+  },
+  "ice tea": {
+    "session": {
+      "new": false,
+      "sessionId": "SessionId.f7384736-ae4e-4195-88f5-b53b642d00f6",
+      "application": {
+        "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+      },
+      "attributes": {},
+      "user": {
+        "userId": "amzn1.ask.account.AFZ2LCXGYJXHTWXPVOOXAIZGO3FSPQ45PVIQG42OPHDWLK4ZKSPETYYSKJ6EDFMIMQ6T6IIVXX3S7MYY3FSCZPBTOTAUQTCEBGQYIJMFEERTK77HPK76XQ6URGMJLSSKALBR56CXFG2DYGK3QQYSQVXPBN4QP33OZ4OH6NUOIUNB76SUD5ANFVK66DWY4N2VXUERRBDD7KC6PEY"
+      }
+    },
+    "request": {
+      "type": "IntentRequest",
+      "requestId": "EdwRequestId.25221e0b-b051-4bb5-a5c6-2ec8b22ca14c",
+      "intent": {
+        "name": "Get_Prices",
+        "slots": {
+          "consumable": {
+            "name": "consumable",
+            "value": "ice tea"
+          }
+        }
+      },
+      "locale": "en-US",
+      "timestamp": "2017-12-07T19:15:15Z"
+    },
+    "context": {
+      "AudioPlayer": {
+        "playerActivity": "IDLE"
+      },
+      "System": {
+        "application": {
+          "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+        },
+        "user": {
+          "userId": "amzn1.ask.account.AFZ2LCXGYJXHTWXPVOOXAIZGO3FSPQ45PVIQG42OPHDWLK4ZKSPETYYSKJ6EDFMIMQ6T6IIVXX3S7MYY3FSCZPBTOTAUQTCEBGQYIJMFEERTK77HPK76XQ6URGMJLSSKALBR56CXFG2DYGK3QQYSQVXPBN4QP33OZ4OH6NUOIUNB76SUD5ANFVK66DWY4N2VXUERRBDD7KC6PEY"
+        },
+        "device": {
+          "supportedInterfaces": {}
+        }
+      }
+    },
+    "version": "1.0"
+  },
+  "italian soda": {
+    "session": {
+      "new": false,
+      "sessionId": "SessionId.f7384736-ae4e-4195-88f5-b53b642d00f6",
+      "application": {
+        "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+      },
+      "attributes": {},
+      "user": {
+        "userId": "amzn1.ask.account.AFZ2LCXGYJXHTWXPVOOXAIZGO3FSPQ45PVIQG42OPHDWLK4ZKSPETYYSKJ6EDFMIMQ6T6IIVXX3S7MYY3FSCZPBTOTAUQTCEBGQYIJMFEERTK77HPK76XQ6URGMJLSSKALBR56CXFG2DYGK3QQYSQVXPBN4QP33OZ4OH6NUOIUNB76SUD5ANFVK66DWY4N2VXUERRBDD7KC6PEY"
+      }
+    },
+    "request": {
+      "type": "IntentRequest",
+      "requestId": "EdwRequestId.7f17c7a6-99e5-43fa-b7f4-f4c6700c30ae",
+      "intent": {
+        "name": "Get_Prices",
+        "slots": {
+          "consumable": {
+            "name": "consumable",
+            "value": "Italian soda"
+          }
+        }
+      },
+      "locale": "en-US",
+      "timestamp": "2017-12-07T19:15:41Z"
+    },
+    "context": {
+      "AudioPlayer": {
+        "playerActivity": "IDLE"
+      },
+      "System": {
+        "application": {
+          "applicationId": "amzn1.ask.skill.303996a8-a336-48b8-83df-94a7fa15898b"
+        },
+        "user": {
+          "userId": "amzn1.ask.account.AFZ2LCXGYJXHTWXPVOOXAIZGO3FSPQ45PVIQG42OPHDWLK4ZKSPETYYSKJ6EDFMIMQ6T6IIVXX3S7MYY3FSCZPBTOTAUQTCEBGQYIJMFEERTK77HPK76XQ6URGMJLSSKALBR56CXFG2DYGK3QQYSQVXPBN4QP33OZ4OH6NUOIUNB76SUD5ANFVK66DWY4N2VXUERRBDD7KC6PEY"
+        },
+        "device": {
+          "supportedInterfaces": {}
+        }
+      }
+    },
+    "version": "1.0"
+  }
+}
