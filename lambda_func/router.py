@@ -1,6 +1,6 @@
 import util
 import robertscoffee
-#import weather
+import weather
 
 """
 This class takes intent as a parameter and finds what Alexa should answer. To add an intent, add the name of the intent 
@@ -17,7 +17,7 @@ class Router():
                         "Get_Prices": robertscoffee.prices,
                         "Get_Drinks": robertscoffee.drinks,
                         "Locate": self.locate,
-                        #"Get_Weather": weather.weather_handler,
+                        "Get_Weather": weather.weather_handler,
                         "Unhandled": self.unhandled_request,
                         "AMAZON.HelpIntent": self.get_welcome_response,
                         "AMAZON.StopIntent": self.handle_session_end_request,
