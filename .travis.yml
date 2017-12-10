@@ -2,5 +2,8 @@
   python:
     - 3.6
     - nightly
+  install:
+    - pip install requests
   script:
     - python pytest_triv.py
+    - cd api_testing/pytest && python api_testing_test.py
