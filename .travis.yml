@@ -6,4 +6,4 @@
     - pip install requests
   script:
     - cd api_testing/pytest && python api_testing_test.py
-#    - python api_testing/pytest/api_testing_test.py
+    - python pytest_triv.py
