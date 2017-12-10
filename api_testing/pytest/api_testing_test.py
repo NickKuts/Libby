@@ -5,7 +5,8 @@ sys.path.append('..')
 
 #import main_handler
 # from api_testing import main_handler
-from api_testing import api_testing
+#from api_testing import api_testing
+import api_testing
 
 
 class TestAPI(unittest.TestCase):
