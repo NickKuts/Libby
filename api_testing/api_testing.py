@@ -73,3 +73,4 @@ def remove_json_files():
     for f in os.listdir(json_dir):
         if f.endswith('.json'):
             os.remove(os.path.join(json_dir, f))
+
