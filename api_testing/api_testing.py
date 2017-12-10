@@ -59,7 +59,7 @@ def do_request_file(term, method='GET', func='lookfor', pretty_print='0'):
 
     filename = 'data.json-' + str(datetime.datetime.now())
     filepath = json_dir + filename
-    with open(filepath, 'w') as output:
+    with open(filepath, 'w+') as output:
         if pretty_print == '1':
             json.dump(result['json'], output, indent=4)
         else:
