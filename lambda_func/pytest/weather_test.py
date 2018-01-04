@@ -1,5 +1,12 @@
 import unittest
-#from intents import get_weather
+
+import sys
+sys.path.append("..")
+
+#import main_handler
+import main_handler
+#from lambda_func import main_handler
+import json
 
 class TestUtilDate(unittest.TestCase):
         
@@ -16,9 +23,14 @@ class TestUtilDate(unittest.TestCase):
         
     def test_isupper(self):
         self.assertTrue('FOO'.isupper())
-        
-    def test_failed_upper(self):
-        self.assertEqual('foo'.upper(), 'FOo')
+
+    def test_weather(self):
+        self.assertEqual('foo', 'foo')
+        json_data = json.load(open("weather_test.json"))
+        result = main_handler.lambda_handler(json_data, None)
+        print("result", result)
+        assert(result != None)
+
 
 def main():
     print("Main function")
