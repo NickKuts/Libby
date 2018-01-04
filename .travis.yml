@@ -12,9 +12,9 @@
   script:
     - cd api_testing/pytest && python api_testing_test.py
     - cd ../../lambda_func/pytest && python weather_test.py
-	deploy:
-  	# deploy develop to the staging environment
-  	- provider: script
-    	script: scripts/deploy.sh
-    	on:
-      	branch: develop
+  deploy:
+    # deploy develop to the staging environment
+    - provider: script
+      script: scripts/deploy.sh
+      on:
+        branch: develop
