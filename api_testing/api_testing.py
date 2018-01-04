@@ -18,7 +18,7 @@ import os
 """ This is the URL for the Finna API with a needed header for proper results """
 url = 'https://api.finna.fi/api/v1/'
 headers = {'Accept': 'application/json'}
-json_dir = os.path.abspath('') + '/data_files/'
+json_dir = 'data_files/'
 
 
 def do_request_json(term, method='GET', func='lookfor', pretty_print='0'):
