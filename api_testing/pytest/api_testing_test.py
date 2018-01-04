@@ -10,6 +10,7 @@ class TestAPI(unittest.TestCase):
     """ Tests for `api_testing.py` """
 
     json_dir = '../' + api_testing.json_dir
+    api_testing.json_dir = json_dir
 
     def setUp(self):
         pass
