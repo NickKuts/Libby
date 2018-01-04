@@ -1,5 +1,7 @@
 #!/bin/sh
-zip -r -j deploy.zip ../lambda_func/*
+cd ../lambda_func
+zip -r ../deploy.zip .
+cd ..
 aws lambda update-function-code \
     --function-name tuomasTestFunction \
     --zip-file fileb://deploy.zip
