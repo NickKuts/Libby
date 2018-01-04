@@ -6,4 +6,4 @@
     - pip install requests
   script:
     - cd api_testing/pytest && python api_testing_test.py
-    - cd && cd lambda_func/pytest && python weather_test.py
+    - cd ../../lambda_func/pytest && python weather_test.py
