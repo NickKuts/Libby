@@ -54,7 +54,7 @@ Prices tells prices for all of the sizes the drink is possible to buy.
 
 
 def prices(intent):
-    drink = intent['slots']['consumable']['value'].lower()
+    drink = intent['currentIntent']['slots']['consumable'].lower()
     drinks = {}
     for i in data.values():
         drinks.update(i)
@@ -71,5 +71,5 @@ def prices(intent):
         'contentType': 'PlainText',
         'content': "Prices for " + drink + " are: " + output
     }
-    reprompt_text = speech_output + ". You can ask about a different drink or thank me if you want to end the converstation."
+    reprompt_text = message['content'] + ". You can ask about a different drink or thank me if you want to end the converstation."
     return util.elicitIntent({}, message)
