@@ -12,31 +12,59 @@ def close(sessionAttributes, fulfillmentState, message):
     }
 
 
-def get_welcome_response():
-    """ If we wanted to initialize the session to have some attributes we could
-    add those here
-    """
+def delegate(sessionAttributes, message, slots):
+    return {
+        'sessionAttributes': sessionAttributes,
+        "dialogAction": {
+            "type": "Delegate",
+            "slots": slots
+        }
+    }
 
-    session_attributes = {}
-    card_title = "Welcome"
-    speech_output = "Hi! I'm Libby and I'm here to help you choose what you want to order from Robert's Coffee or" \
-                    " to know what kind of weather there is outside. Start by asking about the weather, or about Robert's" \
-                    "Coffee."
-    # If the user either does not reply to the welcome message or says something
-    # that is not understood, they will be prompted again with this text.
-    reprompt_text = "Start by asking about the weather, or about Robert's Coffee."
-    should_end_session = False
-    return build_response(session_attributes, build_speechlet_response(
-        card_title, speech_output, reprompt_text, should_end_session))
+
+# TBD def confirmIntent():
+
+
+def elicitIntent(sessionAttributes, message):
+    return {
+        'sessionAttributes': sessionAttributes,
+        'dialogAction': {
+            'type': 'ElicitIntent',
+            'message': message
+        }
+    }
+
+
+def elicitSlot(sessionAttributes, message, slots, intentName, slotName):
+    return {
+        'sessionAttributes': sessionAttributes,
+        'dialogAction': {
+            'type': 'ElicitSlot',
+            'message': message,
+            'slots': slots,
+            'intentName': intentName,
+            'slotToElicit': slotName
+        }
+    }
+
+
+
+def get_welcome_response():
+    message = {
+        'contentType': 'PlainText',
+        'content': "Hi! I'm Libby and I'm here to help you choose what you want to order from Robert's Coffee or "
+                   "to know what kind of weather there is outside. Start by asking about the weather, or about "
+                   "Robert's Coffee."
+    }
+    return elicitIntent({}, message)
 
 
 def unhandled_request():
-    card_title = "Unhandled"
-    speech_output = "Sorry I don't know that one."
-    # Setting this to true ends the session and exits the skill.
-    should_end_session = False
-    return build_response({}, build_speechlet_response(
-        card_title, speech_output, None, should_end_session))
+    message = {
+        'contentType': 'PlainText',
+        'content': "Sorry I don't know that one."
+    }
+    return close({}, 'Failed', message)
 
 
 def handle_session_end_request():
