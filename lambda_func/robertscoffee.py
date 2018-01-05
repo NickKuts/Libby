@@ -54,7 +54,7 @@ Prices tells prices for all of the sizes the drink is possible to buy.
 
 
 def prices(intent):
-    drink = intent['currentIntent']['slots']['consumable'].lower()
+    drink = intent['slots']['consumable'].lower()
     drinks = {}
     for i in data.values():
         drinks.update(i)

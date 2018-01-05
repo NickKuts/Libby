@@ -12,7 +12,7 @@ parameter, you should add it in the else-if chain in the route method(last metho
 class Router:
     # --------------- Functions that control the skill's behavior ------------------
     def __init__(self, intent):
-        print(intent['currentIntent']['name'])
+        print(intent['name'])
         self.intent = intent
         self.intents = {"RC_Intro": robertscoffee.intro,
                         "Get_Prices": robertscoffee.prices,
@@ -31,7 +31,7 @@ class Router:
 
     def locate(self):
         restaurants = {"Roberts coffee": "in first floor of learning center"}
-        name = self.intent['currentIntent']['place']
+        name = self.intent['slots']['place']
         message = {
             'contentType': 'PlainText',
             'content': "%s is located %s" % (name, restaurants[name])
@@ -44,9 +44,9 @@ class Router:
     """
 
     def route(self):
-        name = self.intent['currentIntent']['name']
+        name = self.intent['name']
         if name == "Get_Drinks":
-            return self.intents[name](self.intent['currentIntent']['slots']['category'])
+            return self.intents[name](self.intent['slots']['category'])
         if name == "Get_Prices":
             return self.intents[name](self.intent)
         return self.intents[name]()

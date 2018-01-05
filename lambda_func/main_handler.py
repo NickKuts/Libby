@@ -4,6 +4,6 @@ from router import Router
 
 
 def lambda_handler(event, context):
-    intent = event['intentName']
+    intent = event['currentIntent']
     router = Router(intent)
     return router.route()
