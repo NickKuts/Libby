@@ -17,7 +17,7 @@
     - cd ../../lambda_func/pytest && python weather_test.py
   deploy:
     # deploy develop to the staging environment
-    - provider: script
-      script: scripts/deploy.sh
-      on:
+    provider: script
+    script: scripts/d.sh
+    on:
         branch: develop
