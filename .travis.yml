@@ -21,7 +21,8 @@
     region: $aws_region
     role: "arn:aws:iam::263893614267:role/service-role/jerryTriviaIrelandRole"
     runtime: "python3.6"
-    handler_name: "main_handler"
+    handler_name: "lambda_handler"
+    module_name: "main_handler"
     access_key_id: $aws_access_key
     secret_access_key: $aws_secret_access_key
     zip: "${TRAVIS_BUILD_DIR}/lambda_func"
