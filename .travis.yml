@@ -18,6 +18,10 @@
   deploy:
     # deploy develop to the staging environment
     provider: script
-    script: scripts/d.sh
+    script:
+      - cd ../lambda_func
+      - zip -r ../deploy.zip .
+      - cd ..
+      - aws lambda update-function-code --function-name tuomasTestFunction --zip-file fileb://deploy.zip
     on:
         branch: develop
