@@ -1,11 +1,11 @@
-import get_weather
-import util
+from . import get_weather
+from . import util
 
 
 def weather_handler():
     # update_data()
     data = get_weather.read_data()
-    
+
     # card_title = "Weather in otaniemi"
     message = {
         'contentType': 'PlaintText',
