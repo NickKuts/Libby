@@ -3,7 +3,7 @@ import os
 import sys
 sys.path.append('..')
 
-import api_testing
+from api_testing import api_testing
 
 
 class TestAPI(unittest.TestCase):
