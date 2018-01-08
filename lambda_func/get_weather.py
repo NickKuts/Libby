@@ -1,6 +1,4 @@
-import json
 import urllib.request
-from pprint import pprint
 
 import xml.etree.ElementTree as ET
 
@@ -10,7 +8,8 @@ from datetime import datetime, timedelta
 # http://lassisavola.net/2016/02/04/fmi-avoin-data-python-ja-pylvasdiagrammit-osa-2/
 # https://docs.python.org/2/library/xml.etree.elementtree.html
 
-apikey = "eb3a4102-7afd-4740-8901-bf6417df01c3"
+api_key = "eb3a4102-7afd-4740-8901-bf6417df01c3"
+
 
 def format_time(time):
     temp = time[:time.find(':')+3] + 'Z'
@@ -22,11 +21,11 @@ end_time = (datetime.now() - timedelta(minutes=15)).isoformat()
 
 time_str = '&starttime=' + format_time(start_time) + '&endtime=' + format_time(end_time)
 
-place_str = 'otaniemi,espoo'
+place_str = 'otaniemi, espoo'
 query_str = 'fmi::observations::weather::simple&place=' 
 parameters_str = '&parameters=temperature'
 
-url = "http://data.fmi.fi/fmi-apikey/"+apikey+"/wfs?request=getFeature&storedquery_id=" + query_str + place_str + time_str  + parameters_str
+url = "http://data.fmi.fi/fmi-apikey/" + api_key + "/wfs?request=getFeature&storedquery_id=" + query_str + place_str + time_str + parameters_str
 print(url)
 datafile_url = '/tmp/' + "weather_data.xml"
 

@@ -1,20 +1,20 @@
 # --------------- Helpers that build all of the responses ----------------------
 
 
-def close(sessionAttributes, fulfillmentState, message):
+def close(session_attributes, fulfillment_state, message):
     return {
-        'sessionAttributes': sessionAttributes,
+        'sessionAttributes': session_attributes,
         'dialogAction': {
             'type': 'Close',
-            'fulfillmentState': fulfillmentState,
+            'fulfillmentState': fulfillment_state,
             'message': message
         }
     }
 
 
-def delegate(sessionAttributes, message, slots):
+def delegate(session_attributes, slots):
     return {
-        'sessionAttributes': sessionAttributes,
+        'sessionAttributes': session_attributes,
         "dialogAction": {
             "type": "Delegate",
             "slots": slots
@@ -25,9 +25,9 @@ def delegate(sessionAttributes, message, slots):
 # TBD def confirmIntent():
 
 
-def elicitIntent(sessionAttributes, message):
+def elicit_intent(session_attributes, message):
     return {
-        'sessionAttributes': sessionAttributes,
+        'sessionAttributes': session_attributes,
         'dialogAction': {
             'type': 'ElicitIntent',
             'message': message
@@ -35,18 +35,17 @@ def elicitIntent(sessionAttributes, message):
     }
 
 
-def elicitSlot(sessionAttributes, message, slots, intentName, slotName):
+def elicit_slot(session_attributes, message, slots, intent_name, slot_name):
     return {
-        'sessionAttributes': sessionAttributes,
+        'sessionAttributes': session_attributes,
         'dialogAction': {
             'type': 'ElicitSlot',
             'message': message,
             'slots': slots,
-            'intentName': intentName,
-            'slotToElicit': slotName
+            'intentName': intent_name,
+            'slotToElicit': slot_name
         }
     }
-
 
 
 def get_welcome_response():
@@ -56,7 +55,7 @@ def get_welcome_response():
                    "to know what kind of weather there is outside. Start by asking about the weather, or about "
                    "Robert's Coffee."
     }
-    return elicitIntent({}, message)
+    return elicit_intent({}, message)
 
 
 def unhandled_request():
@@ -90,7 +89,7 @@ def parse_prices(prices):
             res.append(s + " euros")
         elif is_number(s):
             for i in range(0, len(price)):
-                if (price[i] == '.'):
+                if price[i] == '.':
                     price[i] = ' euros '
             res.append("".join(price) + " cents")
         else:
