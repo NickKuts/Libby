@@ -1,11 +1,11 @@
-import util
-import robertscoffee
-import weather
+from . import util
+from . import robertscoffee
+from . import weather
 
 """
-This class takes intent as a parameter and finds what Alexa should answer. To add an intent, add the name of the intent 
+This class takes intent as a parameter and finds what Alexa should answer. To add an intent, add the name of the intent
 you want to add as a key and it's method as a value in the self.intents dictionary. If method added needs some values as
-parameter, you should add it in the else-if chain in the route method(last method in this class).  
+parameter, you should add it in the else-if chain in the route method(last method in this class).
 """
 
 
@@ -39,7 +39,7 @@ class Router:
         return util.close({}, "Fulfilled", message)
 
     """
-    This is where the magic happens. If a method needs for example the intent as a parameter (for getting the 
+    This is where the magic happens. If a method needs for example the intent as a parameter (for getting the
     user's input) add it in the if-chain. If it doesn't need parameters add it only in self.intents dictionary.
     """
 

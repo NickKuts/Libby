@@ -1,7 +1,7 @@
-import util
+from . import util
 import json
 """
-This document includes all the methods related in Robert's Coffee. The methods take their information from the 
+This document includes all the methods related in Robert's Coffee. The methods take their information from the
 pre-written json document robertscoffee.json.
 """
 
@@ -27,7 +27,7 @@ def intro():
     return util.elicitIntent({}, message)
 
 """
-Categories tells the user about drinks in a selected category(user input) and returns them as like a native 
+Categories tells the user about drinks in a selected category(user input) and returns them as like a native
 englishspeaker would say them.
 """
 
@@ -49,7 +49,7 @@ def drinks(which):
     return util.elicitIntent({}, message)
 
 """
-Prices tells prices for all of the sizes the drink is possible to buy. 
+Prices tells prices for all of the sizes the drink is possible to buy.
 """
 
 
