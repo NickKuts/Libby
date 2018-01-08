@@ -1,7 +1,5 @@
 import unittest
 import os
-import sys
-sys.path.append('..')
 
 from api_testing import api_testing
 
@@ -9,8 +7,7 @@ from api_testing import api_testing
 class TestAPI(unittest.TestCase):
     """ Tests for `api_testing.py` """
 
-    json_dir = '../' + api_testing.json_dir
-    api_testing.json_dir = json_dir
+    json_dir = './api_testing/data_files'
 
     def setUp(self):
         pass
@@ -18,7 +15,8 @@ class TestAPI(unittest.TestCase):
     def tearDown(self):
         """ Remove all created JSON test files """
         for f in os.listdir(self.json_dir):
-            os.remove(os.path.join(self.json_dir, f))
+            if f.endswith(".json"):
+                os.remove(os.path.join(self.json_dir, f))
 
     def test_status_code(self):
         """ Test whether the `do_request_json()` returns a 200 response code """
