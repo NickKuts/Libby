@@ -9,8 +9,8 @@ import json
 
 class TestUtilDate(unittest.TestCase):
 
-    test_data = json.load(open("coffee_test.json"))
-    json_data = json.load(open("robertscoffee.json"))
+    test_data = json.load(open("./lambda_func/pytest/coffee_test.json"))
+    json_data = json.load(open("./lambda_func/pytest/robertscoffee.json"))
     testGroups = [
         ['morning latte', 'flat white'],
         ['classics', 'tea', 'chococino', 'espresso', 'con panna', 'ice latte', 'ice mocha', 'ice tea', 'italian soda'],

@@ -5,7 +5,7 @@ This document includes all the methods related in Robert's Coffee. The methods t
 pre-written json document robertscoffee.json.
 """
 
-data = json.load(open('robertscoffee.json'))
+data = json.load(open('./lambda_func/robertscoffee.json'))
 
 category = {}
 
