@@ -50,4 +50,3 @@ class Router:
         if name == "Get_Prices":
             return self.intents[name](self.intent)
         return self.intents[name]()
-
