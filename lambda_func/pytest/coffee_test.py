@@ -12,8 +12,8 @@ class TestUtilDate(unittest.TestCase):
         ['classics', 'tea', 'chococino', 'espresso', 'con panna', 'ice latte', 'ice mocha', 'ice tea', 'italian soda'],
         ['oriental latte', 'cocoa', 'coffee', 'cappucinos', 'cold coffee drinks'],
         ['classics', 'cappucinos', 'cold coffee drinks'],
-        ['coffee', 'tea', 'morning latte', 'oriental latte', 'flat white', 'chococino', 'espresso', 'con panna', 'cocoa', 'ice latte', 'ice mocha', 'ice tea', 'italian soda']]
-
+        ['coffee', 'tea', 'morning latte', 'oriental latte', 'flat white', 'chococino', 'espresso', 'con panna',
+         'cocoa', 'ice latte', 'ice mocha', 'ice tea', 'italian soda']]
     def testLatte(self):
         event = self.test_data['coffee drinks']
         result = main_handler.lambda_handler(event, None)
@@ -23,34 +23,33 @@ class TestUtilDate(unittest.TestCase):
     '''
     def testDrinks(self):
         print("----------DRINKS----------")
-        finalMap = {}  # dict#map(lambda x: x.value, dict)
+        final_map = {}  # dict#map(lambda x: x.value, dict)
         for i in self.json_data.values():
-            finalMap.update(i)
-        # print(", ".join(lista))
+            final_map.update(i)
 
-        for name in finalMap:
+        for name in final_map:
             print("name", name)
             event = self.test_data[name]
-            #print("data", event)
-            #print(event['name'])
+            # print("data", event)
+            # print(event['name'])
             result = main_handler.lambda_handler(event, None)
             print("result", result['response']['outputSpeech']['text'])
-            assert (result != None)
-        print("number of drinks tested: " + str(len(finalMap)))
+            assert (result is not None)
+        print("number of drinks tested: " + str(len(final_map)))
 
     def testCategories(self):
         print("----------CATEGORIES----------")
-        #for group in self.testGroups:
+        # for group in self.testGroups:
         for category in self.json_data:
             print("name", category)
             event = self.test_data[category]
-            #print("data", event)
-            #print(event['name'])
+            # print("data", event)
+            # print(event['name'])
             result = main_handler.lambda_handler(event, None)
             print("result", result['response']['outputSpeech']['text'])
-            assert (result != None)
+            assert (result is not None)
         print("number of categories tested: " + str(len(self.json_data)))
-        '''
+    '''
 
 def main():
     print("Main function")

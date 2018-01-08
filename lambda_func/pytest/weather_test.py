@@ -1,19 +1,17 @@
 import unittest
 
-import sys
-sys.path.append("..")
-
 from lambda_func import main_handler
 import json
+
 
 class TestUtilDate(unittest.TestCase):
 
     def setUp(self):
-        #init_something()
+        # init_something()
         pass
 
     def tearDown(self):
-        #teardown_something()
+        # teardown_something()
         pass
 
     def test_weather(self):
@@ -23,9 +21,9 @@ class TestUtilDate(unittest.TestCase):
         # assert(result != None)
         pass
 
-
 def main():
     print("Main function")
+
 
 if __name__ == '__main__':
     suite = unittest.TestLoader().loadTestsFromTestCase(TestUtilDate)
