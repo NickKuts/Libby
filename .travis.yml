@@ -15,6 +15,7 @@
     - pip install pytest-cov
   script:
     - cd lambda_func && python -m pytest --cov=.
+    - cd ..
     - cd api_testing && python -m pytest --cov=.
   deploy:
     - provider: lambda
