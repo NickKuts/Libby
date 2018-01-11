@@ -1,3 +1,4 @@
+import json
 # --------------- Helpers that build all of the responses ----------------------
 
 
@@ -72,6 +73,20 @@ def handle_session_end_request():
         'content': "Hope you found what you were looking for"
     }
     return close({}, 'Fulfilled', message)
+
+
+def debug(event):
+    response = {
+        'sessionAttributes': {},
+        'dialogAction': {
+            'type': 'ElicitIntent',
+            'message': {
+                'contentType': 'PlainText',
+                'content':  json.dumps(event)
+            }
+        }
+    }
+    return response
 
 
 """

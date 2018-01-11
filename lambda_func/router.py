@@ -18,7 +18,7 @@ class Router:
                         "Get_Prices": robertscoffee.prices,
                         "Get_Drinks": robertscoffee.drinks,
                         "Locate": self.locate,
-                        "Get_Weather": weather.weather_handler,
+                        "Weather": weather.weather_handler,
                         "Unhandled": util.unhandled_request,
                         "AMAZON.HelpIntent": util.get_welcome_response,
                         "AMAZON.StopIntent": util.handle_session_end_request,

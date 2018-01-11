@@ -13,13 +13,12 @@ Intro guides the user and tells what categories there are to choose from.
 
 
 def intro():
-    # card_title = "Introduction"
     key, value = data.popitem()
     output = ", ".join(data) + " and " + key
     data.update({key: value})
     message = {
         'contentType': 'PlainText',
-        'content': "Robert's Coffee's drinkcategories are " + output
+        'content': "Robert's Coffee's drink categories are " + output
     }
     return util.elicit_intent({}, message)
 
@@ -35,7 +34,6 @@ def drinks(which):
     key, value = category.popitem()
     output = ", ".join(category) + " and " + key
     category.update({key: value})
-    # card_title = "Categories"
     message = {
         'contentType': 'PlainText',
         'content': which.lower() + " include " + output + ". You can ask more about these drinks or about any other "
@@ -60,14 +58,12 @@ def prices(intent):
     for i in data.values():
         consumables.update(i)
     sizes = util.parse_prices(list(sum(sorted(consumables[drink]['size'].items(), key=lambda x: x[1]), ())))
-
     key, value = sizes[len(sizes) - 2], sizes[len(sizes) - 1]
     sizes = sizes[0: len(sizes) - 2]
     output = ""
     if len(sizes) > 0:
         output += ", ".join(sizes) + " and "
     output += key + ", " + value
-    # card_title = "Drink"
     message = {
         'contentType': 'PlainText',
         'content': "Prices for " + drink + " are: " + output
