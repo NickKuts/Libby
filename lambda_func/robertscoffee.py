@@ -1,11 +1,11 @@
-import util
+from . import util
 import json
 """
-This document includes all the methods related in Robert's Coffee. The methods take their information from the 
+This document includes all the methods related in Robert's Coffee. The methods take their information from the
 pre-written json document robertscoffee.json.
 """
 
-data = json.load(open('robertscoffee.json'))
+data = json.load(open('./lambda_func/robertscoffee.json'))
 
 """
 Intro guides the user and tells what categories there are to choose from.
@@ -48,7 +48,7 @@ def drinks(which):
 
 
 """
-Prices tells prices for all of the sizes the drink is possible to buy. 
+Prices tells prices for all of the sizes the drink is possible to buy.
 """
 
 

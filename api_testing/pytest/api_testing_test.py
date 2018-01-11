@@ -1,24 +1,26 @@
 import unittest
 import os
-import sys
-sys.path.append('..')
 
-import api_testing
+from api_testing import api_testing
 
 
 class TestAPI(unittest.TestCase):
     """ Tests for `api_testing.py` """
 
-    json_dir = '../' + api_testing.json_dir
-    api_testing.json_dir = json_dir
+    json_dir = api_testing.json_dir
 
     def setUp(self):
-        pass
+        if not os.path.exists(self.json_dir):
+            os.makedirs(self.json_dir)
 
     def tearDown(self):
-        """ Remove all created JSON test files """
+        """ Ensure that all .json files gets deleted """
         for f in os.listdir(self.json_dir):
-            os.remove(os.path.join(self.json_dir, f))
+            if f.endswith('.json'):
+                os.remove(os.path.join(self.json_dir, f))
+
+    def test_json_dir(self):
+        self.assertEqual(self.json_dir, api_testing.json_dir)
 
     def test_status_code(self):
         """ Test whether the `do_request_json()` returns a 200 response code """
@@ -30,11 +32,8 @@ class TestAPI(unittest.TestCase):
         response = api_testing.do_request_file('something')
         self.assertTrue(response['filename'] in os.listdir(self.json_dir))
 
-
-def main():
-    print("Main function")
-
-
-if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(TestAPI)
-    unittest.TextTestRunner(verbosity=2).run(suite)
+    def test_remove_json(self):
+        """ Test whether `remove_json_files()` deletes files """
+        api_testing.remove_json_files()
+        for f in os.listdir(self.json_dir):
+            self.assertFalse(f.endswith('.json'))

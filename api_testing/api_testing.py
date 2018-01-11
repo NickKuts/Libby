@@ -16,9 +16,9 @@ import os
 
 
 """ This is the URL for the Finna API with a needed header for proper results """
-url = 'https://api.finna.fi/api/v1/'
-headers = {'Accept': 'application/json'}
-json_dir = 'data_files/'
+__url = 'https://api.finna.fi/api/v1/'
+__headers = {'Accept': 'application/json'}
+json_dir = './api_testing/data_files/'
 
 
 def do_request_json(term, method='GET', func='lookfor', pretty_print='0'):
@@ -37,10 +37,10 @@ def do_request_json(term, method='GET', func='lookfor', pretty_print='0'):
     }
 
     sess = requests.Session()
-    sess.headers.update(headers)
+    sess.headers.update(__headers)
     sess.params.update(params)
 
-    r = sess.request(url=url + 'search', method=method)
+    r = sess.request(url=__url + 'search', method=method)
     sess.close()
 
     return {'status_code': r.status_code, 'json': r.json()}
@@ -59,6 +59,10 @@ def do_request_file(term, method='GET', func='lookfor', pretty_print='0'):
 
     filename = 'data.json-' + str(datetime.datetime.now())
     filepath = json_dir + filename
+
+    if not os.path.exists(json_dir):
+        os.makedirs(json_dir)
+
     with open(filepath, 'w+') as output:
         if pretty_print == '1':
             json.dump(result['json'], output, indent=4)
