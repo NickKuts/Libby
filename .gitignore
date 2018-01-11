@@ -1,6 +1,7 @@
 
 **/.idea/**
 **/data_files/
+
 # The following ignore's are taken straight from the following link:
 #   https://github.com/github/gitignore/blob/master/Python.gitignore
 
