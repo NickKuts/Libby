@@ -1,5 +1,5 @@
-from . import get_weather
-from . import util
+import get_weather
+import util
 
 
 def weather_handler():
