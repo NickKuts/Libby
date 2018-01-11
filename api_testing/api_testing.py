@@ -78,4 +78,3 @@ def remove_json_files():
         for f in os.listdir(json_dir):
             if f.startswith('data.json'):
                 os.remove(os.path.join(json_dir, f))
-
