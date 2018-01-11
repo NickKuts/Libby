@@ -1,11 +1,11 @@
-from . import util
+import util
 import json
 """
 This document includes all the methods related in Robert's Coffee. The methods take their information from the
 pre-written json document robertscoffee.json.
 """
 
-data = json.load(open('./lambda_func/robertscoffee.json'))
+data = json.load(open('robertscoffee.json'))
 
 """
 Intro guides the user and tells what categories there are to choose from.
