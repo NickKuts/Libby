@@ -16,7 +16,7 @@ class TestUtilDate(unittest.TestCase):
 
     def test_weather(self):
         self.assertEqual('foo', 'foo')
-        json_data = json.load(open("./lambda_func/pytest/weather_test.json"))
+        json_data = json.load(open("./tests/weather_test.json"))
         # result = main_handler.lambda_handler(json_data, None)
         # assert(result != None)
         pass

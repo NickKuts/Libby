@@ -74,7 +74,7 @@ def do_request_file(term, method='GET', func='lookfor', pretty_print='0'):
 
 def remove_json_files():
     """ Removes all JSON files in the `data_files` folder """
-    for f in os.listdir(json_dir):
-        if f.endswith('.json'):
-            os.remove(os.path.join(json_dir, f))
-
+    if os.path.exists(json_dir):
+        for f in os.listdir(json_dir):
+            if f.startswith('data.json'):
+                os.remove(os.path.join(json_dir, f))

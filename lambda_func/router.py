@@ -1,7 +1,7 @@
-from . import util
-from . import robertscoffee
-from . import weather
-from . import get_help
+import util
+import robertscoffee
+import weather
+import get_help
 
 """
 This class takes intent as a parameter and finds what Alexa should answer. To add an intent, add the name of the intent

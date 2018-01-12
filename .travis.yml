@@ -14,7 +14,9 @@
     - pip install requests
     - pip install pytest-cov
   script:
-    - pytest --cov=.
+    - cd lambda_func && python -m pytest --cov=.
+    - cd ..
+    - cd api_testing && python -m pytest --cov=.
   deploy:
     - provider: lambda
       function_name: "LibbyDevelop"
