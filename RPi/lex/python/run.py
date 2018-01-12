@@ -3,7 +3,7 @@ from snowboy import snowboydecoder
 
 lex = Lex()
 stop_recording = False
-model = "snowboy/resources/snowboy.umdl"
+model = "Libby.pmdl"
 detector = snowboydecoder.HotwordDetector(model, sensitivity=0.5)
 
 
