@@ -1,20 +1,30 @@
 from lex import Lex
-#from snowboy import snowboydecoder
+#import snowboy.snowboydecoder
+from snowboy import snowboydecoder
 
 lex = Lex()
 
-lex.record()
-print("Recording done")
-response = lex.post_content()
+#lex.record()
+#print("Recording done")
+#response = lex.post_content()
 
-lex.play_response(response)
+#lex.play_response(response)
 
-print("Finished!")
+#print("Finished!")
 
-#detector = snowboydecoder.HotwordDetector(model, sensitivy=0.5)
+def record_and_post():
+    lex.record()
+    response = lex.post_content()
+    lex.play_response(response)
 
-#detector.start(detected_callback = snowboydecoder.play_audio_file, 
-#        interrupt_check = interrupt_callback, sleep_time=0.03)
+def interrupt_callback():
+    return False
+
+model = "snowboy/resources/snowboy.umdl"
+detector = snowboydecoder.HotwordDetector(model, sensitivity=0.5)
+
+detector.start(detected_callback = record_and_post,
+        interrupt_check = interrupt_callback, sleep_time=0.03)
 
 
-#detector.terminate()
+detector.terminate()
