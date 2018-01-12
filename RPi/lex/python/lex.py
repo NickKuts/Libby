@@ -24,16 +24,13 @@ class Lex():
     def record(self):
         f = b''
         process = run(self.sox_command.split(), stdout=PIPE)
-        while not isinstance(process, CompletedProcess):
+        while True:
             output = process.stdout
             if output:
                 f += output
+            if isinstance(process, CompletedProcess):
+                break
         return f
-        '''
-        Uncomment this if you want to play back the recording before
-        sending it to Lex
-        '''
-        # os.system('sox ' + self.input_fname + ' -d')
 
     def post_content(self):
         try:
