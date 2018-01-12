@@ -1,30 +1,35 @@
 from lex import Lex
-#import snowboy.snowboydecoder
 from snowboy import snowboydecoder
 
 lex = Lex()
-
-#lex.record()
-#print("Recording done")
-#response = lex.post_content()
-
-#lex.play_response(response)
-
-#print("Finished!")
-
-def record_and_post():
-    lex.record()
-    response = lex.post_content()
-    lex.play_response(response)
-
-def interrupt_callback():
-    return False
-
-model = "snowboy/resources/snowboy.umdl"
+stop_recording = False
+model = "Libby.pmdl"
 detector = snowboydecoder.HotwordDetector(model, sensitivity=0.5)
 
-detector.start(detected_callback = record_and_post,
-        interrupt_check = interrupt_callback, sleep_time=0.03)
+
+def record_and_post():
+    response = lex.post_content()
+    state = lex.play_response(response)
+
+    print('State:', state)
+
+    if state == 'Fulfilled':
+        detector.terminate()
+        detect()
+    elif state != 'Failed':
+        record_and_post()
+    else:
+        detector.terminate()
+        stop_recording = True
 
 
-detector.terminate()
+def interrupt_callback():
+    return stop_recording
+
+
+def detect():
+    detector.start(detected_callback=record_and_post,
+                interrupt_check=interrupt_callback, sleep_time=0.03)
+
+detect()
+
