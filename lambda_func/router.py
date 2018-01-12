@@ -14,13 +14,13 @@ class Router:
     def __init__(self, intent):
         print(intent['name'])
         self.intent = intent
-        self.intents = {"RC_Intro": robertscoffee.intro,
+        self.intents = {"Get_Categories": robertscoffee.intro,
                         "Get_Prices": robertscoffee.prices,
                         "Get_Drinks": robertscoffee.drinks,
-                        "Locate": self.locate,
+                        # "Locate": self.locate,
                         "Weather": weather.weather_handler,
-                        "Unhandled": util.unhandled_request,
-                        "AMAZON.HelpIntent": util.get_welcome_response,
+                        # "Unhandled": util.unhandled_request,
+                        # "AMAZON.HelpIntent": util.get_welcome_response,
                         "AMAZON.StopIntent": util.handle_session_end_request,
                         "AMAZON.CancelIntent": util.handle_session_end_request}
 
@@ -28,7 +28,7 @@ class Router:
     Function which tells user the location of restaurant/coffeehouse (s)he is looking for. To add a location, add
     name of the place you want to add as a key and it's location as a value in the restaurants dictionary.
     """
-
+    """
     def locate(self):
         restaurants = {"Roberts coffee": "in first floor of learning center"}
         name = self.intent['slots']['place']
@@ -37,6 +37,7 @@ class Router:
             'content': "%s is located %s" % (name, restaurants[name])
         }
         return util.close({}, "Fulfilled", message)
+    """
 
     """
     This is where the magic happens. If a method needs for example the intent as a parameter (for getting the

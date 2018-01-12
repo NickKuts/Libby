@@ -3,7 +3,7 @@
     "coffee": {
       "name": "normal coffee",
       "size": {
-        "extrasmall": "2.50",
+        "extra small": "2.50",
         "small": "3.00",
         "medium": "3.90",
         "large": "4.90"
