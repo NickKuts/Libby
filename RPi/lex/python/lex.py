@@ -6,6 +6,8 @@ import wave
 class Lex():
     '''
     This class can be used to send voice data to AWS Lex.
+    The credentials for aws are loaded from ~/.aws/credentials
+    and region from ~/.aws/region
     '''
     def __init__(self):
         self.client = boto3.client('lex-runtime')
@@ -19,7 +21,7 @@ class Lex():
         self.sox_command = 'sox -d -t wavpcm -c 1 -b 16 -r 16000 -e signed-integer --endian little - silence 1 0 6% 5 0.275t 7%'
 
     '''
-    Record sound and save it to self.input_fname when silence is detected
+    Create a stream while recording and return it
     '''
     def record(self):
         f = b''
@@ -33,17 +35,14 @@ class Lex():
         return f
 
     def post_content(self):
-        try:
-            data = self.record()
-            response = self.client.post_content(
-                botName=self.bot_name,
-                botAlias=self.bot_alias,
-                userId=self.user_id,
-                contentType=self.content_type,
-                inputStream=data
-            )
-        finally:
-            pass
+        data = self.record()
+        response = self.client.post_content(
+            botName=self.bot_name,
+            botAlias=self.bot_alias,
+            userId=self.user_id,
+            contentType=self.content_type,
+            inputStream=data
+        )
 
         print(response)
         return response
@@ -63,4 +62,9 @@ class Lex():
 
         f.writeframesraw(audio_stream)
         f.close()
-        run(['aplay', self.response_fname])
+        run(['mpg321', self.response_fname])
+
+        state = response['dialogState']
+        return state
+
+
