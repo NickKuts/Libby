@@ -13,6 +13,8 @@ def close(session_attributes, fulfillment_state, message):
     }
 
 
+""" 
+NOT NEEDED YET
 def delegate(session_attributes, slots):
     return {
         'sessionAttributes': session_attributes,
@@ -22,6 +24,7 @@ def delegate(session_attributes, slots):
         }
     }
 
+"""
 
 # TBD def confirmIntent():
 
@@ -36,6 +39,8 @@ def elicit_intent(session_attributes, message):
     }
 
 
+"""
+NOT NEEDED YET
 def elicit_slot(session_attributes, message, slots, intent_name, slot_name):
     return {
         'sessionAttributes': session_attributes,
@@ -47,24 +52,7 @@ def elicit_slot(session_attributes, message, slots, intent_name, slot_name):
             'slotToElicit': slot_name
         }
     }
-
-
-def get_welcome_response():
-    message = {
-        'contentType': 'PlainText',
-        'content': "Hi! I'm Libby and I'm here to help you choose what you want to order from Robert's Coffee or "
-                   "to know what kind of weather there is outside. Start by asking about the weather, or about "
-                   "Robert's Coffee."
-    }
-    return elicit_intent({}, message)
-
-
-def unhandled_request():
-    message = {
-        'contentType': 'PlainText',
-        'content': "Sorry I don't know that one."
-    }
-    return close({}, 'Failed', message)
+"""
 
 
 def handle_session_end_request():
