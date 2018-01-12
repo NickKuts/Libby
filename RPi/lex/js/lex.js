@@ -1,4 +1,4 @@
-// lex.js 
+// lex.js
 var AWS = require('aws-sdk'),
   fs = require('fs'),
   ts = require('tailstream'),
@@ -12,7 +12,7 @@ var FULFILLED = 'Fulfilled',
   inputStream,
   lexruntime = new AWS.LexRuntime({
     region: 'eu-west-1',
-    credentials: new AWS.Credentials('AKIAIU2T23GOY6DWSBEQ','GHd4lR2XlCNX/tTA871NifN7ibYPSuoEIdd3BINC' , null)
+    credentials: new AWS.Credentials('access_key','secret_access_key' , null)
   });
 
 var setupStream = function() {

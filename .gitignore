@@ -109,3 +109,11 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# node modules
+/RPi/lex/js/node_modules
+
+# sound files 
+/RPi/lex/*.wav
+/RPi/lex/js/*.wav
+/RPi/lex/python/*.wav
