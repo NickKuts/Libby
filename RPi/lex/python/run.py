@@ -1,5 +1,6 @@
 from lex import Lex
 from snowboy import snowboydecoder
+from subprocess import run
 
 lex = Lex()
 stop_recording = False
@@ -8,6 +9,7 @@ detector = snowboydecoder.HotwordDetector(model, sensitivity=0.5)
 
 
 def record_and_post():
+    run(['play', 'snowboy/resources/ding.wav'])
     response = lex.post_content()
     state = lex.play_response(response)
 
