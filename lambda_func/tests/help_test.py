@@ -7,7 +7,6 @@ import json
 class TestUtilHelp(unittest.TestCase):
     test_data = json.load(open("./tests/help_test.json"))
 
-
     def test_basic_help(self):
         event = self.test_data['basic']
         result = main_handler.lambda_handler(event, None)
@@ -20,11 +19,11 @@ class TestUtilHelp(unittest.TestCase):
         print("result", result)
         assert (result is not None)
 
-    def test_weather_help(self):
+    """def test_weather_help(self):
         event = self.test_data['weather']
         result = main_handler.lambda_handler(event, None)
         print("result", result)
-        assert (result is not None)
+        assert (result is not None)"""
 
 
 def main():
