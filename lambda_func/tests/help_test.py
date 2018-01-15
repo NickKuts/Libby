@@ -8,7 +8,6 @@ class TestUtilHelp(unittest.TestCase):
     test_data = json.load(open("./tests/help_test.json"))
 
 
-
     def test_basic_help(self):
         event = self.test_data['basic']
         result = main_handler.lambda_handler(event, None)

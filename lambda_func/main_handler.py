@@ -4,7 +4,7 @@ import util
 
 
 def lambda_handler(event, context):
-    debug = True
+    debug = False
     if debug:
         return util.debug(event)
     print(context)
