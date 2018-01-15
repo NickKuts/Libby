@@ -8,4 +8,5 @@ Libby is a student project by Software Engineering students from Aalto Universit
 The master branch of Libby. 
 
 #### Branch develop [![Build Status](https://travis-ci.org/NickKuts/Libby.png?branch=develop)](https://travis-ci.org/NickKuts/Libby)
+[![Coverage Status](https://coveralls.io/repos/github/NickKuts/Libby/badge.svg?branch=develop)](https://coveralls.io/github/NickKuts/Libby?branch=develop)
 The development branch of Libby. Here is where the magic happens.

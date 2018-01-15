@@ -14,9 +14,9 @@
     - pip install requests
     - pip install pytest-cov
   script:
-    - cd lambda_func && python -m pytest --cov=.
+    - cd lambda_func && python -m pytest --cov=. --cov-report term-missing
     - cd ..
-    - cd api_testing && python -m pytest --cov=.
+    - cd api_testing && python -m pytest --cov=. --cov-report term-missing
   deploy:
     - provider: lambda
       function_name: "LibbyDevelop"
@@ -42,3 +42,5 @@
       zip: "${TRAVIS_BUILD_DIR}/lambda_func"
       on:
         branch: master
+  after_success:
+      - coveralls
