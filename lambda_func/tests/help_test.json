@@ -1,5 +1,4 @@
 {
-  "help": {
     "basic": {
       "messageVersion": "1.0",
       "invocationSource": "DialogCodeHook",
@@ -90,5 +89,4 @@
       },
       "inputTranscript": "help roberts coffee"
     }
-  }
 }

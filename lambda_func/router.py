@@ -1,6 +1,6 @@
 import util
 import robertscoffee
-import weather
+#import weather
 import get_help
 
 """
@@ -19,7 +19,7 @@ class Router:
                         "Get_Prices": robertscoffee.prices,
                         "Get_Drinks": robertscoffee.drinks,
                         "Locate": self.locate,
-                        "Weather": weather.weather_handler,
+                        #"Weather": weather.weather_handler,
                         "Get_Help": get_help.help_answer,
                         "Unhandled": util.unhandled_request,
                         #AMAZON.HelpIntent": util.get_welcome_response,
