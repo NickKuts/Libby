@@ -1,0 +1,742 @@
+{
+  "classics": {
+    "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
+    "sessionAttributes": {},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "classics",
+    "currentIntent": {
+      "name": "Get_Drinks",
+      "slots": {
+        "category": "classics"
+      },
+      "confirmationStatus": "None"
+    }
+  },
+  "lattes": {
+    "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
+    "sessionAttributes": {},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "lattes",
+    "currentIntent": {
+      "name": "Get_Drinks",
+      "slots": {
+        "category": "lattes"
+      },
+      "confirmationStatus": "None"
+    }
+  },
+  "coffee drinks": {
+    "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
+    "sessionAttributes": {},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "coffee drinks",
+    "currentIntent": {
+      "name": "Get_Drinks",
+      "slots": {
+        "category": "coffee drinks"
+      },
+      "confirmationStatus": "None"
+    }
+  },
+  "cappuccinos": {
+    "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
+    "sessionAttributes": {},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "cappuccinos",
+    "currentIntent": {
+      "name": "Get_Drinks",
+      "slots": {
+        "category": "cappuccinos"
+      },
+      "confirmationStatus": "None"
+    }
+  },
+  "espressos": {
+    "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
+    "sessionAttributes": {},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "espressos",
+    "currentIntent": {
+      "name": "Get_Drinks",
+      "slots": {
+        "category": "espressos"
+      },
+      "confirmationStatus": "None"
+    }
+  },
+  "hot drinks": {
+    "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
+    "sessionAttributes": {},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "hot drinks",
+    "currentIntent": {
+      "name": "Get_Drinks",
+      "slots": {
+        "category": "hot drinks"
+      },
+      "confirmationStatus": "None"
+    }
+  },
+  "cold coffee drinks": {
+    "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
+    "sessionAttributes": {},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "cold coffee drinks",
+    "currentIntent": {
+      "name": "Get_Drinks",
+      "slots": {
+        "category": "cold coffee drinks"
+      },
+      "confirmationStatus": "None"
+    }
+  },
+  "cold drinks": {
+    "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
+    "sessionAttributes": {},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "cold drinks",
+    "currentIntent": {
+      "name": "Get_Drinks",
+      "slots": {
+        "category": "cold drinks"
+      },
+      "confirmationStatus": "None"
+    }
+  },
+  "coffee": {
+    "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
+    "sessionAttributes": {},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "coffee",
+    "currentIntent": {
+      "name": "Get_Prices",
+      "slots": {
+        "consumable": "coffee"
+      },
+      "confirmationStatus": "None"
+    }
+  },
+  "tea": {
+    "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
+    "sessionAttributes": {},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "tea",
+    "currentIntent": {
+      "name": "Get_Prices",
+      "slots": {
+        "consumable": "tea"
+      },
+      "confirmationStatus": "None"
+    }
+  },
+  "caffe latte": {
+    "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
+    "sessionAttributes": {},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "caffe latte",
+    "currentIntent": {
+      "name": "Get_Prices",
+      "slots": {
+        "consumable": "caffe latte"
+      },
+      "confirmationStatus": "None"
+    }
+  },
+  "morning latte": {
+    "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
+    "sessionAttributes": {},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "morning latte",
+    "currentIntent": {
+      "name": "Get_Prices",
+      "slots": {
+        "consumable": "morning latte"
+      },
+      "confirmationStatus": "None"
+    }
+  },
+  "caramel latte": {
+    "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
+    "sessionAttributes": {},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "caramel latte",
+    "currentIntent": {
+      "name": "Get_Prices",
+      "slots": {
+        "consumable": "caramel latte"
+      },
+      "confirmationStatus": "None"
+    }
+  },
+  "chocotoffee latte": {
+    "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
+    "sessionAttributes": {},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "chocotoffee latte",
+    "currentIntent": {
+      "name": "Get_Prices",
+      "slots": {
+        "consumable": "chocotoffee latte"
+      },
+      "confirmationStatus": "None"
+    }
+  },
+  "oriental latte": {
+    "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
+    "sessionAttributes": {},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "oriental latte",
+    "currentIntent": {
+      "name": "Get_Prices",
+      "slots": {
+        "consumable": "oriental latte"
+      },
+      "confirmationStatus": "None"
+    }
+  },
+  "roberts mocha": {
+    "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
+    "sessionAttributes": {},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "roberts mocha",
+    "currentIntent": {
+      "name": "Get_Prices",
+      "slots": {
+        "consumable": "roberts mocha"
+      },
+      "confirmationStatus": "None"
+    }
+  },
+  "mint chocolate mocha": {
+    "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
+    "sessionAttributes": {},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "mint chocolate mocha",
+    "currentIntent": {
+      "name": "Get_Prices",
+      "slots": {
+        "consumable": "mint chocolate mocha"
+      },
+      "confirmationStatus": "None"
+    }
+  },
+  "white chocolate orange mocha": {
+    "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
+    "sessionAttributes": {},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "white chocolate orange mocha",
+    "currentIntent": {
+      "name": "Get_Prices",
+      "slots": {
+        "consumable": "white chocolate orange mocha"
+      },
+      "confirmationStatus": "None"
+    }
+  },
+  "cappuccino": {
+    "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
+    "sessionAttributes": {},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "cappuccino",
+    "currentIntent": {
+      "name": "Get_Prices",
+      "slots": {
+        "consumable": "cappuccino"
+      },
+      "confirmationStatus": "None"
+    }
+  },
+  "flat white": {
+    "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
+    "sessionAttributes": {},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "flat white",
+    "currentIntent": {
+      "name": "Get_Prices",
+      "slots": {
+        "consumable": "flat white"
+      },
+      "confirmationStatus": "None"
+    }
+  },
+  "apelsinkyss": {
+    "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
+    "sessionAttributes": {},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "apelsinkyss",
+    "currentIntent": {
+      "name": "Get_Prices",
+      "slots": {
+        "consumable": "apelsinkyss"
+      },
+      "confirmationStatus": "None"
+    }
+  },
+  "chococcino": {
+    "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
+    "sessionAttributes": {},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "chococcino",
+    "currentIntent": {
+      "name": "Get_Prices",
+      "slots": {
+        "consumable": "chococcino"
+      },
+      "confirmationStatus": "None"
+    }
+  },
+  "espresso": {
+    "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
+    "sessionAttributes": {},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "espresso",
+    "currentIntent": {
+      "name": "Get_Prices",
+      "slots": {
+        "consumable": "espresso"
+      },
+      "confirmationStatus": "None"
+    }
+  },
+  "macchiato": {
+    "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
+    "sessionAttributes": {},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "macchiato",
+    "currentIntent": {
+      "name": "Get_Prices",
+      "slots": {
+        "consumable": "macchiato"
+      },
+      "confirmationStatus": "None"
+    }
+  },
+  "con panna": {
+    "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
+    "sessionAttributes": {},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "con panna",
+    "currentIntent": {
+      "name": "Get_Prices",
+      "slots": {
+        "consumable": "con panna"
+      },
+      "confirmationStatus": "None"
+    }
+  },
+  "americano": {
+    "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
+    "sessionAttributes": {},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "americano",
+    "currentIntent": {
+      "name": "Get_Prices",
+      "slots": {
+        "consumable": "americano"
+      },
+      "confirmationStatus": "None"
+    }
+  },
+  "chai latte": {
+    "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
+    "sessionAttributes": {},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "chai latte",
+    "currentIntent": {
+      "name": "Get_Prices",
+      "slots": {
+        "consumable": "chai latte"
+      },
+      "confirmationStatus": "None"
+    }
+  },
+  "cocoa": {
+    "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
+    "sessionAttributes": {},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "cocoa",
+    "currentIntent": {
+      "name": "Get_Prices",
+      "slots": {
+        "consumable": "cocoa"
+      },
+      "confirmationStatus": "None"
+    }
+  },
+  "steamer": {
+    "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
+    "sessionAttributes": {},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "steamer",
+    "currentIntent": {
+      "name": "Get_Prices",
+      "slots": {
+        "consumable": "steamer"
+      },
+      "confirmationStatus": "None"
+    }
+  },
+  "ice latte": {
+    "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
+    "sessionAttributes": {},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "ice latte",
+    "currentIntent": {
+      "name": "Get_Prices",
+      "slots": {
+        "consumable": "ice latte"
+      },
+      "confirmationStatus": "None"
+    }
+  },
+  "ice mocha": {
+    "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
+    "sessionAttributes": {},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "ice mocha",
+    "currentIntent": {
+      "name": "Get_Prices",
+      "slots": {
+        "consumable": "ice mocha"
+      },
+      "confirmationStatus": "None"
+    }
+  },
+  "roberts frappe": {
+    "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
+    "sessionAttributes": {},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "roberts frappe",
+    "currentIntent": {
+      "name": "Get_Prices",
+      "slots": {
+        "consumable": "roberts frappe"
+      },
+      "confirmationStatus": "None"
+    }
+  },
+  "toffee fudge frappe": {
+    "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
+    "sessionAttributes": {},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "toffee fudge frappe",
+    "currentIntent": {
+      "name": "Get_Prices",
+      "slots": {
+        "consumable": "toffee fudge frappe"
+      },
+      "confirmationStatus": "None"
+    }
+  },
+  "light shake": {
+    "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
+    "sessionAttributes": {},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "light shake",
+    "currentIntent": {
+      "name": "Get_Prices",
+      "slots": {
+        "consumable": "light shake"
+      },
+      "confirmationStatus": "None"
+    }
+  },
+  "ice tea": {
+    "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
+    "sessionAttributes": {},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "ice tea",
+    "currentIntent": {
+      "name": "Get_Prices",
+      "slots": {
+        "consumable": "ice tea"
+      },
+      "confirmationStatus": "None"
+    }
+  },
+  "italian soda": {
+    "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
+    "sessionAttributes": {},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "italian soda",
+    "currentIntent": {
+      "name": "Get_Prices",
+      "slots": {
+        "consumable": "italian soda"
+      },
+      "confirmationStatus": "None"
+    }
+  },
+  "category": {
+    "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "y7anw43qqp1khwa67ouuanulv38xzpbw",
+    "sessionAttributes": {},
+    "requestAttributes": null,
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "currentIntent": {
+      "name": "Get_Categories",
+      "slots": {},
+      "slotDetails": {},
+      "confirmationStatus": "None"
+    },
+    "inputTranscript": "category"
+  }
+}

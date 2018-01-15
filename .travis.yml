@@ -12,9 +12,11 @@
     - eval which aws
   install:
     - pip install requests
+    - pip install pytest-cov
   script:
-    - cd api_testing/pytest && python api_testing_test.py
-    - cd ../../lambda_func/pytest && python weather_test.py
+    - cd lambda_func && python -m pytest --cov=.
+    - cd ..
+    - cd api_testing && python -m pytest --cov=.
   deploy:
     - provider: lambda
       function_name: "LibbyDevelop"
