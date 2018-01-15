@@ -21,6 +21,7 @@ class TestUtilDate(unittest.TestCase):
         # assert(result != None)
         pass
 
+
 def main():
     print("Main function")
 
