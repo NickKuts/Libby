@@ -12,7 +12,7 @@ def help_answer(intent):
     if intent['slots']['what'] == null:
         message = {
             'contentType': 'PlainText',
-            'content': "Hi! I'm Libby help. Get more help ask weather help or roberts coffee menu asking categories."
+            'content': "Hi! I'm Libby help. If you want to get more help, ask weather or roberts coffee help."
 
         }
         return util.elicit_intent({}, message)
