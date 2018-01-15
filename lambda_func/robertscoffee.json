@@ -1,10 +1,9 @@
 {
-
   "classics": {
     "coffee": {
       "name": "normal coffee",
       "size": {
-        "extrasmall": "2.50",
+        "extra small": "2.50",
         "small": "3.00",
         "medium": "3.90",
         "large": "4.90"
@@ -28,9 +27,6 @@
       ]
     }
   },
-  
-  
-  
   "lattes": {
     "caffe latte": {
       "name": "caffe latte",
@@ -58,9 +54,6 @@
       ]
     }
   },
- 
- 
- 
   "coffee drinks": {
     "caramel latte": {
       "name": "caramel latte",
@@ -79,12 +72,12 @@
     "chocotoffee latte": {
       "name": "chocotoffee latte",
       "size": {
-       "small": "4.50",
+        "small": "4.50",
         "medium": "5.50",
         "large": "6.20"
       },
       "tags": [
-         "chocotoffee latte",
+        "chocotoffee latte",
         "latte",
         "coffee drinks",
         "hot"
@@ -104,21 +97,21 @@
         "hot"
       ]
     },
-    "robers mocha": {
-      "name": "robers mocha",
+    "roberts mocha": {
+      "name": "roberts mocha",
       "size": {
         "small": "4.50",
         "medium": "5.90",
         "large": "6.50"
       },
       "tags": [
-        "robers mocha",
+        "roberts mocha",
         "mocha",
         "coffee drinks",
         "hot"
       ]
     },
-    "mint chocolate macha": {
+    "mint chocolate mocha": {
       "name": "mint chocolate mocha",
       "size": {
         "small": "4.50",
@@ -147,19 +140,16 @@
       ]
     }
   },
-  
-  
-  
-    "cappucinos": {
-    "cappucino": {
-      "name": "cappucino",
+  "cappuccinos": {
+    "cappuccino": {
+      "name": "cappuccino",
       "size": {
         "small": "3.30",
         "medium": "4.00"
       },
       "tags": [
-        "cappucino",
-        "cappucinos",
+        "cappuccino",
+        "cappuccinos",
         "hot"
       ]
     },
@@ -182,26 +172,24 @@
       },
       "tags": [
         "apelsinkyss",
-        "cappucinos",
+        "cappuccinos",
         "hot"
       ]
     },
-    "chococino": {
-      "name": "chococino",
+    "chococcino": {
+      "name": "chococcino",
       "size": {
         "small": "3.70",
         "medium": "4.30"
       },
       "tags": [
-        "chococino",
-        "cappucinos",
+        "chococcino",
+        "cappuccinos",
         "hot"
       ]
     }
   },
-  
-  
-   "espressos": {
+  "espressos": {
     "espresso": {
       "name": "espresso",
       "size": {
@@ -238,22 +226,20 @@
         "hot"
       ]
     },
-    "ameericano": {
-      "name": "ameericano",
+    "americano": {
+      "name": "americano",
       "size": {
         "small": "2.90",
         "medium": "3.70"
       },
       "tags": [
-        "ameericano",
+        "americano",
         "espressos",
         "hot"
       ]
     }
   },
-  
-  
-   "hot drinks": {
+  "hot drinks": {
     "chai latte": {
       "name": "chai latte",
       "size": {
@@ -280,7 +266,7 @@
         "hot"
       ]
     },
-     "steamer": {
+    "steamer": {
       "name": "steamer",
       "size": {
         "small": "3.20",
@@ -293,10 +279,8 @@
         "hot"
       ]
     }
-   },
-   
-   
-    "cold coffee drinks": {
+  },
+  "cold coffee drinks": {
     "ice latte": {
       "name": "ice latte",
       "size": {
@@ -321,7 +305,7 @@
         "cold"
       ]
     },
-     "roberts frappe": {
+    "roberts frappe": {
       "name": "roberts frappe",
       "size": {
         "medium": "4.80",
@@ -333,7 +317,7 @@
         "cold"
       ]
     },
-     "toffee fudge frappe": {
+    "toffee fudge frappe": {
       "name": "toffee fudge frappe",
       "size": {
         "medium": "5.20",
@@ -345,10 +329,8 @@
         "cold"
       ]
     }
-   },
-   
-   
-     "cold drinks": {
+  },
+  "cold drinks": {
     "light shake": {
       "name": "light shake",
       "size": {
@@ -373,7 +355,7 @@
         "cold"
       ]
     },
-     "italian soda": {
+    "italian soda": {
       "name": "italian soda",
       "size": {
         "medium": "3.20",
