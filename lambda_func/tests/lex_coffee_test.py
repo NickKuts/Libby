@@ -5,7 +5,7 @@ from lambda_func import main_handler
 
 class TestRoberts(unittest.TestCase):
     test_data = json.load(open("tests/lex_coffee_test.json"))
-    json_data = json.load(open("tests/roberts_coffee.json"))
+    json_data = json.load(open("./robertscoffee.json"))
 
     def test_intro(self):
         result = main_handler.lambda_handler(self.test_data["category"], None)
