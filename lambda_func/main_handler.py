@@ -1,5 +1,5 @@
-from router import Router
-import util
+from .router import Router
+from . import util
 # --------------- Main handler ------------------
 
 

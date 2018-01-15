@@ -1,4 +1,4 @@
-import util
+from . import util
 import urllib
 import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta
@@ -15,27 +15,23 @@ def weather_handler():
         'content': "The temperature is around " + str(data[0])
     }
     return util.close({}, 'Fulfilled', message)
-
-
-
 # More information from
 # http://lassisavola.net/2016/02/04/fmi-avoin-data-python-ja-pylvasdiagrammit-osa-2/
 # https://docs.python.org/2/library/xml.etree.elementtree.html
-
 '''
 This class can be used to get weather data (currently only temperature) from ilmatieteenlaitos
 '''
+
+
 class Weather():
 
     def format_time(self, time):
         temp = time[:time.find(':')+3] + 'Z'
         return temp
 
-
     def __init__(self):
         self.api_key = ""
-        
-        
+
         self.api_key = os.getenv('fmi_api')
 
         self.start_time = (datetime.now() - timedelta(hours=3)).isoformat()
@@ -48,7 +44,6 @@ class Weather():
         
         self.url = "http://data.fmi.fi/fmi-apikey/" + self.api_key + "/wfs?request=getFeature&storedquery_id=" + self.query_str + self.place_str + self.time_str + self.parameters_str
         self.fname = '/tmp/' + "weather_data.xml"
-
 
     '''
     Read data from weather_data.xml
@@ -69,7 +64,6 @@ class Weather():
             temps.append(float(temp))
 
         return temps
-
 
     '''
     Update the weather data
