@@ -13,11 +13,13 @@ class TestUtilHelp(unittest.TestCase):
         print("result", result)
         assert (result is not None)
 
+
     def test_robertscoffee_help(self):
         event = self.test_data['roberts coffee']
         result = main_handler.lambda_handler(event, None)
         print("result", result)
         assert (result is not None)
+
 
     """def test_weather_help(self):
         event = self.test_data['weather']
