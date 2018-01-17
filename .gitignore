@@ -117,3 +117,5 @@ venv.bak/
 /RPi/lex/*.wav
 /RPi/lex/js/*.wav
 /RPi/lex/python/*.wav
+
+/RPi/lex/python/snowboy/snowboy-detect-swig.*
