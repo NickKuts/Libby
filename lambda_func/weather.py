@@ -1,5 +1,5 @@
 from . import util
-import urllib
+import urllib3
 import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta
 import os
@@ -15,15 +15,15 @@ def weather_handler():
         'content': "The temperature is around " + str(data[0])
     }
     return util.close({}, 'Fulfilled', message)
-# More information from
-# http://lassisavola.net/2016/02/04/fmi-avoin-data-python-ja-pylvasdiagrammit-osa-2/
-# https://docs.python.org/2/library/xml.etree.elementtree.html
+
+
 '''
-This class can be used to get weather data (currently only temperature) from ilmatieteenlaitos
+This class can be used to get weather data (currently only temperature) from
+ilmatieteenlaitos
 '''
 
 
-class Weather():
+class Weather:
 
     def format_time(self, time):
         temp = time[:time.find(':')+3] + 'Z'
@@ -36,13 +36,16 @@ class Weather():
 
         self.start_time = (datetime.now() - timedelta(hours=3)).isoformat()
         self.end_time = (datetime.now() - timedelta(minutes=15)).isoformat()
-        
-        self.time_str = '&starttime=' + self.format_time(self.start_time) + '&endtime=' + self.format_time(self.end_time)
+
+        self.time_str = ('&starttime=' + self.format_time(self.start_time) +
+                         '&endtime=' + self.format_time(self.end_time))
         self.place_str = 'otaniemi,espoo'
         self.query_str = 'fmi::observations::weather::simple&place='
         self.parameters_str = '&parameters=temperature'
-        
-        self.url = "http://data.fmi.fi/fmi-apikey/" + self.api_key + "/wfs?request=getFeature&storedquery_id=" + self.query_str + self.place_str + self.time_str + self.parameters_str
+
+        self.url = ("http://data.fmi.fi/fmi-apikey/" + self.api_key +
+                    "/wfs?request=getFeature&storedquery_id=" + self.query_str +
+                    self.place_str + self.time_str + self.parameters_str)
         self.fname = '/tmp/' + "weather_data.xml"
 
     '''
@@ -59,7 +62,7 @@ class Weather():
         for child in root:
             temp = child[0][3].text
             time = child[0][1].text
-            #print(time, temp)
+            # print(time, temp)
             temperatures[time] = float(temp)
             temps.append(float(temp))
 
@@ -69,8 +72,7 @@ class Weather():
     Update the weather data
     '''
     def update_data(self, web_url, data_url):
-        #print(web_url)
-        #print(data_url)
-        urllib.urlretrieve(web_url, data_url)
-
+        # print(web_url)
+        # print(data_url)
+        urllib3.urlretrieve(web_url, data_url)
 
