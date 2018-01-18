@@ -118,4 +118,6 @@ venv.bak/
 /RPi/lex/js/*.wav
 /RPi/lex/python/*.wav
 
+/RPi/lex/docker/
+
 /RPi/lex/python/snowboy/snowboy-detect-swig.*
