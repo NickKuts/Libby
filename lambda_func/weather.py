@@ -5,24 +5,12 @@ from datetime import datetime, timedelta
 import os
 
 
-def weather_handler():
-    weather = Weather
-    data = weather.read_data()
-
-    # card_title = "Weather in otaniemi"
-    message = {
-        'contentType': 'PlaintText',
-        'content': "The temperature is around " + str(data[0])
-    }
-    return util.close({}, 'Fulfilled', message)
 # More information from
 # http://lassisavola.net/2016/02/04/fmi-avoin-data-python-ja-pylvasdiagrammit-osa-2/
 # https://docs.python.org/2/library/xml.etree.elementtree.html
 '''
 This class can be used to get weather data (currently only temperature) from ilmatieteenlaitos
 '''
-
-
 class Weather:
 
     def format_time(self, time):
@@ -72,5 +60,17 @@ class Weather:
         # print(web_url)
         # print(data_url)
         urllib3.urlretrieve(web_url, data_url)
+
+
+def weather_handler():
+    weather = Weather
+    data = weather.read_data()
+
+    # card_title = "Weather in otaniemi"
+    message = {
+        'contentType': 'PlaintText',
+        'content': "The temperature is around " + str(data[0])
+    }
+    return util.close({}, 'Fulfilled', message)
 
 
