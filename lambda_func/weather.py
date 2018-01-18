@@ -5,12 +5,24 @@ from datetime import datetime, timedelta
 import os
 
 
-# More information from
-# http://lassisavola.net/2016/02/04/fmi-avoin-data-python-ja-pylvasdiagrammit-osa-2/
-# https://docs.python.org/2/library/xml.etree.elementtree.html
+def weather_handler():
+    weather = Weather()
+    data = weather.read_data()
+
+    # card_title = "Weather in otaniemi"
+    message = {
+        'contentType': 'PlaintText',
+        'content': "The temperature is around " + str(data[0])
+    }
+    return util.close({}, 'Fulfilled', message)
+
+
 '''
-This class can be used to get weather data (currently only temperature) from ilmatieteenlaitos
+This class can be used to get weather data (currently only temperature) from
+ilmatieteenlaitos
 '''
+
+
 class Weather:
 
     def format_time(self, time):
@@ -24,13 +36,16 @@ class Weather:
 
         self.start_time = (datetime.now() - timedelta(hours=3)).isoformat()
         self.end_time = (datetime.now() - timedelta(minutes=15)).isoformat()
-        
-        self.time_str = '&starttime=' + self.format_time(self.start_time) + '&endtime=' + self.format_time(self.end_time)
+
+        self.time_str = ('&starttime=' + self.format_time(self.start_time) +
+                         '&endtime=' + self.format_time(self.end_time))
         self.place_str = 'otaniemi,espoo'
         self.query_str = 'fmi::observations::weather::simple&place='
         self.parameters_str = '&parameters=temperature'
-        
-        self.url = "http://data.fmi.fi/fmi-apikey/" + self.api_key + "/wfs?request=getFeature&storedquery_id=" + self.query_str + self.place_str + self.time_str + self.parameters_str
+
+        self.url = ("http://data.fmi.fi/fmi-apikey/" + self.api_key +
+                    "/wfs?request=getFeature&storedquery_id=" + self.query_str +
+                    self.place_str + self.time_str + self.parameters_str)
         self.fname = '/tmp/' + "weather_data.xml"
 
     '''
@@ -60,17 +75,4 @@ class Weather:
         # print(web_url)
         # print(data_url)
         urllib3.urlretrieve(web_url, data_url)
-
-
-def weather_handler():
-    weather = Weather
-    data = weather.read_data()
-
-    # card_title = "Weather in otaniemi"
-    message = {
-        'contentType': 'PlaintText',
-        'content': "The temperature is around " + str(data[0])
-    }
-    return util.close({}, 'Fulfilled', message)
-
 
