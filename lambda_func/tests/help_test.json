@@ -28,7 +28,7 @@
       },
       "inputTranscript": "help"
     },
-    "weather": {
+    "help_weather": {
       "messageVersion": "1.0",
       "invocationSource": "DialogCodeHook",
       "userId": "5p98w163n045tp4wnduvue91d7xdntiq",
@@ -60,7 +60,7 @@
       },
       "inputTranscript": "help weather"
     },
-    "roberts coffee": {
+    "help_roberts_coffee": {
       "messageVersion": "1.0",
       "invocationSource": "DialogCodeHook",
       "userId": "5p98w163n045tp4wnduvue91d7xdntiq",
@@ -88,5 +88,131 @@
         "confirmationStatus": "None"
       },
       "inputTranscript": "help roberts coffee"
-    }
+    },
+  "help_location": {
+  "messageVersion": "1.0",
+  "invocationSource": "DialogCodeHook",
+  "userId": "18mstv3yncl08371m3lv3qgagrj8cbbt",
+  "sessionAttributes": {
+
+  },
+  "requestAttributes": null,
+  "bot": {
+    "name": "Libby_dev",
+    "alias": "$LATEST",
+    "version": "$LATEST"
+  },
+  "outputDialogMode": "Text",
+  "currentIntent": {
+    "name": "Get_Help",
+    "slots": {
+      "what": "location"
+    },
+    "slotDetails": {
+      "what": {
+        "resolutions": [
+
+        ],
+        "originalValue": "location"
+      }
+    },
+    "confirmationStatus": "None"
+  },
+  "inputTranscript": "help location"
+  },
+  "roberts_coffee_help": {
+  "messageVersion": "1.0",
+  "invocationSource": "DialogCodeHook",
+  "userId": "18mstv3yncl08371m3lv3qgagrj8cbbt",
+  "sessionAttributes": {
+
+  },
+  "requestAttributes": null,
+  "bot": {
+    "name": "Libby_dev",
+    "alias": "$LATEST",
+    "version": "$LATEST"
+  },
+  "outputDialogMode": "Text",
+  "currentIntent": {
+    "name": "Get_Help",
+    "slots": {
+      "what": null
+    },
+    "slotDetails": {
+      "what": {
+        "resolutions": [
+
+        ],
+        "originalValue": null
+      }
+    },
+    "confirmationStatus": "None"
+  },
+  "inputTranscript": "roberts coffee help"
+  },
+
+  "weather_help": {
+  "messageVersion": "1.0",
+  "invocationSource": "DialogCodeHook",
+  "userId": "18mstv3yncl08371m3lv3qgagrj8cbbt",
+  "sessionAttributes": {
+
+  },
+  "requestAttributes": null,
+  "bot": {
+    "name": "Libby_dev",
+    "alias": "$LATEST",
+    "version": "$LATEST"
+  },
+  "outputDialogMode": "Text",
+  "currentIntent": {
+    "name": "Get_Help",
+    "slots": {
+      "what": null
+    },
+    "slotDetails": {
+      "what": {
+        "resolutions": [
+
+        ],
+        "originalValue": null
+      }
+    },
+    "confirmationStatus": "None"
+  },
+  "inputTranscript": "weather help"
+  },
+
+  "location_help": {
+  "messageVersion": "1.0",
+  "invocationSource": "DialogCodeHook",
+  "userId": "18mstv3yncl08371m3lv3qgagrj8cbbt",
+  "sessionAttributes": {
+
+  },
+  "requestAttributes": null,
+  "bot": {
+    "name": "Libby_dev",
+    "alias": "$LATEST",
+    "version": "$LATEST"
+  },
+  "outputDialogMode": "Text",
+  "currentIntent": {
+    "name": "Get_Help",
+    "slots": {
+      "what": null
+    },
+    "slotDetails": {
+      "what": {
+        "resolutions": [
+
+        ],
+        "originalValue": null
+      }
+    },
+    "confirmationStatus": "None"
+  },
+  "inputTranscript": "location help"
+  }
 }

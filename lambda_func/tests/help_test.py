@@ -7,22 +7,13 @@ class TestUtilHelp(unittest.TestCase):
     test_data = json.load(open("./tests/help_test.json"))
 
     def test_basic_help(self):
-        event = self.test_data['basic']
-        result = main_handler.lambda_handler(event, None)
-        print("result", result)
-        assert (result is not None)
-
-    def test_robertscoffee_help(self):
-        event = self.test_data['roberts coffee']
-        result = main_handler.lambda_handler(event, None)
-        print("result", result)
-        assert (result is not None)
-
-    def test_weather_help(self):
-        event = self.test_data['weather']
-        result = main_handler.lambda_handler(event, None)
-        print("result", result)
-        assert (result is not None)
+        event = ['basic', 'help_roberts_coffee', 'help_weather', 'help_location', 'roberts_coffee_help',
+                 'weather_help', 'location_help']
+        for i in event:
+            testStr = self.test_data[i]
+            result = main_handler.lambda_handler(testStr, None)
+            print("result", result)
+            assert (result is not None)
 
 
 def main():
