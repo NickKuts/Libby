@@ -1,12 +1,12 @@
 from . import util
-import urllib
+import urllib3
 import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta
 import os
 
 
 def weather_handler():
-    weather = Weather()
+    weather = Weather
     data = weather.read_data()
 
     # card_title = "Weather in otaniemi"
@@ -23,7 +23,7 @@ This class can be used to get weather data (currently only temperature) from ilm
 '''
 
 
-class Weather():
+class Weather:
 
     def format_time(self, time):
         temp = time[:time.find(':')+3] + 'Z'
@@ -59,7 +59,7 @@ class Weather():
         for child in root:
             temp = child[0][3].text
             time = child[0][1].text
-            #print(time, temp)
+            # print(time, temp)
             temperatures[time] = float(temp)
             temps.append(float(temp))
 
@@ -69,8 +69,8 @@ class Weather():
     Update the weather data
     '''
     def update_data(self, web_url, data_url):
-        #print(web_url)
-        #print(data_url)
-        urllib.urlretrieve(web_url, data_url)
+        # print(web_url)
+        # print(data_url)
+        urllib3.urlretrieve(web_url, data_url)
 
 
