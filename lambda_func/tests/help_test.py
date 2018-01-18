@@ -1,7 +1,6 @@
 import unittest
 from lambda_func import main_handler
 import json
-# import main_handler
 
 
 class TestUtilHelp(unittest.TestCase):
