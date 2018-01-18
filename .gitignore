@@ -111,13 +111,13 @@ venv.bak/
 .mypy_cache/
 
 # node modules
-/RPi/lex/js/node_modules
+/rpi/lex/js/node_modules
 
 # sound files 
-/RPi/lex/*.wav
-/RPi/lex/js/*.wav
-/RPi/lex/python/*.wav
+/rpi/lex/*.wav
+/rpi/lex/js/*.wav
+/rpi/lex/python/*.wav
 
-/RPi/lex/docker/
+/rpi/lex/docker/
 
-/RPi/lex/python/snowboy/snowboy-detect-swig.*
+/rpi/lex/python/snowboy/snowboy-detect-swig.*
