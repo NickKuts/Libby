@@ -1,6 +1,11 @@
 
 ## Amazon Lex client
 
+This is the Amazon Lex client. Basically it is a program that you leave running that recognizes when you say Libby and then starts recording voice. When the user has finished his/her sentence, the client sends the data to Libby bot which then uses Libby or LibbyDev lambda function to create a response. The response is sent back to the client which then plays it and depending on the response's type starts assumes the conversation finished or starts waiting for more input.
+
+The client is made with Python3 and uses Amazon SDK boto3 to communicate with AWS. 
+
+For wakeword detection, the client uses [Snowboy](https://snowboy.kitt.ai/).  
 
 Installation:
 ```
