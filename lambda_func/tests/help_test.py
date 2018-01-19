@@ -7,8 +7,7 @@ class TestUtilHelp(unittest.TestCase):
     test_data = json.load(open("./tests/help_test.json"))
 
     def test_basic_help(self):
-        event = ['basic', 'help_roberts_coffee', 'help_weather', 'help_location', 'roberts_coffee_help',
-                 'weather_help', 'location_help']
+        event = ['basic', 'help_roberts_coffee', 'help_weather', 'help_location']
         for i in event:
             testStr = self.test_data[i]
             result = main_handler.lambda_handler(testStr, None)

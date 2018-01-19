@@ -1,5 +1,5 @@
 {
-    "basic": {
+  "basic": {
       "messageVersion": "1.0",
       "invocationSource": "DialogCodeHook",
       "userId": "5p98w163n045tp4wnduvue91d7xdntiq",
@@ -27,72 +27,77 @@
         "confirmationStatus": "None"
       },
       "inputTranscript": "help"
+  },
+  "help_weather": {
+  "messageVersion": "1.0",
+  "invocationSource": "DialogCodeHook",
+  "userId": "acpjp2rzapq8m3qmstfa19skdkq06q3w",
+  "sessionAttributes": {
+
+  },
+  "requestAttributes": null,
+  "bot": {
+    "name": "Libby_dev",
+    "alias": "$LATEST",
+    "version": "$LATEST"
+  },
+  "outputDialogMode": "Text",
+  "currentIntent": {
+    "name": "Get_Help",
+    "slots": {
+      "what": "weather"
     },
-    "help_weather": {
-      "messageVersion": "1.0",
-      "invocationSource": "DialogCodeHook",
-      "userId": "5p98w163n045tp4wnduvue91d7xdntiq",
-      "sessionAttributes": {
-      },
-      "requestAttributes": null,
-      "bot": {
-        "name": "Libby_dev",
-        "alias": "$LATEST",
-        "version": "$LATEST"
-      },
-      "outputDialogMode": "Text",
-      "currentIntent": {
-        "name": "Get_Help",
-        "slots": {
-          "what": "weather"
-        },
-        "slotDetails": {
-          "what": {
-            "resolutions": [
-              {
-                "value": "weather"
-              }
-            ],
-            "originalValue": "weather"
+    "slotDetails": {
+      "what": {
+        "resolutions": [
+          {
+            "value": "weather"
           }
-        },
-        "confirmationStatus": "None"
-      },
-      "inputTranscript": "help weather"
+        ],
+        "originalValue": "weather"
+      }
     },
-    "help_roberts_coffee": {
-      "messageVersion": "1.0",
-      "invocationSource": "DialogCodeHook",
-      "userId": "5p98w163n045tp4wnduvue91d7xdntiq",
-      "sessionAttributes": {
-      },
-      "requestAttributes": null,
-      "bot": {
-        "name": "Libby_dev",
-        "alias": "$LATEST",
-        "version": "$LATEST"
-      },
-      "outputDialogMode": "Text",
-      "currentIntent": {
-        "name": "Get_Help",
-        "slots": {
-          "what": null
-        },
-        "slotDetails": {
-          "what": {
-            "resolutions": [
-            ],
-            "originalValue": null
+    "confirmationStatus": "None"
+  },
+  "inputTranscript": "help weather"
+  },
+  "help_roberts_coffee": {
+  "messageVersion": "1.0",
+  "invocationSource": "DialogCodeHook",
+  "userId": "a08w7nc0wioc7x3ka4o92a3kgbsw29vf",
+  "sessionAttributes": {
+
+  },
+  "requestAttributes": null,
+  "bot": {
+    "name": "Libby_dev",
+    "alias": "$LATEST",
+    "version": "$LATEST"
+  },
+  "outputDialogMode": "Text",
+  "currentIntent": {
+    "name": "Get_Help",
+    "slots": {
+      "what": "robert's coffee"
+    },
+    "slotDetails": {
+      "what": {
+        "resolutions": [
+          {
+            "value": "robert's coffee"
           }
-        },
-        "confirmationStatus": "None"
-      },
-      "inputTranscript": "help roberts coffee"
+        ],
+        "originalValue": "robert's coffee"
+      }
     },
+    "confirmationStatus": "None"
+  },
+  "inputTranscript": "help robert's coffee"
+  },
   "help_location": {
   "messageVersion": "1.0",
   "invocationSource": "DialogCodeHook",
-  "userId": "18mstv3yncl08371m3lv3qgagrj8cbbt",
+  "userId": "a08w7nc0wioc7x3ka4o92a3kgbsw29vf",
   "sessionAttributes": {
 
   },
@@ -111,7 +116,9 @@
     "slotDetails": {
       "what": {
         "resolutions": [
-
+          {
+            "value": "location"
+          }
         ],
         "originalValue": "location"
       }
@@ -119,100 +126,6 @@
     "confirmationStatus": "None"
   },
   "inputTranscript": "help location"
-  },
-  "roberts_coffee_help": {
-  "messageVersion": "1.0",
-  "invocationSource": "DialogCodeHook",
-  "userId": "18mstv3yncl08371m3lv3qgagrj8cbbt",
-  "sessionAttributes": {
-
-  },
-  "requestAttributes": null,
-  "bot": {
-    "name": "Libby_dev",
-    "alias": "$LATEST",
-    "version": "$LATEST"
-  },
-  "outputDialogMode": "Text",
-  "currentIntent": {
-    "name": "Get_Help",
-    "slots": {
-      "what": null
-    },
-    "slotDetails": {
-      "what": {
-        "resolutions": [
-
-        ],
-        "originalValue": null
-      }
-    },
-    "confirmationStatus": "None"
-  },
-  "inputTranscript": "roberts coffee help"
-  },
-
-  "weather_help": {
-  "messageVersion": "1.0",
-  "invocationSource": "DialogCodeHook",
-  "userId": "18mstv3yncl08371m3lv3qgagrj8cbbt",
-  "sessionAttributes": {
-
-  },
-  "requestAttributes": null,
-  "bot": {
-    "name": "Libby_dev",
-    "alias": "$LATEST",
-    "version": "$LATEST"
-  },
-  "outputDialogMode": "Text",
-  "currentIntent": {
-    "name": "Get_Help",
-    "slots": {
-      "what": null
-    },
-    "slotDetails": {
-      "what": {
-        "resolutions": [
-
-        ],
-        "originalValue": null
-      }
-    },
-    "confirmationStatus": "None"
-  },
-  "inputTranscript": "weather help"
-  },
-
-  "location_help": {
-  "messageVersion": "1.0",
-  "invocationSource": "DialogCodeHook",
-  "userId": "18mstv3yncl08371m3lv3qgagrj8cbbt",
-  "sessionAttributes": {
-
-  },
-  "requestAttributes": null,
-  "bot": {
-    "name": "Libby_dev",
-    "alias": "$LATEST",
-    "version": "$LATEST"
-  },
-  "outputDialogMode": "Text",
-  "currentIntent": {
-    "name": "Get_Help",
-    "slots": {
-      "what": null
-    },
-    "slotDetails": {
-      "what": {
-        "resolutions": [
-
-        ],
-        "originalValue": null
-      }
-    },
-    "confirmationStatus": "None"
-  },
-  "inputTranscript": "location help"
   }
+
 }
