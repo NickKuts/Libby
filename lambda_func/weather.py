@@ -1,5 +1,5 @@
 from . import util
-import urllib3
+import urllib.request
 import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta
 import os
@@ -74,5 +74,5 @@ class Weather:
     def update_data(self, web_url, data_url):
         # print(web_url)
         # print(data_url)
-        urllib3.urlretrieve(web_url, data_url)
+        urllib.request.urlretrieve(web_url, data_url)
 
