@@ -10,10 +10,7 @@ def weather_handler():
     data = weather.read_data()
 
     # card_title = "Weather in otaniemi"
-    message = {
-        'contentType': 'PlaintText',
-        'content': "The temperature is around " + str(data[0])
-    }
+    message = "The temperature is around " + str(data[0])
     return util.close({}, 'Fulfilled', message)
 
 

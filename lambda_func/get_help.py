@@ -10,19 +10,12 @@ basic Libby answer other way the answer is from the "help.json" -file. Where is 
 def help_answer(intent):
     null = None
     if intent['slots']['what'] == null:
-        message = {
-            'contentType': 'PlainText',
-            'content': "Hi! I'm Libby help. If you want to get more help, ask weather or roberts coffee help."
-
-        }
+        message = "Hi! I'm Libby help. If you want to get more help, ask weather or roberts coffee help."
         return util.elicit_intent({}, message)
 
     else:
         data = json.load(open('help.json'))
         name = intent['slots']['what']
-        message = {
-            'contentType': 'PlainText',
-            'content': data[name]
-        }
+        message = data[name]
         return util.elicit_intent({}, message)
 

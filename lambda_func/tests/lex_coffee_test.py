@@ -1,6 +1,6 @@
 import unittest
 import json
-from lambda_func import main_handler
+from lambda_func import main_handler, robertscoffee
 
 
 class TestRoberts(unittest.TestCase):
@@ -10,6 +10,7 @@ class TestRoberts(unittest.TestCase):
     def test_intro(self):
         result = main_handler.lambda_handler(self.test_data["category"], None)
         print("result", result['dialogAction']['message']['content'])
+        assert (result == robertscoffee.intro())
         assert (result['dialogAction']['message']['content'] is not None)
 
     def test_drinks(self):
@@ -25,18 +26,23 @@ class TestRoberts(unittest.TestCase):
             # print(event['name'])
             result = main_handler.lambda_handler(event, None)
             print("result", result['dialogAction']['message']['content'])
+            assert (result == robertscoffee.prices(event['currentIntent']))
             assert (result['dialogAction']['message']['content'] is not None)
         print("number of drinks tested: " + str(len(final_map)))
 
     def test_categories(self):
         print("----------CATEGORIES----------")
         for category in self.json_data:
-            print("name", category)
+            # print("name", category)
             event = self.test_data[category]
             # print("data", event)
             # print(event['name'])
             result = main_handler.lambda_handler(event, None)
-            print("result", result['dialogAction']['message']['content'])
+            should = robertscoffee.drinks(
+                event['currentIntent']['slots']['category'])
+            print("result", result)
+            print("should", should)
+            assert (result == should)
             assert (result['dialogAction']['message']['content'] is not None)
         print("number of categories tested: " + str(len(self.json_data)))
 
