@@ -38,10 +38,9 @@ class TestRoberts(unittest.TestCase):
             # print("data", event)
             # print(event['name'])
             result = main_handler.lambda_handler(event, None)
-            should = robertscoffee.drinks(
-                event['currentIntent']['slots']['category'])
-            print("result", result)
-            print("should", should)
+            should = robertscoffee.drinks(event['currentIntent']['slots']['category'])
+            print("result", result['dialogAction']['message']['content'])
+            print("should", should['dialogAction']['message']['content'])
             assert (result == should)
             assert (result['dialogAction']['message']['content'] is not None)
         print("number of categories tested: " + str(len(self.json_data)))

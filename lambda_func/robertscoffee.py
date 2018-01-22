@@ -1,6 +1,5 @@
-from . import util
+import util
 import json
-import collections
 
 """
 This document includes all the methods related in Robert's Coffee. The methods

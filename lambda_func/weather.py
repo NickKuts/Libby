@@ -1,4 +1,4 @@
-from . import util
+import util
 import urllib.request
 import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta

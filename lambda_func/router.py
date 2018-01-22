@@ -1,10 +1,10 @@
-from . import util
-from . import robertscoffee
-from . import weather
+import util
+import robertscoffee
+import weather
+import get_help
 
-from . import get_help
 """
-This class takes intent as a parameter and finds what Alexa should answer.
+This class takes intent as a parameter and finds what Libby should answer.
 To add an intent, add the name of the intent you want to add as a key and
 it's method as a value in the self.intents dictionary. If method added needs
 some values as parameter, you should add it in the else-if chain in the route
@@ -21,9 +21,8 @@ class Router:
                         "Get_Drinks": robertscoffee.drinks,
                         "Weather": weather.weather_handler,
                         "Get_Help": get_help.help_answer,
-                        "AMAZON.StopIntent": util.handle_session_end_request,
-                        "AMAZON.CancelIntent": util.handle_session_end_request}
-
+                        "Thanks": util.handle_session_end_request
+                        }
     """
     This is where the magic happens. If a method needs for example the intent
     as a parameter (for getting the user's input) add it in the if-chain. If
