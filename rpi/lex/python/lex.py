@@ -6,11 +6,8 @@ import wave
 class Lex():
     '''
     This class can be used to send voice data to AWS Lex.
-<<<<<<< HEAD
-=======
     The credentials for aws are loaded from ~/.aws/credentials
     and region from ~/.aws/region
->>>>>>> 3e2008d713fffc6ff8ca01bffb0d2277615f40e6
     '''
     def __init__(self):
         self.client = boto3.client('lex-runtime')
@@ -29,31 +26,6 @@ class Lex():
     def record(self):
         f = b''
         process = run(self.sox_command.split(), stdout=PIPE)
-<<<<<<< HEAD
-        while not isinstance(process, CompletedProcess):
-            output = process.stdout
-            if output:
-                f += output
-        return f
-        '''
-        Uncomment this if you want to play back the recording before
-        sending it to Lex
-        '''
-        # os.system('sox ' + self.input_fname + ' -d')
-
-    def post_content(self):
-        try:
-            data = self.record()
-            response = self.client.post_content(
-                botName=self.bot_name,
-                botAlias=self.bot_alias,
-                userId=self.user_id,
-                contentType=self.content_type,
-                inputStream=data
-            )
-        finally:
-            pass
-=======
         while True:
             output = process.stdout
             if output:
@@ -71,7 +43,6 @@ class Lex():
             contentType=self.content_type,
             inputStream=data
         )
->>>>>>> 3e2008d713fffc6ff8ca01bffb0d2277615f40e6
 
         print(response)
         return response
@@ -91,13 +62,10 @@ class Lex():
 
         f.writeframesraw(audio_stream)
         f.close()
-<<<<<<< HEAD
-        run(['aplay', self.response_fname])
-=======
         run(['mpg321', self.response_fname])
 
         state = response['dialogState']
         return state
 
 
->>>>>>> 3e2008d713fffc6ff8ca01bffb0d2277615f40e6
+
