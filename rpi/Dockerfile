@@ -1,4 +1,5 @@
-FROM debian:stretch
+ARG BASE=debian
+FROM ${BASE}:stretch
 
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive \
