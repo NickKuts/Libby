@@ -80,6 +80,44 @@ where MODE is one of
   - shell (requires -i -t to be usable)
 ```
 
+## ALSA error messages
+
+The docker container is configured to work with USB speaker and
+microphone.  The following error means that the USB device was not
+found:
+
+```
+ALSA lib pcm.c:2495:(snd_pcm_open_noupdate) Unknown PCM sysdefault:CARD=USB
+```
+
+The docker container uses ALSA directly. The following error means that
+the ALSA device is in use.  When running on a laptop, one common reason
+for that would be that pulseaudio is running.  In that case, try
+"pulseaudio --kill".
+
+```
+ALSA lib pcm_dmix.c:1052:(snd_pcm_dmix_open) unable to open slave Can't find a suitable libao driver. (Is device in use?)
+```
+
+And finally, there are some warnings which on their own seem to be
+harmless and can be ignored:
+
+```
+ALSA lib pcm.c:2495:(snd_pcm_open_noupdate) Unknown PCM spdif
+ALSA lib pcm.c:2495:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.hdmi
+ALSA lib pcm.c:2495:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.hdmi
+ALSA lib pcm.c:2495:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.modem
+ALSA lib pcm.c:2495:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.modem
+ALSA lib pcm.c:2495:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.phoneline
+ALSA lib pcm.c:2495:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.phoneline
+```
+
+These warnings are due to the default alsa.conf listing devices that
+don't exist.  With commands like aplay and arecord no warnings are
+printed, but maybe PyAudio probes all devices or something like that.
+Some of the warnings can be fixed by removing some lines from alsa.conf,
+but since the warnings don't hurt, I didn't investigate further.
+
 ## Rebuilding the docker image
 
 Clone libby.  Then:
