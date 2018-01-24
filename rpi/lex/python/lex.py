@@ -24,15 +24,7 @@ class Lex():
     Create a stream while recording and return it
     '''
     def record(self):
-        f = b''
-        process = run(self.sox_command.split(), stdout=PIPE)
-        while True:
-            output = process.stdout
-            if output:
-                f += output
-            if isinstance(process, CompletedProcess):
-                break
-        return f
+        return run(self.sox_command.split(), stdout=PIPE).stdout
 
     def post_content(self):
         data = self.record()
