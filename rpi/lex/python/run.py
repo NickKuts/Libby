@@ -1,19 +1,15 @@
-import os
-
 from lex import Lex
 from snowboy import snowboydecoder
 from subprocess import run
 
-basedir = os.path.dirname(os.path.abspath(__file__))
-
 lex = Lex()
 stop_recording = False
-model = os.path.join(basedir, "Libby.pmdl")
+model = "Libby.pmdl"
 detector = snowboydecoder.HotwordDetector(model, sensitivity=0.5)
 
 
 def record_and_post():
-    run(['play', os.path.join(basedir, 'snowboy/resources/ding.wav')])
+    run(['play', 'snowboy/resources/ding.wav'])
     response = lex.post_content()
     state = lex.play_response(response)
 
@@ -38,3 +34,5 @@ def detect():
                 interrupt_check=interrupt_callback, sleep_time=0.03)
 
 detect()
+
+
