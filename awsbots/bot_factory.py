@@ -11,7 +11,7 @@ class BotFactory():
         bot = self.get_bot(name)
         bot['lastUpdatedDate'] = str(bot['lastUpdatedDate'])
         bot['createdDate'] = str(bot['createdDate'])
-        d = bot['lastUpdatedDate'][:10]
+        d = bot['lastUpdatedDate'][:5]
         fname = "bots/" + name + "-" + d + ".json"
         data = json.dumps(bot)
         with open(fname, 'w') as f:
@@ -25,7 +25,6 @@ class BotFactory():
         return response
 
     def update_bot_from_data(self, bot_data, process_behavior):
-
         name = bot_data['name']
         try:
             description = bot_data['description']
