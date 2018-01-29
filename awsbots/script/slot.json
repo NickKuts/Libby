@@ -1,0 +1,16 @@
+{
+    "enumerationValues": [
+        {
+            "value": "Coffee"
+        },
+        {
+            "value": "Tea"
+        },
+        {
+            "value": "Early Grey"
+        }
+    ],
+    "name": "Categories",
+    "description": "Drinks that are available in Robert's Coffee"
+}
+     

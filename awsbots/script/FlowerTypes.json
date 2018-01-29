@@ -1,0 +1,15 @@
+{
+    "enumerationValues": [
+        {
+            "value": "tulips"
+        },
+        {
+            "value": "lilies"
+        },
+        {
+            "value": "roses"
+        }
+    ],
+    "name": "FlowerTypes",
+    "description": "Types of flowers to pick up"
+}
