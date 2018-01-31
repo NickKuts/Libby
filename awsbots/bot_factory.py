@@ -11,7 +11,9 @@ class BotFactory():
         bot = self.get_bot(name)
         bot['lastUpdatedDate'] = str(bot['lastUpdatedDate'])
         bot['createdDate'] = str(bot['createdDate'])
-        d = bot['lastUpdatedDate'][:5]
+        d = bot['lastUpdatedDate'][:15]
+        v = bot['version']
+        # e.g. Libby5-2018-01-30
         fname = "bots/" + name + "-" + d + ".json"
         data = json.dumps(bot)
         with open(fname, 'w') as f:
@@ -30,6 +32,7 @@ class BotFactory():
             description = bot_data['description']
         except:
             description = "A bot."
+            print("No description found for bot, creating it.")
 
         intents = bot_data['intents']
         clarification_prompt = bot_data['clarificationPrompt']
@@ -56,7 +59,8 @@ class BotFactory():
         return response
 
     def update_bot(self, name, process_behavior='BUILD'):
-        bot_data = self.get_bot(name)
+        # bot_data = self.get_bot(name)
+        bot_data = self.load_bot_from_file(name) 
         res = self.update_bot_from_data(bot_data, process_behavior)
 
     def load_bot_from_file(self, name):
