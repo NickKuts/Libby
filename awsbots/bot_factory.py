@@ -11,9 +11,9 @@ class BotFactory():
         bot = self.get_bot(name)
         bot['lastUpdatedDate'] = str(bot['lastUpdatedDate'])
         bot['createdDate'] = str(bot['createdDate'])
-        d = bot['lastUpdatedDate'][:15]
+        d = bot['lastUpdatedDate'][:16].replace(" ", "_")
         v = bot['version']
-        # e.g. Libby5-2018-01-30
+        # e.g. Libby_dev-2018-01-3016:30
         fname = "bots/" + name + "-" + d + ".json"
         data = json.dumps(bot)
         with open(fname, 'w') as f:
@@ -28,6 +28,7 @@ class BotFactory():
 
     def update_bot_from_data(self, bot_data, process_behavior):
         name = bot_data['name']
+        print("Bot name",name)
         try:
             description = bot_data['description']
         except:
@@ -42,20 +43,34 @@ class BotFactory():
         checksum = bot_data['checksum']
         locale = bot_data['locale']
         child_directed = bot_data['childDirected']
-
-        response = self.client.put_bot(
-            name=name,
-            description=description,
-            intents=intents,
-            clarificationPrompt=clarification_prompt,
-            abortStatement=abort_statement,
-            idleSessionTTLInSeconds=idleSessionTTLInSeconds,
-            voiceId=voiceId,
-            checksum=checksum,
-            processBehavior=process_behavior,
-            locale=locale,
-            childDirected=child_directed
-        )
+        
+        if checksum == "":
+            response = self.client.put_bot(
+                name=name,
+                description=description,
+                intents=intents,
+                clarificationPrompt=clarification_prompt,
+                abortStatement=abort_statement,
+                idleSessionTTLInSeconds=idleSessionTTLInSeconds,
+                voiceId=voiceId,
+                processBehavior=process_behavior,
+                locale=locale,
+                childDirected=child_directed
+            )
+        else:
+            response = self.client.put_bot(
+                name=name,
+                description=description,
+                intents=intents,
+                clarificationPrompt=clarification_prompt,
+                abortStatement=abort_statement,
+                idleSessionTTLInSeconds=idleSessionTTLInSeconds,
+                voiceId=voiceId,
+                checksum=checksum,
+                processBehavior=process_behavior,
+                locale=locale,
+                childDirected=child_directed
+            )   
         return response
 
     def update_bot(self, name, process_behavior='BUILD'):
@@ -73,6 +88,5 @@ class BotFactory():
     def create_bot(self, name, process_behavior='BUILD'):
         bot_data = self.load_bot_from_file(name)
         bot_data['checksum'] = ""
-
         res = self.update_bot_from_data(bot_data, process_behavior)
 
