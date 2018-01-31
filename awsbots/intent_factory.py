@@ -35,7 +35,7 @@ class IntentFactory:
 
         try:
             res = self.client.put_intent(**dummy)
-            print("Created intent", data['name'])
+            print("Created intent", name)
         except Exception as e:
             print(e)
 
@@ -44,6 +44,7 @@ class IntentFactory:
         data['checksum'] = checksum
         
         try:
+            data.pop('ResponseMetadata', None)
             data.pop('lastUpdatedDate', None)
             data.pop('createdDate', None)
             data.pop('version', None)
@@ -52,7 +53,10 @@ class IntentFactory:
 
 
         lam_res = self.lambda_client.add_permission(
-            FunctionName='Libby'
+            FunctionName='Libby',
+            StatementId='3',
+            Action='lambda:*',
+            Principal='lex.amazonaws.com'
         )
         
         real_res = self.client.put_intent(**data)
