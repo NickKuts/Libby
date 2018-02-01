@@ -28,10 +28,15 @@ class IntentFactory:
 
         res = self.client.put_intent(**data)
 
-    def create_intent(self, name, fname):
-        
+    def create_intent(self, fname):
+       
+        data = self.load_intent_from_file(fname)
         dummy = self.load_intent_from_file('intents/dummy.json')
+
+        name = data['name']
+
         dummy['name'] = name
+
 
         try:
             res = self.client.put_intent(**dummy)
@@ -39,8 +44,8 @@ class IntentFactory:
         except Exception as e:
             print(e)
 
-        checksum = self.get_intent(name)['checksum']
-        data = self.load_intent_from_file(fname)
+        created_intent = self.get_intent(name)
+        checksum = created_intent['checksum']
         data['checksum'] = checksum
         
         try:
@@ -48,19 +53,21 @@ class IntentFactory:
             data.pop('lastUpdatedDate', None)
             data.pop('createdDate', None)
             data.pop('version', None)
-        except:
+        except Exception as e:
             print("no data to remove from json data")
+            print(e)
 
 
-        lam_res = self.lambda_client.add_permission(
-            FunctionName='Libby',
-            StatementId='3',
-            Action='lambda:*',
-            Principal='lex.amazonaws.com'
-        )
-        
         real_res = self.client.put_intent(**data)
-        
+
+        #lam_res = self.lambda_client.add_permission(
+            #FunctionName='Libby',
+            #StatementId='4',
+            #Action='lambda:*',
+            #Principal='lex.amazonaws.com'
+        #)
+
+
 
     def get_intent(self, name, version='$LATEST'):
         response = self.client.get_intent(
