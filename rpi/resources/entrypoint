@@ -1,10 +1,21 @@
 #!/bin/bash -e
 export PYTHONPATH=/rpi/lex/python
+
+default_device="sysdefault:CARD=USB"
+pcm_device=${PCM_DEVICE:-$default_device}
+
+alsa_setup() {
+    slave_pcm="slave.pcm \"$pcm_device\""
+    sed -e "s/__SLAVE_PCM__/$slave_pcm/" --in-place /etc/asound.conf
+}
+
 case $1 in
     run)
+	alsa_setup
         /venv/bin/python -m run
         ;;
     run_no_snowboy)
+	alsa_setup
         /venv/bin/python -m run_no_snowboy
         ;;
     help|--help)
@@ -16,6 +27,7 @@ USAGE:
         -e AWS_DEFAULT_REGION=eu-west-1 \\
         -e AWS_ACCESS_KEY_ID=... \\
         -e AWS_SECRET_ACCESS_KEY=... \\
+        -e PCM_DEVICE=... \\
         --device /dev/snd --privileged \\
         [-i -t] libbypi MODE
 
@@ -25,9 +37,16 @@ where MODE is one of
   - help (prints this message)
   - shell (requires -i -t to be usable)
 
+Examples for PCM_DEVICE include (c.f. arecord -L):
+  sysdefault:CARD=USB (default)
+  sysdefault:CARD=Headset
+  sysdefault:CARD=J810
+  sysdefault:CARD=PCM
+
 EOF
         ;;
     shell)
+        alsa_setup
         exec /bin/bash
         ;;
     *)

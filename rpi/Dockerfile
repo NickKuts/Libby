@@ -21,7 +21,7 @@ RUN tar C /venv/src/snowboy -cf - \
    examples/Python3/snowboydecoder.py \
    | tar C /rpi/lex/python/snowboy --strip=2 -xvf -
 
-COPY resources/asound.conf /etc/
+COPY resources/asound.conf.template /etc/asound.conf
 COPY resources/entrypoint /
 
 ENTRYPOINT ["/entrypoint"]
