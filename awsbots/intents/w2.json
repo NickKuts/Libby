@@ -11,7 +11,7 @@
 		},
 		"RetryAttempts": 0
 	},
-	"name": "IntentFromPythonAgain",
+	"name": "weatherfrompython",
 	"slots": [],
 	"sampleUtterances": ["what the weather is like", "weather", "what is the weather like", "what is the weather like today", "tell me the weather", "tell the weather"],
 	"dialogCodeHook": {

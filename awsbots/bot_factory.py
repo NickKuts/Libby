@@ -1,4 +1,5 @@
 import boto3
+
 import json
 from datetime import datetime
 
@@ -13,7 +14,6 @@ class BotFactory():
         bot['createdDate'] = str(bot['createdDate'])
         d = bot['lastUpdatedDate'][:16].replace(" ", "_")
         v = bot['version']
-        # e.g. Libby_dev-2018-01-3016:30
         fname = "bots/" + name + "-" + d + ".json"
         data = json.dumps(bot)
         with open(fname, 'w') as f:
@@ -26,57 +26,22 @@ class BotFactory():
         )
         return response
 
-    def update_bot_from_data(self, bot_data, process_behavior):
-        name = bot_data['name']
-        print("Bot name",name)
-        try:
-            description = bot_data['description']
-        except:
-            description = "A bot."
-            print("No description found for bot, creating it.")
-
-        intents = bot_data['intents']
-        clarification_prompt = bot_data['clarificationPrompt']
-        abort_statement = bot_data['abortStatement']
-        idleSessionTTLInSeconds = bot_data['idleSessionTTLInSeconds']
-        voiceId = bot_data['voiceId']
-        checksum = bot_data['checksum']
-        locale = bot_data['locale']
-        child_directed = bot_data['childDirected']
-        
-        if checksum == "":
-            response = self.client.put_bot(
-                name=name,
-                description=description,
-                intents=intents,
-                clarificationPrompt=clarification_prompt,
-                abortStatement=abort_statement,
-                idleSessionTTLInSeconds=idleSessionTTLInSeconds,
-                voiceId=voiceId,
-                processBehavior=process_behavior,
-                locale=locale,
-                childDirected=child_directed
-            )
-        else:
-            response = self.client.put_bot(
-                name=name,
-                description=description,
-                intents=intents,
-                clarificationPrompt=clarification_prompt,
-                abortStatement=abort_statement,
-                idleSessionTTLInSeconds=idleSessionTTLInSeconds,
-                voiceId=voiceId,
-                checksum=checksum,
-                processBehavior=process_behavior,
-                locale=locale,
-                childDirected=child_directed
-            )   
-        return response
-
     def update_bot(self, name, process_behavior='BUILD'):
-        # bot_data = self.get_bot(name)
-        bot_data = self.load_bot_from_file(name) 
-        res = self.update_bot_from_data(bot_data, process_behavior)
+        bot_data = self.load_bot_from_file(name)
+        old_data = self.get_bot(bot_data['name'])
+        bot_data['checksum'] = old_data['checksum']
+
+        try:
+            bot_data.pop('ResponseMetadata')
+            bot_data.pop('status')
+            bot_data.pop('lastUpdatedDate')
+            bot_data.pop('createdDate')
+            bot_data.pop('version')
+        except:
+            print("Failed to pop all from bot data")
+
+
+        res = self.client.put_bot(**bot_data)
 
     def load_bot_from_file(self, name):
         bot_data = {}
@@ -87,6 +52,16 @@ class BotFactory():
 
     def create_bot(self, name, process_behavior='BUILD'):
         bot_data = self.load_bot_from_file(name)
-        bot_data['checksum'] = ""
-        res = self.update_bot_from_data(bot_data, process_behavior)
+        
+        try:
+            bot_data.pop('checksum')
+            bot_data.pop('ResponseMetadata')
+            bot_data.pop('status')
+            bot_data.pop('lastUpdatedDate')
+            bot_data.pop('createdDate')
+            bot_data.pop('version')
+        except:
+            print("failed to checksum")
+        
+        res = self.client.put_bot(**bot_data)
 
