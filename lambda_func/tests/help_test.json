@@ -1,0 +1,131 @@
+{
+  "basic": {
+      "messageVersion": "1.0",
+      "invocationSource": "DialogCodeHook",
+      "userId": "5p98w163n045tp4wnduvue91d7xdntiq",
+      "sessionAttributes": {
+      },
+      "requestAttributes": null,
+      "bot": {
+        "name": "Libby_dev",
+        "alias": "$LATEST",
+        "version": "$LATEST"
+      },
+      "outputDialogMode": "Text",
+      "currentIntent": {
+        "name": "Get_Help",
+        "slots": {
+          "what": null
+        },
+        "slotDetails": {
+          "what": {
+            "resolutions": [
+            ],
+            "originalValue": null
+          }
+        },
+        "confirmationStatus": "None"
+      },
+      "inputTranscript": "help"
+  },
+  "help_weather": {
+  "messageVersion": "1.0",
+  "invocationSource": "DialogCodeHook",
+  "userId": "acpjp2rzapq8m3qmstfa19skdkq06q3w",
+  "sessionAttributes": {
+
+  },
+  "requestAttributes": null,
+  "bot": {
+    "name": "Libby_dev",
+    "alias": "$LATEST",
+    "version": "$LATEST"
+  },
+  "outputDialogMode": "Text",
+  "currentIntent": {
+    "name": "Get_Help",
+    "slots": {
+      "what": "weather"
+    },
+    "slotDetails": {
+      "what": {
+        "resolutions": [
+          {
+            "value": "weather"
+          }
+        ],
+        "originalValue": "weather"
+      }
+    },
+    "confirmationStatus": "None"
+  },
+  "inputTranscript": "help weather"
+  },
+  "help_roberts_coffee": {
+  "messageVersion": "1.0",
+  "invocationSource": "DialogCodeHook",
+  "userId": "a08w7nc0wioc7x3ka4o92a3kgbsw29vf",
+  "sessionAttributes": {
+
+  },
+  "requestAttributes": null,
+  "bot": {
+    "name": "Libby_dev",
+    "alias": "$LATEST",
+    "version": "$LATEST"
+  },
+  "outputDialogMode": "Text",
+  "currentIntent": {
+    "name": "Get_Help",
+    "slots": {
+      "what": "robert's coffee"
+    },
+    "slotDetails": {
+      "what": {
+        "resolutions": [
+          {
+            "value": "robert's coffee"
+          }
+        ],
+        "originalValue": "robert's coffee"
+      }
+    },
+    "confirmationStatus": "None"
+  },
+  "inputTranscript": "help robert's coffee"
+  },
+  "help_location": {
+  "messageVersion": "1.0",
+  "invocationSource": "DialogCodeHook",
+  "userId": "a08w7nc0wioc7x3ka4o92a3kgbsw29vf",
+  "sessionAttributes": {
+
+  },
+  "requestAttributes": null,
+  "bot": {
+    "name": "Libby_dev",
+    "alias": "$LATEST",
+    "version": "$LATEST"
+  },
+  "outputDialogMode": "Text",
+  "currentIntent": {
+    "name": "Get_Help",
+    "slots": {
+      "what": "location"
+    },
+    "slotDetails": {
+      "what": {
+        "resolutions": [
+          {
+            "value": "location"
+          }
+        ],
+        "originalValue": "location"
+      }
+    },
+    "confirmationStatus": "None"
+  },
+  "inputTranscript": "help location"
+  }
+
+}

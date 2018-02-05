@@ -6,6 +6,7 @@ import json
 
 class TestUtilDate(unittest.TestCase):
 
+    """
     def setUp(self):
         # init_something()
         pass
@@ -13,13 +14,15 @@ class TestUtilDate(unittest.TestCase):
     def tearDown(self):
         # teardown_something()
         pass
+    """
 
     def test_weather(self):
-        self.assertEqual('foo', 'foo')
+        # self.assertEqual('foo', 'foo')
         json_data = json.load(open("./tests/weather_test.json"))
-        # result = main_handler.lambda_handler(json_data, None)
-        # assert(result != None)
-        pass
+        result = main_handler.lambda_handler(json_data, None)
+        assert(result is not None)
+        # pass
+
 
 def main():
     print("Main function")

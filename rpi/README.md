@@ -1,4 +1,5 @@
-# Raspberry Pi Setup
+# Raspberry Pi Setup (ALEXA)
+
 ## Running the script
 Remember to make the file executable first:
 ```
