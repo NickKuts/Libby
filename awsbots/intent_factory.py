@@ -6,42 +6,44 @@ class IntentFactory:
 
     def __init__(self):
         self.client = boto3.client('lex-models')
-        self.lambda_client = boto3.client('lambda')
 
-    def load_intent_from_file(self, name):
+    def load_intent_from_file(self, fname):
         data = {}
 
-        with open(name, 'r') as f:
+        with open(fname, 'r') as f:
             d = f.read()
             data = json.loads(d)
         return data
 
     def update_intent(self, name):
-        
+ 
         data = self.load_intent_from_file(name)
+        old_data = self.get_intent(data['name'])
+        data['checksum'] = old_data['checksum']
 
-        try:
-            data.pop('lastUpdatedDate', None)
-            data.pop('createdDate', None)
-            data.pop('version', None)
-        except:
-            print("Failed to remove parts from json")
+        arr = ['lastUpdatedDate', 'createdDate', 'version']
+
+        for key in arr:
+            try:
+                data.pop(key)
+            except:
+                print("No key '"+key+"' to remove")
 
         res = self.client.put_intent(**data)
 
     def create_intent(self, fname):
-       
+ 
         data = self.load_intent_from_file(fname)
         name = data['name']
         
-        try:
-            data.pop('ResponseMetadata', None)
-            data.pop('lastUpdatedDate', None)
-            data.pop('createdDate', None)
-            data.pop('version', None)
-        except Exception as e:
-            print("no data to remove from json data")
-            print(e)
+        arr = ['ResponseMetadata','lastUpdatedDate', 
+                'createdDate','version']
+        
+        for key in arr:
+            try:
+                bot_data.pop(key)
+            except:
+                print("No key '"+key+"' to remove")
 
         real_res = self.client.put_intent(**data)
 

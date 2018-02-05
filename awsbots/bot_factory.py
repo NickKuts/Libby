@@ -31,15 +31,14 @@ class BotFactory():
         old_data = self.get_bot(bot_data['name'])
         bot_data['checksum'] = old_data['checksum']
 
-        try:
-            bot_data.pop('ResponseMetadata')
-            bot_data.pop('status')
-            bot_data.pop('lastUpdatedDate')
-            bot_data.pop('createdDate')
-            bot_data.pop('version')
-        except:
-            print("Failed to pop all from bot data")
-
+        arr = ['ResponseMetadata', 'status', 
+                'lastUpdateDate', 'createdDate','version']
+        
+        for key in arr:
+            try:
+                bot_data.pop(key)
+            except:
+                print("No key '"+key+"' to remove")
 
         res = self.client.put_bot(**bot_data)
 

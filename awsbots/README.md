@@ -8,7 +8,7 @@ botocore.errorfactory.BadRequestException: An error occurred (BadRequestExceptio
 botocore.errorfactory.BadRequestException: An error occurred
 (BadRequestException) when calling the PutBot operation: RelativeId does not
 match Lex ARN format: bot:LibbyFromPython2:$LATEST
-- The name should not contain numbers.
+- The name of bots, intents or slots cannot contain numbers.
 
 
 
