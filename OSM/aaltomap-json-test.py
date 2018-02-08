@@ -15,23 +15,34 @@ def get_restaurants(f_p):
     Function for getting all restaurants from the Useful Aaltomap JSON file. 
     The function saves both the name of the restaurant, as well as the equivalent OSM node id
     """
-    restaurants = []
+    restaurants = {}
     aalto = json.load(f_p)
+
+    def add_child(ch):
+        if 'type' in ch and ch['type'] == 'restaurant':
+            if 'name' in ch:
+                restaurants[ch['name']] = c['osm'].replace('=', '/')
+            else:
+                restaurants[ch['id'].title()] = c['osm'].replace('=', '/')
+
     # The JSON file has (for some reason) separated restaurants into two JSON variables,
     # thus we have to got through both
     for v in aalto['buildings']:
         if 'children' in v:
             child = v['children']
             for c in child:
-                if 'type' in c and c['type'] == 'restaurant':
-                    if 'name' in c:
-                        restaurants.append((c['name'], c['osm'].replace("=", "/")))
-                    else:
-                        restaurants.append((c['id'].title(), c['osm'].replace("=", "/")))
+                add_child(c)
     for v in aalto['other']:
-        if 'type' in v and v['type'] == 'restaurant':
-            restaurants.append((v['name'], v['osm'].replace("=", "/")))
+        add_child(v)
     return restaurants
+
+
+def save_restaurants(rests, filename='restaurants.json'):
+    """ Quick function for saving all restaurants found in UsefulAaltoMap """
+    if not filename.endswith('.json'):
+        filename = filename + '.json'
+    with open(filename, 'w+') as f_p:
+        json.dump(rests, f_p, indent=4)
 
 
 def get_rest_location(rest):
@@ -71,8 +82,10 @@ def aaltomap_handler(event, context):
     with open(filename, 'r') as f:
         restaurants = get_restaurants(f)
 
-    get_rest_location(restaurants[0][1])
-
+    print(get_rest_location(list(restaurants.values())[0]))
+    save_restaurants(restaurants)
+    #import util.py
+    #return util.close({}, 'Fulilled', restaurants)
     return {
         'sessionAttributes': {},
         'dialogAction': {
