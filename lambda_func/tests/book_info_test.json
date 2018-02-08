@@ -1,0 +1,18 @@
+{
+    "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
+    "sessionAttributes": {},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "find computer",
+    "currentIntent": {
+      "name": "FindBook",
+      "slots": {},
+      "confirmationStatus": "None"
+    }
+  }
