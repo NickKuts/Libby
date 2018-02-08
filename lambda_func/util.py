@@ -115,6 +115,9 @@ def is_number(s):
 
 
 def make_string_list(list):
-    ordered_list = sorted(list)
-    last = ordered_list.pop()
-    return ", ".join(ordered_list) + " and " + last
+    if len(list) > 1:
+        ordered_list = sorted(list)
+        last = ordered_list.pop()
+        return ", ".join(ordered_list) + " and " + last
+    else:
+        return list[0]

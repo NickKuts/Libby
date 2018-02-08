@@ -9,5 +9,5 @@ def lambda_handler(event, context):
         return util.debug(event)
     print(context)
     intent = event['currentIntent']
-    router = Router(intent)
+    router = Router(event)
     return router.route()
