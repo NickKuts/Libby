@@ -132,7 +132,7 @@ def lookfor(term="", field=[], filter=[], method='GET', pretty_print='0'):
     params = {
         'filter[]': [
             'building:"0/AALTO/"',
-            'lng:en-gb'
+            'lng:en-gb',
         ] + filter,
         'field[]': field,
         'prettyPrint': pretty_print,
@@ -146,9 +146,9 @@ def lookfor(term="", field=[], filter=[], method='GET', pretty_print='0'):
     r = sess.request(url=__url + 'search', method=method)
     sess.close()
 
-    print(r.url)
+    # print(r.url)
     # print(r.json())
-    print("result count: " + str(r.json()['resultCount']))
+    # print("result count: " + str(r.json()['resultCount']))
 
     return {'status_code': r.status_code, 'json': r.json()}
 
@@ -156,9 +156,10 @@ def lookfor(term="", field=[], filter=[], method='GET', pretty_print='0'):
 def prettyprint(input):
     return input['dialogAction']['message']['content']
 
-
+"""
 print(prettyprint(find_info('publicationDates', lookfor('computer', [
     'publicationDates', 'id'])['json']['records'][0]['id'])))
 print(prettyprint(find_info('nonPresenterAuthors', lookfor('computer')['json'][
     'records'][10]['id'])))
 print(prettyprint(subject_info('corporate communication',)))
+"""
