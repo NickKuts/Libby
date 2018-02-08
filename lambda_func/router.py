@@ -35,11 +35,12 @@ class Router:
     def route(self):
         name = self.intent['currentIntent']['name']
         if name == "Get_Drinks":
-            return self.intents[name](self.intent['slots']['category'])
+            return self.intents[name](self.intent['currentIntent']['slots'][
+                'category'])
         if name == "Get_Prices":
-            return self.intents[name](self.intent)
+            return self.intents[name](self.intent['currentIntent'])
         if name == "Get_Help":
-            return self.intents[name](self.intent)
+            return self.intents[name](self.intent['currentIntent'])
         if name == "FindBook":
             return self.intents[name](self.intent['inputTranscript'][5:])
         if name == "ExtraInfo":
