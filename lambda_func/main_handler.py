@@ -1,5 +1,5 @@
-from .router import Router
-from . import util
+from router import Router
+import util
 # --------------- Main handler ------------------
 
 
@@ -9,5 +9,5 @@ def lambda_handler(event, context):
         return util.debug(event)
     print(context)
     intent = event['currentIntent']
-    router = Router(intent)
+    router = Router(event)
     return router.route()

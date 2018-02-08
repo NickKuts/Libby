@@ -1,6 +1,4 @@
 import unittest
-import json
-from lambda_func import main_handler
 from lambda_func import util
 
 

@@ -1,5 +1,5 @@
 import json
-# --------------- Helpers that build all of the responses ----------------------
+# --------------- Helpers that build all of the responses ---------------------
 
 
 def close(session_attributes, fulfillment_state, message):
@@ -8,12 +8,15 @@ def close(session_attributes, fulfillment_state, message):
         'dialogAction': {
             'type': 'Close',
             'fulfillmentState': fulfillment_state,
-            'message': message
+            'message': {
+                'contentType': 'PlainText',
+                'content': message
+            }
         }
     }
 
 
-""" 
+"""
 NOT NEEDED YET
 def delegate(session_attributes, slots):
     return {
@@ -34,7 +37,10 @@ def elicit_intent(session_attributes, message):
         'sessionAttributes': session_attributes,
         'dialogAction': {
             'type': 'ElicitIntent',
-            'message': message
+            'message': {
+                'contentType': 'PlainText',
+                'content': message
+            }
         }
     }
 
@@ -46,7 +52,10 @@ def elicit_slot(session_attributes, message, slots, intent_name, slot_name):
         'sessionAttributes': session_attributes,
         'dialogAction': {
             'type': 'ElicitSlot',
-            'message': message,
+            'message': {
+                'contentType': 'PlainText',
+                'content': message
+            },
             'slots': slots,
             'intentName': intent_name,
             'slotToElicit': slot_name
@@ -56,10 +65,7 @@ def elicit_slot(session_attributes, message, slots, intent_name, slot_name):
 
 
 def handle_session_end_request():
-    message = {
-        'contentType': 'PlainText',
-        'content': "Hope you found what you were looking for"
-    }
+    message = "Hope you found what you were looking for"
     return close({}, 'Fulfilled', message)
 
 
@@ -70,7 +76,7 @@ def debug(event):
             'type': 'ElicitIntent',
             'message': {
                 'contentType': 'PlainText',
-                'content':  json.dumps(event)
+                'content': json.dumps(event)
             }
         }
     }
@@ -78,8 +84,8 @@ def debug(event):
 
 
 """
-Takes list of strings as a parameter and parses it's elements to sound better in Alexa's speech. For example: 
-4.50 -> 4 euros 50 cents  and 4.00 -> 4 euros
+Takes list of strings as a parameter and parses it's elements to sound better
+in Libby's speech. For example: 4.50 -> 4 euros 50 cents  and 4.00 -> 4 euros
 """
 
 
@@ -106,3 +112,12 @@ def is_number(s):
         return True
     except ValueError:
         return False
+
+
+def make_string_list(list):
+    if len(list) > 1:
+        ordered_list = sorted(list)
+        last = ordered_list.pop()
+        return ", ".join(ordered_list) + " and " + last
+    else:
+        return list[0]
