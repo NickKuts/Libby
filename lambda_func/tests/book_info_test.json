@@ -1,4 +1,5 @@
 {
+  "findComputer": {
     "messageVersion": "1.0",
     "invocationSource": "DialogCodeHook",
     "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
@@ -9,10 +10,11 @@
       "version": "$LATEST"
     },
     "outputDialogMode": "Text",
-    "inputTranscript": "find computer",
+    "inputTranscript": "find computer books",
     "currentIntent": {
       "name": "FindBook",
       "slots": {},
       "confirmationStatus": "None"
     }
   }
+}
