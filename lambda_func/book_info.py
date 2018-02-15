@@ -1,6 +1,7 @@
 import requests
 import util
 import re
+import json
 
 """This is the URL for the Finna API with a needed header for proper results"""
 __url = 'https://api.finna.fi/api/v1/'
@@ -18,17 +19,19 @@ def parse(info):
     ret = []
     output = "Parse error"
     for elem in info:
+        print("elem: " + str(elem))
         if 'name' in elem:
             ret.append(elem['name'])
             if len(ret) > 1:
                 output = "Authors of this book is "
             else:
                 output = "Author of this book is "
-        elif re.compile('[0-9]{4}').match(elem):
+        elif re.compile('[0-9]{4}').match(str(elem)):
             ret.append(elem)
             output = "This book was published in "
         else:
-            if re.compile("1/AALTO/([a-z])*/"):
+            print("elem: " + elem['value'])
+            if re.compile("1/AALTO/([a-z])*/").match(elem['value']):
                 ret.append(elem['translated'])
                 output = "This book is located in "
     return output + util.make_string_list(ret)
@@ -42,12 +45,22 @@ def find_info(book_id, field='buildings'):
         message = parse(field_info)
         return util.elicit_intent({'book_id': book_id}, message)
     else:
-        return util.close({}, 'Fulfilled', "Something went wrong")
+        return util.close({}, 'Fulfilled', "Something went wrong1")
 
 
 def subject_info(subject, extra_info=[]):
-    request = lookfor(subject, filter=extra_info)['json']
-    message = "Something went wrong"
+    if subject.startswith("find"):
+        subject = subject[5:]
+    if subject.endswith("book") or subject.endswith("books"):
+        #print("subject1: ", subject)
+        subject = subject[:-5]
+        #print("subject2: ", subject)
+
+    request = lookfor(term=subject, filter=extra_info)['json']
+    message = "Something went wrong2"
+    #print("subject: " + subject)
+    # print("extra_info: " + extra_info())
+    #print("request: " + json.dumps(request))
     if request['status'] == 'OK':
         result_count = request['resultCount']
         if result_count == 0:
@@ -102,6 +115,7 @@ def record(id, field={}, method='GET', pretty_print='0'):
         'field[]': field,
         'id': id,
         'prettyPrint': pretty_print,
+        'lng':'en-gb'
     }
 
     sess = requests.Session()
@@ -130,13 +144,13 @@ def lookfor(term="", field=[], filter=[], method='GET', pretty_print='0'):
     :return: a dictionary with 'status_code' from the request and 'json'
     """
     params = {
+        'lookfor': term,
         'filter[]': [
             'building:"0/AALTO/"',
-            'lng:en-gb',
         ] + filter,
         'field[]': field,
         'prettyPrint': pretty_print,
-        'lookfor': term,
+        'lng':'en-gb'
     }
 
     sess = requests.Session()
@@ -146,8 +160,8 @@ def lookfor(term="", field=[], filter=[], method='GET', pretty_print='0'):
     r = sess.request(url=__url + 'search', method=method)
     sess.close()
 
-    # print(r.url)
-    # print(r.json())
+    print(r.url)
+    print(r.json())
     # print("result count: " + str(r.json()['resultCount']))
 
     return {'status_code': r.status_code, 'json': r.json()}

@@ -2,6 +2,8 @@ import unittest
 import json
 from lambda_func import main_handler, book_info
 
+test_data = json.load(open("./tests/help_test.json"))
+
 
 class TestBookInfo(unittest.TestCase):
     test_data = json.load(open("tests/book_info_test.json"))
