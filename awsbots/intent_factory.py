@@ -64,3 +64,9 @@ class IntentFactory:
         data = json.dumps(intent)
         with open(fname, 'w') as f:
             f.write(data)
+
+    def remove_intent(self, name):
+        response = self.client.delete_intent(
+            name=name
+        )
+        return response

@@ -1,5 +1,4 @@
 import boto3
-
 import json
 from datetime import datetime
 
@@ -19,6 +18,8 @@ class BotFactory():
         with open(fname, 'w') as f:
             f.write(data)
 
+        return bot
+
     def get_bot(self, name, version='$LATEST'):
         response = self.client.get_bot(
             name=name,
@@ -33,7 +34,7 @@ class BotFactory():
 
         arr = ['ResponseMetadata', 'status', 
                 'lastUpdateDate', 'createdDate','version']
-        
+    
         for key in arr:
             try:
                 bot_data.pop(key)
@@ -41,6 +42,7 @@ class BotFactory():
                 print("No key '"+key+"' to remove")
 
         res = self.client.put_bot(**bot_data)
+        return res
 
     def load_bot_from_file(self, name):
         bot_data = {}
@@ -51,16 +53,22 @@ class BotFactory():
 
     def create_bot(self, name, process_behavior='BUILD'):
         bot_data = self.load_bot_from_file(name)
-        
-        try:
-            bot_data.pop('checksum')
-            bot_data.pop('ResponseMetadata')
-            bot_data.pop('status')
-            bot_data.pop('lastUpdatedDate')
-            bot_data.pop('createdDate')
-            bot_data.pop('version')
-        except:
-            print("failed to checksum")
-        
+
+        arr = ['checksum', 'ResponseMetadata', 'status', 'lastUpdatedDate',
+                'createdDate', 'version']
+
+        for key in arr:
+            try:
+                bot_data.pop(key)
+            except: 
+                print("No key '"+key+"' to remove")
+
         res = self.client.put_bot(**bot_data)
+        return res
+
+    def remove_bot(self, name):
+        res = self.client.delete_bot(
+            name=name
+        )
+        return res
 

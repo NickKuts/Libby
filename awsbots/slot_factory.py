@@ -69,3 +69,9 @@ class SlotFactory:
         with open(fname, 'w') as f:
             f.write(data)
 
+    def remove_slot(self, name):
+        response = self.client.delete_slot_type(
+            name=name        
+        )
+        return response
+
