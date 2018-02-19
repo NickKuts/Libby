@@ -25,7 +25,7 @@ class SlotFactory:
 
         for key in arr:
             try:
-                bot_data.pop(key)
+                data.pop(key)
             except:
                 print("No key '"+key+"' to remove")
 
@@ -68,6 +68,8 @@ class SlotFactory:
         data = json.dumps(slot)
         with open(fname, 'w') as f:
             f.write(data)
+
+        return data
 
     def remove_slot(self, name):
         response = self.client.delete_slot_type(

@@ -33,7 +33,7 @@ class BotFactory():
         bot_data['checksum'] = old_data['checksum']
 
         arr = ['ResponseMetadata', 'status', 
-                'lastUpdateDate', 'createdDate','version']
+                'lastUpdatedDate', 'createdDate','version']
     
         for key in arr:
             try:

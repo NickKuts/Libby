@@ -41,7 +41,7 @@ class IntentFactory:
         
         for key in arr:
             try:
-                bot_data.pop(key)
+                data.pop(key)
             except:
                 print("No key '"+key+"' to remove")
 
@@ -64,6 +64,8 @@ class IntentFactory:
         data = json.dumps(intent)
         with open(fname, 'w') as f:
             f.write(data)
+        
+        return data
 
     def remove_intent(self, name):
         response = self.client.delete_intent(
