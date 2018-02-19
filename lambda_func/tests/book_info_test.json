@@ -16,17 +16,28 @@
       "slots": {},
       "confirmationStatus": "None"
     },
-    "right_result": {
-      "sessionAttributes": {
-        "subject": "computer"
-      },
-      "dialogAction": {
-        "type": "ElicitIntent",
-        "message": {
-          "contentType": "PlainText",
-          "content": "Something wet wrong"
-        }
-      }
-    }
+    "subject": "computer",
+    "url": "https://api.finna.fi/api/v1/search?lookfor=computer&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
+  },
+  "yearExact": {
+    "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
+    "sessionAttributes": {"subject": "computer"},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "It is published 1987",
+    "currentIntent": {
+      "name": "FindBook",
+      "slots": {},
+      "confirmationStatus": "None"
+    },
+    "subject": "computer",
+    "url": "https://api.finna.fi/api/v1/search?lookfor=computer&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
   }
 }
+

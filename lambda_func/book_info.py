@@ -1,7 +1,7 @@
-import requests
+from urllib.request import Request, urlopen
+import json
 import util
 import re
-import json
 
 """This is the URL for the Finna API with a needed header for proper results"""
 __url = 'https://api.finna.fi/api/v1/'
@@ -15,7 +15,7 @@ translator = {
 }
 
 
-def parse(info):
+def parse_record(info):
     ret = []
     output = "Parse error"
     for elem in info:
@@ -38,34 +38,23 @@ def parse(info):
 
 
 def find_info(book_id, field='buildings'):
-    request = record(book_id, {field, 'id'})['json']
+    request = record(book_id, {field: 'id'})['json']
     if request['status'] == 'OK':
         # print(request['json']['records'][0])
         field_info = request['records'][0][field]
-        message = parse(field_info)
+        message = parse_record(field_info)
         return util.elicit_intent({'book_id': book_id}, message)
     else:
         return util.close({}, 'Fulfilled', "Something went wrong1")
 
 
-def subject_info(subject, extra_info=[]):
-    if subject.startswith("find"):
-        subject = subject[5:]
-    if subject.endswith("book") or subject.endswith("books"):
-        #print("subject1: ", subject)
-        subject = subject[:-5]
-        #print("subject2: ", subject)
-
-    request = lookfor(term=subject, filter=extra_info)['json']
+def parse_subject(request, subject):
     message = "Something went wrong2"
-    #print("subject: " + subject)
-    # print("extra_info: " + extra_info())
-    #print("request: " + json.dumps(request))
     if request['status'] == 'OK':
         result_count = request['resultCount']
         if result_count == 0:
-            message = "Sorry, no books was found with those search parameters "\
-                      + subject
+            message = "Sorry, no books was found with those search terms"\
+                    + subject
         elif result_count == 1:
             return find_info(request['records'][0]['id'])
         else:
@@ -75,6 +64,19 @@ def subject_info(subject, extra_info=[]):
                         "example when the book is published or who is the " \
                         "author."
     return util.elicit_intent({'subject': subject}, message)
+
+
+def subject_info(subject, extra_info=[]):
+    if subject.startswith("find"):
+        subject = subject[5:]
+    if subject.endswith("book") or subject.endswith("books"):
+        subject = subject[:-5]
+
+    request = lookfor(term=subject, filter=extra_info)['json']
+    #print("subject: " + subject)
+    # print("extra_info: " + extra_info())
+    #print("request: " + json.dumps(request))
+    return parse_subject(request, subject)
 
 
 def extra_info(intent, extra_info=[]):
@@ -100,7 +102,7 @@ def extra_info(intent, extra_info=[]):
     return subject_info(subject, extra_info=[date])
 
 
-def record(id, field={}, method='GET', pretty_print='0'):
+def record(id, field=[], method='GET', pretty_print='0'):
     """
         Simple function for accessing the Finna API.
         :param id: id of the book looked for
@@ -113,22 +115,31 @@ def record(id, field={}, method='GET', pretty_print='0'):
         """
     params = {
         'field[]': field,
-        'id': id,
-        'prettyPrint': pretty_print,
-        'lng':'en-gb'
+        'id': [id],
+        'prettyPrint': [pretty_print],
+        'lng': ['en-gb']
     }
 
-    sess = requests.Session()
-    sess.headers.update(__headers)
-    sess.params.update(params)
+    params_str = []
+    for key, value in params.items():
+        for term in value:
+            add_str = key + "=" + term
+            params_str.append(add_str)
+    # print(str(params_str))
 
-    r = sess.request(url=__url + 'record', method=method)
-    sess.close()
+    url_data = __url + 'record?' + "&".join(params_str)
+    webURL = Request(url_data)
+    webURL.add_header('User-Agent', 'Mozilla/5.0')
+    data = urlopen(webURL).read()
+    # print(data)
+    encoding = webURL.info().get_content_charset('utf-8')
+    JSON_object = json.loads(data.decode(encoding))
 
-    # print(r.url)
-    # print(r.json())
+    print(url_data)
+    # print(JSON_object)
+    # print("result count: " + str(JSON_object['resultCount']))
 
-    return {'status_code': r.status_code, 'json': r.json()}
+    return {'status_code': JSON_object['status'], 'json': JSON_object}
 
 
 def lookfor(term="", field=[], filter=[], method='GET', pretty_print='0'):
@@ -144,36 +155,34 @@ def lookfor(term="", field=[], filter=[], method='GET', pretty_print='0'):
     :return: a dictionary with 'status_code' from the request and 'json'
     """
     params = {
-        'lookfor': term,
+        'lookfor': [term],
         'filter[]': [
             'building:"0/AALTO/"',
         ] + filter,
         'field[]': field,
-        'prettyPrint': pretty_print,
-        'lng':'en-gb'
+        'prettyPrint': [pretty_print],
+        'lng': ['en-gb']
     }
 
-    sess = requests.Session()
-    sess.headers.update(__headers)
-    sess.params.update(params)
+    params_str = []
+    for key, value in params.items():
+        for term in value:
+            add_str = key + "=" + term
+            params_str.append(add_str)
+    # print(str(params_str))
+    url_data = __url + 'search?' + "&".join(params_str)
+    webURL = urlopen(url_data)
+    data = webURL.read()
+    # print(data)
+    encoding = webURL.info().get_content_charset('utf-8')
+    JSON_object = json.loads(data.decode(encoding))
 
-    r = sess.request(url=__url + 'search', method=method)
-    sess.close()
+    print(url_data)
+    # print(JSON_object)
+    # print("result count: " + str(JSON_object['resultCount']))
 
-    print(r.url)
-    print(r.json())
-    # print("result count: " + str(r.json()['resultCount']))
-
-    return {'status_code': r.status_code, 'json': r.json()}
+    return {'status_code': JSON_object['status'], 'json': JSON_object}
 
 
 def prettyprint(input):
     return input['dialogAction']['message']['content']
-
-"""
-print(prettyprint(find_info('publicationDates', lookfor('computer', [
-    'publicationDates', 'id'])['json']['records'][0]['id'])))
-print(prettyprint(find_info('nonPresenterAuthors', lookfor('computer')['json'][
-    'records'][10]['id'])))
-print(prettyprint(subject_info('corporate communication',)))
-"""
