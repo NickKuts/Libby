@@ -29,7 +29,9 @@ class Weather:
     def __init__(self):
         self.api_key = ""
 
-        self.api_key = os.getenv('fmi_api')
+        self.envget = os.getenv('fmi_api')
+        if self.envget:
+            self.api_key = self.envget
 
         self.start_time = (datetime.now() - timedelta(hours=3)).isoformat()
         self.end_time = (datetime.now() - timedelta(minutes=15)).isoformat()
