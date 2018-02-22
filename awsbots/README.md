@@ -31,11 +31,12 @@ remove_bot(name)
 SlotFactory and IntentFactory have same methods, just replace 'bot' with 'slot'
 or 'intent'.
 
-# Examples
+## Examples
 
 ```
 from intent_factory import IntentFactory
 
+#Save intent 'Weather' and update it 
 i = IntentFactory()
 i.save_intent('Weather')
 i.update_intent('intents/weather_12.json')
@@ -47,7 +48,7 @@ bot = load_bot_from_file('bots/Libby1.json')
 ```
 
 
-# Exceptions
+## Exceptions
 
 BadRequestException:
 - When creating a new bot, if you specify a checksum then this error will
@@ -61,15 +62,3 @@ match Lex ARN format: bot:LibbyFromPython2:$LATEST
 
 
 
-
-# How to add a new intent
-```
-{
-	"name": "IntentName",
-	"slots": [],
-	"sampleUtterances": ["How you doin?"],
-	"fulfillmentActivity": {
-		"type": "ReturnIntent"
-	}
-}
-```
