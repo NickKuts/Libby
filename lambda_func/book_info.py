@@ -21,6 +21,7 @@ def parse_record(info):
     output = "Parse error"
     for elem in info:
         print("elem: " + str(elem))
+        """
         if 'name' in elem:
             ret.append(elem['name'])
             if len(ret) > 1:
@@ -31,10 +32,11 @@ def parse_record(info):
             ret.append(elem)
             output = "This book was published in "
         else:
-            print("elem: " + elem['value'])
-            if re.compile("1/AALTO/([a-z])*/").match(elem['value']):
-                ret.append(elem['translated'])
-                output = "This book is located in "
+        """
+        print("elem: " + elem['value'])
+        if re.compile("1/AALTO/([a-z])*/").match(elem['value']):
+            ret.append(elem['translated'])
+            output = "This book is located in "
     return output + util.make_string_list(ret)
 
 
@@ -46,15 +48,15 @@ def find_info(book_id, field='buildings'):
         message = parse_record(field_info)
         return util.elicit_intent({'book_id': book_id}, message)
     else:
-        return util.close({}, 'Fulfilled', "Something went wrong1")
+        return util.close({}, 'Fulfilled', "Something went wrong")
 
 
 def parse_subject(request, subject):
-    message = "Something went wrong2"
+    message = "Something went wrong"
     if request['status'] == 'OK':
         result_count = request['resultCount']
         if result_count == 0:
-            message = "Sorry, no books was found with those search terms"\
+            message = "Sorry, no books was found with search term: "\
                     + subject
         elif result_count == 1:
             return find_info(request['records'][0]['id'])
@@ -71,7 +73,7 @@ def subject_info(subject, extra_info=[]):
     if subject.startswith("find"):
         subject = subject[5:]
     if subject.endswith("book") or subject.endswith("books"):
-        subject = subject[:-5]
+        subject = subject[:-5].strip()
 
     request = lookfor(term=subject, filter=extra_info)['json']
     # print("subject: " + subject)
@@ -86,20 +88,24 @@ def extra_info(intent):
     lower = 0
     upper = 9999
     if re.search(r"between (\d{4}) and (\d{4})", input) is not None:
+        print("between")
         lower = re.search(r"(\d{4}) and (\d{4})", input).group(1)
         upper = re.search(r"(\d{4}) and (\d{4})", input).group(2)
     elif re.search(r"before (\d{4})", input) is not None:
+        print("before")
         upper = re.search(r"before (\d{4})", input).group(1)
-        # print("<-" + str(re.search(r" before (\d{4})", input).group(1)))
     elif re.search(r"after (\d{4})", input) is not None:
+        print("after")
         lower = re.search(r"after (\d{4})", input).group(1)
-        # print(str(re.search(r" after (\d{4})", input).group(1)) + "->")
     elif re.search(r"(\d{4})", input) is not None:
+        print("year")
         lower = re.search(r"(\d{4})", input).group(1)
-        upper = re.search(r"(\d{4})", input).group(2)
+        upper = re.search(r"(\d{4})", input).group(1)
     else:
         print("No year was given")
-    date = "search_daterange_mv:\"[" + str(lower) + "TO" + str(upper) + "]\""
+    print("lower: " + str(lower) + "      upper: " + str(upper))
+    date = "search_daterange_mv:\"[" + str(lower) + " TO " + str(upper) + "]\""
+    print(date)
     return subject_info(subject, extra_info=[date])
 
 
@@ -185,8 +191,8 @@ def lookfor(term="", field=[], filter=[], method='GET', pretty_print='0'):
     sess.close()
 
     print(r.url)
-    print(r.json())
-    # print("result count: " + str(r.json()['resultCount']))
+    # print(r.json())
+    print("result count: " + str(r.json()['resultCount']))
 
     """
     params_str = []
@@ -211,5 +217,3 @@ def lookfor(term="", field=[], filter=[], method='GET', pretty_print='0'):
     return {'status_code': r.status_code, 'json': r.json()}
 
 
-def prettyprint(input):
-    return input['dialogAction']['message']['content']
