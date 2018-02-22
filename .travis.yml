@@ -17,7 +17,6 @@
     - cd ..
     - cd api_testing && python -m pytest --cov=.
     - cd ..
-    - cd awsbots && python -m pytest --cov=.
   deploy:
     - provider: lambda
       function_name: "LibbyDevelop"
