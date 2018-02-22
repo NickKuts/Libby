@@ -32,7 +32,7 @@
     "outputDialogMode": "Text",
     "inputTranscript": "It is published 1987",
     "currentIntent": {
-      "name": "FindBook",
+      "name": "ExtraInfo",
       "slots": {},
       "confirmationStatus": "None"
     },

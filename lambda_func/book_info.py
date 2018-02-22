@@ -80,7 +80,7 @@ def subject_info(subject, extra_info=[]):
     return parse_subject(request, subject)
 
 
-def extra_info(intent, extra_info=[]):
+def extra_info(intent):
     subject = intent['sessionAttributes']['subject']
     input = intent['inputTranscript']
     lower = 0

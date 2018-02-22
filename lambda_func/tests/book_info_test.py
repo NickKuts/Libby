@@ -9,7 +9,7 @@ class TestBookInfo(unittest.TestCase):
     headers = {'Accept': 'application/json'}
 
     def test_book_info(self):
-        books = ['findComputer']
+        books = ['findComputer', 'yearExact']
         for i in books:
             test_input = self.test_data[i]
             result = main_handler.lambda_handler(test_input, None)
