@@ -2,6 +2,7 @@ from urllib.request import Request, urlopen
 import json
 import util
 import re
+from botocore.vendored import requests
 
 """This is the URL for the Finna API with a needed header for proper results"""
 __url = 'https://api.finna.fi/api/v1/'
@@ -73,9 +74,9 @@ def subject_info(subject, extra_info=[]):
         subject = subject[:-5]
 
     request = lookfor(term=subject, filter=extra_info)['json']
-    #print("subject: " + subject)
+    # print("subject: " + subject)
     # print("extra_info: " + extra_info())
-    #print("request: " + json.dumps(request))
+    # print("request: " + json.dumps(request))
     return parse_subject(request, subject)
 
 
@@ -120,6 +121,17 @@ def record(id, field=[], method='GET', pretty_print='0'):
         'lng': ['en-gb']
     }
 
+    sess = requests.Session()
+    sess.headers.update(__headers)
+    sess.params.update(params)
+
+    r = sess.request(url=__url + 'record', method=method)
+    sess.close()
+
+    # print(r.url)
+    # print(r.json())
+
+    """
     params_str = []
     for key, value in params.items():
         for term in value:
@@ -128,18 +140,19 @@ def record(id, field=[], method='GET', pretty_print='0'):
     # print(str(params_str))
 
     url_data = __url + 'record?' + "&".join(params_str)
-    webURL = Request(url_data)
-    webURL.add_header('User-Agent', 'Mozilla/5.0')
+    webURL = Request(url_data, headers={'User-Agent': 'Mozilla/5.0'})
     data = urlopen(webURL).read()
     # print(data)
-    encoding = webURL.info().get_content_charset('utf-8')
-    JSON_object = json.loads(data.decode(encoding))
+    # encoding = webURL.info().get_content_charset('utf-8')
+    JSON_object = json.loads(data.decode(encoding='utf-8'))
 
     print(url_data)
     # print(JSON_object)
     # print("result count: " + str(JSON_object['resultCount']))
 
     return {'status_code': JSON_object['status'], 'json': JSON_object}
+    """
+    return {'status_code': r.status_code, 'json': r.json()}
 
 
 def lookfor(term="", field=[], filter=[], method='GET', pretty_print='0'):
@@ -164,6 +177,18 @@ def lookfor(term="", field=[], filter=[], method='GET', pretty_print='0'):
         'lng': ['en-gb']
     }
 
+    sess = requests.Session()
+    sess.headers.update(__headers)
+    sess.params.update(params)
+
+    r = sess.request(url=__url + 'search', method=method)
+    sess.close()
+
+    print(r.url)
+    print(r.json())
+    # print("result count: " + str(r.json()['resultCount']))
+
+    """
     params_str = []
     for key, value in params.items():
         for term in value:
@@ -171,17 +196,19 @@ def lookfor(term="", field=[], filter=[], method='GET', pretty_print='0'):
             params_str.append(add_str)
     # print(str(params_str))
     url_data = __url + 'search?' + "&".join(params_str)
-    webURL = urlopen(url_data)
-    data = webURL.read()
+    webURL = Request(url_data, headers={'User-Agent': 'Mozilla/5.0'})
+    data = urlopen(webURL).read()
     # print(data)
-    encoding = webURL.info().get_content_charset('utf-8')
-    JSON_object = json.loads(data.decode(encoding))
+    # encoding = webURL.info().get_content_charset('utf-8')
+    JSON_object = json.loads(data.decode(encoding='utf-8'))
 
     print(url_data)
     # print(JSON_object)
     # print("result count: " + str(JSON_object['resultCount']))
 
     return {'status_code': JSON_object['status'], 'json': JSON_object}
+    """
+    return {'status_code': r.status_code, 'json': r.json()}
 
 
 def prettyprint(input):
