@@ -11,15 +11,20 @@ BotFactory and SlotFactory can be used the same way.
 ## Methods available:
 save_bot(name)
 - Gets the bot from AWS and saves it to a file.
+
 get_bot(name, process_behavior='BUILD')
 - Gets the bot from AWS and returns it as a python dict.
+
 update_bot(name, process_behavior='BUILD')
 - Loads the bot from 'name' and then based on the name of bot in the file,
   updates the bot in AWS to match the file. 
+
 load_bot_from_file(name)
 - Loads the bot from 'name' file and returns it as a python dict.
+
 create_bot(name, process_behavior='BUILD')
 - Create a new bot based on a file.
+
 remove_bot(name)
 - Remove bot 'name'.
 
