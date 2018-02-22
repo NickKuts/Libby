@@ -65,7 +65,7 @@ class IntentFactory:
         with open(fname, 'w') as f:
             f.write(data)
         
-        return data
+        return intent
 
     def remove_intent(self, name):
         response = self.client.delete_intent(
