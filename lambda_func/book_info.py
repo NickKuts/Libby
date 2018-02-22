@@ -68,6 +68,13 @@ def subject_info(subject, extra_info=[]):
                       + subject
         elif result_count == 1:
             return find_info(request['records'][0]['id'])
+        elif result_count < 5:
+            real_count = 0
+            find = ""
+            while real_count < result_count:
+                find += find_info(request['record'][real_count]['id']) + ", "
+                real_count += 1
+            message = "With term" + subject + "will found in" + find
         else:
             message = "With term " + subject + ", " + str(result_count) \
                       + " books was found. Could you give some more " \
@@ -94,10 +101,19 @@ def extra_info(intent, extra_info=[]):
     elif re.search(r"(\d{4})", input) is not None:
         lower = re.search(r"(\d{4})", input).group(1)
         upper = re.search(r"(\d{4})", input).group(2)
+    elif input.startswith('the book is written by'):
+        written = input[21:]
+        return subject_info(subject, extra_info=[written])
+    elif input.startswith('book is written by'):
+        written = input[17:]
+        return subject_info(subject, extra_info=[written])
     else:
-        print("No year was given")
-    date = "search_daterange_mv:\"[" + str(lower) + "TO" + str(upper) + "]\""
-    return subject_info(subject, extra_info=[date])
+        print("No extra info was given")
+    if re.search(r"(\d{4})", input) is not None:
+        date = "search_daterange_mv:\"[" + str(lower) + "TO" + str(upper) + \
+               + "]\""
+        return subject_info(subject, extra_info=[date])
+
 
 
 def record(id, field={}, method='GET', pretty_print='0'):
@@ -160,8 +176,8 @@ def lookfor(term="", field=[], filter=[], method='GET', pretty_print='0'):
     r = sess.request(url=__url + 'search', method=method)
     sess.close()
 
-    print(r.url)
-    print(r.json())
+    #print(r.url)
+    #print(r.json())
     # print("result count: " + str(r.json()['resultCount']))
 
     return {'status_code': r.status_code, 'json': r.json()}
