@@ -1,5 +1,3 @@
-from urllib.request import Request, urlopen
-import json
 import util
 import re
 from botocore.vendored import requests
@@ -97,8 +95,17 @@ def subject_info(subject, extra_info=[]):
 def extra_info(intent):
     subject = intent['sessionAttributes']['subject']
     input = intent['inputTranscript']
+    slots = intent['currentIntent']['slots']
     lower = 0
     upper = 9999
+    if 'lower' in slots:
+        lower = slots['lower']
+    if 'upper' in slots:
+        upper = slots['upper']
+    if 'year' in slots:
+        lower = slots['year']
+        upper = slots['year']
+    """
     if re.search(r"between (\d{4}) and (\d{4})", input) is not None:
         # print("between")
         lower = re.search(r"(\d{4}) and (\d{4})", input).group(1)
@@ -113,21 +120,21 @@ def extra_info(intent):
         # print("year")
         lower = re.search(r"(\d{4})", input).group(1)
         upper = re.search(r"(\d{4})", input).group(1)
-        """
+    """
+    """
     elif input.startswith('the book is written by'):
         written = input[21:]
         return subject_info(subject, extra_info=[written])
     elif input.startswith('book is written by'):
         written = input[17:]
         return subject_info(subject, extra_info=[written])
-        """
     else:
         print("No year was given")
+    """
     # print("lower: " + str(lower) + "      upper: " + str(upper))
     date = "search_daterange_mv:\"[" + str(lower) + " TO " + str(upper) + "]\""
     print(date)
     return subject_info(subject, extra_info=[date])
-
 
 
 def record(id, field=[], method='GET', pretty_print='0'):

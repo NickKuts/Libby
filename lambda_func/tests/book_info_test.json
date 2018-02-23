@@ -13,7 +13,9 @@
     "inputTranscript": "The book was published in 2001",
     "currentIntent": {
       "name": "ExtraInfo",
-      "slots": {},
+      "slots": {
+        "year": "2001"
+      },
       "confirmationStatus": "None"
     },
     "subject": "cat",
@@ -93,7 +95,9 @@
     "inputTranscript": "It is published 1987",
     "currentIntent": {
       "name": "ExtraInfo",
-      "slots": {},
+      "slots": {
+        "year": "1987"
+      },
       "confirmationStatus": "None"
     },
     "subject": "computer",
@@ -113,7 +117,9 @@
     "inputTranscript": "It is published before 1987",
     "currentIntent": {
       "name": "ExtraInfo",
-      "slots": {},
+      "slots": {
+        "upper": "1987"
+      },
       "confirmationStatus": "None"
     },
     "subject": "computer",
@@ -133,7 +139,9 @@
     "inputTranscript": "It is published after 1987",
     "currentIntent": {
       "name": "ExtraInfo",
-      "slots": {},
+      "slots": {
+        "lower": "1987"
+      },
       "confirmationStatus": "None"
     },
     "subject": "computer",
@@ -153,7 +161,10 @@
     "inputTranscript": "It is published between 1987 and 2012",
     "currentIntent": {
       "name": "ExtraInfo",
-      "slots": {},
+      "slots": {
+        "lower": "1987",
+        "upper": "2012"
+      },
       "confirmationStatus": "None"
     },
     "subject": "computer",
@@ -173,7 +184,10 @@
     "inputTranscript": "It is published between 2001 and 2003",
     "currentIntent": {
       "name": "ExtraInfo",
-      "slots": {},
+      "slots": {
+        "lower": "2001",
+        "upper": "2003"
+      },
       "confirmationStatus": "None"
     },
     "subject": "cat",
