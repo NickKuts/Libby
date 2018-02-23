@@ -14,7 +14,9 @@
     "currentIntent": {
       "name": "ExtraInfo",
       "slots": {
-        "year": "2001"
+        "year": "2001",
+        "upper": null,
+        "lower": null
       },
       "confirmationStatus": "None"
     },
@@ -35,7 +37,11 @@
     "inputTranscript": "The book was published in don't know",
     "currentIntent": {
       "name": "ExtraInfo",
-      "slots": {},
+      "slots": {
+        "lower": null,
+        "upper": null,
+        "year": null
+      },
       "confirmationStatus": "None"
     },
     "subject": "cat",
@@ -75,7 +81,11 @@
     "inputTranscript": "find lorslara books",
     "currentIntent": {
       "name": "FindBook",
-      "slots": {},
+      "slots": {
+        "lower": null,
+        "upper": null,
+        "year": null
+      },
       "confirmationStatus": "None"
     },
     "subject": "lorslara",
@@ -96,7 +106,9 @@
     "currentIntent": {
       "name": "ExtraInfo",
       "slots": {
-        "year": "1987"
+        "year": "1987",
+        "lower": null,
+        "upper": null
       },
       "confirmationStatus": "None"
     },
@@ -118,7 +130,9 @@
     "currentIntent": {
       "name": "ExtraInfo",
       "slots": {
-        "upper": "1987"
+        "upper": "1987",
+        "lower": null,
+        "year": null
       },
       "confirmationStatus": "None"
     },
@@ -140,7 +154,9 @@
     "currentIntent": {
       "name": "ExtraInfo",
       "slots": {
-        "lower": "1987"
+        "lower": "1987",
+        "year": null,
+        "upper": null
       },
       "confirmationStatus": "None"
     },
@@ -163,7 +179,8 @@
       "name": "ExtraInfo",
       "slots": {
         "lower": "1987",
-        "upper": "2012"
+        "upper": "2012",
+        "year": null
       },
       "confirmationStatus": "None"
     },
@@ -186,7 +203,8 @@
       "name": "ExtraInfo",
       "slots": {
         "lower": "2001",
-        "upper": "2003"
+        "upper": "2003",
+        "year": null
       },
       "confirmationStatus": "None"
     },

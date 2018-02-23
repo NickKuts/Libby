@@ -94,15 +94,15 @@ def subject_info(subject, extra_info=[]):
 
 def extra_info(intent):
     subject = intent['sessionAttributes']['subject']
-    input = intent['inputTranscript']
+    # input = intent['inputTranscript']
     slots = intent['currentIntent']['slots']
     lower = 0
     upper = 9999
-    if 'lower' in slots:
+    if slots['lower']:
         lower = slots['lower']
-    if 'upper' in slots:
+    if slots['upper']:
         upper = slots['upper']
-    if 'year' in slots:
+    if slots['year']:
         lower = slots['year']
         upper = slots['year']
     """
