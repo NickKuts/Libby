@@ -1,7 +1,8 @@
-import requests
+from urllib.request import Request, urlopen
+import json
 import util
 import re
-import json
+from botocore.vendored import requests
 
 """This is the URL for the Finna API with a needed header for proper results"""
 __url = 'https://api.finna.fi/api/v1/'
@@ -15,11 +16,12 @@ translator = {
 }
 
 
-def parse(info):
+def parse_record(info):
     ret = []
     output = "Parse error"
     for elem in info:
         print("elem: " + str(elem))
+        """
         if 'name' in elem:
             ret.append(elem['name'])
             if len(ret) > 1:
@@ -30,51 +32,46 @@ def parse(info):
             ret.append(elem)
             output = "This book was published in "
         else:
-            print("elem: " + elem['value'])
-            if re.compile("1/AALTO/([a-z])*/").match(elem['value']):
-                ret.append(elem['translated'])
-                output = "This book is located in "
+        """
+        print("elem: " + elem['value'])
+        if re.compile("1/AALTO/([a-z])*/").match(elem['value']):
+            ret.append(elem['translated'])
+            output = "This book is located in "
     return output + util.make_string_list(ret)
 
 
 def find_info(book_id, field='buildings'):
-    request = record(book_id, {field, 'id'})['json']
+    request = record(book_id, {field: 'id'})['json']
     if request['status'] == 'OK':
         # print(request['json']['records'][0])
         field_info = request['records'][0][field]
-        message = parse(field_info)
+        message = parse_record(field_info)
         return util.elicit_intent({'book_id': book_id}, message)
     else:
-        return util.close({}, 'Fulfilled', "Something went wrong1")
+        return util.close({}, 'Fulfilled', "Something went wrong")
 
 
-def subject_info(subject, extra_info=[]):
-    if subject.startswith("find"):
-        subject = subject[5:]
-    if subject.endswith("book") or subject.endswith("books"):
-        #print("subject1: ", subject)
-        subject = subject[:-5]
-        #print("subject2: ", subject)
-
-    request = lookfor(term=subject, filter=extra_info)['json']
-    message = "Something went wrong2"
-    #print("subject: " + subject)
-    # print("extra_info: " + extra_info())
-    #print("request: " + json.dumps(request))
+def parse_subject(request, subject):
+    message = "Something went wrong"
     if request['status'] == 'OK':
         result_count = request['resultCount']
         if result_count == 0:
-            message = "Sorry, no books was found with those search parameters "\
-                      + subject
+            message = "Sorry, no books was found with search term: "\
+                    + subject
         elif result_count == 1:
             return find_info(request['records'][0]['id'])
         elif result_count < 5:
             real_count = 0
-            find = ""
+            find = []
             while real_count < result_count:
-                find += find_info(request['record'][real_count]['id']) + ", "
+                buildings = request['records'][real_count]['buildings']
+                for layer in buildings:
+                    if re.compile("1/AALTO/([a-z])*/").match(layer['value']):
+                        if layer['translated'] not in find:
+                            find.append(layer['translated'])
                 real_count += 1
-            message = "With term" + subject + "will found in" + find
+
+            message = "With term " + subject + ", books can be found in " + util.make_string_list(find)
         else:
             message = "With term " + subject + ", " + str(result_count) \
                       + " books was found. Could you give some more " \
@@ -84,39 +81,56 @@ def subject_info(subject, extra_info=[]):
     return util.elicit_intent({'subject': subject}, message)
 
 
-def extra_info(intent, extra_info=[]):
+def subject_info(subject, extra_info=[]):
+    if subject.startswith("find"):
+        subject = subject[5:]
+    if subject.endswith("book") or subject.endswith("books"):
+        subject = subject[:-5].strip()
+
+    request = lookfor(term=subject, filter=extra_info)['json']
+    # print("subject: " + subject)
+    # print("extra_info: " + extra_info())
+    # print("request: " + json.dumps(request))
+    return parse_subject(request, subject)
+
+
+def extra_info(intent):
     subject = intent['sessionAttributes']['subject']
     input = intent['inputTranscript']
     lower = 0
     upper = 9999
     if re.search(r"between (\d{4}) and (\d{4})", input) is not None:
+        # print("between")
         lower = re.search(r"(\d{4}) and (\d{4})", input).group(1)
         upper = re.search(r"(\d{4}) and (\d{4})", input).group(2)
     elif re.search(r"before (\d{4})", input) is not None:
+        # print("before")
         upper = re.search(r"before (\d{4})", input).group(1)
-        # print("<-" + str(re.search(r" before (\d{4})", input).group(1)))
     elif re.search(r"after (\d{4})", input) is not None:
+        # print("after")
         lower = re.search(r"after (\d{4})", input).group(1)
-        # print(str(re.search(r" after (\d{4})", input).group(1)) + "->")
     elif re.search(r"(\d{4})", input) is not None:
+        # print("year")
         lower = re.search(r"(\d{4})", input).group(1)
-        upper = re.search(r"(\d{4})", input).group(2)
+        upper = re.search(r"(\d{4})", input).group(1)
+        """
     elif input.startswith('the book is written by'):
         written = input[21:]
         return subject_info(subject, extra_info=[written])
     elif input.startswith('book is written by'):
         written = input[17:]
         return subject_info(subject, extra_info=[written])
+        """
     else:
-        print("No extra info was given")
-    if re.search(r"(\d{4})", input) is not None:
-        date = "search_daterange_mv:\"[" + str(lower) + "TO" + str(upper) + \
-               + "]\""
-        return subject_info(subject, extra_info=[date])
+        print("No year was given")
+    print("lower: " + str(lower) + "      upper: " + str(upper))
+    date = "search_daterange_mv:\"[" + str(lower) + " TO " + str(upper) + "]\""
+    print(date)
+    return subject_info(subject, extra_info=[date])
 
 
 
-def record(id, field={}, method='GET', pretty_print='0'):
+def record(id, field=[], method='GET', pretty_print='0'):
     """
         Simple function for accessing the Finna API.
         :param id: id of the book looked for
@@ -129,9 +143,9 @@ def record(id, field={}, method='GET', pretty_print='0'):
         """
     params = {
         'field[]': field,
-        'id': id,
-        'prettyPrint': pretty_print,
-        'lng':'en-gb'
+        'id': [id],
+        'prettyPrint': [pretty_print],
+        'lng': ['en-gb']
     }
 
     sess = requests.Session()
@@ -144,6 +158,27 @@ def record(id, field={}, method='GET', pretty_print='0'):
     # print(r.url)
     # print(r.json())
 
+    """
+    params_str = []
+    for key, value in params.items():
+        for term in value:
+            add_str = key + "=" + term
+            params_str.append(add_str)
+    # print(str(params_str))
+
+    url_data = __url + 'record?' + "&".join(params_str)
+    webURL = Request(url_data, headers={'User-Agent': 'Mozilla/5.0'})
+    data = urlopen(webURL).read()
+    # print(data)
+    # encoding = webURL.info().get_content_charset('utf-8')
+    JSON_object = json.loads(data.decode(encoding='utf-8'))
+
+    print(url_data)
+    # print(JSON_object)
+    # print("result count: " + str(JSON_object['resultCount']))
+
+    return {'status_code': JSON_object['status'], 'json': JSON_object}
+    """
     return {'status_code': r.status_code, 'json': r.json()}
 
 
@@ -160,13 +195,13 @@ def lookfor(term="", field=[], filter=[], method='GET', pretty_print='0'):
     :return: a dictionary with 'status_code' from the request and 'json'
     """
     params = {
-        'lookfor': term,
+        'lookfor': [term],
         'filter[]': [
             'building:"0/AALTO/"',
         ] + filter,
         'field[]': field,
-        'prettyPrint': pretty_print,
-        'lng':'en-gb'
+        'prettyPrint': [pretty_print],
+        'lng': ['en-gb']
     }
 
     sess = requests.Session()
@@ -176,20 +211,32 @@ def lookfor(term="", field=[], filter=[], method='GET', pretty_print='0'):
     r = sess.request(url=__url + 'search', method=method)
     sess.close()
 
+
     #print(r.url)
     #print(r.json())
     # print("result count: " + str(r.json()['resultCount']))
 
+
+    """
+    params_str = []
+    for key, value in params.items():
+        for term in value:
+            add_str = key + "=" + term
+            params_str.append(add_str)
+    # print(str(params_str))
+    url_data = __url + 'search?' + "&".join(params_str)
+    webURL = Request(url_data, headers={'User-Agent': 'Mozilla/5.0'})
+    data = urlopen(webURL).read()
+    # print(data)
+    # encoding = webURL.info().get_content_charset('utf-8')
+    JSON_object = json.loads(data.decode(encoding='utf-8'))
+
+    print(url_data)
+    # print(JSON_object)
+    # print("result count: " + str(JSON_object['resultCount']))
+
+    return {'status_code': JSON_object['status'], 'json': JSON_object}
+    """
     return {'status_code': r.status_code, 'json': r.json()}
 
 
-def prettyprint(input):
-    return input['dialogAction']['message']['content']
-
-"""
-print(prettyprint(find_info('publicationDates', lookfor('computer', [
-    'publicationDates', 'id'])['json']['records'][0]['id'])))
-print(prettyprint(find_info('nonPresenterAuthors', lookfor('computer')['json'][
-    'records'][10]['id'])))
-print(prettyprint(subject_info('corporate communication',)))
-"""

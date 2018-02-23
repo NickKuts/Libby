@@ -16,6 +16,7 @@
     - cd lambda_func && python -m pytest --cov=.
     - cd ..
     - cd api_testing && python -m pytest --cov=.
+    - cd ..
   deploy:
     - provider: lambda
       function_name: "LibbyDevelop"

@@ -1,20 +1,23 @@
 {
-  "findComputer": {
+  "manyLocations": {
     "messageVersion": "1.0",
     "invocationSource": "DialogCodeHook",
     "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
-    "sessionAttributes": {},
+    "sessionAttributes": {"subject": "cat"},
     "bot": {
       "name": "Libby_dev",
       "alias": "$LATEST",
       "version": "$LATEST"
     },
     "outputDialogMode": "Text",
-    "inputTranscript": "find computer books",
+    "inputTranscript": "It is published between 2001 and 2003",
     "currentIntent": {
-      "name": "FindBook",
+      "name": "ExtraInfo",
       "slots": {},
       "confirmationStatus": "None"
-    }
+    },
+    "subject": "cat",
+    "url": "https://api.finna.fi/api/v1/search?lookfor=cat&filter[]=search_daterange_mv:%22[2001 TO 2003]%22&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
   }
 }
+
