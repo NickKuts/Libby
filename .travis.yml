@@ -3,6 +3,7 @@
     - 3.6
   before_install:
     - pip install awscli
+    - pip install boto3
     - export PATH=$PATH:$HOME/.local/bin # put aws in the path
     - export AWS_ACCESS_KEY_ID=$aws_access_key
     - export AWS_SECRET_ACCESS_KEY=$aws_secret_access_key
@@ -16,6 +17,8 @@
     - cd lambda_func && python -m pytest --cov=.
     - cd ..
     - cd api_testing && python -m pytest --cov=.
+    - cd ..
+    - cd awsbots && python -m pytest --cov=.
   deploy:
     - provider: lambda
       function_name: "LibbyDevelop"
