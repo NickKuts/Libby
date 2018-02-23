@@ -60,6 +60,18 @@ def parse_subject(request, subject):
                     + subject
         elif result_count == 1:
             return find_info(request['records'][0]['id'])
+        elif result_count < 5:
+            real_count = 0
+            find = []
+            while real_count < result_count:
+                buildings = request['records'][real_count]['buildings']
+                for layer in buildings:
+                    if re.compile("1/AALTO/([a-z])*/").match(layer['value']):
+                        if layer['translated'] not in find:
+                            find.append(layer['translated'])
+                real_count += 1
+
+            message = "With term " + subject + ", books can be found in " + util.make_string_list(find)
         else:
             message = "With term " + subject + ", " + str(result_count) \
                       + " books was found. Could you give some more " \
@@ -88,25 +100,34 @@ def extra_info(intent):
     lower = 0
     upper = 9999
     if re.search(r"between (\d{4}) and (\d{4})", input) is not None:
-        print("between")
+        # print("between")
         lower = re.search(r"(\d{4}) and (\d{4})", input).group(1)
         upper = re.search(r"(\d{4}) and (\d{4})", input).group(2)
     elif re.search(r"before (\d{4})", input) is not None:
-        print("before")
+        # print("before")
         upper = re.search(r"before (\d{4})", input).group(1)
     elif re.search(r"after (\d{4})", input) is not None:
-        print("after")
+        # print("after")
         lower = re.search(r"after (\d{4})", input).group(1)
     elif re.search(r"(\d{4})", input) is not None:
-        print("year")
+        # print("year")
         lower = re.search(r"(\d{4})", input).group(1)
         upper = re.search(r"(\d{4})", input).group(1)
+        """
+    elif input.startswith('the book is written by'):
+        written = input[21:]
+        return subject_info(subject, extra_info=[written])
+    elif input.startswith('book is written by'):
+        written = input[17:]
+        return subject_info(subject, extra_info=[written])
+        """
     else:
         print("No year was given")
     # print("lower: " + str(lower) + "      upper: " + str(upper))
     date = "search_daterange_mv:\"[" + str(lower) + " TO " + str(upper) + "]\""
     print(date)
     return subject_info(subject, extra_info=[date])
+
 
 
 def record(id, field=[], method='GET', pretty_print='0'):
@@ -190,9 +211,11 @@ def lookfor(term="", field=[], filter=[], method='GET', pretty_print='0'):
     r = sess.request(url=__url + 'search', method=method)
     sess.close()
 
-    print(r.url)
-    # print(r.json())
-    print("result count: " + str(r.json()['resultCount']))
+
+    #print(r.url)
+    #print(r.json())
+    # print("result count: " + str(r.json()['resultCount']))
+
 
     """
     params_str = []
