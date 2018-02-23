@@ -133,7 +133,7 @@ def extra_info(intent):
     """
     # print("lower: " + str(lower) + "      upper: " + str(upper))
     date = "search_daterange_mv:\"[" + str(lower) + " TO " + str(upper) + "]\""
-    print(date)
+    # print(date)
     return subject_info(subject, extra_info=[date])
 
 
