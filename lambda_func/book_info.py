@@ -123,7 +123,7 @@ def extra_info(intent):
         """
     else:
         print("No year was given")
-    print("lower: " + str(lower) + "      upper: " + str(upper))
+    # print("lower: " + str(lower) + "      upper: " + str(upper))
     date = "search_daterange_mv:\"[" + str(lower) + " TO " + str(upper) + "]\""
     print(date)
     return subject_info(subject, extra_info=[date])
