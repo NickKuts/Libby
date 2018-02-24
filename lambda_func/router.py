@@ -2,6 +2,7 @@ import util
 import robertscoffee
 import weather
 import get_help
+import book_info
 
 """
 This class takes intent as a parameter and finds what Libby should answer.
@@ -21,7 +22,9 @@ class Router:
                         "Get_Drinks": robertscoffee.drinks,
                         "Weather": weather.weather_handler,
                         "Get_Help": get_help.help_answer,
-                        "Thanks": util.handle_session_end_request
+                        "Thanks": util.handle_session_end_request,
+                        "FindBook": book_info.subject_info,
+                        "ExtraInfo": book_info.extra_info
                         }
     """
     This is where the magic happens. If a method needs for example the intent
@@ -30,11 +33,15 @@ class Router:
     """
 
     def route(self):
-        name = self.intent['name']
+        name = self.intent['currentIntent']['name']
         if name == "Get_Drinks":
-            return self.intents[name](self.intent['slots']['category'])
+            return self.intents[name](self.intent['currentIntent']['slots']['category'])
         if name == "Get_Prices":
-            return self.intents[name](self.intent)
+            return self.intents[name](self.intent['currentIntent'])
         if name == "Get_Help":
+            return self.intents[name](self.intent['currentIntent'])
+        if name == "FindBook":
+            return self.intents[name](self.intent['inputTranscript'])
+        if name == "ExtraInfo":
             return self.intents[name](self.intent)
         return self.intents[name]()

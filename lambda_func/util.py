@@ -65,7 +65,7 @@ def elicit_slot(session_attributes, message, slots, intent_name, slot_name):
 
 
 def handle_session_end_request():
-    message = "Hope you found what you were looking for"
+    message = "Hope you found what you were looking for. Hear you later!"
     return close({}, 'Fulfilled', message)
 
 
@@ -115,6 +115,9 @@ def is_number(s):
 
 
 def make_string_list(list):
-    ordered_list = sorted(list)
-    last = ordered_list.pop()
-    return ", ".join(ordered_list) + " and " + last
+    if len(list) > 1:
+        ordered_list = sorted(list)
+        last = ordered_list.pop()
+        return ", ".join(ordered_list) + " and " + last
+    else:
+        return list[0]

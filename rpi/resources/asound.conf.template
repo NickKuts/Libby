@@ -1,0 +1,5 @@
+# Sets the default card.
+pcm.!default {
+    type plug
+    __SLAVE_PCM__
+}
