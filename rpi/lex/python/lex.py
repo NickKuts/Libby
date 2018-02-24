@@ -11,6 +11,7 @@ class Lex():
     '''
     def __init__(self):
         self.client = boto3.client('lex-runtime')
+        self.session_attributes = {}
         self.bot_name = 'Libby'
         self.bot_alias = 'Dev'
         self.user_id = 'lexpi'
@@ -33,10 +34,12 @@ class Lex():
             botAlias=self.bot_alias,
             userId=self.user_id,
             contentType=self.content_type,
-            inputStream=data
+            inputStream=data,
+            sessionAttributes=self.session_attributes
         )
 
-        print(response)
+        #print(response)
+        self.session_attributes = response['sessionAttributes']
         return response
 
     '''
