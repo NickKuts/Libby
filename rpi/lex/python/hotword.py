@@ -1,14 +1,13 @@
 from os import environ, path
 import pyaudio
+from pocketsphinx import *
+from sphinxbase import *
 
-from pocketsphinx.pocketsphinx import *
-from sphinxbase.sphinxbase import *
-
-MODELDIR = "pocketsphinx/model"
+MODELDIR = "/usr/local/lib/python3.5/dist-packages/pocketsphinx/model/"
 p = pyaudio.PyAudio()
 # Create a decoder with certain model
 config = Decoder.default_config()
-config.set_string('-hmm', path.join(MODELDIR, 'en-us/en-us'))
+config.set_string('-hmm', path.join(MODELDIR, 'en-us/'))
 config.set_string('-lm', '3268.lm')
 config.set_string('-dict', '3268.dic')
 config.set_float('-kws_threshold',  1e-15)
