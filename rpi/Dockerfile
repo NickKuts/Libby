@@ -7,12 +7,13 @@ RUN apt-get update && \
     virtualenv git python-pyaudio sox python3-dev build-essential python-dev \
     mpg321 git-core alsa-utils portaudio19-dev python3-pyaudio \
     swig3.0 libatlas-base-dev swig libpulse-dev python3-setuptools \
-    python3-setuptools
-
+    python3-setuptools python3-pip
 
 COPY lex/requirements.txt /rpi/
-RUN virtualenv -p python3 /venv && \
-    /venv/bin/pip install -r /rpi/requirements.txt
+RUN pip3 install --upgrade wheel setuptools pip
+RUN pip3 install --upgrade pocketsphinx==0.1.0
+RUN pip3 install -r /rpi/requirements.txt
+
 
 COPY lex /rpi/lex
 
