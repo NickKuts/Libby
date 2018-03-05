@@ -1,0 +1,36 @@
+{
+    "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "ugcxp20ch73vhdkc6dn4a5or5vrghqh9",
+    "sessionAttributes": {},
+    "requestAttributes": null,
+    "bot": {
+        "name": "Location",
+        "alias": "$LATEST",
+        "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "currentIntent": {
+        "name": "Location",
+        "slots": {
+            "place": "alvari",
+            "type": null
+        },
+        "slotDetails": {
+            "place": {
+                "resolutions": [
+                    {
+                        "value": "alvari"
+                    }
+                ],
+                "originalValue": "alvari"
+            },
+            "type": {
+                "resolutions": [],
+                "originalValue": null
+            }
+        },
+        "confirmationStatus": "None"
+    },
+    "inputTranscript": "alvari"
+}
