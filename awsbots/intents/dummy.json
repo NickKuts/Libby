@@ -1,0 +1,8 @@
+{
+	"name": "IntentName",
+	"slots": [],
+	"sampleUtterances": ["How you doin?"],
+	"fulfillmentActivity": {
+		"type": "ReturnIntent"
+	}
+}
