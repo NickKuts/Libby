@@ -8,11 +8,31 @@ __headers = {'Accept': 'application/json'}
 json_dir = './api_testing/data_files/'
 
 
-def parse_record(info):
+"""
+   AWS INPUT(SEARCH TERM)                     ->parse_subject()-->OUTPUT TO AWS
+                         \                   /           |        A        
+                          \                 /            |       /
+                           \               /             V      /
+                            ->subject_info()          find_info()<==>record()
+                           /                            |  A
+                          /                             |  |
+                         /                              V  |
+   AWS INPUT(EXTRA INFO)                              parse_book()
+"""
+
+
+def parse_book(info):
+    """
+    Parses the record's data and constructs a message from the data. Wanted
+    info is given as a parameter in JSON format. Default info is data
+    about the location(library) of the book.
+    :param info: Data of wanted info in JSON format
+    :return: Message constructed from the data
+    """
     ret = []
     output = "Parse error"
     for elem in info:
-        print("elem: " + str(elem))
+        # print("elem: " + str(elem))
         """
         if 'name' in elem:
             ret.append(elem['name'])
@@ -25,7 +45,7 @@ def parse_record(info):
             output = "This book was published in "
         else:
         """
-        print("elem: " + elem['value'])
+        # print("elem: " + elem['value'])
         if re.compile("1/AALTO/([a-z])*/").match(elem['value']):
             ret.append(elem['translated'])
             output = "This book is located in "
@@ -33,17 +53,27 @@ def parse_record(info):
 
 
 def find_info(book_id, field='buildings'):
+    """
+    :param book_id: Id of the book
+    :param field: Field which teh user is looking for
+    :return: Response to AWS server in JSON format
+    """
     request = record(book_id, field=['id', field])['json']
     if request['status'] == 'OK':
         # print(request['json']['records'][0])
         field_info = request['records'][0][field]
-        message = parse_record(field_info)
+        message = parse_book(field_info)
         return util.elicit_intent({'book_id': book_id}, message)
     else:
         return util.close({}, 'Fulfilled', "Something went wrong")
 
 
 def parse_subject(request, subject):
+    """
+    :param request: JSON data from the Finna API
+    :param subject: Subject or search term of the current session
+    :return: Response to AWS server in JSON format
+    """
     message = "Something went wrong"
     if request['status'] == 'OK':
         result_count = request['resultCount']
@@ -75,6 +105,12 @@ def parse_subject(request, subject):
 
 
 def subject_info(subject, extra_info=[]):
+    """
+    :param subject: Parses relevant information from the input(subject) and
+    passes that forward
+    :param extra_info: Given parameters to filter the data
+    :return: Response to AWS server in JSON format
+    """
     if subject.startswith("find"):
         subject = subject[5:]
     if subject.endswith("book") or subject.endswith("books"):
@@ -88,6 +124,10 @@ def subject_info(subject, extra_info=[]):
 
 
 def extra_info(intent):
+    """
+    :param intent: Input from AWS servers
+    :return: Response to AWS server in JSON format
+    """
     subject = intent['sessionAttributes']['subject']
     slots = intent['currentIntent']['slots']
     lower = 0
