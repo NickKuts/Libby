@@ -7,12 +7,6 @@ __url = 'https://api.finna.fi/api/v1/'
 __headers = {'Accept': 'application/json'}
 json_dir = './api_testing/data_files/'
 
-translator = {
-    'nonPresenterAuthors': 'authors',
-    'publicationDates': 'published',
-
-}
-
 
 def parse_record(info):
     ret = []
@@ -39,7 +33,7 @@ def parse_record(info):
 
 
 def find_info(book_id, field='buildings'):
-    request = record(book_id, {field: 'id'})['json']
+    request = record(book_id, field=['id', field])['json']
     if request['status'] == 'OK':
         # print(request['json']['records'][0])
         field_info = request['records'][0][field]
@@ -69,13 +63,14 @@ def parse_subject(request, subject):
                             find.append(layer['translated'])
                 real_count += 1
 
-            message = "With term " + subject + ", books can be found in " + util.make_string_list(find)
+            message = "With term " + subject + ", books can be found in " + \
+                      util.make_string_list(find)
         else:
             message = "With term " + subject + ", " + str(result_count) \
                       + " books was found. Could you give some more " \
                         "information about the book you are looking for? For " \
-                        "example when the book is published or who is the " \
-                        "author."
+                        "example when the book is published or author of the " \
+                        "book"
     return util.elicit_intent({'subject': subject}, message)
 
 
@@ -94,7 +89,6 @@ def subject_info(subject, extra_info=[]):
 
 def extra_info(intent):
     subject = intent['sessionAttributes']['subject']
-    # input = intent['inputTranscript']
     slots = intent['currentIntent']['slots']
     lower = 0
     upper = 9999
@@ -105,32 +99,6 @@ def extra_info(intent):
     if slots['year']:
         lower = slots['year']
         upper = slots['year']
-    """
-    if re.search(r"between (\d{4}) and (\d{4})", input) is not None:
-        # print("between")
-        lower = re.search(r"(\d{4}) and (\d{4})", input).group(1)
-        upper = re.search(r"(\d{4}) and (\d{4})", input).group(2)
-    elif re.search(r"before (\d{4})", input) is not None:
-        # print("before")
-        upper = re.search(r"before (\d{4})", input).group(1)
-    elif re.search(r"after (\d{4})", input) is not None:
-        # print("after")
-        lower = re.search(r"after (\d{4})", input).group(1)
-    elif re.search(r"(\d{4})", input) is not None:
-        # print("year")
-        lower = re.search(r"(\d{4})", input).group(1)
-        upper = re.search(r"(\d{4})", input).group(1)
-    """
-    """
-    elif input.startswith('the book is written by'):
-        written = input[21:]
-        return subject_info(subject, extra_info=[written])
-    elif input.startswith('book is written by'):
-        written = input[17:]
-        return subject_info(subject, extra_info=[written])
-    else:
-        print("No year was given")
-    """
     # print("lower: " + str(lower) + "      upper: " + str(upper))
     date = "search_daterange_mv:\"[" + str(lower) + " TO " + str(upper) + "]\""
     # print(date)
@@ -164,28 +132,6 @@ def record(id, field=[], method='GET', pretty_print='0'):
 
     # print(r.url)
     # print(r.json())
-
-    """
-    params_str = []
-    for key, value in params.items():
-        for term in value:
-            add_str = key + "=" + term
-            params_str.append(add_str)
-    # print(str(params_str))
-
-    url_data = __url + 'record?' + "&".join(params_str)
-    webURL = Request(url_data, headers={'User-Agent': 'Mozilla/5.0'})
-    data = urlopen(webURL).read()
-    # print(data)
-    # encoding = webURL.info().get_content_charset('utf-8')
-    JSON_object = json.loads(data.decode(encoding='utf-8'))
-
-    print(url_data)
-    # print(JSON_object)
-    # print("result count: " + str(JSON_object['resultCount']))
-
-    return {'status_code': JSON_object['status'], 'json': JSON_object}
-    """
     return {'status_code': r.status_code, 'json': r.json()}
 
 
@@ -222,28 +168,6 @@ def lookfor(term="", field=[], filter=[], method='GET', pretty_print='0'):
     #print(r.url)
     #print(r.json())
     # print("result count: " + str(r.json()['resultCount']))
-
-
-    """
-    params_str = []
-    for key, value in params.items():
-        for term in value:
-            add_str = key + "=" + term
-            params_str.append(add_str)
-    # print(str(params_str))
-    url_data = __url + 'search?' + "&".join(params_str)
-    webURL = Request(url_data, headers={'User-Agent': 'Mozilla/5.0'})
-    data = urlopen(webURL).read()
-    # print(data)
-    # encoding = webURL.info().get_content_charset('utf-8')
-    JSON_object = json.loads(data.decode(encoding='utf-8'))
-
-    print(url_data)
-    # print(JSON_object)
-    # print("result count: " + str(JSON_object['resultCount']))
-
-    return {'status_code': JSON_object['status'], 'json': JSON_object}
-    """
     return {'status_code': r.status_code, 'json': r.json()}
 
 
