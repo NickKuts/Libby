@@ -130,15 +130,59 @@ def extra_info(intent):
     """
     subject = intent['sessionAttributes']['subject']
     slots = intent['currentIntent']['slots']
+    input = intent['inputTranscript']
     lower = 0
     upper = 9999
-    if slots['lower']:
-        lower = slots['lower']
-    if slots['upper']:
-        upper = slots['upper']
-    if slots['year']:
-        lower = slots['year']
-        upper = slots['year']
+    if 'lower' in slots:
+        if slots['lower']:
+            lower = slots['lower']
+    if 'upper' in slots:
+        if slots['upper']:
+            upper = slots['upper']
+    if 'year' in slots:
+        if slots['year']:
+            lower = slots['year']
+            upper = slots['year']
+
+    # if user's answer starts 'the book is written by'
+    if input.startswith('the book is written by'):
+        written = input[22:]
+        split_list = written.split()
+        split_list = split_list[:2]
+        with_com = ',+'.join(split_list)
+
+        # count = lookfor(subject, filter=["author:\""+withCom+"\""])
+        # ['json']['resultCount']
+        # print("result count: " + str(count))
+        if lookfor(subject,filter=["author:\""+with_com+"\""])['json'][
+                                                            'resultCount'] > 0:
+            return subject_info(subject, extra_info=["author:\""+with_com+"\""])
+        else:
+            reversed_list = split_list[::-1]
+            reversed_with_com = ', '.join(reversed_list)
+            if lookfor(subject, filter=["author:\""+reversed_with_com+"\""])[
+                                        'json']['resultCount'] > 0:
+                return subject_info(subject, extra_info=[
+                                            "author:\""+reversed_with_com+"\""])
+
+    # if user's answer starts 'book is written by'
+    elif input.startswith('book is written by'):
+        written = input[18:]
+        split_list = written.split()
+        split_list = split_list[:2]
+        with_com = ', '.join(split_list)
+
+        if lookfor(subject, filter=["author:\""+with_com+"\""])['json'][
+                                                            'resultCount'] > 0:
+            return subject_info(subject, extra_info=["author:\""+with_com+"\""])
+        else:
+            reversed_list = split_list[::-1]
+            reversed_with_com = ', '.join(reversed_list)
+            if lookfor(subject, filter=["author:\""+reversed_with_com+"\""])[
+                                        'json']['resultCount'] > 0:
+                return subject_info(subject, extra_info=[
+                                            "author:\""+reversed_with_com+"\""])
+
     # print("lower: " + str(lower) + "      upper: " + str(upper))
     date = "search_daterange_mv:\"[" + str(lower) + " TO " + str(upper) + "]\""
     # print(date)
@@ -147,15 +191,15 @@ def extra_info(intent):
 
 def record(id, field=[], method='GET', pretty_print='0'):
     """
-        Simple function for accessing the Finna API.
-        :param id: id of the book looked for
-        :param field: what fields we want to include in the json search
-        :param method: POST or GET, use of POST should be done if the
-        response is long, defaults to GET
-        :param pretty_print: if the resulting JSON should be prettyprinted, '1'
-        for yes and '0' for no, defaults to '0'
-        :return: a dictionary with 'status_code' from the request and 'json'
-        """
+    Simple function for accessing the Finna API.
+    :param id: id of the book looked for
+    :param field: what fields we want to include in the json search
+    :param method: POST or GET, use of POST should be done if the
+    response is long, defaults to GET
+    :param pretty_print: if the resulting JSON should be prettyprinted, '1'
+    for yes and '0' for no, defaults to '0'
+    :return: a dictionary with 'status_code' from the request and 'json'
+    """
     params = {
         'field[]': field,
         'id': [id],
@@ -204,9 +248,8 @@ def lookfor(term="", field=[], filter=[], method='GET', pretty_print='0'):
     r = sess.request(url=__url + 'search', method=method)
     sess.close()
 
-
-    #print(r.url)
-    #print(r.json())
+    # print(r.url)
+    # print(r.json())
     # print("result count: " + str(r.json()['resultCount']))
     return {'status_code': r.status_code, 'json': r.json()}
 
