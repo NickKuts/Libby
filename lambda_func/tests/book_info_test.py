@@ -20,7 +20,7 @@ class TestBookInfo(unittest.TestCase):
             sess = requests.Session()
             sess.headers.update(self.headers)
             right_result = sess.request(url=test_input['url'],
-                                             method='GET').json()
+                                        method='GET').json()
             sess.close()
             print("test:", test)
             print("result: " + str(result))
@@ -29,10 +29,10 @@ class TestBookInfo(unittest.TestCase):
             assert (result == book_info.parse_subject(right_result, test_input['subject']))
 
 
-def main():
+def main():  # pragma: no cover
     print("Main function")
 
 
-if __name__ == '__main__':
+if __name__ == '__main__':  # pragma: no cover
     suite = unittest.TestLoader().loadTestsFromTestCase(TestBookInfo)
     unittest.TextTestRunner(verbosity=2).run(suite)
