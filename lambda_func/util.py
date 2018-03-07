@@ -65,7 +65,7 @@ def elicit_slot(session_attributes, message, slots, intent_name, slot_name):
 
 
 def handle_session_end_request():
-    message = "Hope you found what you were looking for"
+    message = "Hope you found what you were looking for. Hear you later!"
     return close({}, 'Fulfilled', message)
 
 

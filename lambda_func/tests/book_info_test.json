@@ -13,7 +13,11 @@
     "inputTranscript": "The book was published in 2001",
     "currentIntent": {
       "name": "ExtraInfo",
-      "slots": {},
+      "slots": {
+        "year": "2001",
+        "upper": null,
+        "lower": null
+      },
       "confirmationStatus": "None"
     },
     "subject": "cat",
@@ -33,7 +37,11 @@
     "inputTranscript": "The book was published in don't know",
     "currentIntent": {
       "name": "ExtraInfo",
-      "slots": {},
+      "slots": {
+        "lower": null,
+        "upper": null,
+        "year": null
+      },
       "confirmationStatus": "None"
     },
     "subject": "cat",
@@ -73,7 +81,11 @@
     "inputTranscript": "find lorslara books",
     "currentIntent": {
       "name": "FindBook",
-      "slots": {},
+      "slots": {
+        "lower": null,
+        "upper": null,
+        "year": null
+      },
       "confirmationStatus": "None"
     },
     "subject": "lorslara",
@@ -93,7 +105,11 @@
     "inputTranscript": "It is published 1987",
     "currentIntent": {
       "name": "ExtraInfo",
-      "slots": {},
+      "slots": {
+        "year": "1987",
+        "lower": null,
+        "upper": null
+      },
       "confirmationStatus": "None"
     },
     "subject": "computer",
@@ -113,7 +129,11 @@
     "inputTranscript": "It is published before 1987",
     "currentIntent": {
       "name": "ExtraInfo",
-      "slots": {},
+      "slots": {
+        "upper": "1987",
+        "lower": null,
+        "year": null
+      },
       "confirmationStatus": "None"
     },
     "subject": "computer",
@@ -133,7 +153,11 @@
     "inputTranscript": "It is published after 1987",
     "currentIntent": {
       "name": "ExtraInfo",
-      "slots": {},
+      "slots": {
+        "lower": "1987",
+        "year": null,
+        "upper": null
+      },
       "confirmationStatus": "None"
     },
     "subject": "computer",
@@ -153,7 +177,11 @@
     "inputTranscript": "It is published between 1987 and 2012",
     "currentIntent": {
       "name": "ExtraInfo",
-      "slots": {},
+      "slots": {
+        "lower": "1987",
+        "upper": "2012",
+        "year": null
+      },
       "confirmationStatus": "None"
     },
     "subject": "computer",
@@ -175,7 +203,11 @@
     "inputTranscript": "It is published between 2001 and 2003",
     "currentIntent": {
       "name": "ExtraInfo",
-      "slots": {},
+      "slots": {
+        "lower": "2001",
+        "upper": "2003",
+        "year": null
+      },
       "confirmationStatus": "None"
     },
     "subject": "cat",
