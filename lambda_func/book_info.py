@@ -113,16 +113,40 @@ def extra_info(intent):
         # print("year")
         lower = re.search(r"(\d{4})", input).group(1)
         upper = re.search(r"(\d{4})", input).group(1)
-        """
+    # if user's answer starts 'the book is written by'
     elif input.startswith('the book is written by'):
-        written = input[21:]
-        return subject_info(subject, extra_info=[written])
+        written = input[22:]
+        splitList = written.split()
+        splitList = splitList[:2]
+        withCom = ',+'.join(splitList)
+
+       # count = lookfor(subject, filter=["author:\""+withCom+"\""])['json']['resultCount']
+       # print("result count: " + str(count))
+        if  lookfor(subject, filter=["author:\""+withCom+"\""])['json']['resultCount'] > 0:
+        # if subject_info(subject, extra_info=[withCom]) != "Something went wrong":
+            return subject_info(subject, extra_info=["author:\""+withCom+"\""])
+        else:
+            reversedList = splitList[::-1]
+            reversedWithCom = ', '.join(reversedList)
+            if lookfor(subject, filter=["author:\""+reversedWithCom+"\""])['json']['resultCount'] > 0:
+                return subject_info(subject, extra_info=["author:\""+reversedWithCom+"\""])
+    # if user's answer starts 'book is written by'
     elif input.startswith('book is written by'):
-        written = input[17:]
-        return subject_info(subject, extra_info=[written])
-        """
+        written = input[18:]
+        splitList = written.split()
+        splitList = splitList[:2]
+        withCom = ', '.join(splitList)
+
+        if lookfor(subject, filter=["author:\""+withCom+"\""])['json']['resultCount'] > 0:
+            return subject_info(subject, extra_info=["author:\""+withCom+"\""])
+        else:
+            reversedList = splitList[::-1]
+            reversedWithCom = ', '.join(reversedList)
+            if lookfor(subject, filter=["author:\""+reversedWithCom+"\""])['json']['resultCount'] > 0:
+                return subject_info(subject, extra_info=["author:\""+reversedWithCom+"\""])
+
     else:
-        print("No year was given")
+        print("No extra info was given")
     # print("lower: " + str(lower) + "      upper: " + str(upper))
     date = "search_daterange_mv:\"[" + str(lower) + " TO " + str(upper) + "]\""
     print(date)
@@ -212,7 +236,7 @@ def lookfor(term="", field=[], filter=[], method='GET', pretty_print='0'):
     sess.close()
 
 
-    #print(r.url)
+    print(r.url)
     #print(r.json())
     # print("result count: " + str(r.json()['resultCount']))
 
