@@ -113,37 +113,44 @@ def extra_info(intent):
         # print("year")
         lower = re.search(r"(\d{4})", input).group(1)
         upper = re.search(r"(\d{4})", input).group(1)
+
     # if user's answer starts 'the book is written by'
     elif input.startswith('the book is written by'):
         written = input[22:]
-        splitList = written.split()
-        splitList = splitList[:2]
-        withCom = ',+'.join(splitList)
+        split_list = written.split()
+        split_list = split_list[:2]
+        with_com = ',+'.join(split_list)
 
        # count = lookfor(subject, filter=["author:\""+withCom+"\""])['json']['resultCount']
        # print("result count: " + str(count))
-        if  lookfor(subject, filter=["author:\""+withCom+"\""])['json']['resultCount'] > 0:
-        # if subject_info(subject, extra_info=[withCom]) != "Something went wrong":
-            return subject_info(subject, extra_info=["author:\""+withCom+"\""])
+        if  lookfor(subject,filter=["author:\""+with_com+"\""])['json'][
+                                                            'resultCount'] > 0:
+            return subject_info(subject, extra_info=["author:\""+with_com+"\""])
         else:
-            reversedList = splitList[::-1]
-            reversedWithCom = ', '.join(reversedList)
-            if lookfor(subject, filter=["author:\""+reversedWithCom+"\""])['json']['resultCount'] > 0:
-                return subject_info(subject, extra_info=["author:\""+reversedWithCom+"\""])
+            reversed_list = split_list[::-1]
+            reversed_with_com = ', '.join(reversed_list)
+            if lookfor(subject, filter=["author:\""+reversed_with_com+"\""])[
+                                        'json']['resultCount'] > 0:
+                return subject_info(subject, extra_info=[
+                                            "author:\""+reversed_with_com+"\""])
+
     # if user's answer starts 'book is written by'
     elif input.startswith('book is written by'):
         written = input[18:]
-        splitList = written.split()
-        splitList = splitList[:2]
-        withCom = ', '.join(splitList)
+        split_list = written.split()
+        split_list = split_list[:2]
+        with_com = ', '.join(split_list)
 
-        if lookfor(subject, filter=["author:\""+withCom+"\""])['json']['resultCount'] > 0:
-            return subject_info(subject, extra_info=["author:\""+withCom+"\""])
+        if lookfor(subject, filter=["author:\""+with_com+"\""])['json'][
+                                                            'resultCount'] > 0:
+            return subject_info(subject, extra_info=["author:\""+with_com+"\""])
         else:
-            reversedList = splitList[::-1]
-            reversedWithCom = ', '.join(reversedList)
-            if lookfor(subject, filter=["author:\""+reversedWithCom+"\""])['json']['resultCount'] > 0:
-                return subject_info(subject, extra_info=["author:\""+reversedWithCom+"\""])
+            reversed_list = split_list[::-1]
+            reversed_with_com = ', '.join(reversed_list)
+            if lookfor(subject, filter=["author:\""+reversed_with_com+"\""])[
+                                        'json']['resultCount'] > 0:
+                return subject_info(subject, extra_info=[
+                                            "author:\""+reversed_with_com+"\""])
 
     else:
         print("No extra info was given")
