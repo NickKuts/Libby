@@ -12,8 +12,8 @@ class Lex():
     def __init__(self):
         self.client = boto3.client('lex-runtime')
         self.session_attributes = {}
-        self.bot_name = 'Libby'
-        self.bot_alias = 'Dev'
+        self.bot_name = 'Libby_dev'
+        self.bot_alias = '$LATEST'
         self.user_id = 'lexpi'
         self.content_type = 'audio/l16; rate=16000; channels=1'
         self.input_stream = b''
