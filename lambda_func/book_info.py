@@ -130,15 +130,19 @@ def extra_info(intent):
     """
     subject = intent['sessionAttributes']['subject']
     slots = intent['currentIntent']['slots']
+    input = intent['inputTranscript']
     lower = 0
     upper = 9999
-    if slots['lower']:
-        lower = slots['lower']
-    if slots['upper']:
-        upper = slots['upper']
-    if slots['year']:
-        lower = slots['year']
-        upper = slots['year']
+    if 'lower' in slots:
+        if slots['lower']:
+            lower = slots['lower']
+    if 'upper' in slots:
+        if slots['upper']:
+            upper = slots['upper']
+    if 'year' in slots:
+        if slots['year']:
+            lower = slots['year']
+            upper = slots['year']
 
     # if user's answer starts 'the book is written by'
     if input.startswith('the book is written by'):
@@ -147,9 +151,10 @@ def extra_info(intent):
         split_list = split_list[:2]
         with_com = ',+'.join(split_list)
 
-        # count = lookfor(subject, filter=["author:\""+withCom+"\""])['json']['resultCount']
+        # count = lookfor(subject, filter=["author:\""+withCom+"\""])
+        # ['json']['resultCount']
         # print("result count: " + str(count))
-        if  lookfor(subject,filter=["author:\""+with_com+"\""])['json'][
+        if lookfor(subject,filter=["author:\""+with_com+"\""])['json'][
                                                             'resultCount'] > 0:
             return subject_info(subject, extra_info=["author:\""+with_com+"\""])
         else:
@@ -242,7 +247,6 @@ def lookfor(term="", field=[], filter=[], method='GET', pretty_print='0'):
 
     r = sess.request(url=__url + 'search', method=method)
     sess.close()
-
 
     # print(r.url)
     # print(r.json())
