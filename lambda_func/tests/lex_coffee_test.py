@@ -46,10 +46,10 @@ class TestRoberts(unittest.TestCase):
         print("number of categories tested: " + str(len(self.json_data)))
 
 
-def main():
+def main():  # pragma: no cover
     print("Main function")
 
 
-if __name__ == '__main__':
+if __name__ == '__main__':  # pragma: no cover
     suite = unittest.TestLoader().loadTestsFromTestCase(TestRoberts)
     unittest.TextTestRunner(verbosity=2).run(suite)
