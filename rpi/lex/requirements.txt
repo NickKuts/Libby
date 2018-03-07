@@ -1,3 +1,2 @@
 pyaudio==0.2.11
 boto3==1.5.20
--e git://github.com/Kitt-AI/snowboy.git@4ee48111#egg=snowboy-1.2.0b1+git

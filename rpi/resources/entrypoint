@@ -12,11 +12,11 @@ alsa_setup() {
 case $1 in
     run)
 	alsa_setup
-        /venv/bin/python -m run
+        python3 -m run
         ;;
     run_no_snowboy)
 	alsa_setup
-        /venv/bin/python -m run_no_snowboy
+        python3 -m run_no_snowboy
         ;;
     help|--help)
         cat <<EOF
