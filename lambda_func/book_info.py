@@ -1,5 +1,6 @@
 import util
 import re
+import json
 from botocore.vendored import requests
 
 """This is the URL for the Finna API with a needed header for proper results"""
@@ -145,48 +146,40 @@ def extra_info(intent):
                 lower = slots['year']
                 upper = slots['year']
 
-    # if user's answer starts 'the book is written by'
-    elif input.startswith('the book is written by'):
-        written = input[22:]
-        split_list = written.split()
-        split_list = split_list[:2]
-        with_com = ',+'.join(split_list)
-
-        # count = lookfor(subject, filter=["author:\""+withCom+"\""])
-        # ['json']['resultCount']
-        # print("result count: " + str(count))
-        if lookfor(subject, filter=["author:\""+with_com+"\""])['json'][
-                                                            'resultCount'] > 0:
-            return subject_info(subject, extra_info=["author:\""+with_com+"\""])
-        else:
-            reversed_list = split_list[::-1]
-            reversed_with_com = ', '.join(reversed_list)
-            if lookfor(subject, filter=["author:\""+reversed_with_com+"\""])[
-                                        'json']['resultCount'] > 0:
-                return subject_info(subject, extra_info=[
-                                            "author:\""+reversed_with_com+"\""])
 
     # if user's answer starts 'book is written by'
-    elif input.startswith('book is written by'):
-        written = input[18:]
-        split_list = written.split()
-        split_list = split_list[:2]
-        with_com = ',+'.join(split_list)
-
-        if lookfor(subject, filter=["author:\""+with_com+"\""])['json'][
-                                                            'resultCount'] > 0:
-            return subject_info(subject, extra_info=["author:\""+with_com+"\""])
-        else:
-            reversed_list = split_list[::-1]
-            reversed_with_com = ', '.join(reversed_list)
-            if lookfor(subject, filter=["author:\""+reversed_with_com+"\""])[
-                                        'json']['resultCount'] > 0:
-                return subject_info(subject, extra_info=[
-                                            "author:\""+reversed_with_com+"\""])
     else:
+        data = json.load(open('book_author_info.json'))
+        for info in data['author_info']:
+            if input.startswith(info):
+                lenght = len(info)
+                written = input[lenght:]
+                return author_search(written, subject, lower, upper)
+
         return util.elicit_intent({'subject': subject},
                                   "No extra information was given.")
     # print("lower: " + str(lower) + "      upper: " + str(upper))
+    date = "search_daterange_mv:\"[" + str(lower) + " TO " + str(upper) + "]\""
+    # print(date)
+    return subject_info(subject, extra_info=[date])
+
+
+def author_search(written, subject, lower, upper):
+
+    split_list = written.split()
+    split_list = split_list[:2]
+    with_com = ',+'.join(split_list)
+
+    # count = lookfor(subject, filter=["author:\""+withCom+"\""])
+    # ['json']['resultCount']
+    # print("result count: " + str(count))
+    if lookfor(subject, filter=["author:\"" + with_com + "\""])['json']['resultCount'] > 0:
+        return subject_info(subject, extra_info=["author:\"" + with_com + "\""])
+    else:
+        reversed_list = split_list[::-1]
+        reversed_with_com = ', '.join(reversed_list)
+        if lookfor(subject, filter=["author:\"" + reversed_with_com + "\""])['json']['resultCount'] > 0:
+            return subject_info(subject, extra_info=["author:\"" + reversed_with_com + "\""])
     date = "search_daterange_mv:\"[" + str(lower) + " TO " + str(upper) + "]\""
     # print(date)
     return subject_info(subject, extra_info=[date])
@@ -251,7 +244,7 @@ def lookfor(term="", field=[], filter=[], method='GET', pretty_print='0'):
     r = sess.request(url=__url + 'search', method=method)
     sess.close()
 
-    # print(r.url)
+    print(r.url)
     # print(r.json())
     # print("result count: " + str(r.json()['resultCount']))
     return {'status_code': r.status_code, 'json': r.json()}
