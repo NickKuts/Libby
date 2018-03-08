@@ -1,41 +1,91 @@
-from OSMPythonTools.api import Api
 import json
+import difflib
 
-_osm_api = Api()
-with open("restaurants.json", "r") as fp:
+
+# Open the JSON file containing all restaurant information
+restaurants_json = 'restaurants.json'
+with open(restaurants_json, 'r') as fp:
     restaurants = json.load(fp)
-
-
-def get_tags(node):
+    
+    
+def _existence(name):
     """
-    Function for getting tags related to a certain restaurant
-    :param node: the restaurant node
-    :return: associated tags
+    This function checks if the location can be found on disk, if not return None.
     """
-    if 'node=' in node:
-        node.replace("=", "/")  # The string format has to be 'node/<id>'
-    elif 'node' not in node:
-        node = 'node/' + node
-    return _osm_api.query(node).tags()
+    for loc in restaurants:
+        location = restaurants[loc]
+        aliases = location['aliases']
+        for al in aliases:
+            if name in al:
+                return location
+    return None
 
 
-def location_handler(intent):
-    slots = intent['currentIntent']['slots']
-    val = '(unknown)'
-
+def address(event):
+    """
+    This function returns the address of the location the user asks for.
+    
+    Right now the function only checks for restaurants.
+    """
+    addr = "Sorry, I could not find address for that location"
+    name = return_name(event)
+    
+    if not name:
+        return addr
+        
+    info = _existence(name)
+    if name:
+        return 'The address of {} is {}'.format(name, info['address'].capitalize())
+    
+    return addr
+    
+    
+def return_name(event):
+    """
+    This function simply returns the name of the location found in the query, if it exists.
+    If the slot does not exist the function simply returns '(unknown)'.
+    """
+    slots = event['currentIntent']['slots']
+    val   = None
+    
     for slot in slots:
         temp = slots[slot]
         if temp:
-            val = get_tags(restaurants[temp.lower()])
-#            val = '{} {}'.format(val['addr:street'], val['addr:housenumber'])
+            val = temp
+            
+    return val
+    
 
+def checker(trans):
+    """
+    This function finds the correct function for the answer.
+    E.g. if the query of the user contains address the query is routed to the 'address' 
+    function that finds the address.
+    """
+    if 'address' in trans:
+        return address
+    return return_name
+    
+
+def location_handler(event):
+    """
+    This is the handler function for the Location intent.
+    """
+    trans = event['inputTranscript']
+    func  = checker(trans)
+    ans   = func(event)
+    
+    if not ans:
+        ans = "Unfortunately I can't seem to find the location"
+    
     return {
         'sessionAttributes': {},
         'dialogAction': {
             'type': 'ElicitIntent',
             'message': {
                 'contentType': 'PlainText',
-                'content': val
+                'content': ans
             }
         }
     }
+
