@@ -1,0 +1,7 @@
+LIBBY /1e-10/
+LIBY /1e-7/
+LIBI /1e-7/
+LIIBI /1e-10/
+LIBBI /1e-10/
+LIBYY /1e-7/
+LIBII /1e-7/
