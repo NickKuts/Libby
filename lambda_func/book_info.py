@@ -145,9 +145,10 @@ def extra_info(intent):
             if slots['year']:
                 lower = slots['year']
                 upper = slots['year']
+        date = "search_daterange_mv:\"[" + str(lower) + " TO " + str(
+            upper) + "]\""
+        return subject_info(subject, extra_info=[date])
 
-
-    # if user's answer starts 'book is written by'
     else:
         data = json.load(open('book_author_info.json'))
         for info in data['author_info']:
@@ -158,11 +159,9 @@ def extra_info(intent):
         written = input
         return author_search(written, subject, lower, upper)
 
-        # return util.elicit_intent({'subject': subject},"No extra information was given.")
-    # print("lower: " + str(lower) + "      upper: " + str(upper))
-    """date = "search_daterange_mv:\"[" + str(lower) + " TO " + str(upper) + "]\""
-    # print(date)
-    return subject_info(subject, extra_info=[date])"""
+    # date ="search_daterange_mv:\"[" + str(lower) + " TO " + str(upper) + "]\""
+
+    # return subject_info(subject, extra_info=[date])
 
 
 def author_search(written, subject, lower, upper):
@@ -174,16 +173,20 @@ def author_search(written, subject, lower, upper):
     # count = lookfor(subject, filter=["author:\""+withCom+"\""])
     # ['json']['resultCount']
     # print("result count: " + str(count))
-    if lookfor(subject, filter=["author:\"" + with_com + "\""])['json']['resultCount'] > 0:
+    if lookfor(subject, filter=["author:\"" + with_com + "\""])['json'][
+                                    'resultCount'] > 0:
         return subject_info(subject, extra_info=["author:\"" + with_com + "\""])
     else:
         reversed_list = split_list[::-1]
         reversed_with_com = ', '.join(reversed_list)
-        if lookfor(subject, filter=["author:\"" + reversed_with_com + "\""])['json']['resultCount'] > 0:
-            return subject_info(subject, extra_info=["author:\"" + reversed_with_com + "\""])
-    date = "search_daterange_mv:\"[" + str(lower) + " TO " + str(upper) + "]\""
-    # print(date)
-    return subject_info(subject, extra_info=[date])
+        if lookfor(subject, filter=["author:\"" + reversed_with_com + "\""])[
+                                    'json']['resultCount'] > 0:
+            return subject_info(subject, extra_info=[
+                                    "author:\"" + reversed_with_com + "\""])
+
+    # no find any extra info
+        return util.elicit_intent({
+                        'subject': subject}, "No extra information was given.")
 
 
 def record(id, field=[], method='GET', pretty_print='0'):
