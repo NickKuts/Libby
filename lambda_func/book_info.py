@@ -152,16 +152,17 @@ def extra_info(intent):
         data = json.load(open('book_author_info.json'))
         for info in data['author_info']:
             if input.startswith(info):
-                lenght = len(info)
-                written = input[lenght:]
+                size = len(info)
+                written = input[size:]
                 return author_search(written, subject, lower, upper)
+        written = input
+        return author_search(written, subject, lower, upper)
 
-        return util.elicit_intent({'subject': subject},
-                                  "No extra information was given.")
+        # return util.elicit_intent({'subject': subject},"No extra information was given.")
     # print("lower: " + str(lower) + "      upper: " + str(upper))
-    date = "search_daterange_mv:\"[" + str(lower) + " TO " + str(upper) + "]\""
+    """date = "search_daterange_mv:\"[" + str(lower) + " TO " + str(upper) + "]\""
     # print(date)
-    return subject_info(subject, extra_info=[date])
+    return subject_info(subject, extra_info=[date])"""
 
 
 def author_search(written, subject, lower, upper):
