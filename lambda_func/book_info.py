@@ -133,19 +133,20 @@ def extra_info(intent):
     input = intent['inputTranscript']
     lower = 0
     upper = 9999
-    if 'lower' in slots:
-        if slots['lower']:
-            lower = slots['lower']
-    if 'upper' in slots:
-        if slots['upper']:
-            upper = slots['upper']
-    if 'year' in slots:
-        if slots['year']:
-            lower = slots['year']
-            upper = slots['year']
+    if 'lower' in slots or 'upper' in slots or 'year' in slots:
+        if 'lower' in slots:
+            if slots['lower']:
+                lower = slots['lower']
+        if 'upper' in slots:
+            if slots['upper']:
+                upper = slots['upper']
+        if 'year' in slots:
+            if slots['year']:
+                lower = slots['year']
+                upper = slots['year']
 
     # if user's answer starts 'the book is written by'
-    if input.startswith('the book is written by'):
+    elif input.startswith('the book is written by'):
         written = input[22:]
         split_list = written.split()
         split_list = split_list[:2]
@@ -154,7 +155,7 @@ def extra_info(intent):
         # count = lookfor(subject, filter=["author:\""+withCom+"\""])
         # ['json']['resultCount']
         # print("result count: " + str(count))
-        if lookfor(subject,filter=["author:\""+with_com+"\""])['json'][
+        if lookfor(subject, filter=["author:\""+with_com+"\""])['json'][
                                                             'resultCount'] > 0:
             return subject_info(subject, extra_info=["author:\""+with_com+"\""])
         else:
@@ -170,7 +171,7 @@ def extra_info(intent):
         written = input[18:]
         split_list = written.split()
         split_list = split_list[:2]
-        with_com = ', '.join(split_list)
+        with_com = ',+'.join(split_list)
 
         if lookfor(subject, filter=["author:\""+with_com+"\""])['json'][
                                                             'resultCount'] > 0:
@@ -182,7 +183,9 @@ def extra_info(intent):
                                         'json']['resultCount'] > 0:
                 return subject_info(subject, extra_info=[
                                             "author:\""+reversed_with_com+"\""])
-
+    else:
+        return util.elicit_intent({'subject': subject},
+                                  "No extra information was given.")
     # print("lower: " + str(lower) + "      upper: " + str(upper))
     date = "search_daterange_mv:\"[" + str(lower) + " TO " + str(upper) + "]\""
     # print(date)
