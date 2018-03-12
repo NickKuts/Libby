@@ -1,16 +1,15 @@
-from os import environ, path
+from os import path
 import pyaudio
-from pocketsphinx.pocketsphinx import *
-from sphinxbase.sphinxbase import *
+from pocketsphinx.pocketsphinx import Decoder
 
 MODELDIR = "model/"
-PATHDIR = "/rpi/lex/python/"
+PATHDIR = ""
 p = pyaudio.PyAudio()
 # Create a decoder with certain model
 config = Decoder.default_config()
 config.set_string('-hmm', path.join(MODELDIR, 'en-us/'))
 config.set_string('-dict', path.join(PATHDIR, '0963.dic'))
-# config.set_string('-logfn', '/dev/null')
+config.set_string('-logfn', '/dev/null')
 decoder = Decoder(config)
 
 decoder.set_kws("kws", path.join(PATHDIR, 'keywords.txt'))
@@ -35,6 +34,8 @@ def start(callback):
         if decoder.hyp() is not None:
             print("Found keyword")
             print(decoder.hyp().hypstr)
-            decoder.end_utt()
-            callback()
             break
+    stream.stop_stream()
+    stream.close()
+    decoder.end_utt()
+    callback()
