@@ -2,14 +2,14 @@ from os import path
 import pyaudio
 from pocketsphinx.pocketsphinx import Decoder
 
-MODELDIR = "model/"
-PATHDIR = ""
+MODELDIR = "/rpi/lex/python/model/"
+PATHDIR = "/rpi/lex/python/"
 p = pyaudio.PyAudio()
 # Create a decoder with certain model
 config = Decoder.default_config()
 config.set_string('-hmm', path.join(MODELDIR, 'en-us/'))
 config.set_string('-dict', path.join(PATHDIR, '0963.dic'))
-config.set_string('-logfn', '/dev/null')
+# config.set_string('-logfn', '/dev/null')
 decoder = Decoder(config)
 
 decoder.set_kws("kws", path.join(PATHDIR, 'keywords.txt'))
