@@ -3,17 +3,17 @@ import difflib
 
 
 # Open the JSON file containing all restaurant information
-restaurants_json = 'restaurants.json'
-with open(restaurants_json, 'r') as fp:
-    restaurants = json.load(fp)
+locations_json = 'locations.json'
+with open(locations_json, 'r') as fp:
+    locations = json.load(fp)
     
     
 def _existence(name):
     """
     This function checks if the location can be found on disk, if not return None.
     """
-    for loc in restaurants:
-        location = restaurants[loc]
+    for loc in locations:
+        location = locations[loc]
         aliases = location['aliases']
         for al in aliases:
             if name in al:
@@ -24,8 +24,6 @@ def _existence(name):
 def address(event):
     """
     This function returns the address of the location the user asks for.
-    
-    Right now the function only checks for restaurants.
     """
     addr = "Sorry, I could not find address for that location"
     name = return_name(event)

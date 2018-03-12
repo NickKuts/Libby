@@ -13,20 +13,20 @@ fi
 zip_name="${dir_name}.zip"
 
 # Make the directory
-#mkdir ${dir_name}
+mkdir ${dir_name}
 #cp -r venv/lib/python3.6/site-packages/* ${dir_name}/
 
 # Copy all files from lambda_func to this directory
-#cp -r lambda_func/* ${dir_name}/
+cp -r lambda_func/* ${dir_name}/
 
 # Now create the actual zip-file
-zip -r ${zip_name} lambda_func/*
+#zip -r ${zip_name} lambda_func/*
 
-#cd ${dir_name}
-#zip -r ${zip_name} *
-#mv ${zip_name} ..
-#cd ..
-#rm -rf ${dir_name}/
+cd ${dir_name}
+zip -r ${zip_name} *
+mv ${zip_name} ..
+cd ..
+rm -rf ${dir_name}/
 
 #aws s3 cp ${dir_name}.zip s3://libby-lambda-configuration/ --profile $2
 

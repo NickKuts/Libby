@@ -1,0 +1,2041 @@
+{
+    "main": {
+        "aliases": [
+            "r001",
+            "a",
+            "h",
+            "m",
+            "u",
+            "y",
+            "kandi",
+            "main building",
+            "main",
+            "p\u00e4\u00e4lafka",
+            "aalto undergraduate centre"
+        ],
+        "building": null,
+        "address": "Otakaari 1",
+        "osm": 4252946,
+        "osm_meta": "rel=4148",
+        "opening_hours": "Mo-Th 07:45-20:00; Fr 07:45-18:00; Jun-Aug 08:00-15:30; PH off",
+        "type": null
+    },
+    "alvari": {
+        "aliases": [
+            "alvari"
+        ],
+        "building": "main",
+        "address": "Otakaari 1",
+        "osm": "node=301814516",
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "restaurant"
+    },
+    "Silinteri": {
+        "aliases": [
+            "silinteri"
+        ],
+        "building": "main",
+        "address": "Otakaari 1",
+        "osm": "node=5034218017",
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "restaurant"
+    },
+    "Aino cafe": {
+        "aliases": [
+            "aino cafe"
+        ],
+        "building": "main",
+        "address": "Otakaari 1",
+        "osm": "node=5004956486",
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "cafe"
+    },
+    "Elissa cafe": {
+        "aliases": [
+            "elissa cafe"
+        ],
+        "building": "main",
+        "address": "Otakaari 1",
+        "osm": "node=5004956487",
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "cafe"
+    },
+    "Student services": {
+        "aliases": [
+            "student services"
+        ],
+        "building": "main",
+        "address": "Otakaari 1",
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "service"
+    },
+    "IT Service Desk Kandi": {
+        "aliases": [
+            "it service desk kandi"
+        ],
+        "building": "main",
+        "address": "Otakaari 1",
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "service"
+    },
+    "studenthub": {
+        "aliases": [
+            "studenthub",
+            "student hub"
+        ],
+        "building": "main",
+        "address": null,
+        "osm": 514232691,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "location"
+    },
+    "Starting Point": {
+        "aliases": [
+            "starting point"
+        ],
+        "building": "main",
+        "address": "Otakaari 1",
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "service"
+    },
+    "A siipi Main": {
+        "aliases": [
+            "a siipi main",
+            "a wing main"
+        ],
+        "building": "main",
+        "address": null,
+        "osm": 514232744,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "wing"
+    },
+    "H siipi Main": {
+        "aliases": [
+            "h siipi main",
+            "h wing main"
+        ],
+        "building": "main",
+        "address": null,
+        "osm": 514232720,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "wing"
+    },
+    "K siipi Main": {
+        "aliases": [
+            "k siipi main",
+            "k wing main"
+        ],
+        "building": "main",
+        "address": null,
+        "osm": 540151861,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "wing"
+    },
+    "M siipi Main": {
+        "aliases": [
+            "m siipi main",
+            "m wing main"
+        ],
+        "building": "main",
+        "address": null,
+        "osm": 514232739,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "wing"
+    },
+    "U siipi Main": {
+        "aliases": [
+            "u siipi main",
+            "u wing main"
+        ],
+        "building": "main",
+        "address": null,
+        "osm": 514232732,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "wing"
+    },
+    "Y siipi Main": {
+        "aliases": [
+            "y siipi main",
+            "y wing main"
+        ],
+        "building": "main",
+        "address": null,
+        "osm": 514232725,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "wing"
+    },
+    "r002": {
+        "aliases": [
+            "r002",
+            "r",
+            "r002",
+            "raksa",
+            "civil and environmental engineering"
+        ],
+        "building": null,
+        "address": "Rakentajanaukio 4",
+        "osm": 7579330,
+        "osm_meta": null,
+        "opening_hours": "Mo-Th 08:00-20:00; Fr 08:00-18:00; Jun-Aug Mo-Fr 08:00-15:30; PH off",
+        "type": null
+    },
+    "F": {
+        "aliases": [
+            "r003",
+            "f",
+            "f-talo",
+            "f-building",
+            "f",
+            "fyssa"
+        ],
+        "building": null,
+        "address": "Otakaari 3",
+        "osm": 98855202,
+        "osm_meta": "rel=1402504",
+        "opening_hours": "Mo-Th 08:00-20:00; Fr 08:00-18:00; Jun-Aug Mo-Fr 08:00-15:30; PH off",
+        "type": null
+    },
+    "Kvarkki": {
+        "aliases": [
+            "kvarkki"
+        ],
+        "building": "F",
+        "address": "Otakaari 3",
+        "osm": "node=577022359",
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "restaurant"
+    },
+    "r004": {
+        "aliases": [
+            "r004",
+            "elec",
+            "r004",
+            "s\u00e4hk\u00f6"
+        ],
+        "building": null,
+        "address": "Otakaari 5",
+        "osm": 24342454,
+        "osm_meta": null,
+        "opening_hours": "Mo-Fr 08:00-16:00; PH off",
+        "type": null
+    },
+    "Elepaja": {
+        "aliases": [
+            "elepaja"
+        ],
+        "building": "r004",
+        "address": "Otakaari 5",
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "service"
+    },
+    "K4": {
+        "aliases": [
+            "r005",
+            "k4",
+            "k4",
+            "aalto mechanical engineering 4"
+        ],
+        "building": null,
+        "address": "S\u00e4hk\u00f6miehentie 4",
+        "osm": 7584026,
+        "osm_meta": null,
+        "opening_hours": "Mo-Fr 08:00-15:45; Jun-Aug Mo-Fr 08:00-15:30; PH off",
+        "type": null
+    },
+    "K3": {
+        "aliases": [
+            "r006",
+            "k3",
+            "k3",
+            "aalto mechanical engineering 3"
+        ],
+        "building": null,
+        "address": "Puumiehenkuja 5",
+        "osm": 156903284,
+        "osm_meta": null,
+        "opening_hours": "Mo-Fr 08:00-15:45; Jun-Aug Mo-Fr 08:00-15:30; PH off",
+        "type": null
+    },
+    "K2": {
+        "aliases": [
+            "r007",
+            "k2",
+            "k2",
+            "aalto mechanical engineering 2"
+        ],
+        "building": null,
+        "address": "Puumiehenkuja 3",
+        "osm": 156903282,
+        "osm_meta": null,
+        "opening_hours": "Mo-Fr 08:00-15:45; Jun-Aug Mo-Fr 08:00-15:30; PH off",
+        "type": null
+    },
+    "K1": {
+        "aliases": [
+            "r008",
+            "k1",
+            "kone",
+            "aalto mechanical engineering 1"
+        ],
+        "building": null,
+        "address": "Otakaari 4",
+        "osm": 156903276,
+        "osm_meta": null,
+        "opening_hours": "Mo-Th 08:00-20:00; Fr 08:00-18:00; Jun-Aug Mo-Fr 08:00-15:30; PH off",
+        "type": null
+    },
+    "sodexokone": {
+        "aliases": [
+            "sodexokone"
+        ],
+        "building": "K1",
+        "address": "Otakaari 4",
+        "osm": "node=589913032",
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "restaurant"
+    },
+    "r009": {
+        "aliases": [
+            "r009",
+            "r009"
+        ],
+        "building": null,
+        "address": "Puumiehenkuja 2",
+        "osm": 27930945,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": null
+    },
+    "r010": {
+        "aliases": [
+            "r010",
+            "r010"
+        ],
+        "building": null,
+        "address": "Konemiehentie 4",
+        "osm": 4424188,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": null
+    },
+    "r011": {
+        "aliases": [
+            "r011",
+            "ke",
+            "chem",
+            "r011",
+            "kemma",
+            "aalto chemical engineering"
+        ],
+        "building": null,
+        "address": "Kemistintie 1",
+        "osm": 7588058,
+        "osm_meta": null,
+        "opening_hours": "Mo-Th 07:45-20:00; Fr 07:45-18:00; Jun-Aug Mo-Fr 08:00-15:30; PH off",
+        "type": null
+    },
+    "maukas": {
+        "aliases": [
+            "maukas"
+        ],
+        "building": "r011",
+        "address": "Kemistintie 1",
+        "osm": "node=2381695985",
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "restaurant"
+    },
+    "A siipi Kemma": {
+        "aliases": [
+            "a siipi kemma",
+            "a wing kemma"
+        ],
+        "building": "r011",
+        "address": null,
+        "osm": 532048006,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "location"
+    },
+    "B siipi Kemma": {
+        "aliases": [
+            "b siipi kemma",
+            "b wing kemma"
+        ],
+        "building": "r011",
+        "address": null,
+        "osm": 532048005,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "location"
+    },
+    "C siipi Kemma": {
+        "aliases": [
+            "c siipi kemma",
+            "c wing kemma"
+        ],
+        "building": "r011",
+        "address": null,
+        "osm": 532048004,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "location"
+    },
+    "D siipi Kemma": {
+        "aliases": [
+            "d siipi kemma",
+            "d wing kemma"
+        ],
+        "building": "r011",
+        "address": null,
+        "osm": 532048003,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "location"
+    },
+    "E siipi Kemma": {
+        "aliases": [
+            "e siipi kemma",
+            "e wing kemma"
+        ],
+        "building": "r011",
+        "address": null,
+        "osm": 532048002,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "location"
+    },
+    "F siipi Kemma": {
+        "aliases": [
+            "f siipi kemma",
+            "f wing kemma"
+        ],
+        "building": "r011",
+        "address": null,
+        "osm": 532048001,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "location"
+    },
+    "r012": {
+        "aliases": [
+            "r012",
+            "v",
+            "r012",
+            "vuori",
+            "aalto materials science and technology"
+        ],
+        "building": null,
+        "address": "Vuorimiehentie 2",
+        "osm": 7588374,
+        "osm_meta": null,
+        "opening_hours": "Mo-Fr 07:45-16:00; Jun-Aug Mo-Fr 08:00-15:30; PH off",
+        "type": null
+    },
+    "sodexovuori": {
+        "aliases": [
+            "sodexovuori"
+        ],
+        "building": "r012",
+        "address": "Vuorimiehentie 2",
+        "osm": "node=2381696675",
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "restaurant"
+    },
+    "r013": {
+        "aliases": [
+            "r013",
+            "r013",
+            "puu",
+            "aalto forest products technology 1"
+        ],
+        "building": null,
+        "address": "Vuorimiehentie 1",
+        "osm": 7588593,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": null
+    },
+    "r014": {
+        "aliases": [
+            "r014",
+            "r014"
+        ],
+        "building": null,
+        "address": "Tekniikantie 3",
+        "osm": 7588741,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": null
+    },
+    "kirjasto": {
+        "aliases": [
+            "r015",
+            "aalto-yliopiston kirjasto",
+            "main library",
+            "learning center",
+            "hh-center",
+            "hh-keskus",
+            "kirjasto",
+            "aalto harald herlin learning center"
+        ],
+        "building": null,
+        "address": "Otaniementie 9",
+        "osm": 4252948,
+        "osm_meta": null,
+        "opening_hours": "Mo-Fr 08:00-20:00; Sa 08:00-15:00; PH off",
+        "type": null
+    },
+    "Robert's Coffee": {
+        "aliases": [
+            "robert's coffee"
+        ],
+        "building": "kirjasto",
+        "address": "Otaniementie 9",
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "cafe"
+    },
+    "r016": {
+        "aliases": [
+            "r016",
+            "aalto ice tank",
+            "r016",
+            "aalto marine technology"
+        ],
+        "building": null,
+        "address": "Tietotie 1",
+        "osm": 4259025,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": null
+    },
+    "maari": {
+        "aliases": [
+            "r017",
+            "maari",
+            "aalto maari building"
+        ],
+        "building": null,
+        "address": "S\u00e4hk\u00f6miehentie 3",
+        "osm": 7584131,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": null
+    },
+    "r018": {
+        "aliases": [
+            "r018",
+            "r018"
+        ],
+        "building": null,
+        "address": "Konemiehentie 1",
+        "osm": 7244238,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": null
+    },
+    "dipoli": {
+        "aliases": [
+            "r019",
+            "fake main building",
+            "dipoli",
+            "aalto dipoli"
+        ],
+        "building": null,
+        "address": "Otakaari 24",
+        "osm": 4252954,
+        "osm_meta": null,
+        "opening_hours": "Mo-Fr 07:45-21:30; Sa 09:30-21:30; PH off",
+        "type": null
+    },
+    "carre": {
+        "aliases": [
+            "carre"
+        ],
+        "building": "dipoli",
+        "address": "Otakaari 24",
+        "osm": "node=5022009311",
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "cafe"
+    },
+    "reima": {
+        "aliases": [
+            "reima"
+        ],
+        "building": "dipoli",
+        "address": "Otakaari 24",
+        "osm": "node=5022009310",
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "restaurant"
+    },
+    "tenhola": {
+        "aliases": [
+            "tenhola"
+        ],
+        "building": "dipoli",
+        "address": "Otakaari 24",
+        "osm": "node=5022009278",
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "cafe"
+    },
+    "metso": {
+        "aliases": [
+            "metso"
+        ],
+        "building": "dipoli",
+        "address": "Otakaari 24",
+        "osm": "node=5022009279",
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "restaurant"
+    },
+    "IT Service Desk Dipoli": {
+        "aliases": [
+            "it service desk dipoli"
+        ],
+        "building": "dipoli",
+        "address": "Otakaari 24",
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "service"
+    },
+    "Otaniemen ostoskeskus": {
+        "aliases": [
+            "r020",
+            "ostari",
+            "otaniemen ostoskeskus",
+            "otaniemi shopping center"
+        ],
+        "building": null,
+        "address": "Otakaari 11",
+        "osm": 7589963,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": null
+    },
+    "Alepa Otaniemi": {
+        "aliases": [
+            "ruokakauppa",
+            "grocery store",
+            "alepa otaniemi"
+        ],
+        "building": "Otaniemen ostoskeskus",
+        "address": "Otakaari 11",
+        "osm": "node=301625473",
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "shopping"
+    },
+    "rkioski": {
+        "aliases": [
+            "kioski",
+            "convenience store",
+            "rkioski"
+        ],
+        "building": "Otaniemen ostoskeskus",
+        "address": "Otakaari 11",
+        "osm": "node=301625474",
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "shopping"
+    },
+    "kynajapaperi": {
+        "aliases": [
+            "kynajapaperi"
+        ],
+        "building": "Otaniemen ostoskeskus",
+        "address": "Otakaari 11",
+        "osm": "node=4840360722",
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "cafe"
+    },
+    "otafood": {
+        "aliases": [
+            "otafood"
+        ],
+        "building": "Otaniemen ostoskeskus",
+        "address": "Otakaari 11",
+        "osm": "node=5004956488",
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "restaurant"
+    },
+    "ATM": {
+        "aliases": [
+            "otto-automaatti",
+            "pankkiautomaatti",
+            "automated teller machine",
+            "atm"
+        ],
+        "building": "Otaniemen ostoskeskus",
+        "address": "Otakaari 11",
+        "osm": "node=263964909",
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "service"
+    },
+    "r020-pharmacy": {
+        "aliases": [
+            "r020-pharmacy"
+        ],
+        "building": "Otaniemen ostoskeskus",
+        "address": "Otakaari 11",
+        "osm": "node=263964923",
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "service"
+    },
+    "r022": {
+        "aliases": [
+            "r022",
+            "r022"
+        ],
+        "building": null,
+        "address": "L\u00e4mp\u00f6miehenkuja 2",
+        "osm": 26608151,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": null
+    },
+    "r023": {
+        "aliases": [
+            "r023",
+            "r023"
+        ],
+        "building": null,
+        "address": "L\u00e4mp\u00f6miehenkuja 3",
+        "osm": 26608177,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": null
+    },
+    "r024": {
+        "aliases": [
+            "r024",
+            "mt3",
+            "r024",
+            "aalto architecture + helsinki medialab"
+        ],
+        "building": null,
+        "address": "Miestentie 3",
+        "osm": 27468640,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": null
+    },
+    "IT Service Desk MT3": {
+        "aliases": [
+            "it service desk mt3"
+        ],
+        "building": "r024",
+        "address": "Miestentie 3",
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "service"
+    },
+    "r025": {
+        "aliases": [
+            "r025",
+            "r025"
+        ],
+        "building": null,
+        "address": "Betonimiehenkuja 5",
+        "osm": 26608273,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": null
+    },
+    "r026": {
+        "aliases": [
+            "r026",
+            "r026"
+        ],
+        "building": null,
+        "address": "Betonimiehenkuja 3",
+        "osm": 26608317,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": null
+    },
+    "r027": {
+        "aliases": [
+            "r027",
+            "r027",
+            "aalto architecture workshop"
+        ],
+        "building": null,
+        "address": "Metallimiehenkuja 4",
+        "osm": 7588940,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": null
+    },
+    "r028": {
+        "aliases": [
+            "r028",
+            "r028"
+        ],
+        "building": null,
+        "address": "Otaranta 6",
+        "osm": 4259272,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": null
+    },
+    "Unisport": {
+        "aliases": [
+            "unisport"
+        ],
+        "building": "r028",
+        "address": "Otaranta 6",
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "service"
+    },
+    "Aalto Studios": {
+        "aliases": [
+            "r029",
+            "aalto studios",
+            "aalto studios"
+        ],
+        "building": null,
+        "address": null,
+        "osm": 24342456,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": null
+    },
+    "T": {
+        "aliases": [
+            "r030",
+            "t",
+            "subway building",
+            "cs",
+            "t",
+            "tikkitalo",
+            "aalto computer science"
+        ],
+        "building": null,
+        "address": "Konemiehentie 2",
+        "osm": 4217650,
+        "osm_meta": null,
+        "opening_hours": "Mo-Th 08:00-20:00; Fr 08:00-18:00; Jun-Aug Mo-Fr 08:00-15:30; PH off",
+        "type": null
+    },
+    "Paniikki": {
+        "aliases": [
+            "paniikki",
+            "aalto panique computer lab"
+        ],
+        "building": "T",
+        "address": null,
+        "osm": 91227653,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "room"
+    },
+    "Sodexo": {
+        "aliases": [
+            "sodexo"
+        ],
+        "building": "T",
+        "address": "Konemiehentie 2",
+        "osm": "node=580704688",
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "restaurant"
+    },
+    "subway_cs": {
+        "aliases": [
+            "subway_cs"
+        ],
+        "building": "T",
+        "address": "Konemiehentie 2",
+        "osm": "node=3575222399",
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "restaurant"
+    },
+    "library_cs": {
+        "aliases": [
+            "library_cs"
+        ],
+        "building": "T",
+        "address": "Konemiehentie 2",
+        "osm": "node=5012868057",
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "service"
+    },
+    "A siipi CS": {
+        "aliases": [
+            "a siipi cs",
+            "a wing cs"
+        ],
+        "building": "T",
+        "address": null,
+        "osm": 532048009,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "wing"
+    },
+    "B siipi CS": {
+        "aliases": [
+            "b siipi cs",
+            "b wing cs"
+        ],
+        "building": "T",
+        "address": null,
+        "osm": 532048008,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "wing"
+    },
+    "C siipi CS": {
+        "aliases": [
+            "c siipi cs",
+            "c wing cs"
+        ],
+        "building": "T",
+        "address": null,
+        "osm": 532048007,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "wing"
+    },
+    "oih": {
+        "aliases": [
+            "r032",
+            "oih",
+            "oih"
+        ],
+        "building": null,
+        "address": "Maarintie 6",
+        "osm": 148683540,
+        "osm_meta": null,
+        "opening_hours": "Mo-Fr 07:30-16:30; PH off",
+        "type": null
+    },
+    "oih_cafe": {
+        "aliases": [
+            "oih_cafe"
+        ],
+        "building": "oih",
+        "address": "Maarintie 6",
+        "osm": "node=5012868059",
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "cafe"
+    },
+    "EIT RawMaterials": {
+        "aliases": [
+            "eit rawmaterials"
+        ],
+        "building": "oih",
+        "address": "Maarintie 6",
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "unit"
+    },
+    "r034": {
+        "aliases": [
+            "r034",
+            "r034",
+            "aalto water laboratory"
+        ],
+        "building": null,
+        "address": "Tietotie 1 E",
+        "osm": 4259026,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": null
+    },
+    "fatlizard": {
+        "aliases": [
+            "fatlizard"
+        ],
+        "building": "r034",
+        "address": "Tietotie 1 E",
+        "osm": "node=5323641949",
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "restaurant"
+    },
+    "r035": {
+        "aliases": [
+            "r035",
+            "r035"
+        ],
+        "building": null,
+        "address": null,
+        "osm": 51725020,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": null
+    },
+    "IT Services": {
+        "aliases": [
+            "it services"
+        ],
+        "building": "r035",
+        "address": null,
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "unit"
+    },
+    "r036": {
+        "aliases": [
+            "r036",
+            "r036"
+        ],
+        "building": null,
+        "address": "Tietotie 3",
+        "osm": 7585092,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": null
+    },
+    "Nanofab": {
+        "aliases": [
+            "nanofab"
+        ],
+        "building": "r036",
+        "address": "Tietotie 3",
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "unit"
+    },
+    "tuas": {
+        "aliases": [
+            "r037",
+            "tu",
+            "as",
+            "tuas",
+            "aalto tuas"
+        ],
+        "building": null,
+        "address": "Maarintie 8",
+        "osm": 29012757,
+        "osm_meta": null,
+        "opening_hours": "Mo-Th 08:00-20:00; Fr 08:00-18:00; Jun-Aug Mo-Fr 08:00-15:30; PH off",
+        "type": null
+    },
+    "Aalto Ventures Program": {
+        "aliases": [
+            "aalto ventures program"
+        ],
+        "building": "tuas",
+        "address": "Maarintie 8",
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "unit"
+    },
+    "Amica TUAS": {
+        "aliases": [
+            "amica tuas"
+        ],
+        "building": "tuas",
+        "address": "Maarintie 8",
+        "osm": "node=580706218",
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "restaurant"
+    },
+    "library_tuas": {
+        "aliases": [
+            "library_tuas"
+        ],
+        "building": "tuas",
+        "address": "Maarintie 8",
+        "osm": "node=5012868058",
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "service"
+    },
+    "IT Service Desk Maari": {
+        "aliases": [
+            "it service desk maari"
+        ],
+        "building": "tuas",
+        "address": "Maarintie 8",
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "service"
+    },
+    "x5xx siipi TUAS": {
+        "aliases": [
+            "x5xx siipi tuas",
+            "x5xx wing tuas"
+        ],
+        "building": "tuas",
+        "address": null,
+        "osm": 532048012,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "wing"
+    },
+    "x1xx siipi TUAS": {
+        "aliases": [
+            "x1xx siipi tuas",
+            "x1xx wing tuas"
+        ],
+        "building": "tuas",
+        "address": null,
+        "osm": 532048011,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "wing"
+    },
+    "159x siipi TUAS": {
+        "aliases": [
+            "159x siipi tuas",
+            "159x wing tuas"
+        ],
+        "building": "tuas",
+        "address": null,
+        "osm": 532048010,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "wing"
+    },
+    "Aalto-yliopiston ylioppilaskunta": {
+        "aliases": [
+            "r038",
+            "aalto-yliopiston ylioppilaskunta",
+            "aalto university student union",
+            "aalto university student union"
+        ],
+        "building": null,
+        "address": "Otakaari 11",
+        "osm": 7589907,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": null
+    },
+    "AYY J\u00e4senpalvelupisteet": {
+        "aliases": [
+            "ayy j\u00e4senpalvelupisteet",
+            "ayy service point"
+        ],
+        "building": "Aalto-yliopiston ylioppilaskunta",
+        "address": "Otakaari 11",
+        "osm": "node=263978267",
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "service"
+    },
+    "r039": {
+        "aliases": [
+            "r039",
+            "r039"
+        ],
+        "building": null,
+        "address": "Metallimiehenkuja 6-8",
+        "osm": 27464085,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": null
+    },
+    "r040": {
+        "aliases": [
+            "r040",
+            "urdsgjallar",
+            "r040",
+            "t\u00e4ff\u00e4",
+            "aalto tf"
+        ],
+        "building": null,
+        "address": "Otakaari 22",
+        "osm": 4252953,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": null
+    },
+    "T\u00e4ff\u00e4": {
+        "aliases": [
+            "t\u00e4ff\u00e4"
+        ],
+        "building": "r040",
+        "address": "Otakaari 22",
+        "osm": "node=580707759",
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "restaurant"
+    },
+    "Aalto Inn": {
+        "aliases": [
+            "r041",
+            "aalto inn"
+        ],
+        "building": null,
+        "address": "Otaranta 4",
+        "osm": 181643549,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": null
+    },
+    "Ylioppilaiden terveydenhoitos\u00e4\u00e4ti\u00f6": {
+        "aliases": [
+            "r042",
+            "yhts",
+            "shvs",
+            "fshs",
+            "ylioppilaiden terveydenhoitos\u00e4\u00e4ti\u00f6",
+            "finnish student health service"
+        ],
+        "building": null,
+        "address": "Otakaari 12",
+        "osm": 4266890,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": null
+    },
+    "chappel": {
+        "aliases": [
+            "r043",
+            "chappel"
+        ],
+        "building": null,
+        "address": "J\u00e4mer\u00e4ntaival 8",
+        "osm": 4266572,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": null
+    },
+    "servinmokki": {
+        "aliases": [
+            "r044",
+            "servinmokki",
+            "sm\u00f6kki"
+        ],
+        "building": null,
+        "address": "J\u00e4mer\u00e4ntaival 4",
+        "osm": 4259265,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": null
+    },
+    "rantasauna": {
+        "aliases": [
+            "r045",
+            "rantasauna",
+            "rantsu"
+        ],
+        "building": null,
+        "address": "Vastaranta 1",
+        "osm": 26139146,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": null
+    },
+    "Radisson Blu": {
+        "aliases": [
+            "r056",
+            "radisson blu"
+        ],
+        "building": null,
+        "address": "Otaranta 2",
+        "osm": 4259289,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": null
+    },
+    "ravintolaranta": {
+        "aliases": [
+            "ravintolaranta"
+        ],
+        "building": "Radisson Blu",
+        "address": "Otaranta 2",
+        "osm": "node=2071892285",
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "restaurant"
+    },
+    "r067": {
+        "aliases": [
+            "r067",
+            "school of arts",
+            "design and architecture",
+            "school of business",
+            "r067"
+        ],
+        "building": null,
+        "address": null,
+        "osm": 402618642,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": null
+    },
+    "metroA": {
+        "aliases": [
+            "r069",
+            "metro centre",
+            "metro entrance a",
+            "metroa"
+        ],
+        "building": null,
+        "address": null,
+        "osm": 402618641,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": null
+    },
+    "R-Kioski Metro A": {
+        "aliases": [
+            "r-kioski metro a"
+        ],
+        "building": "metroA",
+        "address": null,
+        "osm": "node=5317875517",
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "service"
+    },
+    "Metro entrance B": {
+        "aliases": [
+            "metro entrance b"
+        ],
+        "building": null,
+        "address": null,
+        "osm": 408595707,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": null
+    },
+    "r101": {
+        "aliases": [
+            "t\u00f6\u00f6l\u00f6 p\u00e4\u00e4rakennus",
+            "t\u00f6\u00f6l\u00f6 main building",
+            "r101",
+            "aalto university school of business"
+        ],
+        "building": null,
+        "address": null,
+        "osm": 124297669,
+        "osm_meta": "rel=1697955",
+        "opening_hours": null,
+        "type": null
+    },
+    "Aalto Chydenia Building": {
+        "aliases": [
+            "aalto chydenia building"
+        ],
+        "building": null,
+        "address": "Runeberginkatu 22-24",
+        "osm": 23192754,
+        "osm_meta": "node=338322347",
+        "opening_hours": null,
+        "type": null
+    },
+    "economicum": {
+        "aliases": [
+            "economicum"
+        ],
+        "building": null,
+        "address": null,
+        "osm": 165194634,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": null
+    },
+    "Aalto Arkadia": {
+        "aliases": [
+            "aalto arkadia"
+        ],
+        "building": null,
+        "address": null,
+        "osm": 124476546,
+        "osm_meta": "node=298645132",
+        "opening_hours": null,
+        "type": null
+    },
+    "Domus Gaudium": {
+        "aliases": [
+            "domus gaudium"
+        ],
+        "building": null,
+        "address": "Mechelininkatu 3c",
+        "osm": 96286289,
+        "osm_meta": "node=1116096931",
+        "opening_hours": null,
+        "type": null
+    },
+    "T\u00f6\u00f6l\u00f6n Tornit": {
+        "aliases": [
+            "t\u00f6\u00f6l\u00f6n tornit",
+            "t\u00f6\u00f6l\u00f6 towers"
+        ],
+        "building": null,
+        "address": null,
+        "osm": 234804200,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": null
+    },
+    "Aalto Arabia Building": {
+        "aliases": [
+            "aalto arabia building"
+        ],
+        "building": null,
+        "address": null,
+        "osm": 86969021,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": null
+    },
+    "Mets\u00e4hovi main building": {
+        "aliases": [
+            "mets\u00e4hovi main building"
+        ],
+        "building": null,
+        "address": "Mets\u00e4hovintie 114",
+        "osm": 223131392,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": null
+    },
+    "X-burger": {
+        "aliases": [
+            "x-burger"
+        ],
+        "building": null,
+        "address": null,
+        "osm": "node=82638832",
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "restaurant"
+    },
+    "Valimo": {
+        "aliases": [
+            "valimo"
+        ],
+        "building": null,
+        "address": null,
+        "osm": "node=4840360721",
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "restaurant"
+    },
+    "IT Service Desks": {
+        "aliases": [
+            "it service desks"
+        ],
+        "building": null,
+        "address": null,
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "unit"
+    },
+    "Terveystalo Maari": {
+        "aliases": [
+            "terveystalo maari"
+        ],
+        "building": null,
+        "address": null,
+        "osm": "node=5012868031",
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "service"
+    },
+    "Terveystalo Metallimiehenkuja": {
+        "aliases": [
+            "terveystalo metallimiehenkuja"
+        ],
+        "building": null,
+        "address": null,
+        "osm": "node=5020264817",
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "service"
+    },
+    "convroom": {
+        "aliases": [
+            "convroom"
+        ],
+        "building": null,
+        "address": null,
+        "osm": 515942280,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "service"
+    },
+    "Postilaatikko": {
+        "aliases": [
+            "mail box",
+            "postilaatikko",
+            "post box"
+        ],
+        "building": null,
+        "address": null,
+        "osm": "node=2379476285",
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "service"
+    },
+    "ARTS": {
+        "aliases": [
+            "arts",
+            "arts",
+            "school of arts, design and architecture"
+        ],
+        "building": null,
+        "address": null,
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "school"
+    },
+    "BIZ": {
+        "aliases": [
+            "biz",
+            "biz",
+            "school of business"
+        ],
+        "building": null,
+        "address": null,
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "school"
+    },
+    "CHEM": {
+        "aliases": [
+            "chem",
+            "chem",
+            "school of chemical engineering"
+        ],
+        "building": null,
+        "address": null,
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "school"
+    },
+    "ELEC": {
+        "aliases": [
+            "elec",
+            "elec",
+            "school of electrical engineering"
+        ],
+        "building": null,
+        "address": null,
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "school"
+    },
+    "ENG": {
+        "aliases": [
+            "eng",
+            "eng",
+            "school of engineering"
+        ],
+        "building": null,
+        "address": null,
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "school"
+    },
+    "SCI": {
+        "aliases": [
+            "sci",
+            "sci",
+            "school of science"
+        ],
+        "building": null,
+        "address": null,
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "school"
+    },
+    "dept:architecture": {
+        "aliases": [
+            "dept:architecture",
+            "department of architecture"
+        ],
+        "building": null,
+        "address": null,
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "department"
+    },
+    "dept:art": {
+        "aliases": [
+            "dept:art",
+            "department of art"
+        ],
+        "building": null,
+        "address": null,
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "department"
+    },
+    "dept:design": {
+        "aliases": [
+            "dept:design",
+            "department of design"
+        ],
+        "building": null,
+        "address": null,
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "department"
+    },
+    "dept:media": {
+        "aliases": [
+            "dept:media",
+            "department of media"
+        ],
+        "building": null,
+        "address": null,
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "department"
+    },
+    "Media Lab Helsinki": {
+        "aliases": [
+            "media lab helsinki"
+        ],
+        "building": "dept:media",
+        "address": null,
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "unit"
+    },
+    "dept:film": {
+        "aliases": [
+            "dept:film",
+            "department of film, television and scenography"
+        ],
+        "building": null,
+        "address": null,
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "department"
+    },
+    "dept:lume": {
+        "aliases": [
+            "dept:lume",
+            "media centre lume"
+        ],
+        "building": null,
+        "address": null,
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "unit"
+    },
+    "dept:pupa": {
+        "aliases": [
+            "dept:pupa",
+            "pori urban platform (pupa)"
+        ],
+        "building": null,
+        "address": null,
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "department"
+    },
+    "dept:accounting": {
+        "aliases": [
+            "dept:accounting",
+            "department of accounting"
+        ],
+        "building": null,
+        "address": null,
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "department"
+    },
+    "dept:economics": {
+        "aliases": [
+            "dept:economics",
+            "department of economics"
+        ],
+        "building": null,
+        "address": null,
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "department"
+    },
+    "dept:finance": {
+        "aliases": [
+            "dept:finance",
+            "department of finance"
+        ],
+        "building": null,
+        "address": null,
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "department"
+    },
+    "dept:infosrv": {
+        "aliases": [
+            "dept:infosrv",
+            "department of information and service economy"
+        ],
+        "building": null,
+        "address": null,
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "department"
+    },
+    "dept:management": {
+        "aliases": [
+            "dept:management",
+            "department of management"
+        ],
+        "building": null,
+        "address": null,
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "department"
+    },
+    "dept:marketing": {
+        "aliases": [
+            "dept:marketing",
+            "department of marketing"
+        ],
+        "building": null,
+        "address": null,
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "department"
+    },
+    "unit:aaltoee": {
+        "aliases": [
+            "aalto ee",
+            "unit:aaltoee",
+            "aalto university executive education"
+        ],
+        "building": null,
+        "address": null,
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "unit"
+    },
+    "unit:cemat": {
+        "aliases": [
+            "cemat",
+            "biz",
+            "unit:cemat",
+            "center for markets in transition (cemat)"
+        ],
+        "building": null,
+        "address": null,
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "unit"
+    },
+    "unit:cikr": {
+        "aliases": [
+            "ckir",
+            "biz",
+            "unit:cikr",
+            "center for knowledge and innovation research"
+        ],
+        "building": null,
+        "address": null,
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "unit"
+    },
+    "unit:mikkeli": {
+        "aliases": [
+            "unit:mikkeli",
+            "mikkeli campus"
+        ],
+        "building": null,
+        "address": null,
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "unit"
+    },
+    "dept:cmet": {
+        "aliases": [
+            "dept:cmet",
+            "department of chemical and metallurgical engineering"
+        ],
+        "building": null,
+        "address": null,
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "department"
+    },
+    "dept:cmat": {
+        "aliases": [
+            "dept:cmat",
+            "department of chemistry and materials science"
+        ],
+        "building": null,
+        "address": null,
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "department"
+    },
+    "dept:bio": {
+        "aliases": [
+            "dept:bio",
+            "department of bioproducts and biosystems"
+        ],
+        "building": null,
+        "address": null,
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "department"
+    },
+    "dept:eea": {
+        "aliases": [
+            "dept:eea",
+            "department of electrical engineering and automation"
+        ],
+        "building": null,
+        "address": null,
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "department"
+    },
+    "dept:ele": {
+        "aliases": [
+            "dept:ele",
+            "department of electronics and nanoengineering"
+        ],
+        "building": null,
+        "address": null,
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "department"
+    },
+    "dept:spa": {
+        "aliases": [
+            "dept:spa",
+            "department of signal processing and acoustics"
+        ],
+        "building": null,
+        "address": null,
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "department"
+    },
+    "dept:comnet": {
+        "aliases": [
+            "dept:comnet",
+            "department of communications and networking"
+        ],
+        "building": null,
+        "address": null,
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "department"
+    },
+    "Aalto Nanofab": {
+        "aliases": [
+            "micronova",
+            "aalto nanofab"
+        ],
+        "building": null,
+        "address": null,
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "unit"
+    },
+    "unit:metsahovi": {
+        "aliases": [
+            "unit:metsahovi",
+            "mets\u00e4hovi radio observatory"
+        ],
+        "building": null,
+        "address": null,
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "unit"
+    },
+    "dept:mecheng": {
+        "aliases": [
+            "dept:mecheng",
+            "department of mechanical engineering"
+        ],
+        "building": null,
+        "address": null,
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "department"
+    },
+    "dept:civileng": {
+        "aliases": [
+            "dept:civileng",
+            "department of civil engineering"
+        ],
+        "building": null,
+        "address": null,
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "department"
+    },
+    "dept:builtenv": {
+        "aliases": [
+            "dept:builtenv",
+            "department of built environment"
+        ],
+        "building": null,
+        "address": null,
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "department"
+    },
+    "dept:physics": {
+        "aliases": [
+            "dept:physics",
+            "department of applied physics"
+        ],
+        "building": null,
+        "address": null,
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "department"
+    },
+    "dept:cs": {
+        "aliases": [
+            "cs",
+            "dept:cs",
+            "department of computer science"
+        ],
+        "building": null,
+        "address": null,
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "department"
+    },
+    "dept:tuta": {
+        "aliases": [
+            "dept:tuta",
+            "department of industrial engineering and management"
+        ],
+        "building": null,
+        "address": null,
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "department"
+    },
+    "dept:math": {
+        "aliases": [
+            "dept:math",
+            "department of mathematics and systems analysis"
+        ],
+        "building": null,
+        "address": null,
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "department"
+    },
+    "dept:nbe": {
+        "aliases": [
+            "dept:nbe",
+            "department of neuroscience and biomedical engineering"
+        ],
+        "building": null,
+        "address": null,
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "department"
+    },
+    "unit:hiit": {
+        "aliases": [
+            "hiit",
+            "unit:hiit",
+            "helsinki institute for information technology"
+        ],
+        "building": null,
+        "address": null,
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "unit"
+    },
+    "EIT Digital": {
+        "aliases": [
+            "eit ict labs",
+            "sci",
+            "eit digital"
+        ],
+        "building": null,
+        "address": null,
+        "osm": null,
+        "osm_meta": null,
+        "opening_hours": null,
+        "type": "unit"
+    }
+}
