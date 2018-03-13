@@ -18,7 +18,8 @@
         "osm": 4252946,
         "osm_meta": "rel=4148",
         "opening_hours": "Mo-Th 07:45-20:00; Fr 07:45-18:00; Jun-Aug 08:00-15:30; PH off",
-        "type": null
+        "type": null,
+        "parents": []
     },
     "alvari": {
         "aliases": [
@@ -29,7 +30,8 @@
         "osm": "node=301814516",
         "osm_meta": null,
         "opening_hours": null,
-        "type": "restaurant"
+        "type": "restaurant",
+        "parents": []
     },
     "Silinteri": {
         "aliases": [
@@ -40,7 +42,8 @@
         "osm": "node=5034218017",
         "osm_meta": null,
         "opening_hours": null,
-        "type": "restaurant"
+        "type": "restaurant",
+        "parents": []
     },
     "Aino cafe": {
         "aliases": [
@@ -51,7 +54,8 @@
         "osm": "node=5004956486",
         "osm_meta": null,
         "opening_hours": null,
-        "type": "cafe"
+        "type": "cafe",
+        "parents": []
     },
     "Elissa cafe": {
         "aliases": [
@@ -62,7 +66,8 @@
         "osm": "node=5004956487",
         "osm_meta": null,
         "opening_hours": null,
-        "type": "cafe"
+        "type": "cafe",
+        "parents": []
     },
     "Student services": {
         "aliases": [
@@ -73,7 +78,8 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "service"
+        "type": "service",
+        "parents": []
     },
     "IT Service Desk Kandi": {
         "aliases": [
@@ -84,7 +90,8 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "service"
+        "type": "service",
+        "parents": []
     },
     "studenthub": {
         "aliases": [
@@ -96,7 +103,8 @@
         "osm": 514232691,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "location"
+        "type": "location",
+        "parents": []
     },
     "Starting Point": {
         "aliases": [
@@ -107,7 +115,8 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "service"
+        "type": "service",
+        "parents": []
     },
     "A siipi Main": {
         "aliases": [
@@ -119,7 +128,8 @@
         "osm": 514232744,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "wing"
+        "type": "wing",
+        "parents": []
     },
     "H siipi Main": {
         "aliases": [
@@ -131,7 +141,8 @@
         "osm": 514232720,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "wing"
+        "type": "wing",
+        "parents": []
     },
     "K siipi Main": {
         "aliases": [
@@ -143,7 +154,8 @@
         "osm": 540151861,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "wing"
+        "type": "wing",
+        "parents": []
     },
     "M siipi Main": {
         "aliases": [
@@ -155,7 +167,8 @@
         "osm": 514232739,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "wing"
+        "type": "wing",
+        "parents": []
     },
     "U siipi Main": {
         "aliases": [
@@ -167,7 +180,8 @@
         "osm": 514232732,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "wing"
+        "type": "wing",
+        "parents": []
     },
     "Y siipi Main": {
         "aliases": [
@@ -179,7 +193,8 @@
         "osm": 514232725,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "wing"
+        "type": "wing",
+        "parents": []
     },
     "r002": {
         "aliases": [
@@ -194,7 +209,8 @@
         "osm": 7579330,
         "osm_meta": null,
         "opening_hours": "Mo-Th 08:00-20:00; Fr 08:00-18:00; Jun-Aug Mo-Fr 08:00-15:30; PH off",
-        "type": null
+        "type": null,
+        "parents": []
     },
     "F": {
         "aliases": [
@@ -210,7 +226,8 @@
         "osm": 98855202,
         "osm_meta": "rel=1402504",
         "opening_hours": "Mo-Th 08:00-20:00; Fr 08:00-18:00; Jun-Aug Mo-Fr 08:00-15:30; PH off",
-        "type": null
+        "type": null,
+        "parents": []
     },
     "Kvarkki": {
         "aliases": [
@@ -221,7 +238,8 @@
         "osm": "node=577022359",
         "osm_meta": null,
         "opening_hours": null,
-        "type": "restaurant"
+        "type": "restaurant",
+        "parents": []
     },
     "r004": {
         "aliases": [
@@ -235,7 +253,8 @@
         "osm": 24342454,
         "osm_meta": null,
         "opening_hours": "Mo-Fr 08:00-16:00; PH off",
-        "type": null
+        "type": null,
+        "parents": []
     },
     "Elepaja": {
         "aliases": [
@@ -246,7 +265,8 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "service"
+        "type": "service",
+        "parents": []
     },
     "K4": {
         "aliases": [
@@ -260,7 +280,8 @@
         "osm": 7584026,
         "osm_meta": null,
         "opening_hours": "Mo-Fr 08:00-15:45; Jun-Aug Mo-Fr 08:00-15:30; PH off",
-        "type": null
+        "type": null,
+        "parents": []
     },
     "K3": {
         "aliases": [
@@ -274,7 +295,8 @@
         "osm": 156903284,
         "osm_meta": null,
         "opening_hours": "Mo-Fr 08:00-15:45; Jun-Aug Mo-Fr 08:00-15:30; PH off",
-        "type": null
+        "type": null,
+        "parents": []
     },
     "K2": {
         "aliases": [
@@ -288,7 +310,8 @@
         "osm": 156903282,
         "osm_meta": null,
         "opening_hours": "Mo-Fr 08:00-15:45; Jun-Aug Mo-Fr 08:00-15:30; PH off",
-        "type": null
+        "type": null,
+        "parents": []
     },
     "K1": {
         "aliases": [
@@ -302,7 +325,8 @@
         "osm": 156903276,
         "osm_meta": null,
         "opening_hours": "Mo-Th 08:00-20:00; Fr 08:00-18:00; Jun-Aug Mo-Fr 08:00-15:30; PH off",
-        "type": null
+        "type": null,
+        "parents": []
     },
     "sodexokone": {
         "aliases": [
@@ -313,7 +337,8 @@
         "osm": "node=589913032",
         "osm_meta": null,
         "opening_hours": null,
-        "type": "restaurant"
+        "type": "restaurant",
+        "parents": []
     },
     "r009": {
         "aliases": [
@@ -325,7 +350,8 @@
         "osm": 27930945,
         "osm_meta": null,
         "opening_hours": null,
-        "type": null
+        "type": null,
+        "parents": []
     },
     "r010": {
         "aliases": [
@@ -337,7 +363,8 @@
         "osm": 4424188,
         "osm_meta": null,
         "opening_hours": null,
-        "type": null
+        "type": null,
+        "parents": []
     },
     "r011": {
         "aliases": [
@@ -353,7 +380,8 @@
         "osm": 7588058,
         "osm_meta": null,
         "opening_hours": "Mo-Th 07:45-20:00; Fr 07:45-18:00; Jun-Aug Mo-Fr 08:00-15:30; PH off",
-        "type": null
+        "type": null,
+        "parents": []
     },
     "maukas": {
         "aliases": [
@@ -364,7 +392,8 @@
         "osm": "node=2381695985",
         "osm_meta": null,
         "opening_hours": null,
-        "type": "restaurant"
+        "type": "restaurant",
+        "parents": []
     },
     "A siipi Kemma": {
         "aliases": [
@@ -376,7 +405,8 @@
         "osm": 532048006,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "location"
+        "type": "location",
+        "parents": []
     },
     "B siipi Kemma": {
         "aliases": [
@@ -388,7 +418,8 @@
         "osm": 532048005,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "location"
+        "type": "location",
+        "parents": []
     },
     "C siipi Kemma": {
         "aliases": [
@@ -400,7 +431,8 @@
         "osm": 532048004,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "location"
+        "type": "location",
+        "parents": []
     },
     "D siipi Kemma": {
         "aliases": [
@@ -412,7 +444,8 @@
         "osm": 532048003,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "location"
+        "type": "location",
+        "parents": []
     },
     "E siipi Kemma": {
         "aliases": [
@@ -424,7 +457,8 @@
         "osm": 532048002,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "location"
+        "type": "location",
+        "parents": []
     },
     "F siipi Kemma": {
         "aliases": [
@@ -436,7 +470,8 @@
         "osm": 532048001,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "location"
+        "type": "location",
+        "parents": []
     },
     "r012": {
         "aliases": [
@@ -451,7 +486,8 @@
         "osm": 7588374,
         "osm_meta": null,
         "opening_hours": "Mo-Fr 07:45-16:00; Jun-Aug Mo-Fr 08:00-15:30; PH off",
-        "type": null
+        "type": null,
+        "parents": []
     },
     "sodexovuori": {
         "aliases": [
@@ -462,7 +498,8 @@
         "osm": "node=2381696675",
         "osm_meta": null,
         "opening_hours": null,
-        "type": "restaurant"
+        "type": "restaurant",
+        "parents": []
     },
     "r013": {
         "aliases": [
@@ -476,7 +513,8 @@
         "osm": 7588593,
         "osm_meta": null,
         "opening_hours": null,
-        "type": null
+        "type": null,
+        "parents": []
     },
     "r014": {
         "aliases": [
@@ -488,7 +526,8 @@
         "osm": 7588741,
         "osm_meta": null,
         "opening_hours": null,
-        "type": null
+        "type": null,
+        "parents": []
     },
     "kirjasto": {
         "aliases": [
@@ -506,7 +545,8 @@
         "osm": 4252948,
         "osm_meta": null,
         "opening_hours": "Mo-Fr 08:00-20:00; Sa 08:00-15:00; PH off",
-        "type": null
+        "type": null,
+        "parents": []
     },
     "Robert's Coffee": {
         "aliases": [
@@ -517,7 +557,8 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "cafe"
+        "type": "cafe",
+        "parents": []
     },
     "r016": {
         "aliases": [
@@ -531,7 +572,8 @@
         "osm": 4259025,
         "osm_meta": null,
         "opening_hours": null,
-        "type": null
+        "type": null,
+        "parents": []
     },
     "maari": {
         "aliases": [
@@ -544,7 +586,8 @@
         "osm": 7584131,
         "osm_meta": null,
         "opening_hours": null,
-        "type": null
+        "type": null,
+        "parents": []
     },
     "r018": {
         "aliases": [
@@ -556,7 +599,8 @@
         "osm": 7244238,
         "osm_meta": null,
         "opening_hours": null,
-        "type": null
+        "type": null,
+        "parents": []
     },
     "dipoli": {
         "aliases": [
@@ -570,7 +614,8 @@
         "osm": 4252954,
         "osm_meta": null,
         "opening_hours": "Mo-Fr 07:45-21:30; Sa 09:30-21:30; PH off",
-        "type": null
+        "type": null,
+        "parents": []
     },
     "carre": {
         "aliases": [
@@ -581,7 +626,8 @@
         "osm": "node=5022009311",
         "osm_meta": null,
         "opening_hours": null,
-        "type": "cafe"
+        "type": "cafe",
+        "parents": []
     },
     "reima": {
         "aliases": [
@@ -592,7 +638,8 @@
         "osm": "node=5022009310",
         "osm_meta": null,
         "opening_hours": null,
-        "type": "restaurant"
+        "type": "restaurant",
+        "parents": []
     },
     "tenhola": {
         "aliases": [
@@ -603,7 +650,8 @@
         "osm": "node=5022009278",
         "osm_meta": null,
         "opening_hours": null,
-        "type": "cafe"
+        "type": "cafe",
+        "parents": []
     },
     "metso": {
         "aliases": [
@@ -614,7 +662,8 @@
         "osm": "node=5022009279",
         "osm_meta": null,
         "opening_hours": null,
-        "type": "restaurant"
+        "type": "restaurant",
+        "parents": []
     },
     "IT Service Desk Dipoli": {
         "aliases": [
@@ -625,7 +674,8 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "service"
+        "type": "service",
+        "parents": []
     },
     "Otaniemen ostoskeskus": {
         "aliases": [
@@ -639,7 +689,8 @@
         "osm": 7589963,
         "osm_meta": null,
         "opening_hours": null,
-        "type": null
+        "type": null,
+        "parents": []
     },
     "Alepa Otaniemi": {
         "aliases": [
@@ -652,7 +703,8 @@
         "osm": "node=301625473",
         "osm_meta": null,
         "opening_hours": null,
-        "type": "shopping"
+        "type": "shopping",
+        "parents": []
     },
     "rkioski": {
         "aliases": [
@@ -665,7 +717,8 @@
         "osm": "node=301625474",
         "osm_meta": null,
         "opening_hours": null,
-        "type": "shopping"
+        "type": "shopping",
+        "parents": []
     },
     "kynajapaperi": {
         "aliases": [
@@ -676,7 +729,8 @@
         "osm": "node=4840360722",
         "osm_meta": null,
         "opening_hours": null,
-        "type": "cafe"
+        "type": "cafe",
+        "parents": []
     },
     "otafood": {
         "aliases": [
@@ -687,7 +741,8 @@
         "osm": "node=5004956488",
         "osm_meta": null,
         "opening_hours": null,
-        "type": "restaurant"
+        "type": "restaurant",
+        "parents": []
     },
     "ATM": {
         "aliases": [
@@ -701,7 +756,8 @@
         "osm": "node=263964909",
         "osm_meta": null,
         "opening_hours": null,
-        "type": "service"
+        "type": "service",
+        "parents": []
     },
     "r020-pharmacy": {
         "aliases": [
@@ -712,7 +768,8 @@
         "osm": "node=263964923",
         "osm_meta": null,
         "opening_hours": null,
-        "type": "service"
+        "type": "service",
+        "parents": []
     },
     "r022": {
         "aliases": [
@@ -724,7 +781,8 @@
         "osm": 26608151,
         "osm_meta": null,
         "opening_hours": null,
-        "type": null
+        "type": null,
+        "parents": []
     },
     "r023": {
         "aliases": [
@@ -736,7 +794,8 @@
         "osm": 26608177,
         "osm_meta": null,
         "opening_hours": null,
-        "type": null
+        "type": null,
+        "parents": []
     },
     "r024": {
         "aliases": [
@@ -750,7 +809,8 @@
         "osm": 27468640,
         "osm_meta": null,
         "opening_hours": null,
-        "type": null
+        "type": null,
+        "parents": []
     },
     "IT Service Desk MT3": {
         "aliases": [
@@ -761,7 +821,8 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "service"
+        "type": "service",
+        "parents": []
     },
     "r025": {
         "aliases": [
@@ -773,7 +834,8 @@
         "osm": 26608273,
         "osm_meta": null,
         "opening_hours": null,
-        "type": null
+        "type": null,
+        "parents": []
     },
     "r026": {
         "aliases": [
@@ -785,7 +847,8 @@
         "osm": 26608317,
         "osm_meta": null,
         "opening_hours": null,
-        "type": null
+        "type": null,
+        "parents": []
     },
     "r027": {
         "aliases": [
@@ -798,7 +861,8 @@
         "osm": 7588940,
         "osm_meta": null,
         "opening_hours": null,
-        "type": null
+        "type": null,
+        "parents": []
     },
     "r028": {
         "aliases": [
@@ -810,7 +874,8 @@
         "osm": 4259272,
         "osm_meta": null,
         "opening_hours": null,
-        "type": null
+        "type": null,
+        "parents": []
     },
     "Unisport": {
         "aliases": [
@@ -821,7 +886,8 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "service"
+        "type": "service",
+        "parents": []
     },
     "Aalto Studios": {
         "aliases": [
@@ -834,7 +900,8 @@
         "osm": 24342456,
         "osm_meta": null,
         "opening_hours": null,
-        "type": null
+        "type": null,
+        "parents": []
     },
     "T": {
         "aliases": [
@@ -851,7 +918,8 @@
         "osm": 4217650,
         "osm_meta": null,
         "opening_hours": "Mo-Th 08:00-20:00; Fr 08:00-18:00; Jun-Aug Mo-Fr 08:00-15:30; PH off",
-        "type": null
+        "type": null,
+        "parents": []
     },
     "Paniikki": {
         "aliases": [
@@ -863,7 +931,8 @@
         "osm": 91227653,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "room"
+        "type": "room",
+        "parents": []
     },
     "Sodexo": {
         "aliases": [
@@ -874,7 +943,8 @@
         "osm": "node=580704688",
         "osm_meta": null,
         "opening_hours": null,
-        "type": "restaurant"
+        "type": "restaurant",
+        "parents": []
     },
     "subway_cs": {
         "aliases": [
@@ -885,7 +955,8 @@
         "osm": "node=3575222399",
         "osm_meta": null,
         "opening_hours": null,
-        "type": "restaurant"
+        "type": "restaurant",
+        "parents": []
     },
     "library_cs": {
         "aliases": [
@@ -896,7 +967,8 @@
         "osm": "node=5012868057",
         "osm_meta": null,
         "opening_hours": null,
-        "type": "service"
+        "type": "service",
+        "parents": []
     },
     "A siipi CS": {
         "aliases": [
@@ -908,7 +980,8 @@
         "osm": 532048009,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "wing"
+        "type": "wing",
+        "parents": []
     },
     "B siipi CS": {
         "aliases": [
@@ -920,7 +993,8 @@
         "osm": 532048008,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "wing"
+        "type": "wing",
+        "parents": []
     },
     "C siipi CS": {
         "aliases": [
@@ -932,7 +1006,8 @@
         "osm": 532048007,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "wing"
+        "type": "wing",
+        "parents": []
     },
     "oih": {
         "aliases": [
@@ -945,7 +1020,8 @@
         "osm": 148683540,
         "osm_meta": null,
         "opening_hours": "Mo-Fr 07:30-16:30; PH off",
-        "type": null
+        "type": null,
+        "parents": []
     },
     "oih_cafe": {
         "aliases": [
@@ -956,7 +1032,8 @@
         "osm": "node=5012868059",
         "osm_meta": null,
         "opening_hours": null,
-        "type": "cafe"
+        "type": "cafe",
+        "parents": []
     },
     "EIT RawMaterials": {
         "aliases": [
@@ -967,7 +1044,8 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "unit"
+        "type": "unit",
+        "parents": []
     },
     "r034": {
         "aliases": [
@@ -980,7 +1058,8 @@
         "osm": 4259026,
         "osm_meta": null,
         "opening_hours": null,
-        "type": null
+        "type": null,
+        "parents": []
     },
     "fatlizard": {
         "aliases": [
@@ -991,7 +1070,8 @@
         "osm": "node=5323641949",
         "osm_meta": null,
         "opening_hours": null,
-        "type": "restaurant"
+        "type": "restaurant",
+        "parents": []
     },
     "r035": {
         "aliases": [
@@ -1003,7 +1083,8 @@
         "osm": 51725020,
         "osm_meta": null,
         "opening_hours": null,
-        "type": null
+        "type": null,
+        "parents": []
     },
     "IT Services": {
         "aliases": [
@@ -1014,7 +1095,8 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "unit"
+        "type": "unit",
+        "parents": []
     },
     "r036": {
         "aliases": [
@@ -1026,7 +1108,8 @@
         "osm": 7585092,
         "osm_meta": null,
         "opening_hours": null,
-        "type": null
+        "type": null,
+        "parents": []
     },
     "Nanofab": {
         "aliases": [
@@ -1037,7 +1120,8 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "unit"
+        "type": "unit",
+        "parents": []
     },
     "tuas": {
         "aliases": [
@@ -1052,7 +1136,8 @@
         "osm": 29012757,
         "osm_meta": null,
         "opening_hours": "Mo-Th 08:00-20:00; Fr 08:00-18:00; Jun-Aug Mo-Fr 08:00-15:30; PH off",
-        "type": null
+        "type": null,
+        "parents": []
     },
     "Aalto Ventures Program": {
         "aliases": [
@@ -1063,7 +1148,8 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "unit"
+        "type": "unit",
+        "parents": []
     },
     "Amica TUAS": {
         "aliases": [
@@ -1074,7 +1160,8 @@
         "osm": "node=580706218",
         "osm_meta": null,
         "opening_hours": null,
-        "type": "restaurant"
+        "type": "restaurant",
+        "parents": []
     },
     "library_tuas": {
         "aliases": [
@@ -1085,7 +1172,8 @@
         "osm": "node=5012868058",
         "osm_meta": null,
         "opening_hours": null,
-        "type": "service"
+        "type": "service",
+        "parents": []
     },
     "IT Service Desk Maari": {
         "aliases": [
@@ -1096,7 +1184,8 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "service"
+        "type": "service",
+        "parents": []
     },
     "x5xx siipi TUAS": {
         "aliases": [
@@ -1108,7 +1197,8 @@
         "osm": 532048012,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "wing"
+        "type": "wing",
+        "parents": []
     },
     "x1xx siipi TUAS": {
         "aliases": [
@@ -1120,7 +1210,8 @@
         "osm": 532048011,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "wing"
+        "type": "wing",
+        "parents": []
     },
     "159x siipi TUAS": {
         "aliases": [
@@ -1132,7 +1223,8 @@
         "osm": 532048010,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "wing"
+        "type": "wing",
+        "parents": []
     },
     "Aalto-yliopiston ylioppilaskunta": {
         "aliases": [
@@ -1146,7 +1238,8 @@
         "osm": 7589907,
         "osm_meta": null,
         "opening_hours": null,
-        "type": null
+        "type": null,
+        "parents": []
     },
     "AYY J\u00e4senpalvelupisteet": {
         "aliases": [
@@ -1158,7 +1251,8 @@
         "osm": "node=263978267",
         "osm_meta": null,
         "opening_hours": null,
-        "type": "service"
+        "type": "service",
+        "parents": []
     },
     "r039": {
         "aliases": [
@@ -1170,7 +1264,8 @@
         "osm": 27464085,
         "osm_meta": null,
         "opening_hours": null,
-        "type": null
+        "type": null,
+        "parents": []
     },
     "r040": {
         "aliases": [
@@ -1185,7 +1280,8 @@
         "osm": 4252953,
         "osm_meta": null,
         "opening_hours": null,
-        "type": null
+        "type": null,
+        "parents": []
     },
     "T\u00e4ff\u00e4": {
         "aliases": [
@@ -1196,7 +1292,8 @@
         "osm": "node=580707759",
         "osm_meta": null,
         "opening_hours": null,
-        "type": "restaurant"
+        "type": "restaurant",
+        "parents": []
     },
     "Aalto Inn": {
         "aliases": [
@@ -1208,7 +1305,8 @@
         "osm": 181643549,
         "osm_meta": null,
         "opening_hours": null,
-        "type": null
+        "type": null,
+        "parents": []
     },
     "Ylioppilaiden terveydenhoitos\u00e4\u00e4ti\u00f6": {
         "aliases": [
@@ -1224,7 +1322,8 @@
         "osm": 4266890,
         "osm_meta": null,
         "opening_hours": null,
-        "type": null
+        "type": null,
+        "parents": []
     },
     "chappel": {
         "aliases": [
@@ -1236,7 +1335,8 @@
         "osm": 4266572,
         "osm_meta": null,
         "opening_hours": null,
-        "type": null
+        "type": null,
+        "parents": []
     },
     "servinmokki": {
         "aliases": [
@@ -1249,7 +1349,8 @@
         "osm": 4259265,
         "osm_meta": null,
         "opening_hours": null,
-        "type": null
+        "type": null,
+        "parents": []
     },
     "rantasauna": {
         "aliases": [
@@ -1262,7 +1363,8 @@
         "osm": 26139146,
         "osm_meta": null,
         "opening_hours": null,
-        "type": null
+        "type": null,
+        "parents": []
     },
     "Radisson Blu": {
         "aliases": [
@@ -1274,7 +1376,8 @@
         "osm": 4259289,
         "osm_meta": null,
         "opening_hours": null,
-        "type": null
+        "type": null,
+        "parents": []
     },
     "ravintolaranta": {
         "aliases": [
@@ -1285,7 +1388,8 @@
         "osm": "node=2071892285",
         "osm_meta": null,
         "opening_hours": null,
-        "type": "restaurant"
+        "type": "restaurant",
+        "parents": []
     },
     "r067": {
         "aliases": [
@@ -1300,7 +1404,8 @@
         "osm": 402618642,
         "osm_meta": null,
         "opening_hours": null,
-        "type": null
+        "type": null,
+        "parents": []
     },
     "metroA": {
         "aliases": [
@@ -1314,7 +1419,8 @@
         "osm": 402618641,
         "osm_meta": null,
         "opening_hours": null,
-        "type": null
+        "type": null,
+        "parents": []
     },
     "R-Kioski Metro A": {
         "aliases": [
@@ -1325,7 +1431,8 @@
         "osm": "node=5317875517",
         "osm_meta": null,
         "opening_hours": null,
-        "type": "service"
+        "type": "service",
+        "parents": []
     },
     "Metro entrance B": {
         "aliases": [
@@ -1336,7 +1443,8 @@
         "osm": 408595707,
         "osm_meta": null,
         "opening_hours": null,
-        "type": null
+        "type": null,
+        "parents": []
     },
     "r101": {
         "aliases": [
@@ -1350,7 +1458,8 @@
         "osm": 124297669,
         "osm_meta": "rel=1697955",
         "opening_hours": null,
-        "type": null
+        "type": null,
+        "parents": []
     },
     "Aalto Chydenia Building": {
         "aliases": [
@@ -1361,7 +1470,8 @@
         "osm": 23192754,
         "osm_meta": "node=338322347",
         "opening_hours": null,
-        "type": null
+        "type": null,
+        "parents": []
     },
     "economicum": {
         "aliases": [
@@ -1372,7 +1482,8 @@
         "osm": 165194634,
         "osm_meta": null,
         "opening_hours": null,
-        "type": null
+        "type": null,
+        "parents": []
     },
     "Aalto Arkadia": {
         "aliases": [
@@ -1383,7 +1494,8 @@
         "osm": 124476546,
         "osm_meta": "node=298645132",
         "opening_hours": null,
-        "type": null
+        "type": null,
+        "parents": []
     },
     "Domus Gaudium": {
         "aliases": [
@@ -1394,7 +1506,8 @@
         "osm": 96286289,
         "osm_meta": "node=1116096931",
         "opening_hours": null,
-        "type": null
+        "type": null,
+        "parents": []
     },
     "T\u00f6\u00f6l\u00f6n Tornit": {
         "aliases": [
@@ -1406,7 +1519,8 @@
         "osm": 234804200,
         "osm_meta": null,
         "opening_hours": null,
-        "type": null
+        "type": null,
+        "parents": []
     },
     "Aalto Arabia Building": {
         "aliases": [
@@ -1417,7 +1531,8 @@
         "osm": 86969021,
         "osm_meta": null,
         "opening_hours": null,
-        "type": null
+        "type": null,
+        "parents": []
     },
     "Mets\u00e4hovi main building": {
         "aliases": [
@@ -1428,7 +1543,8 @@
         "osm": 223131392,
         "osm_meta": null,
         "opening_hours": null,
-        "type": null
+        "type": null,
+        "parents": []
     },
     "X-burger": {
         "aliases": [
@@ -1439,7 +1555,8 @@
         "osm": "node=82638832",
         "osm_meta": null,
         "opening_hours": null,
-        "type": "restaurant"
+        "type": "restaurant",
+        "parents": []
     },
     "Valimo": {
         "aliases": [
@@ -1450,7 +1567,8 @@
         "osm": "node=4840360721",
         "osm_meta": null,
         "opening_hours": null,
-        "type": "restaurant"
+        "type": "restaurant",
+        "parents": []
     },
     "IT Service Desks": {
         "aliases": [
@@ -1461,7 +1579,13 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "unit"
+        "type": "unit",
+        "parents": [
+            "servicedesk_kandi",
+            "servicedesk_tuas",
+            "servicedesk_dipoli",
+            "servicedesk_mt3"
+        ]
     },
     "Terveystalo Maari": {
         "aliases": [
@@ -1472,7 +1596,8 @@
         "osm": "node=5012868031",
         "osm_meta": null,
         "opening_hours": null,
-        "type": "service"
+        "type": "service",
+        "parents": []
     },
     "Terveystalo Metallimiehenkuja": {
         "aliases": [
@@ -1483,7 +1608,8 @@
         "osm": "node=5020264817",
         "osm_meta": null,
         "opening_hours": null,
-        "type": "service"
+        "type": "service",
+        "parents": []
     },
     "convroom": {
         "aliases": [
@@ -1494,7 +1620,8 @@
         "osm": 515942280,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "service"
+        "type": "service",
+        "parents": []
     },
     "Postilaatikko": {
         "aliases": [
@@ -1507,7 +1634,8 @@
         "osm": "node=2379476285",
         "osm_meta": null,
         "opening_hours": null,
-        "type": "service"
+        "type": "service",
+        "parents": []
     },
     "ARTS": {
         "aliases": [
@@ -1520,7 +1648,10 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "school"
+        "type": "school",
+        "parents": [
+            "arabia"
+        ]
     },
     "BIZ": {
         "aliases": [
@@ -1533,7 +1664,13 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "school"
+        "type": "school",
+        "parents": [
+            "chydenia",
+            "economicum",
+            "domusgadium",
+            "arkadia"
+        ]
     },
     "CHEM": {
         "aliases": [
@@ -1546,7 +1683,12 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "school"
+        "type": "school",
+        "parents": [
+            "r011",
+            "r012",
+            "r013"
+        ]
     },
     "ELEC": {
         "aliases": [
@@ -1559,7 +1701,13 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "school"
+        "type": "school",
+        "parents": [
+            "r004",
+            "oih",
+            "tuas",
+            "r036"
+        ]
     },
     "ENG": {
         "aliases": [
@@ -1572,7 +1720,18 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "school"
+        "type": "school",
+        "parents": [
+            "K1",
+            "r034",
+            "r002",
+            "K1",
+            "K3",
+            "K2",
+            "K4",
+            "r016",
+            "r025"
+        ]
     },
     "SCI": {
         "aliases": [
@@ -1585,7 +1744,17 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "school"
+        "type": "school",
+        "parents": [
+            "main",
+            "F",
+            "K1",
+            "r009",
+            "T",
+            "oih",
+            "r036",
+            "tuas"
+        ]
     },
     "dept:architecture": {
         "aliases": [
@@ -1597,7 +1766,11 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "department"
+        "type": "department",
+        "parents": [
+            "r024",
+            "ARTS"
+        ]
     },
     "dept:art": {
         "aliases": [
@@ -1609,7 +1782,11 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "department"
+        "type": "department",
+        "parents": [
+            "arabia",
+            "ARTS"
+        ]
     },
     "dept:design": {
         "aliases": [
@@ -1621,7 +1798,11 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "department"
+        "type": "department",
+        "parents": [
+            "arabia",
+            "ARTS"
+        ]
     },
     "dept:media": {
         "aliases": [
@@ -1633,7 +1814,11 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "department"
+        "type": "department",
+        "parents": [
+            "arabia",
+            "ARTS"
+        ]
     },
     "Media Lab Helsinki": {
         "aliases": [
@@ -1644,7 +1829,10 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "unit"
+        "type": "unit",
+        "parents": [
+            "r024"
+        ]
     },
     "dept:film": {
         "aliases": [
@@ -1656,7 +1844,11 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "department"
+        "type": "department",
+        "parents": [
+            "arabia",
+            "ARTS"
+        ]
     },
     "dept:lume": {
         "aliases": [
@@ -1668,7 +1860,11 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "unit"
+        "type": "unit",
+        "parents": [
+            "arabia",
+            "dept:media"
+        ]
     },
     "dept:pupa": {
         "aliases": [
@@ -1680,7 +1876,8 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "department"
+        "type": "department",
+        "parents": []
     },
     "dept:accounting": {
         "aliases": [
@@ -1692,7 +1889,11 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "department"
+        "type": "department",
+        "parents": [
+            "chydenia",
+            "BIZ"
+        ]
     },
     "dept:economics": {
         "aliases": [
@@ -1704,7 +1905,11 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "department"
+        "type": "department",
+        "parents": [
+            "economicum",
+            "BIZ"
+        ]
     },
     "dept:finance": {
         "aliases": [
@@ -1716,7 +1921,11 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "department"
+        "type": "department",
+        "parents": [
+            "chydenia",
+            "BIZ"
+        ]
     },
     "dept:infosrv": {
         "aliases": [
@@ -1728,7 +1937,11 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "department"
+        "type": "department",
+        "parents": [
+            "chydenia",
+            "BIZ"
+        ]
     },
     "dept:management": {
         "aliases": [
@@ -1740,7 +1953,10 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "department"
+        "type": "department",
+        "parents": [
+            "BIZ"
+        ]
     },
     "dept:marketing": {
         "aliases": [
@@ -1752,7 +1968,10 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "department"
+        "type": "department",
+        "parents": [
+            "BIZ"
+        ]
     },
     "unit:aaltoee": {
         "aliases": [
@@ -1765,7 +1984,11 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "unit"
+        "type": "unit",
+        "parents": [
+            "domusgadium",
+            "BIZ"
+        ]
     },
     "unit:cemat": {
         "aliases": [
@@ -1779,7 +2002,10 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "unit"
+        "type": "unit",
+        "parents": [
+            "arkadia"
+        ]
     },
     "unit:cikr": {
         "aliases": [
@@ -1793,7 +2019,10 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "unit"
+        "type": "unit",
+        "parents": [
+            "BIZ"
+        ]
     },
     "unit:mikkeli": {
         "aliases": [
@@ -1805,7 +2034,10 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "unit"
+        "type": "unit",
+        "parents": [
+            "BIZ"
+        ]
     },
     "dept:cmet": {
         "aliases": [
@@ -1817,7 +2049,11 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "department"
+        "type": "department",
+        "parents": [
+            "r011",
+            "CHEM"
+        ]
     },
     "dept:cmat": {
         "aliases": [
@@ -1829,7 +2065,11 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "department"
+        "type": "department",
+        "parents": [
+            "r011",
+            "CHEM"
+        ]
     },
     "dept:bio": {
         "aliases": [
@@ -1841,7 +2081,10 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "department"
+        "type": "department",
+        "parents": [
+            "CHEM"
+        ]
     },
     "dept:eea": {
         "aliases": [
@@ -1853,7 +2096,13 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "department"
+        "type": "department",
+        "parents": [
+            "T",
+            "tuas",
+            "r036",
+            "ELEC"
+        ]
     },
     "dept:ele": {
         "aliases": [
@@ -1865,7 +2114,12 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "department"
+        "type": "department",
+        "parents": [
+            "r036",
+            "tuas",
+            "ELEC"
+        ]
     },
     "dept:spa": {
         "aliases": [
@@ -1877,7 +2131,14 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "department"
+        "type": "department",
+        "parents": [
+            "T",
+            "r004",
+            "tuas",
+            "F",
+            "ELEC"
+        ]
     },
     "dept:comnet": {
         "aliases": [
@@ -1889,7 +2150,12 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "department"
+        "type": "department",
+        "parents": [
+            "T",
+            "tuas",
+            "ELEC"
+        ]
     },
     "Aalto Nanofab": {
         "aliases": [
@@ -1901,7 +2167,11 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "unit"
+        "type": "unit",
+        "parents": [
+            "r036",
+            "ELEC"
+        ]
     },
     "unit:metsahovi": {
         "aliases": [
@@ -1913,7 +2183,11 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "unit"
+        "type": "unit",
+        "parents": [
+            "metsahovi",
+            "ELEC"
+        ]
     },
     "dept:mecheng": {
         "aliases": [
@@ -1925,7 +2199,16 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "department"
+        "type": "department",
+        "parents": [
+            "K1",
+            "K2",
+            "K3",
+            "K4",
+            "r025",
+            "r016",
+            "ENG"
+        ]
     },
     "dept:civileng": {
         "aliases": [
@@ -1937,7 +2220,11 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "department"
+        "type": "department",
+        "parents": [
+            "r002",
+            "ENG"
+        ]
     },
     "dept:builtenv": {
         "aliases": [
@@ -1949,7 +2236,12 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "department"
+        "type": "department",
+        "parents": [
+            "K1",
+            "r035",
+            "ENG"
+        ]
     },
     "dept:physics": {
         "aliases": [
@@ -1961,7 +2253,13 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "department"
+        "type": "department",
+        "parents": [
+            "main",
+            "r036",
+            "r009",
+            "SCI"
+        ]
     },
     "dept:cs": {
         "aliases": [
@@ -1974,7 +2272,12 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "department"
+        "type": "department",
+        "parents": [
+            "T",
+            "tuas",
+            "SCI"
+        ]
     },
     "dept:tuta": {
         "aliases": [
@@ -1986,7 +2289,11 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "department"
+        "type": "department",
+        "parents": [
+            "tuas",
+            "SCI"
+        ]
     },
     "dept:math": {
         "aliases": [
@@ -1998,7 +2305,11 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "department"
+        "type": "department",
+        "parents": [
+            "main",
+            "SCI"
+        ]
     },
     "dept:nbe": {
         "aliases": [
@@ -2010,7 +2321,11 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "department"
+        "type": "department",
+        "parents": [
+            "F",
+            "SCI"
+        ]
     },
     "unit:hiit": {
         "aliases": [
@@ -2023,7 +2338,11 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "unit"
+        "type": "unit",
+        "parents": [
+            "T",
+            "dept:cs"
+        ]
     },
     "EIT Digital": {
         "aliases": [
@@ -2036,6 +2355,9 @@
         "osm": null,
         "osm_meta": null,
         "opening_hours": null,
-        "type": "unit"
+        "type": "unit",
+        "parents": [
+            "oih"
+        ]
     }
 }
