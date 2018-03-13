@@ -59,21 +59,24 @@ def process_data(data):
 
 locations = {}
 def add_child(ch, building=None, addr=None):
-    name = ch.get('name', ch.get('id', None))
+    ch_id = ch.get('id', None)
+    name  = ch.get('name', ch_id)
     if not name:
         print('No name or id: ' + ch)
         return
-
+    
     tags = get_tags(ch.get('osm', None), ch.get('osm_meta', None))
     data = process_data(tags)
+
     locations[name] = {
-        'aliases' : ch.get('aliases', []),
-        'building': building,
-        'address' : data.get('addr', addr),
-        'osm'     : ch.get('osm', None),
-        'osm_meta': ch.get('osm_meta', None),
+        'aliases'      : ch.get('aliases', []),
+        'building'     : building,
+        'address'      : data.get('addr', addr),
+        'osm'          : ch.get('osm', None),
+        'osm_meta'     : ch.get('osm_meta', None),
         'opening_hours': data.get('open_hours', None),
-        'type'    : ch.get('type', None)
+        'type'         : ch.get('type', None),
+        'parents'      : ch.get('parents', [])
     }
 
     row = locations[name]
