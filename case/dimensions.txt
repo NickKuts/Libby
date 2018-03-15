@@ -1,6 +1,6 @@
-Jabra: r=12cm, h = ~2.5cm (better prepare 3 cm)
+Jabra: d=12cm, h = ~2.5cm (better prepare 3 cm)
 Raspi: l=9cm, w=6, h=2.6 <- these heights are with the transparent case included
-Breadboard: 8.3cm, 5.4cm
+Breadboard: 8.3cm, 5.4cm, h=1cm
 
 The wires will require some space also.
 
