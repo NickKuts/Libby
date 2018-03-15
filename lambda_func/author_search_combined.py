@@ -1,8 +1,6 @@
 from difflib import get_close_matches
 
 
-steps = 0
-
 def load_file(fname):
     """
     Load file and return it's contents as a list,
@@ -17,31 +15,26 @@ def load_file(fname):
     return l
 
 
-def binary_search_half(l, name):
+def binary_search(l, name):
     """
     Search the name from the list recursively. Return
     true if the name was found, false otherwise
     """
-    global steps
-    steps += 1
 
-    half = int(len(l)/2) 
-    
+    half = int(len(l)/2)
+ 
     if half == 0:
         if l[half] == name:
-            return [name]
+            return True
         else:
-            return []
-
-    if steps > 4:
-        return l
+            return False
 
     if l[half] > name:
-        return binary_search_half(l[:half], name)
+        return binary_search(l[:half], name)
     elif l[half] < name:
-        return binary_search_half(l[half:], name)
+        return binary_search(l[half:], name)
     elif l[half] == name:
-        return [name]
+        return True
 
 
 def generate_search_terms(sentence):
@@ -52,22 +45,22 @@ def generate_search_terms(sentence):
     Antti, Roine and Roine, Antti. The names are
     separated with a comma
     """
+    l = []
+    ll = sentence.split(' ', len(sentence))
 
-    l = sentence.split(' ', len(sentence))
-
-    for i in range(0, len(l) - 1):
-        words = l[i:i+2]
+    for i in range(0, len(ll) - 1):
+        words = ll[i:i+2]
 
         word1 = ", ".join(words)
         word2 = ", ".join(reversed(words))
 
         l.append(word1)
         l.append(word2)
-    
-    return l
+ 
+    return l + ll
 
 
-def search(sentence):
+def search_normal(sentence):
     """
     Search through authors based on a sentence to see
     if the sentence contains an author's name (case ignored)
@@ -75,12 +68,57 @@ def search(sentence):
 
     terms = generate_search_terms(sentence.lower())
     l = load_file('authors_clean.txt')
-    
+
     for word in terms:
-        smaller = binary_search_half(l, word)
-        matches = get_close_matches(word, smaller, 1, 0.9)
+        ret = binary_search(l, word)
+
+        if ret:
+            return word
+
+    return "No authors was found from sentence: " + sentence
+
+
+def search_closest(sentence):
+    """
+    Search through authors based on a sentence to see
+    if the sentence contains an author's name (case ignored)
+    """
+
+    terms = generate_search_terms(sentence.lower())
+    l = load_file('authors_clean.txt')
+ 
+    for word in terms:
+        matches = get_close_matches(word, l, 1, 0.9)
         if len(matches) > 0:
             return matches[0]
+
+    return "No author was found from sentence: " + sentence
+
+
+def search(sentence, search_closest=True):
+    """
+    Search through authors based on a sentence to see
+    if the sentence contains an author's name (case ignored)
+    :param sentence: the sentence where you wish to find a name
+    :param search_closest: whether you want to also find the closest one
+    if the exact name was not found
+    """
+
+    terms = generate_search_terms(sentence.lower())
+    l = load_file('authors_clean.txt')
+ 
+    for word in terms:
+        res = binary_search(l, word)
+        if res:
+            return word
+ 
+    # no exact match was found
+    if search_closest:
+        for word in terms:
+            matches = get_close_matches(word, l, 1, 0.9)
+ 
+            if len(matches) > 0:
+                return matches[0]
 
     return "No author was found from sentence: " + sentence
 
