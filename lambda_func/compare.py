@@ -1,4 +1,4 @@
-import author_search_combined as AS
+import author_search as AS
 import time
 
 
@@ -19,7 +19,7 @@ def closest(self):
 
 def combined(self):
     start = time.time()
-    ret = AS.search_combined(st)
+    ret = AS.search(st)
     end = time.time()
 
     return (ret,(end - start) * 1000)
