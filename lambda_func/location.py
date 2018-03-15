@@ -1,5 +1,4 @@
 import json
-import difflib
 import re
 
 
@@ -19,7 +18,7 @@ with open(sample_utts, 'r') as fp:
 
 # Set all utterances to be regex patterns
 for i in range(0, len(samples)):
-    reg_str    = samples[i].replace('{place}', _re_patt)
+    reg_str = samples[i].replace('{place}', _re_patt)
     samples[i] = re.compile(reg_str)
     
     
@@ -32,7 +31,8 @@ def _existence(name):
         location = locations[loc]
         aliases = location['aliases']
         for al in aliases:
-            if name in al: return location
+            if name in al:
+                return location
     return None
 
 
@@ -187,5 +187,3 @@ def location_handler(event):
             }
         }
     }
-
-
