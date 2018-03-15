@@ -60,7 +60,7 @@ def return_name(event):
     If the slot does not exist the function simply returns '(unknown)'.
     """
     slots = event['currentIntent']['slots']
-    val   = None
+    val = None
     
     for slot in slots:
         temp = slots[slot]
@@ -95,13 +95,13 @@ def location_handler(event):
     This is the handler function for the Location intent.
     """
     trans = event['inputTranscript']
-    func  = checker(trans)
+    func = checker(trans)
     
     name = return_name(event)
     name = name if name else parse_trans(trans)
 
     data = _existence(name)
-    ans  = func(name, data) if data else None
+    ans = func(name, data) if data else None
 
     if not ans:
         ans = "Unfortunately I can't seem to find the location"
