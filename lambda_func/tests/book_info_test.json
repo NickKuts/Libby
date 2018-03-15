@@ -187,52 +187,12 @@
     "subject": "computer",
     "url": "https://api.finna.fi/api/v1/search?lookfor=computer&filter[]=search_daterange_mv:%22[1987 TO 2012]%22&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
   },
-  "BookIsWrittenBy":{
-  "messageVersion": "1.0",
-    "invocationSource": "DialogCodeHook",
-    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
-    "sessionAttributes": {"subject": "Self-organizing maps"},
-    "bot": {
-      "name": "Libby_dev",
-      "alias": "$LATEST",
-      "version": "$LATEST"
-    },
-    "outputDialogMode": "Text",
-    "inputTranscript": "book is written by kohonen teuvo",
-    "currentIntent": {
-      "name": "ExtraInfo",
-      "slots": {},
-      "confirmationStatus": "None"
-    },
-    "subject": "Self-organizing maps",
-        "url": "https://api.finna.fi/api/v1/search?lookfor=Self-organizing maps&filter[]=author:%22kohonen%2C+teuvo%22&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
-  },
-  "BookIsWrittenByReversed":{
-  "messageVersion": "1.0",
-    "invocationSource": "DialogCodeHook",
-    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
-    "sessionAttributes": {"subject": "Self-organizing maps"},
-    "bot": {
-      "name": "Libby_dev",
-      "alias": "$LATEST",
-      "version": "$LATEST"
-    },
-    "outputDialogMode": "Text",
-    "inputTranscript": "book is written by teuvo kohonen",
-    "currentIntent": {
-      "name": "ExtraInfo",
-      "slots": {},
-      "confirmationStatus": "None"
-    },
-    "subject": "Self-organizing maps",
-        "url": "https://api.finna.fi/api/v1/search?lookfor=Self-organizing maps&filter[]=author:%22kohonen%2C+teuvo%22&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
-  },
-  "OnlyAuthor": {
+  "manyLocations": {
     "messageVersion": "1.0",
     "invocationSource": "DialogCodeHook",
     "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
     "sessionAttributes": {
-      "subject": "Self-organizing maps"
+      "subject": "cat"
     },
     "bot": {
       "name": "Libby_dev",
@@ -240,15 +200,41 @@
       "version": "$LATEST"
     },
     "outputDialogMode": "Text",
-    "inputTranscript": "teuvo kohonen",
+    "inputTranscript": "It is published between 2001 and 2003",
+    "currentIntent": {
+      "name": "ExtraInfo",
+      "slots": {
+        "lower": "2001",
+        "upper": "2003",
+        "year": null
+      },
+      "confirmationStatus": "None"
+    },
+    "subject": "cat",
+    "url": "https://api.finna.fi/api/v1/search?lookfor=cat&filter[]=search_daterange_mv:%22[2001 TO 2003]%22&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
+  },
+  "TheBookIsWrittenBy":{
+  "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
+    "sessionAttributes": {"subject": "Self-organizing maps"},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "the book is written by kohonen teuvo",
     "currentIntent": {
       "name": "ExtraInfo",
       "slots": {},
       "confirmationStatus": "None"
     },
     "subject": "Self-organizing maps",
-    "url": "https://api.finna.fi/api/v1/search?lookfor=Self-organizing maps&filter[]=author:%22kohonen%2C+teuvo%22&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
+        "url": "https://api.finna.fi/api/v1/search?lookfor=Self-organizing maps&filter[]=author:%22kohonen%2C+teuvo%22&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
+
   }
 }
+
 
 

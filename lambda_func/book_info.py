@@ -15,10 +15,10 @@ json_dir = './api_testing/data_files/'
                           \                 /            |       /
                            \               /             V      /
                             ->subject_info()          find_info()<==>record()
-                           /                            |  A
-                          /                             |  |
-                         /                              V  |
-   AWS INPUT(EXTRA INFO)                              parse_book()
+                                  A                     |  A
+                                  |                     |  |
+                                  |                     V  |
+    AWS INPUT(EXTRA INFO)--->extra_info()              parse_book()
 """
 
 
@@ -76,9 +76,17 @@ def parse_subject(request, subject):
     :return: Response to AWS server in JSON format
     """
     message = "Something went wrong"
+
+    #if request['status'] == 'no info':
+     #   message = "No extra info was found222"
     if request['status'] == 'OK':
+        print("request:" + str(request))
         result_count = request['resultCount']
+
         if result_count == 0:
+         #   end = ""
+         #   if extra_info():
+          #      end = "which is written by " + extra_info'author'
             message = "Sorry, no books was found with search term: "\
                     + subject
         elif result_count == 1:
@@ -112,7 +120,11 @@ def subject_info(subject, extra_info=[]):
     :param extra_info: Given parameters to filter the data
     :return: Response to AWS server in JSON format
     """
-    if subject.startswith("find"):
+
+    """if extra_info[0] == ("No extra info"):
+        print("pääsin subject infoon")
+        return parse_subject({'status': "no info", 'message': extra_info[0]}, subject)"""
+    if subject.startswith("find"): # me ... json?
         subject = subject[5:]
     if subject.endswith("book") or subject.endswith("books"):
         subject = subject[:-5].strip()
@@ -155,16 +167,16 @@ def extra_info(intent):
             if input.startswith(info):
                 size = len(info)
                 written = input[size:]
-                return author_search(written, subject, lower, upper)
+                return author_search(written, subject)
         written = input
-        return author_search(written, subject, lower, upper)
+        return author_search(written, subject)
 
     # date ="search_daterange_mv:\"[" + str(lower) + " TO " + str(upper) + "]\""
 
     # return subject_info(subject, extra_info=[date])
 
 
-def author_search(written, subject, lower, upper):
+def author_search(written, subject):
 
     split_list = written.split()
     split_list = split_list[:2]
@@ -175,18 +187,22 @@ def author_search(written, subject, lower, upper):
     # print("result count: " + str(count))
     if lookfor(subject, filter=["author:\"" + with_com + "\""])['json'][
                                     'resultCount'] > 0:
+
         return subject_info(subject, extra_info=["author:\"" + with_com + "\""])
     else:
         reversed_list = split_list[::-1]
         reversed_with_com = ', '.join(reversed_list)
         if lookfor(subject, filter=["author:\"" + reversed_with_com + "\""])[
                                     'json']['resultCount'] > 0:
+
             return subject_info(subject, extra_info=[
                                     "author:\"" + reversed_with_com + "\""])
+        # return subject_info(subject, extra_info=["No extra info"])
 
-    # no find any extra info
-        return util.elicit_intent({
-                        'subject': subject}, "No extra information was given.")
+        # no find any extra info
+
+        return util.elicit_intent({'subject': subject},
+                                  "No extra information was given.")
 
 
 def record(id, field=[], method='GET', pretty_print='0'):
@@ -248,7 +264,7 @@ def lookfor(term="", field=[], filter=[], method='GET', pretty_print='0'):
     r = sess.request(url=__url + 'search', method=method)
     sess.close()
 
-    print(r.url)
+   # print(r.url)
     # print(r.json())
     # print("result count: " + str(r.json()['resultCount']))
     return {'status_code': r.status_code, 'json': r.json()}
