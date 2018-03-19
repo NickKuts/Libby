@@ -3,23 +3,23 @@ import re
 
 
 # Open the JSON file containing all restaurant information
-locations_json = 'locations.json'
-with open(locations_json, 'r') as fp:
-    locations = json.load(fp)
+_locations_json = 'locations.json'
+with open(_locations_json, 'r') as fp:
+    _locations = json.load(fp)
 
 
 # Regex pattern for use in parser
 _re_patt = r'(?P<location>.+)'
 
 # Open the JSON file containing all sample utterances
-sample_utts = 'sample_utterances.json'
-with open(sample_utts, 'r') as fp:
-    samples = json.load(fp)
+_sample_utts = 'sample_utterances.json'
+with open(_sample_utts, 'r') as fp:
+    _samples = json.load(fp)
 
 # Set all utterances to be regex patterns
-for i in range(0, len(samples)):
-    reg_str = samples[i].replace('{place}', _re_patt)
-    samples[i] = re.compile(reg_str)
+for i in range(0, len(_samples)):
+    reg_str = _samples[i].replace('{place}', _re_patt)
+    _samples[i] = re.compile(reg_str)
     
     
 def _existence(name):
@@ -27,8 +27,8 @@ def _existence(name):
     This function checks if the location can be found on disk, 
     if not return None.
     """
-    for loc in locations:
-        location = locations[loc]
+    for loc in _locations:
+        location = _locations[loc]
         aliases = location['aliases']
         for al in aliases:
             if name in al:
@@ -36,35 +36,43 @@ def _existence(name):
     return None
 
 
-def address(name, data):
+def address(event):
     """
     This function returns the address of the location the user asks for.
     """
     addr = "Sorry, I could not find an address for that location"
+
+    name, data = _process_name(event)
     
     if not data:
-        return addr
+        return None
 
     find_addr = data.get('address', None)
     if find_addr:
         return 'The address of {} is {}'.format(
                         name, find_addr.capitalize())
 
+    return addr
 
-def open_hours(name, data):
+
+def open_hours(event):
     """ 
     Simple function for returning opening hours of buildings, 
     if they have them.
     """
     hours = 'Sorry, I could not find any opening hours for this location'
 
+    name, data = _process_name(event)
+
     if not data:
-        return hours
+        return None
 
     find_hours = data.get('opening_hours', None)
     if find_hours:
         return 'The opening hours for {} are the following: {}'.format(
                         name, find_hours)
+
+    return hours
     
     
 def return_name(event):
@@ -98,7 +106,7 @@ def checker(trans):
         return address
     elif 'open' in trans:
         return open_hours
-    return lambda name, data: name
+    return lambda event: _process_name(event)[0]
 
 
 def _parse_trans(trans):
@@ -121,10 +129,10 @@ def _parse_trans(trans):
     matches = []
 
     # Go through each regex pattern
-    for sample in samples:
+    for sample in _samples:
         m = sample.fullmatch(trans)
         # The regex pattern is built such that the "found" building is saved
-        # under the parameter name 'locations'
+        # under the parameter name '_locations'
         if m:
             try:
                 # We need to use a try-catch as some regex patterns from the 
@@ -158,6 +166,15 @@ def _parse_trans(trans):
     
     # And finally return the shaved longest string (if such was found)
     return longest
+
+
+def _process_name(event):
+    """ Helper function for some of the functions above """
+    name = return_name(event)
+    name = name if name else _parse_trans(event['inputTranscript'].lower())
+    data = _existence(name)
+
+    return name, data
     
 
 def location_handler(event):
@@ -167,11 +184,7 @@ def location_handler(event):
     trans = event['inputTranscript']
     func = checker(trans)
     
-    name = return_name(event)
-    name = name if name else _parse_trans(trans.lower())
-
-    data = _existence(name)
-    ans = func(name, data) if data else None
+    ans = func(event)
 
     # Default answer if all failed
     if not ans:
