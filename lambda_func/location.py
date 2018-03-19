@@ -81,11 +81,11 @@ def open_hours(event):
     return hours
     
     
-def return_name(event):
+def _return_name(event):
     """
     This function simply returns the name of the location found in the query, 
     if it exists.
-    If the slot does not exist the function simply returns '(unknown)'.
+    If the slot does not exist the function simply returns None.
     """
     slots = event['currentIntent']['slots']
     val = None
@@ -176,7 +176,7 @@ def _parse_trans(trans):
 
 def _process_name(event):
     """ Helper function for some of the functions above """
-    name = return_name(event)
+    name = _return_name(event)
     name = name if name else _parse_trans(event['inputTranscript'].lower())
     data = _existence(name)
 
