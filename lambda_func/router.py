@@ -41,7 +41,7 @@ class Router:
         if name == "Get_Help":
             return self.intents[name](self.intent['currentIntent'])
         if name == "FindBook":
-            return self.intents[name](self.intent['inputTranscript'])
+            return self.intents[name](self.intent)
         if name == "ExtraInfo":
             return self.intents[name](self.intent)
         return self.intents[name]()

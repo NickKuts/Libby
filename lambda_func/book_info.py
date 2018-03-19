@@ -1,6 +1,8 @@
 import util
 import re
 from botocore.vendored import requests
+import author_search as AS
+
 
 """This is the URL for the Finna API with a needed header for proper results"""
 __url = 'https://api.finna.fi/api/v1/'
@@ -104,22 +106,41 @@ def parse_subject(request, subject):
     return util.elicit_intent({'subject': subject}, message)
 
 
-def subject_info(subject, extra_info=[]):
+def subject_info(intent, extra_info=[]):
     """
     :param subject: Parses relevant information from the input(subject) and
     passes that forward
     :param extra_info: Given parameters to filter the data
     :return: Response to AWS server in JSON format
     """
-    if subject.startswith("find"):
-        subject = subject[5:]
-    if subject.endswith("book") or subject.endswith("books"):
-        subject = subject[:-5].strip()
+    print("oletko stringi?_____________________" + intent)    
+    text = intent['inputTranscript'].lower()
+    l = AS.load_file('sample_utterances.txt')
+    to_drop = 0
+    
+    for line in l:
+        if text.startswith(line):
+            to_drop = len(line)
+            break;
+
+    text = text[to_drop : ].strip()
+    
+    subject = takewhile(lambda x: x is "written" or x is "published",
+            text.split('\n', len(text)))
+
+    author_text = text[len(subject) : ].strip()
+    author = find_author(author_text)
+
+    if author:
+        extra_info += [
+            "author:\""+author+"\""
+        ]  
 
     request = lookfor(term=subject, filter=extra_info)['json']
     # print("subject: " + subject)
     # print("extra_info: " + extra_info())
     # print("request: " + json.dumps(request))
+    
     return parse_subject(request, subject)
 
 
@@ -187,6 +208,13 @@ def extra_info(intent):
     date = "search_daterange_mv:\"[" + str(lower) + " TO " + str(upper) + "]\""
     # print(date)
     return subject_info(subject, extra_info=[date])
+
+
+def find_author(intent):
+    text = intent['inputTranscript']
+    author = AS.search(text, False)
+    
+    return author
 
 
 def record(id, field=[], method='GET', pretty_print='0'):
