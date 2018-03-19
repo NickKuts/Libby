@@ -1,5 +1,6 @@
 import json
 import re
+from fuzzywuzzy import fuzz
 
 
 # Open the JSON file containing all restaurant information
@@ -27,13 +28,18 @@ def _existence(name):
     This function checks if the location can be found on disk, 
     if not return None.
     """
+    curr = None
+    score = -1
     for loc in _locations:
         location = _locations[loc]
         aliases = location['aliases']
         for al in aliases:
-            if name in al:
-                return location
-    return None
+            temp = fuzz.ratio(al, name)
+            if temp > score:
+                curr = location
+                score = temp
+
+    return curr
 
 
 def address(event):
@@ -200,3 +206,4 @@ def location_handler(event):
             }
         }
     }
+

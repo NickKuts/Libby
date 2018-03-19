@@ -1,0 +1,38 @@
+{
+    "all_locs": {
+        "messageVersion": "1.0", 
+        "invocationSource": "DialogCodeHook", 
+        "userId": "<redacted>", 
+        "sessionAttributes": {}, 
+        "requestAttributes": null, 
+        "bot": {
+            "name": "Location", 
+            "alias": "$LATEST", 
+            "version": "$LATEST"
+        }, 
+        "outputDialogMode": "Text", 
+        "currentIntent": {
+            "name": "Location", 
+            "slots": {
+                "place": "{}", 
+                "type": null
+            }, 
+            "slotDetails": {
+                "place": {
+                    "resolutions": [
+                        {
+                            "value": "{}"
+                        }
+                    ], 
+                    "originalValue": "{}"
+                }, 
+                "type": {
+                    "resolutions": [], 
+                    "originalValue": null
+                }
+            }, 
+            "confirmationStatus": "None"
+        }, 
+        "inputTranscript": "{}"
+    }
+}
