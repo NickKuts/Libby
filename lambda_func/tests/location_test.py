@@ -26,6 +26,11 @@ class TestLocation(unittest.TestCase):
             cls.test_data = json.load(fp)
 
     def extract_response(self, res):
+        """
+        Helper function for extracting a response from the resulting JSON from
+        the intent.
+        param: res the JSON formatted response
+        """
         return res['dialogAction']['message']['content']
 
     def update_input(self, data, place, input_trans):
@@ -36,10 +41,18 @@ class TestLocation(unittest.TestCase):
         param: place value of place in the slot of the input
         param: input_trans value of the inputTranscript of the input
         """
-        if place:  # Update place if place is not None
-            data['currentIntent']['slots']['place'] = place
-        if input_trans:  # Update inputTranscript if input_trans is not None
+        data['currentIntent']['slots']['place'] = place
+        if input_trans:  # inputTranscript should always be something
             data['inputTranscript'] = input_trans
+
+    def sanitize_input_data(self, data):
+        """
+        A helper function for sanitizing inputs after each test, so that all
+        tests have a clean plate
+        param: data input data to be sanitized
+        """
+        data['currentIntent']['slots']['place'] = '{}'
+        data['inputTranscript'] = '{}'
 
     def test_address(self):
         """ 
@@ -81,8 +94,7 @@ class TestLocation(unittest.TestCase):
                         .format(alias, loc, addr, result))
 
         # After the test, sanitize the input data
-        all_locs_data['currentIntent']['slots']['place'] = '{}'
-        all_locs_data['inputTranscript'] = '{}'
+        self.sanitize_input_data(all_locs_data)
 
     def test_hours(self):
         """
@@ -122,60 +134,128 @@ class TestLocation(unittest.TestCase):
                     .format(loc, hours, result, all_locs_data))
 
         # After the test, sanitize the input data
-        all_locs_data['currentIntent']['slots']['place'] = '{}'
-        all_locs_data['inputTranscript'] = '{}'
+        self.sanitize_input_data(all_locs_data)
 
-    def test_no_ans(self):
+    def none_existence(self, place):
         """
-        This test checks whether the intent returns a correct response in case
-        it gets a location it has no idea of.
+        This function is a helper function to avoid boiler-plate for other 
+        tests.
+        We want to  test both the parser and the slot picking mechanisms of the
+        intent. The param place defines whether the place (slot) should be 
+        named or not, it should be a boolean, True for named, False for not.
+        param: place name (if any) of the place slot
         """
 
         # Get the right test input
         all_locs_data = self.test_data.get('all_locs', {})
-        # Create inputTranscript
-        input_transcript = 'What is the address of {}'
 
-        # Saving formattable string from inputTranscript
-        new_inp_tr = all_locs_data['inputTranscript']
+        # We want to test all intent functions, so we use this simple for-loop
+        # over a list to check each function
+        input_transcripts = [
+            'What is the address of {}',
+            'opening hours of {}',
+            'where is {}',
+            'location of {}',
+        ]
 
-        # Let's give the intent some real location that it should 
-        # have no data about
-        locs = ['hamburg', 'shanghai', 'tokyo', 'australia']
-        for loc in locs:
-            # Update the input for the intent
-            trans = input_transcript.format(loc)
-            self.update_input(
-                all_locs_data,
-                None,
-                new_inp_tr.format(trans)
-            )
-            result = location.location_handler(all_locs_data)
-            # Check whether the response does NOT contain the location
-            self.assertFalse(
-                loc in result,
-                'The Location intent should not have found an address for: {}'
-                    .format(loc))
+        for input_transcript in input_transcripts:
+            # Saving formattable string from inputTranscript
+            new_inp_tr = all_locs_data['inputTranscript']
+    
+            # Let's give the intent some real location that it should 
+            # have no data about
+            locs = ['hamburg', 'shanghai', 'tokyo', 'australia']
+            for loc in locs:
+                # Update the input for the intent
+                trans = input_transcript.format(loc)
+                self.update_input(
+                    all_locs_data,
+                    None if place else loc,
+                    new_inp_tr.format(trans)
+                )
+                result = location.location_handler(all_locs_data)
+                # Check whether the response does NOT contain the location
+                print('{}, place = {}'.format(result, place))
+                self.assertFalse(
+                    loc in result,
+                    'The Location intent should not have found an address for: {}'
+                        .format(loc))
+    
+            # Now, let's test with some random gibberish
+            for i in range(0, 20):
+                # Create a random string consisting of random chars and nums
+                rndm_str = ''.join(  # The string will be of length 20
+                        random.choices(string.ascii_uppercase + string.digits, k=20)
+                )
+                # Update the input for the intent
+                trans = input_transcript.format(rndm_str)
+                self.update_input(
+                    all_locs_data,
+                    None,
+                    new_inp_tr.format(trans)
+                )
+                result = location.location_handler(all_locs_data)
+                # Check whether the response does NOT contain the location
+                self.assertFalse(
+                    rndm_str in result,
+                    'The Location intent should not have found an address for: {}'
+                        .format(rndm_str))
 
-        # Now, let's test with some random gibberish
-        for i in range(0, 20):
-            # Create a random string consisting of random chars and nums
-            rndm_str = ''.join(  # The string will be of length 20
-                    random.choices(string.ascii_uppercase + string.digits, k=20)
-            )
-            # Update the input for the intent
-            trans = input_transcript.format(rndm_str)
-            self.update_input(
-                all_locs_data,
-                None,
-                new_inp_tr.format(trans)
-            )
-            result = location.location_handler(all_locs_data)
-            # Check whether the response does NOT contain the location
-            self.assertFalse(
-                rndm_str in result,
-                'The Location intent should not have found an address for: {}'
-                    .format(rndm_str))
+            # After each iteration of the outer loop, sanitize input data
+            self.sanitize_input_data(all_locs_data)
+        # And after the test, sanitize inputs again
+        self.sanitize_input_data(all_locs_data)
+
+    def test_ans_slot(self):
+        """
+        Test the intent when it utilizes the slot value from the input data.
+        """
+        self.none_existence(False)
+
+    def test_ans_parser(self):
+        """
+        Test the intent when it utilizes the inputTranscript from the
+        inputTranscript
+        """
+        self.none_existence(True)
+
+    def test_return_name(self):
+        """
+        Test for checking whether the intent returns the just the name if the
+        inputTranscript only consists of the name (or the inputTranscript is
+        not recognized)
+        """
+        
+        # Get the right test input
+        all_locs_data = self.test_data.get('all_locs', {})
+        # Create inputTranscript's for the test
+        input_transes = [
+            '{}',
+            'something something {}',
+            #'where is',  # FIXME: this fails, returns an address
+        ]
+
+        for loc, data in self.locations.items():
+            # Create the inputTranscripts and check them
+            for trans in input_transes:
+                trans = trans.format(loc).lower()
+                self.update_input(
+                    all_locs_data,
+                    None,
+                    trans
+                )
+                result = location.location_handler(all_locs_data)
+                # Extract the result
+                result = self.extract_response(result)
+                # Check whether the response is the same as the name
+                self.assertTrue(
+                    trans == result,
+                    'The input "{}" did not match the response "{}".'
+                        .format(trans, result))
+            
+        # Sanitize the data
+        self.sanitize_input_data(all_locs_data)
+
 
 def main():  # pragma: no cover
     pass

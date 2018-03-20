@@ -1,6 +1,7 @@
 import json
 import re
 from location_utils import ratio
+from functools import reduce
 
 
 # Open the JSON file containing all restaurant information
@@ -105,13 +106,31 @@ def _checker(trans):
     E.g. if the query of the user contains address the query is routed to the   
     'address' function that finds the address.
     """
+    def helper(strings):
+        """ 
+        Helper function for checking if a any from list of strings are
+        contained in the inputTranscript
+        """
+        for st in strings:
+            if st in trans:
+                return True
+        return False
+
+    # Create a list with strings that should lead to the address function 
+    # being used
+    address_str = ['address', 'where is', 'location']
+
+    if helper(address_str):
+        return address
+    """
     if 'address' in trans:
         return address
     elif 'where is' in trans:
         return address
     elif 'location' in trans:
         return address
-    elif 'open' in trans:
+    """
+    if 'open' in trans:
         return open_hours
     return lambda event: _process_name(event)[0]
 
