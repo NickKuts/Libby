@@ -160,8 +160,9 @@ class TestLocation(unittest.TestCase):
         # Now, let's test with some random gibberish
         for i in range(0, 20):
             # Create a random string consisting of random chars and nums
-            rndm_str = ''.join(
-                    random.choices(string.ascii_uppercase + string.digits, k=20))
+            rndm_str = ''.join(  # The string will be of length 20
+                    random.choices(string.ascii_uppercase + string.digits, k=20)
+            )
             # Update the input for the intent
             trans = input_transcript.format(rndm_str)
             self.update_input(
