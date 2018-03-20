@@ -69,8 +69,8 @@ class TestLocation(unittest.TestCase):
                 # Check wether the actual address is found in the response 
                 self.assertTrue(
                     addr in result, 
-                    'The address of {} ({}) is "{}", but got response "{}".'.format(
-                        alias, loc, addr, result))
+                    'The address of {} ({}) is "{}", but got response "{}".'
+                        .format(alias, loc, addr, result))
 
 
 def main():

@@ -1,6 +1,7 @@
 import json
 import re
-from fuzzywuzzy import fuzz
+#from fuzzywuzzy import fuzz
+from location_utils import ratio
 
 
 # Open the JSON file containing all restaurant information
@@ -34,7 +35,8 @@ def _existence(name):
         location = _locations[loc]
         aliases = location['aliases']
         for al in aliases:
-            temp = fuzz.ratio(al, name)
+#            temp = fuzz.ratio(al, name)
+            temp = ratio(al, name)
             if temp > score:
                 curr = location
                 score = temp

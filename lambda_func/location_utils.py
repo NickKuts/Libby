@@ -1,3 +1,4 @@
+from difflib import SequenceMatcher
 from math import cos, sin, pi, atan2, sqrt
 
 
@@ -34,3 +35,20 @@ def angle(lat1, lon1, lat2, lon2):
     brng = brng * 180 / pi
     brng = (brng + 360) % 360
     return brng
+
+
+def ratio(s1, s2):
+    if s1 is None or s2 is None:
+        return 0
+    if len(s1) == 0 or len(s2) == 0:
+        return 0
+    if isinstance(s1, str) and isinstance(s2, str):
+        pass
+    elif isinstance(s1, unicode) and isinstance(s2, unicode):
+        pass
+    else:
+        s1 = unicode(s1)
+        s2 = unicode(s2)
+    m = SequenceMatcher(None, s1, s2)
+    return int(round(100 * m.ratio()))
+
