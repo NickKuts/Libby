@@ -13,7 +13,6 @@
   install:
     - pip install requests
     - pip install pytest-cov
-    - pip install fuzzywuzzy
   script:
     - cd lambda_func && python -m pytest --cov=.
     - cd ..

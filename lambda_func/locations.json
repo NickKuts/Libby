@@ -237,7 +237,7 @@
         "lon": 24.8312557,
         "lat": 60.187110849999996
     },
-    "F": {
+    "f-building": {
         "aliases": [
             "r003",
             "f-talo",
@@ -270,8 +270,6 @@
     },
     "r004": {
         "aliases": [
-            "r004",
-            "elec",
             "r004",
             "s\u00e4hk\u00f6"
         ],
@@ -415,7 +413,6 @@
         "aliases": [
             "r011",
             "ke",
-            "chem",
             "r011",
             "kemma",
             "aalto chemical engineering"
@@ -1932,7 +1929,6 @@
     },
     "ELEC": {
         "aliases": [
-            "elec",
             "elec",
             "school of electrical engineering"
         ],

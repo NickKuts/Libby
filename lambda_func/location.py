@@ -1,6 +1,5 @@
 import json
 import re
-#from fuzzywuzzy import fuzz
 from location_utils import ratio
 
 
@@ -30,12 +29,12 @@ def _existence(name):
     if not return None.
     """
     curr = None
-    score = -1
+    score = 0
+    name = name.lower()
     for loc in _locations:
         location = _locations[loc]
         aliases = location['aliases']
         for al in aliases:
-#            temp = fuzz.ratio(al, name)
             temp = ratio(al, name)
             if temp > score:
                 curr = location
@@ -100,7 +99,7 @@ def _return_name(event):
     return val
     
 
-def checker(trans):
+def _checker(trans):
     """
     This function finds the correct function for the answer.
     E.g. if the query of the user contains address the query is routed to the   
@@ -190,7 +189,7 @@ def location_handler(event):
     This is the handler function for the Location intent.
     """
     trans = event['inputTranscript']
-    func = checker(trans)
+    func = _checker(trans)
     
     ans = func(event)
 
