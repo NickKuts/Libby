@@ -1,8 +1,5 @@
 {
   "oneBook": {
-    "messageVersion": "1.0",
-    "invocationSource": "DialogCodeHook",
-    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
     "sessionAttributes": {"subject": "cat"},
     "bot": {
       "name": "Libby_dev",
@@ -22,6 +19,38 @@
     },
     "subject": "cat",
     "url": "https://api.finna.fi/api/v1/search?lookfor=cat&filter[]=search_daterange_mv:%22[2001 TO 2001]%22&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
+  },
+  "bookWithAuthor": {
+    "sessionAttributes": {},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "inputTranscript": "tell me about a book cats written by Vogel Steven",
+    "currentIntent": {
+      "name": "FindBook",
+      "slots": {},
+      "confirmationStatus": "None"
+    },
+    "subject": "cats",
+    "url": "https://api.finna.fi/api/v1/search?lookfor=cats&filter[]=author:%22vogel%2C+steven%22&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
+  },
+  "bookWithAuthor2": {
+    "sessionAttributes": {},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "inputTranscript": "in what building is Beginning scala by David Pollak",
+    "currentIntent": {
+      "name": "FindBook",
+      "slots": {},
+      "confirmationStatus": "None"
+    },
+    "subject": "Beginning scala",
+    "url": "https://api.finna.fi/api/v1/search?lookfor=beginning+scala&filter[]=author:%22pollak%2C+david%22&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
   },
   "noYear": {
     "messageVersion": "1.0",
