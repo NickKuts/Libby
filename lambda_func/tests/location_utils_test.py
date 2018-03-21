@@ -1,17 +1,17 @@
 import unittest
-from lambda_func import location_utils
-import json
-import os
 import random
-import string
+from lambda_func import location_utils
 
 
 class TestLocationUtils(unittest.TestCase):
     """
     This test suite tests the utility functions for our Location intent.
+    These functions can be found under the file _location_utils.py_ in the 
+    folder _lambda_func_.
     """
 
-    def create_rndm_string(self, length=0):
+    @staticmethod
+    def create_rndm_string(length=0):
         """
         This is a helper function for creating random unicode strings for
         our tests below. The strings are of length defined by the similarly
@@ -32,16 +32,20 @@ class TestLocationUtils(unittest.TestCase):
         str_len = 30
         
         # Check if exactly equal strings equal a score of 100
-        for i in range(1, ran_len):
+        # but first create the response string (in case of failure)
+        msg = 'The string "{}" did not get a score of 100, but {}.'
+        for i in range(0, ran_len):
             string = self.create_rndm_string(length=str_len)
             result = location_utils.ratio(string, string)
             self.assertTrue(
                 result == 100,
-                'The string "{}" did not get a score of 100, but {}'
-                    .format(string, result))
+                msg.format(string, result))
 
         # Check if non-exact strings do not equal a score of 100
-        for i in range(1, ran_len):
+        # but first create the response string (in case of failure)
+        msg = 'The strings (str0: {}) and (str1: {}) got a score of 100, ' \
+              'but should have gotten <100.'
+        for i in range(0, ran_len):
             str0 = self.create_rndm_string(length=str_len)
             str1 = self.create_rndm_string(length=str_len)
             # Just to be sure, let's check that the string are not equal
@@ -50,9 +54,7 @@ class TestLocationUtils(unittest.TestCase):
             result = location_utils.ratio(str0, str1)
             self.assertFalse(
                 result == 100,
-                'The strings (str0: {}) and (str1: {}) got a score of 100, '
-                'but should have gotten <100.'
-                    .format(str0, str1))
+                msg.format(str0, str1))
 
     def test_ratio_return_0(self):
         """
@@ -97,19 +99,21 @@ class TestLocationUtils(unittest.TestCase):
         """
         This test checks whether the inputs for the _ratio_ function are 
         properly decoded (if they are of type `bytes`).
+        These tests do not actually use any assertion functions, but only
+        checks if the function runs without errors.
         Note: we only test with type `bytes` here as testing with type `str`
               is implicitly tested in the other tests
         """
 
         # First we test with both parameters being of type `bytes`
-        result = location_utils.ratio(
-                self.create_rndm_string(length=10).encode('utf-8'),
-                self.create_rndm_string(length=10).encode('utf-8'))
+        location_utils.ratio(
+            self.create_rndm_string(length=10).encode('utf-8'),
+            self.create_rndm_string(length=10).encode('utf-8'))
         # Then with only one parameter being of type `bytes`
-        result = location_utils.ratio(
-                self.create_rndm_string(length=10).encode('utf-8'),
-                self.create_rndm_string(length=10))
-        result = location_utils.ratio(
-                self.create_rndm_string(length=10),
-                self.create_rndm_string(length=10).encode('utf-8'))
+        location_utils.ratio(
+            self.create_rndm_string(length=10).encode('utf-8'),
+            self.create_rndm_string(length=10))
+        location_utils.ratio(
+            self.create_rndm_string(length=10),
+            self.create_rndm_string(length=10).encode('utf-8'))
 

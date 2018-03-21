@@ -1,11 +1,12 @@
 import unittest
-from lambda_func import location
 import json
 import os
 import random
 import string
+from lambda_func import location
 
-### Below we use some _os.path_ functions to find JSON files
+
+# Below we use some _os.path_ functions to find JSON files
 # Find the path of this file
 _file_location = os.path.dirname(os.path.abspath(__file__))
 # Combine with the JSON file for locations
@@ -15,7 +16,11 @@ _test_data = _file_location + '/location_test.json'
 
 
 class TestLocation(unittest.TestCase):
-    """ This test suite tests our location intent. """
+    """ 
+    This test suite tests our location intent. 
+    The intent itself can be found in the file _location.py_ under the folder
+    _lambda_func_.
+    """
 
     @classmethod
     def setUpClass(cls):
@@ -91,7 +96,7 @@ class TestLocation(unittest.TestCase):
                 # Set the result to lower for easier checking
                 result = self.extract_response(result).lower()
                 # Create formattable response string
-                msg = 'The address of {} ({}) is "{}", but go the reponse "{}".'
+                msg = 'The address of {} ({}) is "{}", but go the response "{}".'
                 # Check whether the actual address is found in the response 
                 self.assertTrue(
                     addr in result, 
@@ -238,7 +243,6 @@ class TestLocation(unittest.TestCase):
         input_transes = [
             '{}',
             'something something {}',
-            # 'where is',  # FIXME: this fails, returns an address
         ]
 
         for loc, data in self.locations.items():

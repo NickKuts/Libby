@@ -197,6 +197,7 @@ def _process_name(event):
 def location_handler(event):
     """
     This is the handler function for the Location intent.
+    param: event the input event (data) received from AWS Lex
     """
     trans = event['inputTranscript']
     func = _checker(trans)

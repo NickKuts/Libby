@@ -15,8 +15,15 @@ directions = {
 }
 
 
+def to_radians(degs):
+    return degs * pi / 180
+
+
+def in_range(angle, mini, maxi):
+    return (mini <= angle) and (angle <= maxi)
+
+
 def direction(angle):
-    print(angle)
     for key in directions:
         if in_range(angle, key[0], key[1]):
             return directions[key]
@@ -51,14 +58,6 @@ def angle(lat1, lon1, lat2, lon2):
     brng = brng * 180 / pi
     brng = (brng + 360) % 360
     return brng
-
-
-def to_radians(degs):
-    return degs * pi / 180
-
-
-def in_range(angle, mini, maxi):
-    return (mini <= angle) and (angle <= maxi)
 
 
 def ratio(s1, s2):
