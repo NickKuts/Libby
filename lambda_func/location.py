@@ -121,14 +121,6 @@ def _checker(trans):
 
     if helper(address_str):
         return address
-    """
-    if 'address' in trans:
-        return address
-    elif 'where is' in trans:
-        return address
-    elif 'location' in trans:
-        return address
-    """
     if 'open' in trans:
         return open_hours
     return lambda event: _process_name(event)[0]

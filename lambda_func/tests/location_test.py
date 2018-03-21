@@ -5,7 +5,7 @@ import os
 import random
 import string
 
-
+### Below we use some _os.path_ functions to find JSON files
 # Find the path of this file
 _file_location = os.path.dirname(os.path.abspath(__file__))
 # Combine with the JSON file for locations
