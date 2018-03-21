@@ -43,14 +43,30 @@
       "alias": "$LATEST",
       "version": "$LATEST"
     },
-    "inputTranscript": "in what building is Beginning scala by David Pollak",
+    "inputTranscript": "in what building is scala by lors lara",
     "currentIntent": {
       "name": "FindBook",
       "slots": {},
       "confirmationStatus": "None"
     },
-    "subject": "Beginning scala",
-    "url": "https://api.finna.fi/api/v1/search?lookfor=beginning+scala&filter[]=author:%22pollak%2C+david%22&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
+    "subject": "scala",
+    "url": "https://api.finna.fi/api/v1/search?lookfor=scala&filter[]=author:%22lara%2C+lors%22&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
+  },
+  "bookWithAuthor3": {
+    "sessionAttributes": {},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "inputTranscript": "in what building is sähköä ilmassa by saija salo",
+    "currentIntent": {
+      "name": "FindBook",
+      "slots": {},
+      "confirmationStatus": "None"
+    },
+    "subject": "sähköä ilmassa",
+    "url": "https://api.finna.fi/api/v1/search?lookfor=sahkoa+ilmassa&filter[]=author:%22saija%2C+salo%22&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
   },
   "noYear": {
     "messageVersion": "1.0",

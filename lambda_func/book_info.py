@@ -35,6 +35,7 @@ def parse_book(info):
     """
     ret = []
     output = "Parse error"
+    print("info", info)
     for elem in info:
         # print("elem: " + str(elem))
         """
@@ -53,7 +54,9 @@ def parse_book(info):
         if re.compile("1/AALTO/([a-z])*/").match(elem['value']):
             ret.append(elem['translated'])
             output = "This book is located in "
-    print("miksi ret on tyhjä?", ret)
+        if re.compile("0/AALTO/([a-z])*").match(elem['value']):
+            ret.append(elem['translated'])
+            output = "This book is located in "
     return output + util.make_string_list(ret)
 
 
@@ -65,6 +68,7 @@ def find_info(book_id, field='buildings'):
     """
     print("id", book_id)
     request = record(book_id, field=['id', field])['json']
+    print("count", request['resultCount'])
     if request['status'] == 'OK':
         # print(request['json']['records'][0])
         field_info = request['records'][0][field]
@@ -143,18 +147,24 @@ def subject_info(intent, extra_info=[]):
 
     subject_list = []
     keywords = ["books", "book", "by", "published", "written"]
+    keyword = ""
+
     for word in text_list:
         if word not in keywords:
             subject_list.append(word)
         else:
+            keyword = word
             break
 
     print("subject list:", subject_list)
     subject = " ".join(subject_list)
     print("subject: ", subject)
 
-    author_text = text[len(subject):].strip()
+    author_text = text[len(subject) + 1 + len(keyword):].strip()
     author = find_author(author_text)
+
+    print("autor_text:", author_text)
+    print("Author:", author)
 
     if author:
         extra_info += [
