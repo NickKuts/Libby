@@ -11,23 +11,14 @@ class TestLocationUtils(unittest.TestCase):
     This test suite tests the utility functions for our Location intent.
     """
 
-    def create_rndm_string(
-            self, 
-            upp_chars=string.ascii_uppercase, 
-            low_chars=string.ascii_lowercase, 
-            digs=string.digits, 
-            length=0):
+    def create_rndm_string(self, length=0):
         """
-        This is a helper function for our tests. It creates a random string
-        of length `am` consisting of characters (upper and lower case) and 
-        digits depending on the value of the corresponding parameters above
-        param: upper_chars boolean if uppercase characters should be added
-        param: low_chars boolean if lowercase characters should be added
-        param: digs boolean if digits should be added
-        param: m the length of the output string
+        This is a helper function for creating random unicode strings for
+        our tests below. The strings are of length defined by the similarly
+        named parameter.
+        param: length the length of the output string
         """
-        all_chars = upp_chars + low_chars + digs
-        return ''.join(random.choices(all_chars, k=length))
+        return ''.join([chr(random.randint(0, 256)) for _ in range(0, length)])
 
     def test_ratio_ratios(self):
         """
@@ -63,18 +54,13 @@ class TestLocationUtils(unittest.TestCase):
                 'but should have gotten <100.'
                     .format(str0, str1))
 
-    def test_ratio_formats(self):
+    def test_ratio_return_0(self):
         """
-        This test checks whether the _ratio_ function actually convert strings
-        of differing types correctly. The function can receive strings of type
-        `str` and `unicode`, and in case they differ they should be converted 
-        to `unicode`.
+        This test checks whether the _ratio_ function in location_utils returns
+        0 for correct outputs. This occurs when at least one of the strings are
+        either `None` or of length 0.
         """
 
-
-    def test_return_0(self):
-        """
-        This test checks whether 
         # First we test with both values being `None`
         result = location_utils.ratio(None, None)
         self.assertTrue(
@@ -90,4 +76,40 @@ class TestLocationUtils(unittest.TestCase):
         self.assertTrue(
             result == 0,
             'A parameter being None should result in a score of 0 from ratio')
+
+        # Do the same as above, but with strings of length 0 instead of None
+        result = location_utils.ratio('', '')
+        self.assertTrue(
+            result == 0,
+            'Parameters being strings with length 0 should result in a '
+            'score of 0 from ratio')
+
+        result = location_utils.ratio('', self.create_rndm_string(length=10))
+        self.assertTrue(
+            result == 0,
+            'A string with length 0 should result in a score of 0 from ratio')
+        result = location_utils.ratio(self.create_rndm_string(length=10), '')
+        self.assertTrue(
+            result == 0,
+            'A string with length 0 should result in a score of 0 from ratio')
+
+    def test_ratio_encoding(self):
+        """
+        This test checks whether the inputs for the _ratio_ function are 
+        properly decoded (if they are of type `bytes`).
+        Note: we only test with type `bytes` here as testing with type `str`
+              is implicitly tested in the other tests
+        """
+
+        # First we test with both parameters being of type `bytes`
+        result = location_utils.ratio(
+                self.create_rndm_string(length=10).encode('utf-8'),
+                self.create_rndm_string(length=10).encode('utf-8'))
+        # Then with only one parameter being of type `bytes`
+        result = location_utils.ratio(
+                self.create_rndm_string(length=10).encode('utf-8'),
+                self.create_rndm_string(length=10))
+        result = location_utils.ratio(
+                self.create_rndm_string(length=10),
+                self.create_rndm_string(length=10).encode('utf-8'))
 

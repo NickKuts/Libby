@@ -89,13 +89,14 @@ def ratio(s1, s2):
     # If both of the strings are of type `str` they can be compared
     if isinstance(s1, str) and isinstance(s2, str):
         pass
-    # Or if both are of type `unicode` they can be compared
-    elif isinstance(s1, unicode) and isinstance(s2, unicode):
-        pass
-    # However, if they differ in types we convert them to `unicode`
-    else:
-        s1 = unicode(s1)
-        s2 = unicode(s2)
+    
+    # Check if any of the parameters are of type `bytes`
+    # if they are, decode them to strings (utf-8)
+    if isinstance(s1, bytes):
+        s1 = s1.decode('utf-8')
+    if isinstance(s2, bytes):
+        s2 = s2.decode('utf-8')
+
     # And finally we use `SequenceMatcher` to check for similarity 
     # in the strings
     m = SequenceMatcher(None, s1, s2)
