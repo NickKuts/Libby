@@ -68,10 +68,13 @@ class TestLocationUtils(unittest.TestCase):
         This test checks whether the _ratio_ function actually convert strings
         of differing types correctly. The function can receive strings of type
         `str` and `unicode`, and in case they differ they should be converted 
-        to `unicode`, and if any of them are `None`, the function should 
-        return 0.
+        to `unicode`.
         """
 
+
+    def test_return_0(self):
+        """
+        This test checks whether 
         # First we test with both values being `None`
         result = location_utils.ratio(None, None)
         self.assertTrue(
