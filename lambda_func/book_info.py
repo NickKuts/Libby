@@ -159,7 +159,6 @@ def subject_info(intent, extra_info=[]):
     author_text = text[len(subject) + 1 + len(keyword):].strip()
     author = find_author(author_text)
 
-    print("author_text:", author_text)
     print("Author:", author)
     print("extra info", extra_info)
     extra_info.clear()
