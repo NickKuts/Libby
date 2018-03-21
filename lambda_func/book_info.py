@@ -91,15 +91,11 @@ def parse_subject(request, subject):
     if request['status'] == 'OK':
         # print("request:" + str(request))
         result_count = request['resultCount']
-        print("result ", result_count)
+        print("result parse subject ", result_count)
         print("subject ", subject)
         if result_count == 0:
-            print()
-            # end = ""
-            # if extra_info():
-            # end = "which is written by " + extra_info'author'
-            message = "Sorry, no books was found with search term: "\
-                    + subject
+            print("miks meet tänne?", subject, result_count)
+            message = "Sorry, no books was found with search term: " + subject
         elif result_count == 1:
             return find_info(request['records'][0]['id'])
         elif result_count < 5:
@@ -163,14 +159,16 @@ def subject_info(intent, extra_info=[]):
     author_text = text[len(subject) + 1 + len(keyword):].strip()
     author = find_author(author_text)
 
-    print("autor_text:", author_text)
+    print("author_text:", author_text)
     print("Author:", author)
-
+    print("extra info", extra_info)
+    extra_info.clear()
     if author:
         extra_info += [
             "author:\"" + author + "\""
         ]
     request = lookfor(term=subject, filter=extra_info)['json']
+    print("___result count___:", request['resultCount'], subject)
     # print("subject: " + subject)
     # print("extra_info: " + extra_info())
     # print("request: " + json.dumps(request))
@@ -290,7 +288,7 @@ def lookfor(term="", field=[], filter=[], method='GET', pretty_print='0'):
     r = sess.request(url=__url + 'search', method=method)
     sess.close()
 
-    # print(r.url)
+    print(r.url)
     # print(r.json())
     # print("result count: " + str(r.json()['resultCount']))
     return {'status_code': r.status_code, 'json': r.json()}

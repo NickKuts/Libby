@@ -50,7 +50,7 @@
       "confirmationStatus": "None"
     },
     "subject": "scala",
-    "url": "https://api.finna.fi/api/v1/search?lookfor=scala&filter[]=author:%22lara%2C+lors%22&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
+    "url": "https://api.finna.fi/api/v1/search?lookfor=scala&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
   },
   "bookWithAuthor3": {
     "sessionAttributes": {},

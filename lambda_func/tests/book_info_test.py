@@ -13,6 +13,8 @@ class TestBookInfo(unittest.TestCase):
         for name in self.test_data:
             tests.append(name)
         for test in tests:
+
+            print("test:", test)
             test_input = self.test_data[test]
             result = main_handler.lambda_handler(test_input, None)
             # print("result: " + str(result))
@@ -22,7 +24,6 @@ class TestBookInfo(unittest.TestCase):
             right_result = sess.request(url=test_input['url'],
                                         method='GET').json()
             sess.close()
-            print("test:", test)
             # print("result: " + str(result))
             # print("right result: " + str(right_result))
             # assert(1 == 2)
