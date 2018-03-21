@@ -1,7 +1,6 @@
 import json
 import re
 from location_utils import ratio
-from functools import reduce
 
 
 # Open the JSON file containing all restaurant information
@@ -226,4 +225,3 @@ def location_handler(event):
             }
         }
     }
-

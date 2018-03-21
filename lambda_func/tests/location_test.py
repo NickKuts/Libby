@@ -25,7 +25,8 @@ class TestLocation(unittest.TestCase):
         with open(_test_data, 'r') as fp:
             cls.test_data = json.load(fp)
 
-    def extract_response(self, res):
+    @staticmethod
+    def extract_response(res):
         """
         Helper function for extracting a response from the resulting JSON from
         the intent.
@@ -33,7 +34,8 @@ class TestLocation(unittest.TestCase):
         """
         return res['dialogAction']['message']['content']
 
-    def update_input(self, data, place, input_trans):
+    @staticmethod
+    def update_input(data, place, input_trans):
         """
         Helper function to update value of the 'data' input, which simulates
         the input to the location intent.
@@ -45,7 +47,8 @@ class TestLocation(unittest.TestCase):
         if input_trans:  # inputTranscript should always be something
             data['inputTranscript'] = input_trans
 
-    def sanitize_input_data(self, data):
+    @staticmethod
+    def sanitize_input_data(data):
         """
         A helper function for sanitizing inputs after each test, so that all
         tests have a clean plate
@@ -87,11 +90,12 @@ class TestLocation(unittest.TestCase):
                 result = location.location_handler(all_locs_data)
                 # Set the result to lower for easier checking
                 result = self.extract_response(result).lower()
+                # Create formattable response string
+                msg = 'The address of {} ({}) is "{}", but go the reponse "{}".'
                 # Check whether the actual address is found in the response 
                 self.assertTrue(
                     addr in result, 
-                    'The address of {} ({}) is "{}", but got response "{}".'
-                        .format(alias, loc, addr, result))
+                    msg.format(alias, loc, addr, result))
 
         # After the test, sanitize the input data
         self.sanitize_input_data(all_locs_data)
@@ -127,11 +131,12 @@ class TestLocation(unittest.TestCase):
             result = location.location_handler(all_locs_data)
             # Set the result to lower for easier checking
             result = self.extract_response(result).lower()
+            # Create response message in case of fail
+            msg = 'The opening hours of {} is "{}", got response "{}".'
             # Check whether the response is correct
             self.assertTrue(
                 hours in result,
-                'The opening hours of {} is "{}", but got response "{}"\n\n{}.'
-                    .format(loc, hours, result, all_locs_data))
+                msg.format(loc, hours, result))
 
         # After the test, sanitize the input data
         self.sanitize_input_data(all_locs_data)
@@ -174,12 +179,12 @@ class TestLocation(unittest.TestCase):
                     new_inp_tr.format(trans)
                 )
                 result = location.location_handler(all_locs_data)
+                # Create response message in case of fail
+                msg = 'The Location intent should not have found an address for: {}'
                 # Check whether the response does NOT contain the location
-                print('{}, place = {}'.format(result, place))
                 self.assertFalse(
                     loc in result,
-                    'The Location intent should not have found an address for: {}'
-                        .format(loc))
+                    msg.format(loc))
     
             # Now, let's test with some random gibberish
             for i in range(0, 20):
@@ -195,11 +200,12 @@ class TestLocation(unittest.TestCase):
                     new_inp_tr.format(trans)
                 )
                 result = location.location_handler(all_locs_data)
+                # Create response message in case of fail
+                msg = 'The Location intent should not have found an address for: {}'
                 # Check whether the response does NOT contain the location
                 self.assertFalse(
                     rndm_str in result,
-                    'The Location intent should not have found an address for: {}'
-                        .format(rndm_str))
+                    msg.format(rndm_str))
 
             # After each iteration of the outer loop, sanitize input data
             self.sanitize_input_data(all_locs_data)
@@ -232,7 +238,7 @@ class TestLocation(unittest.TestCase):
         input_transes = [
             '{}',
             'something something {}',
-            #'where is',  # FIXME: this fails, returns an address
+            # 'where is',  # FIXME: this fails, returns an address
         ]
 
         for loc, data in self.locations.items():
@@ -247,21 +253,12 @@ class TestLocation(unittest.TestCase):
                 result = location.location_handler(all_locs_data)
                 # Extract the result
                 result = self.extract_response(result)
+                # Create response message in case of fail
+                msg = 'The input "{}" did not match the response "{}".'
                 # Check whether the response is the same as the name
                 self.assertTrue(
                     trans == result,
-                    'The input "{}" did not match the response "{}".'
-                        .format(trans, result))
+                    msg.format(trans, result))
             
         # Sanitize the data
         self.sanitize_input_data(all_locs_data)
-
-
-def main():  # pragma: no cover
-    pass
-
-
-if __name__ == '__main__':  # pragma: no cover
-    suite = unittest.TestLoader().loadTestsFromTestCase(TestLocation)
-    unittest.TextTestResult(verbosity=2).run(suite)
-
