@@ -59,6 +59,57 @@ def parse_book(info):
             output = "This book is located in "
     return output + util.make_string_list(ret)
 
+def find_info_author(intent):
+    text = intent['inputTranscript'].lower()
+    utterances = AS.load_file('author_utterances.txt')
+    to_drop = 0
+
+    for line in utterances:
+        if text.startswith(line):
+            to_drop = len(line)
+            break
+
+    author = text[to_drop:].strip()
+    if author:
+        request = lookfor(term=author, filter=extra_info)['json']
+        print("___result count___:", request['resultCount'], author)
+
+        return parse_author(request, author)
+
+    message = "I'm sorry. I couldn't catch the author you were looking for. " \
+              "Please try again."
+    return util.elicit_intent({'author': author}, message)
+
+
+def parse_author(request, author):
+    """
+    :param request: JSON data from the Finna API
+    :param author: Author term of the current session
+    :return: Response to AWS server in JSON format
+    """
+
+    result_count = request['resultCount']
+    print("result parse subject ", result_count)
+    print("author ", author)
+
+    real_count = 0
+    find = []
+    while real_count < 3 and real_count < result_count:
+        title = request['records'][real_count]['shortTitle']
+        find.append(title)
+        real_count += 1
+
+    if result_count > 3:
+        find.append("others")
+        message = author + " has written books " + util.make_string_list(find)
+    else:
+        message = author + " has written books " + \
+                  util.make_string_list(find)
+
+    return util.elicit_intent({'author': author}, message)
+
+
+
 
 def find_info(book_id, field='buildings'):
     """
@@ -94,7 +145,7 @@ def parse_subject(request, subject):
         print("result parse subject ", result_count)
         print("subject ", subject)
         if result_count == 0:
-            print("miks meet tänne?", subject, result_count)
+           # print("miks meet tänne?", subject, result_count)
             message = "Sorry, no books was found with search term: " + subject
         elif result_count == 1:
             return find_info(request['records'][0]['id'])

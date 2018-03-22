@@ -24,7 +24,8 @@ class Router:
                         "Get_Help": get_help.help_answer,
                         "Thanks": util.handle_session_end_request,
                         "FindBook": book_info.subject_info,
-                        "ExtraInfo": book_info.extra_info
+                        "ExtraInfo": book_info.extra_info,
+                        "Author": book_info.find_info_author
                         }
     """
     This is where the magic happens. If a method needs for example the intent
@@ -46,4 +47,6 @@ class Router:
             return self.intents[name](self.intent)
         if name == "BookInfo":
             return self.intents[name](self.intent)
+        if name == "Author":
+            return self.intent[name](self.intent)
         return self.intents[name]()
