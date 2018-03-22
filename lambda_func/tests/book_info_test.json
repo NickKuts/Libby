@@ -17,6 +17,7 @@
       },
       "confirmationStatus": "None"
     },
+     "is_author": false,
     "subject": "cat",
     "url": "https://api.finna.fi/api/v1/search?lookfor=cat&filter[]=search_daterange_mv:%22[2001 TO 2001]%22&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
   },
@@ -34,6 +35,7 @@
       "slots": {},
       "confirmationStatus": "None"
     },
+     "is_author": false,
     "subject": "",
     "url": "https://api.finna.fi/api/v1/search?lookfor=&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
   },
@@ -50,6 +52,7 @@
       "slots": {},
       "confirmationStatus": "None"
     },
+     "is_author": false,
     "subject": "cats",
     "author": "vogel, steven",
     "url": "https://api.finna.fi/api/v1/search?lookfor=cats&filter[]=author:%22vogel%2C+steven%22&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
@@ -67,6 +70,7 @@
       "slots": {},
       "confirmationStatus": "None"
     },
+     "is_author": false,
     "subject": "scala",
     "url": "https://api.finna.fi/api/v1/search?lookfor=scala&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
   },
@@ -83,6 +87,7 @@
       "slots": {},
       "confirmationStatus": "None"
     },
+     "is_author": false,
     "subject": "computer",
     "author": "hearn, donald",
     "url": "https://api.finna.fi/api/v1/search?lookfor=computer&filter[]=author:%22hearn%2C+donald%22&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
@@ -100,6 +105,7 @@
       "slots": {},
       "confirmationStatus": "None"
     },
+     "is_author": false,
     "subject": "sähköä ilmassa",
     "author": "salo, saija",
     "url": "https://api.finna.fi/api/v1/search?lookfor=sahkoa+ilmassa&filter[]=author:%22saija%2C+salo%22&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
@@ -125,6 +131,7 @@
       },
       "confirmationStatus": "None"
     },
+     "is_author": false,
     "subject": "cat",
     "url": "https://api.finna.fi/api/v1/search?lookfor=cat&filter[]=search_daterange_mv:%22[0 TO 9999]%22&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
   },
@@ -145,6 +152,7 @@
       "slots": {},
       "confirmationStatus": "None"
     },
+     "is_author": false,
     "subject": "computer",
     "url": "https://api.finna.fi/api/v1/search?lookfor=computer&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
   },
@@ -169,6 +177,7 @@
       },
       "confirmationStatus": "None"
     },
+     "is_author": false,
     "subject": "lorslara",
     "url": "https://api.finna.fi/api/v1/search?lookfor=lorslara&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
   },
@@ -193,6 +202,7 @@
       },
       "confirmationStatus": "None"
     },
+     "is_author": false,
     "subject": "computer",
     "url": "https://api.finna.fi/api/v1/search?lookfor=computer&filter[]=building%3A%220%2FAALTO%2F%22&filter[]=search_daterange_mv:%22[1987 TO 1987]%22&page=1&limit=20&lng=en-gb"
   },
@@ -217,6 +227,7 @@
       },
       "confirmationStatus": "None"
     },
+     "is_author": false,
     "subject": "computer",
     "url": "https://api.finna.fi/api/v1/search?lookfor=computer&filter[]=building%3A%220%2FAALTO%2F%22&filter[]=search_daterange_mv:%22[0 TO 1987]%22&page=1&limit=20&lng=en-gb"
   },
@@ -241,6 +252,7 @@
       },
       "confirmationStatus": "None"
     },
+     "is_author": false,
     "subject": "computer",
     "url": "https://api.finna.fi/api/v1/search?lookfor=computer&filter[]=search_daterange_mv:%22[1987 TO 9999]%22&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
   },
@@ -265,6 +277,7 @@
       },
       "confirmationStatus": "None"
     },
+     "is_author": false,
     "subject": "computer",
     "url": "https://api.finna.fi/api/v1/search?lookfor=computer&filter[]=search_daterange_mv:%22[1987 TO 2012]%22&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
   },
@@ -291,6 +304,7 @@
       },
       "confirmationStatus": "None"
     },
+     "is_author": false,
     "subject": "cat",
     "url": "https://api.finna.fi/api/v1/search?lookfor=cat&filter[]=search_daterange_mv:%22[2001 TO 2003]%22&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
   },
@@ -311,10 +325,53 @@
       "slots": {},
       "confirmationStatus": "None"
     },
+    "is_author": false,
     "subject": "Self-organizing maps",
     "author": "kohonen, teuvo",
         "url": "https://api.finna.fi/api/v1/search?lookfor=Self-organizing maps&filter[]=author:%22kohonen%2C+teuvo%22&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
 
+  },
+  "AuthorsBooks":{
+  "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
+    "sessionAttributes": {"subject": ""},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "what books are written by donald hearn",
+    "currentIntent": {
+      "name": "Author",
+      "slots": {},
+      "confirmationStatus": "None"
+    },
+    "is_author": true,
+    "author": "hearn, donald",
+    "url": "https://api.finna.fi/api/v1/search?lookfor=&filter[]=author:%22hearn%2C+donald%22&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
+  },
+  "NoAuthorIsFound":{
+  "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
+    "sessionAttributes": {"subject": ""},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "what books are written by donald hrn",
+    "currentIntent": {
+      "name": "Author",
+      "slots": {},
+      "confirmationStatus": "None"
+    },
+    "is_author": true,
+    "author": null,
+    "url": "https://api.finna.fi/api/v1/search?lookfor=&filter[]=author:%22hrn%2C+donald%22&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
   }
 }
 
