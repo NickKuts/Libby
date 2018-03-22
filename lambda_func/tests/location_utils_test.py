@@ -16,7 +16,7 @@ class TestLocationUtils(unittest.TestCase):
         This is a helper function for creating random unicode strings for
         our tests below. The strings are of length defined by the similarly
         named parameter.
-        param: length the length of the output string
+        :param length the length of the output string
         """
         return ''.join([chr(random.randint(0, 256)) for _ in range(0, length)])
 

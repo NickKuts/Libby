@@ -3,15 +3,15 @@ from math import cos, sin, pi, atan2, sqrt
 
 
 directions = {
-    (337.5, 360)   : "North", 
-    (0, 22.5)      : "North", 
-    (22.5, 67.5)   : "North-East", 
-    (67.5, 112.5)  : "East", 
-    (112.5, 157.5) : "South-East", 
-    (157.5, 202.5) : "South", 
-    (202.5, 247.5) : "South-West", 
-    (247.5, 292.5) : "West", 
-    (292.5, 337.5) : "North-West"
+    (337.5, 360):   "North",
+    (0, 22.5):      "North",
+    (22.5, 67.5):   "North-East",
+    (67.5, 112.5):  "East",
+    (112.5, 157.5): "South-East",
+    (157.5, 202.5): "South",
+    (202.5, 247.5): "South-West",
+    (247.5, 292.5): "West",
+    (292.5, 337.5): "North-West"
 }
 
 
@@ -19,17 +19,24 @@ def to_radians(degs):
     return degs * pi / 180
 
 
-def in_range(angle, mini, maxi):
-    return (mini <= angle) and (angle <= maxi)
+def in_range(ang, mini, maxi):
+    return (mini <= ang) and (ang <= maxi)
 
 
-def direction(angle):
+def direction(ang):
+    """
+    Checks the compass point of given angle. For if angle is equal to 0, the function returns north
+    """
     for key in directions:
-        if in_range(angle, key[0], key[1]):
+        if in_range(ang, key[0], key[1]):
             return directions[key]
 
 
 def distance(lat1, lon1, lat2, lon2):
+    """
+    Calculates the distance between two locations that have longitude and latitude
+    Returns value rounded to closest one meter
+    """
     earth_radius = 6371000
     delta_lat = to_radians(lat2 - lat1)
     delta_lon = to_radians(lon2 - lon1)
@@ -46,7 +53,10 @@ def distance(lat1, lon1, lat2, lon2):
 
 
 def angle(lat1, lon1, lat2, lon2):
-
+    """
+    Calculates the angle between two points. Function treats lat1 and lon1 as a starting point
+    and calculates the angle going clockwise
+    """
     lat1, lon1, lat2, lon2 = map(to_radians, (lat1, lon1, lat2, lon2))
 
     delta_lon = lon2 - lon1
@@ -74,9 +84,9 @@ def ratio(s1, s2):
     _python-Levensthein_ as explained in the _fuzzywuzzy_ GitHub pull request
     section: https://github.com/seatgeek/fuzzywuzzy/issues/173
 
-    param: s1 the first string for the comparison
-    param: s2 the second string for the comparison
-    return: returns an `int` representing the "closeness" of the strings
+    :param s1 the first string for the comparison
+    :param s2 the second string for the comparison
+    :return returns an `int` representing the "closeness" of the strings
     """
 
     # If any of the strings are `None` return `0`
@@ -101,4 +111,3 @@ def ratio(s1, s2):
     m = SequenceMatcher(None, s1, s2)
     # Now, `m` above will be a `double`, so we convert it to `int`
     return int(round(100 * m.ratio()))
-

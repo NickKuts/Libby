@@ -34,5 +34,50 @@
             "confirmationStatus": "None"
         }, 
         "inputTranscript": "{}"
-    }
+    },
+   "direction": {                              
+      "messageVersion": "1.0", 
+       "invocationSource": "DialogCodeHook", 
+       "userId": "<redacted>", 
+       "sessionAttributes": {}, 
+       "requestAttributes": null, 
+       "bot": {
+           "name": "Location", 
+           "alias": "$LATEST", 
+           "version": "$LATEST"
+       }, 
+       "outputDialogMode": "Text", 
+       "currentIntent": {
+           "name": "Location", 
+           "slots": {
+               "place": "{}", 
+               "place_two": "{}",
+               "type": null
+           }, 
+           "slotDetails": {
+               "place": {
+                   "resolutions": [
+                       {
+                           "value": "{}"
+                       }
+                   ], 
+                   "originalValue": "{}"
+               }, 
+               "place_two": {
+                   "resolutions": [
+                       {
+                           "value": "{}"
+                       }
+                   ],
+                   "originalValue": "{}"
+               },
+               "type": {
+                   "resolutions": [], 
+                   "originalValue": null
+               }
+           }, 
+           "confirmationStatus": "None"
+       }, 
+       "inputTranscript": "{}"
+   }
 }

@@ -35,7 +35,8 @@ class TestLocation(unittest.TestCase):
         """
         Helper function for extracting a response from the resulting JSON from
         the intent.
-        param: res the JSON formatted response
+        :param res the JSON formatted response
+        :return the content of the response
         """
         return res['dialogAction']['message']['content']
 
@@ -44,9 +45,9 @@ class TestLocation(unittest.TestCase):
         """
         Helper function to update value of the 'data' input, which simulates
         the input to the location intent.
-        param: data the input to be updated
-        param: place value of place in the slot of the input
-        param: input_trans value of the inputTranscript of the input
+        :param data the input to be updated
+        :param place value of place in the slot of the input
+        :param input_trans value of the inputTranscript of the input
         """
         data['currentIntent']['slots']['place'] = place
         if input_trans:  # inputTranscript should always be something
@@ -57,7 +58,7 @@ class TestLocation(unittest.TestCase):
         """
         A helper function for sanitizing inputs after each test, so that all
         tests have a clean plate
-        param: data input data to be sanitized
+        :param data input data to be sanitized
         """
         data['currentIntent']['slots']['place'] = '{}'
         data['inputTranscript'] = '{}'
@@ -153,7 +154,7 @@ class TestLocation(unittest.TestCase):
         We want to  test both the parser and the slot picking mechanisms of the
         intent. The param place defines whether the place (slot) should be 
         named or not, it should be a boolean, True for named, False for not.
-        param: place name (if any) of the place slot
+        :param place name (if any) of the place slot
         """
 
         # Get the right test input
@@ -266,3 +267,20 @@ class TestLocation(unittest.TestCase):
             
         # Sanitize the data
         self.sanitize_input_data(all_locs_data)
+
+    def 0test_direction_to(self):  # Moro, pistin tähän '0' eteen niin ettei Travis valita, muuta jos saat testit toimimaan localiisti
+	"""
+	"""
+
+	all_locs_data = self.test_data.get('direction', {})
+
+	input_trans1 = 'how to get from {} to {}'
+	input_trans2 = 'how to get to {} from {}'
+
+	for loc, data in self.locations.items():
+	    for loc2, data2 in self.locations.items():
+		input1 = input_trans1.format(loc, loc2)
+		input2 = input_trans2.format(loc, loc2)
+
+		
+
