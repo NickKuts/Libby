@@ -55,10 +55,8 @@ def parse_book(info):
         elif re.compile("0/AALTO/([a-z])*").match(elem['value']):
             ret.append(elem['translated'])
             output = "This book is located in "
-        """
         if len(ret) == 2:
             ret = ret[1:]
-        """
     return output + util.make_string_list(ret)
 
 
