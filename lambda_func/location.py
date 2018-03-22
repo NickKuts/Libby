@@ -22,14 +22,14 @@ with open(_sample_utts, 'r') as fp:
 for i in range(0, len(_samples)):
     reg_str = _samples[i].replace('{place}', _re_patt)
     _samples[i] = re.compile(reg_str)
-    
+
     
 def _existence(name):
     """
     This function checks if the location can be found on disk, 
     if not return None.
-    :param name the name of the location
-    :return the data of the name if it exists, otherwise None
+    :param name: the name of the location
+    :return: the data of the name if it exists, otherwise None
     """
 
     # Set the name to lowercase for easier matching
@@ -58,8 +58,8 @@ def _existence(name):
 def address(event):
     """
     This function returns the address of the location the user asks for.
-    :param event the input event from Amazon Lex
-    :return the response depending on the input event
+    :param event: the input event from Amazon Lex
+    :return: the response depending on the input event
     """
 
     # First create the default response
@@ -85,8 +85,8 @@ def open_hours(event):
     """ 
     Simple function for returning opening hours of buildings, 
     if they have them.
-    :param event the input event from Amazon Lex
-    :return a response depending on if the corresponding hours could be found
+    :param event: the input event from Amazon Lex
+    :return: a response depending on if the corresponding hours could be found
     """
 
     # This is the default answer if no hours could be found
@@ -110,7 +110,7 @@ def open_hours(event):
 
 def where_is(event):
     """
-    This function is used for finding the relative direction of certain location, like smökki for example.
+    This function is used for finding the relative direction of certain location, like smokki for example.
     The function treats the Alvarin Aukio as a center point of Otaniemi, and checks whether the given place is in the
     north side, west side, etc of Otaniemi
     """
@@ -214,8 +214,8 @@ def _return_name(event):
     This function simply returns the name of the location found in the query, 
     if it exists.
     If the slot does not exist the function simply returns None.
-    :param event the input event from Amazon Lex
-    :return the slot value if it exists, otherwise None
+    :param event: the input event from Amazon Lex
+    :return: the slot value if it exists, otherwise None
     """
 
     # Extract the _slots_ from the input event
@@ -236,15 +236,15 @@ def _checker(trans):
     This function finds the correct function for the answer.
     E.g. if the query of the user contains address the query is routed to the   
     'address' function that finds the address.
-    :param trans the inputTranscript from the input data from Amazon Lex
-    :return the function dependent on the inputTranscript
+    :param trans: the inputTranscript from the input data from Amazon Lex
+    :return: the function dependent on the inputTranscript
     """
     def helper(strings):
         """ 
         Helper function for checking if a any from list of strings are
         contained in the inputTranscript.
-        :param strings a list of strings that correspond to a certain function
-        :return a boolean value if any elements exist in the string
+        :param strings: a list of strings that correspond to a certain function
+        :return: a boolean value if any elements exist in the string
         """
         for st in strings:
             if st in trans:
@@ -278,8 +278,8 @@ def _parse_trans(trans):
     and the corresponding regex pattern to then run the longest found
     string through all regex patterns. This shaves of "unnecessary" parts
     of each string.
-    :param trans the inputTranscript to be parsed
-    :return the extracted location name
+    :param trans: the inputTranscript to be parsed
+    :return: the extracted location name
     """
     
     # Save all matches here, they should be saved as tuples where the first
@@ -334,8 +334,8 @@ def _process_name(event):
     extract the location's name.
     After this it tries to extract the data that we have for the location, by
     help from the __existence_ function defined above.
-    :param event the input event from Amazon Lex
-    :return both the name and corresponding data
+    :param event: the input event from Amazon Lex
+    :return: both the name and corresponding data
     """
 
     # First check if we can find the name through the slot value
@@ -352,8 +352,8 @@ def _process_name(event):
 def location_handler(event):
     """
     This is the handler function for the Location intent.
-    :param event the input event (data) received from AWS Lex
-    :return and ElicitIntent reponse
+    :param event: the input event (data) received from AWS Lex
+    :return: and ElicitIntent reponse
     """
 
     # Extract the inputTranscript from the input event

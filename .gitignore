@@ -1,9 +1,6 @@
-<<<<<<< HEAD
 
 # IDE folders
-=======
 *~
->>>>>>> cb3219b39973dde46150aefe8d289c09eef3d0d9
 **/.idea/**
 
 # Asssociated with 'api_testing'
@@ -124,13 +121,13 @@ venv.bak/
 .mypy_cache/
 
 # node modules
-/rpi/lex/js/node_modules
+*/lex/js/node_modules
 
 # sound files 
-/rpi/lex/*.wav
-/rpi/lex/js/*.wav
-/rpi/lex/python/*.wav
+*/lex/*.wav
+*/lex/js/*.wav
+*/lex/python/*.wav
 
-/rpi/lex/docker/
+*/lex/docker/
 
-/rpi/lex/python/snowboy/snowboy-detect-swig.*
+*/lex/python/snowboy/snowboy-detect-swig.*

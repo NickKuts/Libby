@@ -35,8 +35,8 @@ class TestLocation(unittest.TestCase):
         """
         Helper function for extracting a response from the resulting JSON from
         the intent.
-        :param res the JSON formatted response
-        :return the content of the response
+        :param res: the JSON formatted response
+        :return: the content of the response
         """
         return res['dialogAction']['message']['content']
 
@@ -45,9 +45,9 @@ class TestLocation(unittest.TestCase):
         """
         Helper function to update value of the 'data' input, which simulates
         the input to the location intent.
-        :param data the input to be updated
-        :param place value of place in the slot of the input
-        :param input_trans value of the inputTranscript of the input
+        :param data: the input to be updated
+        :param place: value of place in the slot of the input
+        :param input_trans: value of the inputTranscript of the input
         """
         data['currentIntent']['slots']['place'] = place
         if input_trans:  # inputTranscript should always be something
@@ -58,10 +58,19 @@ class TestLocation(unittest.TestCase):
         """
         A helper function for sanitizing inputs after each test, so that all
         tests have a clean plate
-        :param data input data to be sanitized
+        :param data: input data to be sanitized
         """
         data['currentIntent']['slots']['place'] = '{}'
         data['inputTranscript'] = '{}'
+
+    @staticmethod
+    def input_values_to_location(event, input_trans, value1, value2):
+        event['currentIntent']['slots']['place'] = value2
+        event['currentIntent']['slots']['place_two'] = value1
+        event['currentIntent']['slotDetails']['place']['originalValue'] = value2
+        event['currentIntent']['slotDetails']['place_two']['originalValue'] = value1
+        event['inputTranscript'] = input_trans
+        return event
 
     def test_address(self):
         """ 
@@ -268,21 +277,84 @@ class TestLocation(unittest.TestCase):
         # Sanitize the data
         self.sanitize_input_data(all_locs_data)
 
-    def no_test_direction_to(self):
-	"""
-        Moro, muutin funktion nimen niin ettei Tracis valittaisi, muuta 
-        takaisin jos saat testejä kirjoitettuu
-	"""
+    def test_direction_to(self):
+        """
+        This test check whether our _direction_to_ function works properly.
+        It iterates through all possible combinations and checks if these give a proper
+        response.
+        """
 
-	all_locs_data = self.test_data.get('direction', {})
+        # Get the data from the test-JSON file
+        dir_data = self.test_data.get('direction', {})
 
-	input_trans1 = 'how to get from {} to {}'
-	input_trans2 = 'how to get to {} from {}'
+        # InputTranscripts for our test, we check both ways
+        input_trans1 = 'how to get from {} to {}'
+        input_trans2 = 'how to get to {} from {}'
 
-	for loc, data in self.locations.items():
-	    for loc2, data2 in self.locations.items():
-		input1 = input_trans1.format(loc, loc2)
-		input2 = input_trans2.format(loc, loc2)
+        # To iterate through the list we convert it to a list
+        set1 = list(self.locations.items())
+        set_length = len(set1)
 
-		
+        for i in range(0, set_length):
+            j = (i + 1) % set_length
+            loc, loc2 = set1[i][0], set1[j][0]
+            data, data2 = set1[i][1], set1[j][1]
 
+            input1, input2 = input_trans1.format(loc, loc2), input_trans2.format(loc, loc2)
+
+            event = self.input_values_to_location(dir_data, input1, loc, loc2)
+            event1_response = location.location_handler(event)
+            response1 = self.extract_response(event1_response)
+
+            event2 = self.input_values_to_location(dir_data, input2, loc, loc2)
+            event2_response = location.location_handler(event2)
+            response2 = self.extract_response(event2_response)
+
+            lat1, lon1 = data['lat'], data['lon']
+            lat2, lon2 = data2['lat'], data2['lon']
+
+            msg = "with locations {} and {}\n" \
+                  "Response1 is equal to {}\n" \
+                  "Response2 is equal to {}".format(
+                        loc,
+                        loc2,
+                        response1,
+                        response2)
+
+            if not ((lat1 and lon1) and (lat2 and lon2)):
+                self.assertTrue("Sorry" in response1, msg)
+                self.assertTrue("Sorry" in response2, msg)
+            else:
+                self.assertTrue(response1.split(" ")[0] in loc2, msg)
+                self.assertTrue(response2.split(" ")[0] in loc, msg)
+
+    def test_direction_to_inputs(self):
+        """
+        This test checks whether _direction_to_ actually handles false input.
+        """
+
+        # Get the data from the test-JSON file
+        dir_data = self.test_data.get('direction', {})
+
+        # InputTranscript created
+        input_trans = 'how to get from to {}'
+
+        set0 = list(self.locations.items())
+        set_len = len(set0)
+
+        for i in range(0, set_len):
+            loc = set0[i][0]
+            data = set0[i][1]
+
+            input0 = input_trans.format(loc)
+
+            event = self.input_values_to_location(dir_data, input0, loc, None)
+            event_response = location.location_handler(event)
+            response = self.extract_response(event_response)
+
+            msg = "With one location being 'None' (other being {}) we got an answer not containing 'Sorry'"
+
+            self.assertTrue(
+                "Sorry" in response,
+                msg.format(loc)
+            )
