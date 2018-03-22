@@ -30,7 +30,8 @@ class TestBookInfo(unittest.TestCase):
 
             subject = test_input.get('subject', 'default subject')
             author = test_input.get('author')
-            if is_author is "True":
+            if is_author:
+
                 assert(result == book_info.parse_author(right_result, author))
             else:
                 assert (result == book_info.parse_subject(right_result,
