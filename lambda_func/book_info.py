@@ -142,6 +142,12 @@ def subject_info(intent, extra_info=[]):
 
     text = intent['inputTranscript'].lower()
     utterances = AS.load_file('sample_utterances.txt')
+
+ 
+    for line in list(utterances):
+        utterances += line + " book "
+        utterances += line + " books "
+
     to_drop = 0
     
     for line in utterances:
@@ -180,7 +186,7 @@ def subject_info(intent, extra_info=[]):
     # dropped in the code above.
     author_text_list = author_text.split(' ', len(author_text))
     
-    if author_text_list == 'by':
+    if author_text_list[0] == 'by':
         author_text = author_text[3:]
     
     author = find_author(author_text)
