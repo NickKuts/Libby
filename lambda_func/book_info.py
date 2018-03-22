@@ -110,7 +110,7 @@ def parse_author(request, author):
     find_finally = []
     count = 0
     while count < 3 and count < len(find):
-        find_finally += find[count]
+        find_finally.append(find[count])
         count += 1
 
     if result_count > 3:
