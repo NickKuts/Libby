@@ -61,4 +61,6 @@ match Lex ARN format: bot:LibbyFromPython2:$LATEST
 - The name of bots, intents or slots cannot contain numbers.
 
 
-
+Please note that at the moment, if you wish to create an intent that uses
+a lambda function, you first have to create it using dummy.json, then add the
+permission online, and then it can be updated normally.

@@ -1,11 +1,13 @@
 import boto3
 import json
-
+import time
+import random
 
 class IntentFactory:
 
     def __init__(self):
         self.client = boto3.client('lex-models')
+        self.lambda_client = boto3.client('lambda')
 
     def load_intent_from_file(self, fname):
         data = {}
@@ -21,7 +23,7 @@ class IntentFactory:
         old_data = self.get_intent(data['name'])
         data['checksum'] = old_data['checksum']
 
-        arr = ['lastUpdatedDate', 'createdDate', 'version']
+        arr = ['ResponseMetadata', 'lastUpdatedDate', 'createdDate', 'version']
 
         for key in arr:
             try:
@@ -30,11 +32,15 @@ class IntentFactory:
                 print("No key '"+key+"' to remove")
 
         res = self.client.put_intent(**data)
+        print('Successfully updated intent', data['name'])
 
     def create_intent(self, fname):
  
         data = self.load_intent_from_file(fname)
+        dummy = self.load_intent_from_file('intents/dummy.json')
         name = data['name']
+        
+        dummy['name'] = name
         
         arr = ['ResponseMetadata','lastUpdatedDate', 
                 'createdDate','version']
@@ -44,8 +50,23 @@ class IntentFactory:
                 data.pop(key)
             except:
                 print("No key '"+key+"' to remove")
+        
+        res = self.client.put_intent(**dummy)
+        time.sleep(5)
+
+        intent = self.get_intent(name)
+        data['checksum'] = intent['checksum']
+
+        lambda_res = self.lambda_client.add_permission(
+            FunctionName='Libby',
+            StatementId=str(random.randint(0, 100000)),
+            Action='lambda:*',
+            Principal='lex.amazonaws.com',
+
+        )
 
         real_res = self.client.put_intent(**data)
+        print("Successfully created intent", name)
 
     def get_intent(self, name, version='$LATEST'):
         response = self.client.get_intent(
@@ -64,6 +85,7 @@ class IntentFactory:
         data = json.dumps(intent)
         with open(fname, 'w') as f:
             f.write(data)
+            print("Successfully saved intent", name)
         
         return intent
 
@@ -71,4 +93,5 @@ class IntentFactory:
         response = self.client.delete_intent(
             name=name
         )
+        print("Successfully removed intent", name)
         return response
