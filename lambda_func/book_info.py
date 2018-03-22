@@ -93,22 +93,23 @@ def parse_author(request, author):
         return util.elicit_intent({}, message)
 
     result_count = request['resultCount']
-    print("result parse subject ", result_count)
-    print("author ", author)
+    # print("result parse subject ", result_count)
+    # print("author ", author)
 
     # find all titles and sort them.
     real_count = 0
     find = []
-    while real_count < result_count:
-        title = request['records'][real_count]['title']
+    while real_count < result_count and real_count < 20:
+        if request['records'][real_count]['title']:
+            title = request['records'][real_count]['title']
         if title is not find:
             find.append(title)
         real_count += 1
 
     # at most three books
     find = sorted(find)
-    find_finally = []
-    count = 0
+    # find_finally = []
+    # count = 0
     if result_count <= 3:
         find = find[:real_count]
     else:
