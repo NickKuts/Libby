@@ -48,5 +48,5 @@ class Router:
         if name == "BookInfo":
             return self.intents[name](self.intent)
         if name == "Author":
-            return self.intent[name](self.intent)
+            return self.intents[name](self.intent)
         return self.intents[name]()

@@ -59,6 +59,7 @@ def parse_book(info):
             output = "This book is located in "
     return output + util.make_string_list(ret)
 
+
 def find_info_author(intent):
     text = intent['inputTranscript'].lower()
     utterances = AS.load_file('author_utterances.txt')
@@ -71,7 +72,7 @@ def find_info_author(intent):
 
     author = text[to_drop:].strip()
     if author:
-        request = lookfor(term=author, filter=extra_info)['json']
+        request = lookfor(term=author)['json']
         print("___result count___:", request['resultCount'], author)
 
         return parse_author(request, author)
@@ -95,7 +96,7 @@ def parse_author(request, author):
     real_count = 0
     find = []
     while real_count < 3 and real_count < result_count:
-        title = request['records'][real_count]['shortTitle']
+        title = request['records'][real_count]['title']
         find.append(title)
         real_count += 1
 
