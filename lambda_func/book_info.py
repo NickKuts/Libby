@@ -146,6 +146,12 @@ def subject_info(intent, extra_info=[]):
 
     text = intent['inputTranscript'].lower()
     utterances = AS.load_file('sample_utterances.txt')
+
+ 
+    for line in list(utterances):
+        utterances += line + " book "
+        utterances += line + " books "
+
     to_drop = 0
 
     for line in utterances:
