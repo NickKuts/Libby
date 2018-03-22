@@ -279,18 +279,20 @@ def extra_info(intent):
     input = intent['inputTranscript']
     lower = 0
     upper = 9999
-    
-    if 'lower' in slots or 'upper' in slots or 'year' in slots:
-        if 'lower' in slots:
-            if slots['lower']:
-                lower = slots['lower']
-        if 'upper' in slots:
-            if slots['upper']:
-                upper = slots['upper']
-        if 'year' in slots:
-            if slots['year']:
-                lower = slots['year']
-                upper = slots['year']
+
+    slot_lower = slots.get('lower')
+    slot_upper = slots.get('upper')
+    slot_year = slots.get('year')
+
+    if slot_lower or slot_upper or slot_year:
+        if slot_lower:
+            lower = slot_lower
+        if slot_upper:
+            upper = slot_upper
+        if slot_year:
+            lower = slot_year
+            upper = slot_year
+
         date = "search_daterange_mv:\"[" + str(lower) + " TO " + str(
             upper) + "]\""
         extra_info = [date]
@@ -307,6 +309,7 @@ def author_search(intent, subject):
 
     if author:
         request = lookfor(subject, filter=["author:\"" + author + "\""])['json']
+        print("FILTER: " + "author:\"" + author + "\"")
         return parse_subject(request, subject, author)
 
     return util.elicit_intent({'subject': subject},
