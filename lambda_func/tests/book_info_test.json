@@ -20,6 +20,23 @@
     "subject": "cat",
     "url": "https://api.finna.fi/api/v1/search?lookfor=cat&filter[]=search_daterange_mv:%22[2001 TO 2001]%22&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
   },
+  "noTerm": {
+    "sessionAttributes": {"subject": ""},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "where can i find book",
+    "currentIntent": {
+      "name": "FindBook",
+      "slots": {},
+      "confirmationStatus": "None"
+    },
+    "subject": "",
+    "url": "https://api.finna.fi/api/v1/search?lookfor=&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
+  },
   "bookWithAuthor": {
     "sessionAttributes": {},
     "bot": {

@@ -85,7 +85,10 @@ def parse_subject(request, subject, author=None):
     :return: Response to AWS server in JSON format
     """
     message = "Something went wrong"
-
+    if subject is "":
+        return util.elicit_intent({}, "I'm sorry. I was not able to catch "
+                                      "what book you wanted to find. Could "
+                                      "you please repeat.")
     # if request['status'] == 'no info':
     # message = "No extra info was found222"
     if request['status'] == 'OK':
@@ -139,16 +142,16 @@ def subject_info(intent, extra_info=[]):
     :param extra_info: Given parameters to filter the data
     :return: Response to AWS server in JSON format
     """
+    print("=========subject info============")
 
     text = intent['inputTranscript'].lower()
     utterances = AS.load_file('sample_utterances.txt')
     to_drop = 0
-    
+
     for line in utterances:
         if text.startswith(line):
             to_drop = len(line)
             break
-
     text = text[to_drop:].strip()
     text_list = text.split(' ', len(text))
 
@@ -168,10 +171,8 @@ def subject_info(intent, extra_info=[]):
             break
 
     subject = " ".join(subject_list)
-    if subject is "":
-        return util.elicit_intent({}, "I'm sorry. I was not able to catch "
-                                      "what book you wanted to find. Could "
-                                      "you please repeat.")
+    print("-------" + subject + "--------")
+
     print("subject: ", subject)
     author_text = text[len(subject) + 1 + len(keyword):].strip()
 
@@ -180,7 +181,7 @@ def subject_info(intent, extra_info=[]):
     # dropped in the code above.
     author_text_list = author_text.split(' ', len(author_text))
     
-    if author_text_list == 'by':
+    if author_text_list[0] == 'by':
         author_text = author_text[3:]
     
     author = find_author(author_text)
