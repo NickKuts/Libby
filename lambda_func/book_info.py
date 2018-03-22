@@ -1,9 +1,7 @@
 import util
 import re
-import json
 from botocore.vendored import requests
 import author_search as AS
-from itertools import takewhile
 
 
 """This is the URL for the Finna API with a needed header for proper results"""
@@ -147,7 +145,6 @@ def subject_info(intent, extra_info=[]):
     text = intent['inputTranscript'].lower()
     utterances = AS.load_file('sample_utterances.txt')
 
- 
     for line in list(utterances):
         utterances += line + " book "
         utterances += line + " books "
@@ -177,7 +174,6 @@ def subject_info(intent, extra_info=[]):
             break
 
     subject = " ".join(subject_list)
-    print("-------" + subject + "--------")
 
     print("subject: ", subject)
     author_text = text[len(subject) + 1 + len(keyword):].strip()
