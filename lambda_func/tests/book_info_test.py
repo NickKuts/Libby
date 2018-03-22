@@ -13,9 +13,9 @@ class TestBookInfo(unittest.TestCase):
         for name in self.test_data:
             tests.append(name)
         for test in tests:
-
             print("test:", test)
             test_input = self.test_data[test]
+            is_author = test_input["is_author"]
             result = main_handler.lambda_handler(test_input, None)
             # print("result: " + str(result))
             print("=========test========")
@@ -27,11 +27,18 @@ class TestBookInfo(unittest.TestCase):
             # print("result: " + str(result))
             # print("right result: " + str(right_result))
             # assert(1 == 2)
-            author = test_input.get('author')
+
             subject = test_input.get('subject', 'default subject')
-            assert (result == book_info.parse_subject(right_result,
-                                                      subject,
-                                                      author))
+            author = test_input.get('author')
+            if is_author:
+
+                assert(result == book_info.parse_author(right_result, author))
+            else:
+                assert (result == book_info.parse_subject(right_result,
+                                                      subject, author))
+
+
+
 
 
 
