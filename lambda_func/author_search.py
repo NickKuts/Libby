@@ -60,14 +60,14 @@ def generate_search_terms(sentence):
     return l + ll
 
 
-def search_normal(sentence):
+def search_normal(sentence, fname='authors_clean.txt'):
     """
     Search through authors based on a sentence to see
     if the sentence contains an author's name (case ignored)
     """
 
     terms = generate_search_terms(sentence.lower())
-    l = load_file('authors_clean.txt')
+    l = load_file(fname)
 
     for word in terms:
         ret = binary_search(l, word)
@@ -75,27 +75,27 @@ def search_normal(sentence):
         if ret:
             return word
 
-    return "No authors was found from sentence: " + sentence
+    return None
 
 
-def search_closest(sentence):
+def search_closest(sentence, fname='authors_clean.txt'):
     """
     Search through authors based on a sentence to see
     if the sentence contains an author's name (case ignored)
     """
 
     terms = generate_search_terms(sentence.lower())
-    l = load_file('authors_clean.txt')
+    l = load_file(fname)
 
     for word in terms:
         matches = get_close_matches(word, l, 1, 0.9)
         if len(matches) > 0:
             return matches[0]
 
-    return "No author was found from sentence: " + sentence
+    return None
 
 
-def search(sentence, search_closest=True):
+def search(sentence, search_closest=True, fname='authors_clean.txt'):
     """
     Search through authors based on a sentence to see
     if the sentence contains an author's name (case ignored)
@@ -105,7 +105,7 @@ def search(sentence, search_closest=True):
     """
 
     terms = generate_search_terms(sentence.lower())
-    l = load_file('authors_clean.txt')
+    l = load_file(fname)
 
     for word in terms:
         res = binary_search(l, word)

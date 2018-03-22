@@ -140,7 +140,6 @@ def subject_info(intent, extra_info=[]):
     :param extra_info: Given parameters to filter the data
     :return: Response to AWS server in JSON format
     """
-    print("=========subject info============")
 
     text = intent['inputTranscript'].lower()
     utterances = AS.load_file('sample_utterances.txt')
@@ -170,24 +169,24 @@ def subject_info(intent, extra_info=[]):
         if word not in keywords:
             subject_list.append(word)
         else:
-            keyword = word
             break
 
     subject = " ".join(subject_list)
 
-    print("subject: ", subject)
-    author_text = text[len(subject) + 1 + len(keyword):].strip()
+    # Get all the keywords in the middle, so they can be
+    # all be dropped at once, eg written by, books by
 
-    # The idea of this part of the code is to drop 'by' out 
-    # because if the user say 'written by', only written is 
-    # dropped in the code above.
-    author_text_list = author_text.split(' ', len(author_text))
-    
-    if author_text_list[0] == 'by':
-        author_text = author_text[3:]
-    
+    word = text_list[0]
+    while word in keywords:
+        text_list = text_list[1:]
+        word = text_list[0]
+        keyword += word + " "
+
+    author_text = text[len(subject) + 1 + len(keyword):].strip()
     author = find_author(author_text)
-    
+
+    print("subject: ", subject)
+    print("Author text", author_text) 
     print("Author:", author)
     print("extra info", extra_info)
    
