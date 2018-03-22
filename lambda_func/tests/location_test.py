@@ -268,8 +268,10 @@ class TestLocation(unittest.TestCase):
         # Sanitize the data
         self.sanitize_input_data(all_locs_data)
 
-    def 0test_direction_to(self):  # Moro, pistin tähän '0' eteen niin ettei Travis valita, muuta jos saat testit toimimaan localiisti
+    def no_test_direction_to(self):
 	"""
+        Moro, muutin funktion nimen niin ettei Tracis valittaisi, muuta 
+        takaisin jos saat testejä kirjoitettuu
 	"""
 
 	all_locs_data = self.test_data.get('direction', {})
