@@ -109,14 +109,23 @@ def parse_author(request, author):
     find = sorted(find)
     find_finally = []
     count = 0
+    if result_count <= 3:
+        find = find[:real_count]
+    else:
+        find = find[:3]
+    """
     while count < 3 and count < len(find):
-        find_finally.append(find[count])
+        take_off = find[(len(find)-count-1):]
+        if count < 0:
+            take_off = take_off[:(count-1)]
+        find_finally.append(take_off)
         count += 1
+    """
 
     if result_count > 3:
-        find_finally.append("others")
+        find.append("others")
     message = author + " has written books " \
-                     + util.make_string_list(find_finally)
+                     + util.make_string_list(find)
 
     return util.elicit_intent({'author': author}, message)
 
