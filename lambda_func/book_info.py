@@ -148,7 +148,7 @@ def subject_info(intent, extra_info=[]):
     for line in list(utterances):
         utterances.insert(0, line + " book")
         utterances.insert(0, line + " books")
-    
+
     to_drop = 0
 
     for line in utterances:
