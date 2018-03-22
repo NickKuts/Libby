@@ -158,6 +158,8 @@ def subject_info(intent, extra_info=[]):
     keywords = ["books", "book", "by", "published", "written"]
     keyword = ""
 
+    # Find when the book name ends
+
     for word in text_list:
         if word not in keywords:
             subject_list.append(word)
@@ -165,16 +167,25 @@ def subject_info(intent, extra_info=[]):
             keyword = word
             break
 
-    print("subject list:", subject_list)
     subject = " ".join(subject_list)
-    print("subject: ", subject)
 
     author_text = text[len(subject) + 1 + len(keyword):].strip()
-    author = find_author(author_text)
 
+    # The idea of this part of the code is to drop 'by' out 
+    # because if the user say 'written by', only written is 
+    # dropped in the code above.
+    author_text_list = author_text.split(' ', len(author_text))
+    
+    if author_text_list == 'by':
+        author_text[3:]
+    
+    author = find_author(author_text)
+    
     print("Author:", author)
     print("extra info", extra_info)
-    
+   
+    # There might be old info in the extra_info (author), so 
+    # we need to clear it
     extra_info.clear()
 
     if author:
@@ -234,7 +245,7 @@ def author_search(intent, subject):
 
 def find_author(text):
     author = AS.search(text, False)
-    
+ 
     return author
 
 

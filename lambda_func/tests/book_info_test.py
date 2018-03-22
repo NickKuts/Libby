@@ -27,8 +27,11 @@ class TestBookInfo(unittest.TestCase):
             # print("result: " + str(result))
             # print("right result: " + str(right_result))
             # assert(1 == 2)
+            author = test_input.get('author')
+            subject = test_input.get('subject', 'default subject')
             assert (result == book_info.parse_subject(right_result,
-                                                      test_input['subject']))
+                                                      subject,
+                                                      author))
 
 
 
