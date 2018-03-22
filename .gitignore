@@ -1,9 +1,19 @@
+
+# IDE folders
 *~
 **/.idea/**
+
+# Asssociated with 'api_testing'
 **/data_files/
 
+# OSMPythonTools saves query data into 'cache' files in the working directory
+#   ignore these
+**/cache/**
+
+###############################################################################
 # The following ignore's are taken straight from the following link:
 #   https://github.com/github/gitignore/blob/master/Python.gitignore
+###############################################################################
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

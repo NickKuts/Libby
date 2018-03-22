@@ -114,33 +114,6 @@
     "author": "salo, saija",
     "url": "https://api.finna.fi/api/v1/search?lookfor=sahkoa+ilmassa&filter[]=author:%22saija%2C+salo%22&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
   },
-  "noYear": {
-    "messageVersion": "1.0",
-    "invocationSource": "DialogCodeHook",
-    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
-    "sessionAttributes": {
-      "subject": "cat"
-    },
-    "bot": {
-      "name": "Libby_dev",
-      "alias": "$LATEST",
-      "version": "$LATEST"
-    },
-    "outputDialogMode": "Text",
-    "inputTranscript": "The book was published in don't know",
-    "currentIntent": {
-      "name": "ExtraInfo",
-      "slots": {
-        "lower": null,
-        "upper": null,
-        "year": null
-      },
-      "confirmationStatus": "None"
-    },
-    "is_author": false,
-    "subject": "cat",
-    "url": "https://api.finna.fi/api/v1/search?lookfor=cat&filter[]=search_daterange_mv:%22[0 TO 9999]%22&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
-  },
   "findComputer": {
     "messageVersion": "1.0",
     "invocationSource": "DialogCodeHook",
