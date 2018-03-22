@@ -58,21 +58,23 @@ def parse_book(info):
     return output + util.make_string_list(ret)
 
 
+# Author intent use that.
 def find_info_author(intent):
     text = intent['inputTranscript'].lower()
     utterances = AS.load_file('author_utterances.txt')
     to_drop = 0
 
+    # this takes utterances off
     for line in utterances:
         if text.startswith(line):
             to_drop = len(line)
             break
 
     author_text = text[to_drop:].strip()
-
+    # this checks that author is real
     author = find_author(author_text)
     request = lookfor(term=author)['json']
-    print("___result count___:", request['resultCount'], author)
+    # print("___result count___:", request['resultCount'], author)
 
     return parse_author(request, author)
 
@@ -84,14 +86,15 @@ def parse_author(request, author):
     :return: Response to AWS server in JSON format
     """
     if not author:
-        message = "I'm sorry. I couldn't catch the author you were looking for. " \
-              "Please try again."
+        message = "I'm sorry. I couldn't catch the author you were looking " \
+                  "for. Please try again."
         return util.elicit_intent({}, message)
 
     result_count = request['resultCount']
     print("result parse subject ", result_count)
     print("author ", author)
 
+    # find all titles and sort them.
     real_count = 0
     find = []
     while real_count < result_count:
@@ -100,11 +103,11 @@ def parse_author(request, author):
             find.append(title)
         real_count += 1
 
+    # at most three books
     find = sorted(find)
     find_finally = []
     count = 0
     while count < 3 and count < len(find):
-        # print("count: " + str(count) + "result_count" + str(result_count))
         find_finally += find[count]
         count += 1
 
@@ -153,7 +156,8 @@ def parse_subject(request, subject, author=None):
         print("subject ", subject)
         
         if result_count == 0: 
-            message = "Oh I'm so sorry, no books was found with search term: " + subject
+            message = "Oh I'm so sorry, no books was found with search term: "\
+                        + subject
             if author:
                 message += " written by " + str(author)
 
@@ -181,12 +185,12 @@ def parse_subject(request, subject, author=None):
         else:
             if not author:
                 message = "I found " + str(result_count) + " books with term " \
-                          + subject + ". Please specify an author or a year, so" \
-                          " I can narrow down the earch."
+                          + subject + ". Please specify an author or a year, " \
+                                      "     so I can narrow down the search."
             else:
                 message = "I found " + str(result_count) + " books with " \
-                          + subject + " by author " + author + ". Can you give" \
-                          " the publication date for example to narrow down" \
+                          + subject + " by author " + author + ". Can you " \
+                        "give the publication date for example to narrow down" \
                           " the search."
  
     return util.elicit_intent({'subject': subject}, message)
