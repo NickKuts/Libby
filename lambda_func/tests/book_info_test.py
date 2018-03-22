@@ -18,7 +18,7 @@ class TestBookInfo(unittest.TestCase):
             is_author = test_input["is_author"]
             result = main_handler.lambda_handler(test_input, None)
             # print("result: " + str(result))
-
+            print("=========test========")
             sess = requests.Session()
             sess.headers.update(self.headers)
             right_result = sess.request(url=test_input['url'],
@@ -27,13 +27,17 @@ class TestBookInfo(unittest.TestCase):
             # print("result: " + str(result))
             # print("right result: " + str(right_result))
             # assert(1 == 2)
-            subject = test_input.get('subject')
+
+            subject = test_input.get('subject', 'default subject')
             author = test_input.get('author')
             if is_author is "True":
                 assert(result == book_info.parse_author(right_result, author))
             else:
                 assert (result == book_info.parse_subject(right_result,
-                                                      subject))
+                                                      subject, author))
+
+
+
 
 
 

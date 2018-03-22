@@ -1,9 +1,7 @@
 import util
 import re
-import json
 from botocore.vendored import requests
 import author_search as AS
-from itertools import takewhile
 
 
 """This is the URL for the Finna API with a needed header for proper results"""
@@ -130,26 +128,32 @@ def find_info(book_id, field='buildings'):
         return util.close({}, 'Fulfilled', "Something went wrong")
 
 
-def parse_subject(request, subject):
+def parse_subject(request, subject, author=None):
     """
     :param request: JSON data from the Finna API
     :param subject: Subject or search term of the current session
     :return: Response to AWS server in JSON format
     """
     message = "Something went wrong"
-
+    if subject is "":
+        return util.elicit_intent({}, "I'm sorry. I was not able to catch "
+                                      "what book you wanted to find. Could "
+                                      "you please repeat.")
     # if request['status'] == 'no info':
     # message = "No extra info was found222"
     if request['status'] == 'OK':
-        # print("request:" + str(request))
         result_count = request['resultCount']
         print("result parse subject ", result_count)
         print("subject ", subject)
-        if result_count == 0:
-           # print("miks meet tänne?", subject, result_count)
-            message = "Sorry, no books was found with search term: " + subject
+        
+        if result_count == 0: 
+            message = "Oh I'm so sorry, no books was found with search term: " + subject
+            if author:
+                message += " written by " + str(author)
+
         elif result_count == 1:
             return find_info(request['records'][0]['id'])
+        
         elif result_count < 5:
             real_count = 0
             find = []
@@ -161,14 +165,24 @@ def parse_subject(request, subject):
                             find.append(layer['translated'])
                 real_count += 1
 
-            message = "With term " + subject + ", books can be found in " + \
+            if author:
+                message = subject + " books by " + str(author) \
+                      + " can be found in " + util.make_string_list(find)
+            else:
+                message = subject + " books can be found in " + \
                       util.make_string_list(find)
+ 
         else:
-            message = "With term " + subject + ", " + str(result_count) \
-                      + " books was found. Could you give some more " \
-                        "information about the book you are looking for? For " \
-                        "example when the book is published or author of the " \
-                        "book"
+            if not author:
+                message = "I found " + str(result_count) + " books with term " \
+                          + subject + ". Please specify an author or a year, so" \
+                          " I can narrow down the earch."
+            else:
+                message = "I found " + str(result_count) + " books with " \
+                          + subject + " by author " + author + ". Can you give" \
+                          " the publication date for example to narrow down" \
+                          " the search."
+ 
     return util.elicit_intent({'subject': subject}, message)
 
 
@@ -178,16 +192,21 @@ def subject_info(intent, extra_info=[]):
     :param extra_info: Given parameters to filter the data
     :return: Response to AWS server in JSON format
     """
+    print("=========subject info============")
 
     text = intent['inputTranscript'].lower()
     utterances = AS.load_file('sample_utterances.txt')
+
+    for line in list(utterances):
+        utterances += line + " book "
+        utterances += line + " books "
+
     to_drop = 0
-    
+
     for line in utterances:
         if text.startswith(line):
             to_drop = len(line)
             break
-
     text = text[to_drop:].strip()
     text_list = text.split(' ', len(text))
 
@@ -197,6 +216,8 @@ def subject_info(intent, extra_info=[]):
     keywords = ["books", "book", "by", "published", "written"]
     keyword = ""
 
+    # Find when the book name ends
+
     for word in text_list:
         if word not in keywords:
             subject_list.append(word)
@@ -204,27 +225,37 @@ def subject_info(intent, extra_info=[]):
             keyword = word
             break
 
-    print("subject list:", subject_list)
     subject = " ".join(subject_list)
+
     print("subject: ", subject)
-
     author_text = text[len(subject) + 1 + len(keyword):].strip()
-    author = find_author(author_text)
 
+    # The idea of this part of the code is to drop 'by' out 
+    # because if the user say 'written by', only written is 
+    # dropped in the code above.
+    author_text_list = author_text.split(' ', len(author_text))
+    
+    if author_text_list[0] == 'by':
+        author_text = author_text[3:]
+    
+    author = find_author(author_text)
+    
     print("Author:", author)
     print("extra info", extra_info)
+   
+    # There might be old info in the extra_info (author), so 
+    # we need to clear it
     extra_info.clear()
+
     if author:
         extra_info += [
             "author:\"" + author + "\""
         ]
+
     request = lookfor(term=subject, filter=extra_info)['json']
     print("___result count___:", request['resultCount'], subject)
-    # print("subject: " + subject)
-    # print("extra_info: " + extra_info())
-    # print("request: " + json.dumps(request))
     
-    return parse_subject(request, subject)
+    return parse_subject(request, subject, author)
 
 
 def extra_info(intent):
@@ -237,6 +268,7 @@ def extra_info(intent):
     input = intent['inputTranscript']
     lower = 0
     upper = 9999
+    
     if 'lower' in slots or 'upper' in slots or 'year' in slots:
         if 'lower' in slots:
             if slots['lower']:
@@ -252,13 +284,10 @@ def extra_info(intent):
             upper) + "]\""
         extra_info = [date]
         request = lookfor(term=subject, filter=extra_info)['json']
-        return parse_subject(request, subject)
+
+        return parse_subject(request, subject) 
     else:
         return author_search(intent, subject)
-
-    # date ="search_daterange_mv:\"[" + str(lower) + " TO " + str(upper) + "]\""
-
-    # return subject_info(subject, extra_info=[date])
 
 
 def author_search(intent, subject):
@@ -267,16 +296,15 @@ def author_search(intent, subject):
 
     if author:
         request = lookfor(subject, filter=["author:\"" + author + "\""])['json']
-        return parse_subject(request, subject)
+        return parse_subject(request, subject, author)
 
     return util.elicit_intent({'subject': subject},
                               "No extra information was given.")
 
 
 def find_author(text):
-    # text = intent['inputTranscript']
     author = AS.search(text, False)
-    
+ 
     return author
 
 
@@ -343,5 +371,3 @@ def lookfor(term="", field=[], filter=[], method='GET', pretty_print='0'):
     # print(r.json())
     # print("result count: " + str(r.json()['resultCount']))
     return {'status_code': r.status_code, 'json': r.json()}
-
-

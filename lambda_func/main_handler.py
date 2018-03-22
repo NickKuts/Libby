@@ -7,7 +7,6 @@ def lambda_handler(event, context):
     debug = False
     if debug:
         return util.debug(event)
-    print(context)
     # intent = event['currentIntent']
     router = Router(event)
     return router.route()
