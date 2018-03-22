@@ -59,6 +59,22 @@
       "alias": "$LATEST",
       "version": "$LATEST"
     },
+    "inputTranscript": "in what building is cats by donald hearn",
+    "currentIntent": {
+      "name": "FindBook",
+      "slots": {},
+      "confirmationStatus": "None"
+    },
+    "subject": "cats",
+    "url": "https://api.finna.fi/api/v1/search?lookfor=cats&filter[]=author:%22hearn%2C+donald%22&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
+  },
+  "bookWithAuthor4": {
+    "sessionAttributes": {},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
     "inputTranscript": "in what building is sähköä ilmassa by saija salo",
     "currentIntent": {
       "name": "FindBook",

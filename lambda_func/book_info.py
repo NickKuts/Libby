@@ -154,6 +154,10 @@ def subject_info(intent, extra_info=[]):
 
     print("subject list:", subject_list)
     subject = " ".join(subject_list)
+    if subject is "":
+        return util.elicit_intent({}, "I'm sorry. I was not able to catch "
+                                      "what book you wanted to find. Could "
+                                      "you please repeat.")
     print("subject: ", subject)
 
     author_text = text[len(subject) + 1 + len(keyword):].strip()
@@ -203,10 +207,6 @@ def extra_info(intent):
         return parse_subject(request, subject)
     else:
         return author_search(intent, subject)
-
-    # date ="search_daterange_mv:\"[" + str(lower) + " TO " + str(upper) + "]\""
-
-    # return subject_info(subject, extra_info=[date])
 
 
 def author_search(intent, subject):
@@ -291,5 +291,3 @@ def lookfor(term="", field=[], filter=[], method='GET', pretty_print='0'):
     # print(r.json())
     # print("result count: " + str(r.json()['resultCount']))
     return {'status_code': r.status_code, 'json': r.json()}
-
-
