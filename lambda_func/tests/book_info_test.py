@@ -18,7 +18,7 @@ class TestBookInfo(unittest.TestCase):
             test_input = self.test_data[test]
             result = main_handler.lambda_handler(test_input, None)
             # print("result: " + str(result))
-
+            print("=========test========")
             sess = requests.Session()
             sess.headers.update(self.headers)
             right_result = sess.request(url=test_input['url'],
