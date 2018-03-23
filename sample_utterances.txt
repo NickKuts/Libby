@@ -1,0 +1,34 @@
+
+Location:
+
+Where is (book) {book}
+where can i find (book) {book}
+find me book (book) {book}
+in what building is (book) {book}
+where are books written by {author}
+
++ by/written by/published by/ of whom the author is/
++ published/released/ in {year}
+
+
+other:
+tell me about (book) {book}
+can you give me information regarding (book) {book}
+
+
+author:
+who is the author of (book) {book}
+what books are written by {author}
+who are the authors of (book) {book}
+list me books (published/written) by {author}
+tell me about {author}
+
+
+year:
+when was {book} written/published?
+what is the latest book published by {author}
+what books did {author} release in {year}
+
+
+
++ book {book} written by {author}
