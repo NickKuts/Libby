@@ -240,9 +240,9 @@ class TestLocation(unittest.TestCase):
         """
         self.none_existence(True)
 
-    def test_return_name(self):
+    def test_return_fail(self):
         """
-        Test for checking whether the intent returns the just the name if the
+        Test for checking whether the intent returns a 'fail' response if the
         inputTranscript only consists of the name (or the inputTranscript is
         not recognized)
         """
@@ -268,11 +268,11 @@ class TestLocation(unittest.TestCase):
                 # Extract the result
                 result = self.extract_response(result)
                 # Create response message in case of fail
-                msg = 'The input "{}" did not match the response "{}".'
+                msg = 'The output "{}" was not the fail response.'
                 # Check whether the response is the same as the name
                 self.assertTrue(
-                    trans == result,
-                    msg.format(trans, result))
+                    "unfortunately" in result.lower(),
+                    msg.format(result))
             
         # Sanitize the data
         self.sanitize_input_data(all_locs_data)
