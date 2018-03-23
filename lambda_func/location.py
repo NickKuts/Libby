@@ -263,7 +263,7 @@ def _checker(trans):
         return where_is
     if 'from' in trans and 'to' in trans:
         return direction_to
-    return lambda event: _process_name(event)[0]
+    return lambda event: None#_process_name(event)[0]
 
 
 def _parse_trans(trans):
