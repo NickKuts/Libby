@@ -24,9 +24,7 @@
     "url": "https://api.finna.fi/api/v1/search?lookfor=cat&filter[]=search_daterange_mv:%22[2001 TO 2001]%22&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
   },
   "noTerm": {
-    "sessionAttributes": {
-      "subject": ""
-    },
+    "sessionAttributes": {},
     "bot": {
       "name": "Libby_dev",
       "alias": "$LATEST",
@@ -40,6 +38,7 @@
       "confirmationStatus": "None"
     },
     "is_author": false,
+    "author": null,
     "subject": "",
     "url": "https://api.finna.fi/api/v1/search?lookfor=&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
   },
@@ -355,7 +354,7 @@
       "version": "$LATEST"
     },
     "outputDialogMode": "Text",
-    "inputTranscript": "what books are written by donald hrn",
+    "inputTranscript": "what books are written by dodo sorsa",
     "currentIntent": {
       "name": "Author",
       "slots": {},
@@ -363,7 +362,7 @@
     },
     "is_author": true,
     "author": null,
-    "url": "https://api.finna.fi/api/v1/search?lookfor=hrn+donald&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
+    "url": "https://api.finna.fi/api/v1/search?lookfor=sorsa+dodo&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
   },
   "differentAuthor": {
     "messageVersion": "1.0",
