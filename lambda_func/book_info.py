@@ -87,7 +87,7 @@ def parse_author(request, session_attributes):
     if len(find) > 3:
         find = find[:3]
         find.append("others")
-        
+
     message = author + " has written books " \
                      + util.make_string_list(find)
 
@@ -222,7 +222,7 @@ def subject_info(intent, extra_info=[]):
     text = text[to_drop:].strip()
     text_list = text.split(' ', len(text))
 
-    print("text_list: ", str(text_list))
+    # print("text_list: ", str(text_list))
 
     subject_list = []
     keywords = ["books", "book", "by", "published", "written"]
@@ -240,14 +240,18 @@ def subject_info(intent, extra_info=[]):
 
     # Get all the keywords in the middle, so they can be
     # all be dropped at once, eg written by, books by
-
-    word = text_list[0]
-    while word in keywords:
-        text_list = text_list[1:]
+    text_list = text_list[len(subject_list):]
+    if text_list:
         word = text_list[0]
-        keyword += word + " "
+        while word in keywords:
+            keyword += word + " "
+            text_list = text_list[1:]
+            if text_list:
+                word = text_list[0]
+            else:
+                break
 
-    author_text = text[len(subject) + 1 + len(keyword):].strip()
+    author_text = text[len(keyword):].strip()
     author = AS.search(author_text)
     if author is "":
         author = None
