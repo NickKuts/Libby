@@ -60,7 +60,7 @@ def parse_book(info):
     return output + util.make_string_list(ret)
 
 
-# Author intent use that.
+# Author intent use this.
 def find_info_author(intent):
     text = intent['inputTranscript'].lower()
     utterances = AS.load_file('author_utterances.txt')
@@ -73,61 +73,58 @@ def find_info_author(intent):
             break
 
     author_text = text[to_drop:].strip()
+
     # this checks that author is real
     author = find_author(author_text)
     request = lookfor(term=author)['json']
-    # print("___result count___:", request['resultCount'], author)
-
     return parse_author(request, author)
 
 
+# Author intent use this.
 def parse_author(request, author):
     """
     :param request: JSON data from the Finna API
     :param author: Author term of the current session
     :return: Response to AWS server in JSON format
     """
+    # if author was not found
     if not author:
-        message = "I'm sorry. I couldn't catch the author you were looking " \
-                  "for. Please try again."
+        message = "I'm sorry. I couldn't catch the author" + str(author) + \
+                  ". Please try again."
         return util.elicit_intent({}, message)
 
     result_count = request['resultCount']
-    # print("result parse subject ", result_count)
-    # print("author ", author)
 
-    # find all titles and sort them.
+    # find all titles if title does not already exist in list. And sort them.
     real_count = 0
     find = []
     while real_count < result_count and real_count < 20:
         if request['records'][real_count]['title']:
             title = request['records'][real_count]['title']
+
+        # check that the book is written by this author
+
         if title is not find:
             find.append(title)
         real_count += 1
+    find = sorted(find)
 
     # at most three books
-    find = sorted(find)
-    # find_finally = []
-    # count = 0
     if result_count <= 3:
         find = find[:real_count]
     else:
         find = find[:3]
-    """
-    while count < 3 and count < len(find):
-        take_off = find[(len(find)-count-1):]
-        if count < 0:
-            take_off = take_off[:(count-1)]
-        find_finally.append(take_off)
-        count += 1
-    """
 
+    # if the author has written more than three books
     if result_count > 3:
         find.append("others")
-    message = author + " has written books " \
-                     + util.make_string_list(find)
 
+    # only one book was found
+    if result_count == 1:
+        message = author + " has written a book " + find[0]
+    # many books was found
+    else:
+        message = author + " has written books " + util.make_string_list(find)
     return util.elicit_intent({'author': author}, message)
 
 
@@ -238,7 +235,6 @@ def subject_info(intent, extra_info=[]):
     keyword = ""
 
     # Find when the book name ends
-
     for word in text_list:
         if word not in keywords:
             subject_list.append(word)
@@ -271,6 +267,10 @@ def subject_info(intent, extra_info=[]):
     if author:
         extra_info += [
             "author:\"" + author + "\""
+        ]
+    elif intent['sessionAttributes'].get('author'):
+        extra_info += [
+            "author:\"" + intent['sessionAttributes']['author'] + "\""
         ]
 
     request = lookfor(term=subject, filter=extra_info)['json']
@@ -314,7 +314,6 @@ def extra_info(intent):
 
 
 def author_search(intent, subject):
-
     author = find_author(intent['inputTranscript'])
 
     if author:
