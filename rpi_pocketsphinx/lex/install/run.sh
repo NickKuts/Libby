@@ -4,5 +4,5 @@ docker run\
     -e AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} \
     -e PCM_DEVICE='sysdefault:CARD=USB' \
     --device /dev/snd \
-    --name=PROJECT_LIBBY
+    --name=PROJECT_LIBBY \
     libbypi:latest run
