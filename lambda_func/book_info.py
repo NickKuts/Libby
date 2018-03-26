@@ -65,21 +65,29 @@ def parse_author(request, session_attributes):
     # find all titles and sort them.
     real_count = 0
     find = []
-    while real_count < result_count and real_count < 20:
-        if request['records'][real_count]['title']:
-            title = request['records'][real_count]['title']
-        if title is not find:
-            find.append(title)
-        real_count += 1
+    for record in request['records']:
+        authors = record.get('nonPresenterAuthors')
+        has_written = False
+        for a in authors:
+            # print(a.get('name').lower(), " == ", author)
+            if a.get('name').lower() == author:
+                # print("has written:", author)
+                has_written = True
+                break
+        if has_written:
+            title = record.get('title')
+            if title:
+                if title is not find:
+                    find.append(title)
+                    real_count += 1
 
     # at most three books
     find = sorted(find)
-    if result_count <= 3:
-        find = find[:real_count]
-    else:
+    print(str(find))
+    if len(find) > 3:
         find = find[:3]
         find.append("others")
-
+        
     message = author + " has written books " \
                      + util.make_string_list(find)
 
