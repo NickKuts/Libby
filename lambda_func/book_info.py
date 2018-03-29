@@ -67,21 +67,27 @@ def parse_author(request, session_attributes):
     # find all titles if title does not already exist in list. And sort them.
     real_count = 0
     find = []
-    while real_count < result_count and real_count < 20:
-        if request['records'][real_count]['title']:
-            title = request['records'][real_count]['title']
 
-        # check that the book is written by this author
-
-        if title is not find:
-            find.append(title)
-        real_count += 1
-    find = sorted(find)
+    for record in request['records']:
+        authors = record.get('nonPresenterAuthors')
+        has_written = False
+        for a in authors:
+            # print(a.get('name').lower(), " == ", author)
+            if a.get('name').lower() == author:
+                # print("has written:", author)
+                has_written = True
+                break
+        if has_written:
+            title = record.get('title')
+            if title:
+                if title is not find:
+                    find.append(title)
+                    real_count += 1
 
     # at most three books
-    if result_count <= 3:
-        find = find[:real_count]
-    else:
+    find = sorted(find)
+    print(str(find))
+    if len(find) > 3:
         find = find[:3]
         find.append("others")
 
@@ -225,7 +231,7 @@ def subject_info(intent, extra_info=[]):
     text = text[to_drop:].strip()
     text_list = text.split(' ', len(text))
 
-    print("text_list: ", str(text_list))
+    # print("text_list: ", str(text_list))
 
     subject_list = []
     keywords = ["books", "book", "by", "published", "written"]
@@ -242,14 +248,18 @@ def subject_info(intent, extra_info=[]):
 
     # Get all the keywords in the middle, so they can be
     # all be dropped at once, eg written by, books by
-
-    word = text_list[0]
-    while word in keywords:
-        text_list = text_list[1:]
+    text_list = text_list[len(subject_list):]
+    if text_list:
         word = text_list[0]
-        keyword += word + " "
+        while word in keywords:
+            keyword += word + " "
+            text_list = text_list[1:]
+            if text_list:
+                word = text_list[0]
+            else:
+                break
 
-    author_text = text[len(subject) + 1 + len(keyword):].strip()
+    author_text = text[len(keyword):].strip()
     author = AS.search(author_text)
     if author is "":
         author = None
