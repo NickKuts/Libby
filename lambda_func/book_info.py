@@ -39,9 +39,7 @@ def find_info_author(intent):
     author_text = text[to_drop:].strip()
 
     # this checks that author exists
-    print("INPUT IS:", author_text)
     author = AS.search(author_text)
-    print("AUTHOR IS:", author)
     request = lookfor(term=author)['json']
 
     return parse_author(request, {'author': author})
