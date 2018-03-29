@@ -126,6 +126,107 @@
     "confirmationStatus": "None"
   },
   "inputTranscript": "help location"
+  },
+  "need_help_location": {
+  "messageVersion": "1.0",
+  "invocationSource": "DialogCodeHook",
+  "userId": "a08w7nc0wioc7x3ka4o92a3kgbsw29vf",
+  "sessionAttributes": {
+
+  },
+  "requestAttributes": null,
+  "bot": {
+    "name": "Libby_dev",
+    "alias": "$LATEST",
+    "version": "$LATEST"
+  },
+  "outputDialogMode": "Text",
+  "currentIntent": {
+    "name": "Get_Help",
+    "slots": {
+      "what": "location"
+    },
+    "slotDetails": {
+      "what": {
+        "resolutions": [
+          {
+            "value": "location"
+          }
+        ],
+        "originalValue": "location"
+      }
+    },
+    "confirmationStatus": "None"
+  },
+  "inputTranscript": "i need location help"
+  },
+
+  "help_author": {
+  "messageVersion": "1.0",
+  "invocationSource": "DialogCodeHook",
+  "userId": "acpjp2rzapq8m3qmstfa19skdkq06q3w",
+  "sessionAttributes": {
+
+  },
+  "requestAttributes": null,
+  "bot": {
+    "name": "Libby_dev",
+    "alias": "$LATEST",
+    "version": "$LATEST"
+  },
+  "outputDialogMode": "Text",
+  "currentIntent": {
+    "name": "Get_Help",
+    "slots": {
+      "what": "author"
+    },
+    "slotDetails": {
+      "what": {
+        "resolutions": [
+          {
+            "value": "author"
+          }
+        ],
+        "originalValue": "author"
+      }
+    },
+    "confirmationStatus": "None"
+  },
+  "inputTranscript": "how i get the author info"
+  },
+
+  "help_books": {
+  "messageVersion": "1.0",
+  "invocationSource": "DialogCodeHook",
+  "userId": "acpjp2rzapq8m3qmstfa19skdkq06q3w",
+  "sessionAttributes": {
+
+  },
+  "requestAttributes": null,
+  "bot": {
+    "name": "Libby_dev",
+    "alias": "$LATEST",
+    "version": "$LATEST"
+  },
+  "outputDialogMode": "Text",
+  "currentIntent": {
+    "name": "Get_Help",
+    "slots": {
+      "what": "books"
+    },
+    "slotDetails": {
+      "what": {
+        "resolutions": [
+          {
+            "value": "books"
+          }
+        ],
+        "originalValue": "books"
+      }
+    },
+    "confirmationStatus": "None"
+  },
+  "inputTranscript": "how can i find books"
   }
 
 }
