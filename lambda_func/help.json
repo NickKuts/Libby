@@ -1,8 +1,10 @@
 {
-      "robert's coffee": "Hi! If you are interesting about roberts coffee, you can hear the menu by asking roberts coffee categories or you can ask some drink or category at the first place.",
+
+      "robert's coffee": "Hi! If you are interesting about roberts coffee, ask me roberts coffee categories or some drink or category.",
       "location": "Hi! You can hear where is some building by asking the name of the building",
-      "author": "Hi! you can hear authors books by asking name of the author",
-      "book": "Hi! getting more information about the book, tell me the name of the book"
+      "author": "Hi! you can hear authors books by telling me the name of the author",
+      "books": "Hi! getting more information about the book, tell me the name of the book",
+      "weather": "I'm weather help. To get to know the temperature, ask about the weather."
 
 }
 
