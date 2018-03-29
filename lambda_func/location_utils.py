@@ -16,6 +16,11 @@ directions = {
 
 
 def to_radians(degs):
+    """
+    A simple function for converting degrees to radians
+    :param degs: degrees to be converted
+    :return: the converted radians
+    """
     return degs * pi / 180
 
 
@@ -55,7 +60,12 @@ def distance(lat1, lon1, lat2, lon2):
 def angle(lat1, lon1, lat2, lon2):
     """
     Calculates the angle between two points. Function treats lat1 and lon1 as a starting point
-    and calculates the angle going clockwise
+    and calculates the angle going clockwise (as a compass, i.e. from North).
+    :param lat1: the latitude of the first location
+    :param lon1: the longitude of the first location
+    :param lat2: the latitude of the second location
+    :param lon2: the longitude of the second location
+    :return: the angle between the first and second location
     """
     lat1, lon1, lat2, lon2 = map(to_radians, (lat1, lon1, lat2, lon2))
 

@@ -209,6 +209,52 @@ def direction_to(event):
         return "{} is {} metres {} from {}".format(first_place, distance, direction, second_place)
 
 
+def info(event):
+    """
+    This function returns general information about the location.
+    It extracts the _info_ slot from the JSON file containing all locations,
+    if such exists.
+    :param event: the input event from Aamzon Lex
+    :return: info about the location, if such exists
+    """
+
+    # Extract the name and data
+    name, data = _process_name(event)
+
+    # If there is no data, then there is no location,
+    # so we tell this to the user
+    if not data:
+        return "Unfortunately I do not know such a location as {}".format(name)
+
+    # Else we try to extract the information
+    find_info = data.get('info', None)
+
+    # If there is prepared information about the location,
+    # we tell this to the user
+    if find_info:
+        return find_info
+
+    # Else we try to build something useful for the user
+    in_building = data.get('building', None)
+    if in_building:
+        # In case the name is somewhat different, but could still be found
+        # we return the first alias to the user
+        al_list = data.get('aliases', [])
+        if len(al_list) > 0:
+            # We search through the alias list to find the best suited candidate
+            find_closest = ''
+            curr_score = -1
+            for al in al_list:
+                rat = location_utils.ratio(name, al)
+                if rat > curr_score:
+                    find_closest = al
+                    curr_score = rat
+            return "{} can be found in the building {}".format(find_closest, in_building)
+
+    return "Unfortunately I am not able to find any information about {}" \
+           " but try to ask me something else about it".format(name)
+
+
 def _return_name(event):
     """
     This function simply returns the name of the location found in the query, 
@@ -263,7 +309,7 @@ def _checker(trans):
         return where_is
     if 'from' in trans and 'to' in trans:
         return direction_to
-    return lambda event: None
+    return info
 
 
 def _parse_trans(trans):

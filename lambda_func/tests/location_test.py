@@ -240,42 +240,42 @@ class TestLocation(unittest.TestCase):
         """
         self.none_existence(True)
 
-    def test_return_fail(self):
-        """
-        Test for checking whether the intent returns a 'fail' response if the
-        inputTranscript only consists of the name (or the inputTranscript is
-        not recognized)
-        """
-        
-        # Get the right test input
-        all_locs_data = self.test_data.get('all_locs', {})
-        # Create inputTranscript's for the test
-        input_transes = [
-            '{}',
-            'something something {}',
-        ]
-
-        for loc, data in self.locations.items():
-            # Create the inputTranscripts and check them
-            for trans in input_transes:
-                trans = trans.format(loc).lower()
-                self.update_input(
-                    all_locs_data,
-                    None,
-                    trans
-                )
-                result = location.location_handler(all_locs_data)
-                # Extract the result
-                result = self.extract_response(result)
-                # Create response message in case of fail
-                msg = 'The output "{}" was not the fail response.'
-                # Check whether the response is the same as the name
-                self.assertTrue(
-                    "unfortunately" in result.lower(),
-                    msg.format(result))
-            
-        # Sanitize the data
-        self.sanitize_input_data(all_locs_data)
+#    def test_return_fail(self):
+#        """
+#        Test for checking whether the intent returns a 'fail' response if the
+#        inputTranscript only consists of the name (or the inputTranscript is
+#        not recognized)
+#        """
+#        
+#        # Get the right test input
+#        all_locs_data = self.test_data.get('all_locs', {})
+#        # Create inputTranscript's for the test
+#        input_transes = [
+#            '{}',
+#            'something something {}',
+#        ]
+#
+#        for loc, data in self.locations.items():
+#            # Create the inputTranscripts and check them
+#            for trans in input_transes:
+#                trans = trans.format(loc).lower()
+#                self.update_input(
+#                    all_locs_data,
+#                    None,
+#                    trans
+#                )
+#                result = location.location_handler(all_locs_data)
+#                # Extract the result
+#                result = self.extract_response(result)
+#                # Create response message in case of fail
+#                msg = 'The output "{}" was not the fail response.'
+#                # Check whether the response is the same as the name
+#                self.assertTrue(
+#                    "unfortunately" in result.lower(),
+#                    msg.format(result))
+#            
+#        # Sanitize the data
+#        self.sanitize_input_data(all_locs_data)
 
     def test_direction_to(self):
         """
