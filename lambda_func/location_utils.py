@@ -1,5 +1,6 @@
 from difflib import SequenceMatcher
 from math import cos, sin, pi, atan2, sqrt
+import re
 
 
 directions = {
@@ -121,3 +122,107 @@ def ratio(s1, s2):
     m = SequenceMatcher(None, s1, s2)
     # Now, `m` above will be a `double`, so we convert it to `int`
     return int(round(100 * m.ratio()))
+
+
+def parse_trans(trans, samples):
+    """ 
+    Parse inputTranscript.
+    This function is used when Amazon Lex is not capable of finding the 
+    correct slot value for an input. The function utilizes all sample
+    utterances (that it assumes have been processed already, i.e. put
+    as regex patterns) and checks through the inputTranscript with
+    regex patterns consisting of these utterances. However, some 
+    utterances may be very similar, so the function saves all matches
+    and the corresponding regex pattern to then run the longest found
+    string through all regex patterns. This shaves of "unnecessary" parts
+    of each string.
+    :param trans: the inputTranscript to be parsed
+    :param samples: the sample utterances that have been set to work with re
+    :return: the extracted location name
+    """
+    
+    # Save all matches here, they should be saved as tuples where the first
+    # element is the regex pattern and the second the string found
+    matches = []
+
+    # Go through each regex pattern
+    for sample in samples:
+        m = re.search(sample, trans)
+        # The regex pattern is built such that the "found" building is saved
+        # under the parameter name '_locations'
+        if m:
+            try:
+                # We need to use a try-catch as some regex patterns from the 
+                # sample utterances do not have the "string-finding" part, so
+                # no 'location' is found.
+                matches.append((sample, m.group('location')))
+            except IndexError: 
+                pass
+
+    # Sort the array in-place, we need the longest string first so that the 
+    # "shaving" works properly
+    matches.sort(key=lambda t: len(t[1]), reverse=True)
+    # Use an empty string placeholder in case no matches were found
+    longest = ''
+
+    # There should never be a case where no regex pattern matches, however, 
+    # better safe than sorry
+    if len(matches) > 0:
+        longest = matches[0][1]
+        for reg in matches:
+            # Here is where the shaving happens, the longest string gets put
+            # through "stricter" regex patterns to that all unnecessities
+            # diminish
+            m = re.search(reg[0], longest)
+            if m:
+                try:
+                    # Same as above
+                    longest = m.group('location')
+                except IndexError:
+                    pass
+    
+    # And finally return the shaved longest string (if such was found)
+    return longest
+
+
+def parse_trans_two(trans, n_samples):
+    """
+    This function is closely related to the _parse_trans_ function above.
+    This function attempts to extract two locations from an input transcript.
+    The reason for the separation are time constraints and that this function
+    will only be used for one specific case in Location intent. For future
+    ideas we might write them together, if time allows for it.
+    Note: if anything in these comments (or below) is weirdly explained, please
+          see the function _parse_trans_ above
+    :param trans: the input transcript from Amazon Lex
+    :param n_samples: sample utterances that have been regex compiled
+    :return: the extraced location names
+    """
+
+    # We first extract those regex patterns that have two locations to find
+    samples = filter(lambda reg: '<location2>' in reg, n_samples)
+
+    # Save all matches here
+    matches = []
+
+    # Go through each regex pattern
+    for sample in samples:
+        m = re.search(sample, trans)
+        # Extract each location
+        if m:
+            try:
+                # For reasons of the 'try-catch', see the _parse_trans_ function
+                matches.append((m.group('location'), m.group('location_two')))
+            except IndexError:
+                pass
+    
+    # Unfortunately we cannot do the same "shaving" as we did in _parse_trans
+    # in this function, thus we only return the result that have the shortest
+    # location names (as these are probably the closest to real answers)
+    res = ('', '')
+    for match in matches:
+        if (len(match[0]) + len(match[1])) > (len(res[0]) + len(res[1])):
+            res = match
+
+    return res
+

@@ -106,7 +106,7 @@ class TestLocation(unittest.TestCase):
                 # Set the result to lower for easier checking
                 result = self.extract_response(result).lower()
                 # Create formattable response string
-                msg = 'The address of {} ({}) is "{}", but go the response "{}".'
+                msg = 'The address of {} ({}) is "{}", but got the response "{}".'
                 # Check whether the actual address is found in the response 
                 self.assertTrue(
                     addr in result, 
@@ -176,13 +176,14 @@ class TestLocation(unittest.TestCase):
             'opening hours of {}',
             'where is {}',
             'location of {}',
+            '{}',
         ]
 
         for input_transcript in input_transcripts:
             # Saving formattable string from inputTranscript
             new_inp_tr = all_locs_data['inputTranscript']
     
-            # Let's give the intent some real location that it should 
+            # Let's give the intent some real locations that it should 
             # have no data about
             locs = ['hamburg', 'shanghai', 'tokyo', 'australia']
             for loc in locs:
@@ -240,56 +241,53 @@ class TestLocation(unittest.TestCase):
         """
         self.none_existence(True)
 
-#    def test_info(self):
-#        """
-#        Test whether the intent returns the correct information about a certain
-#        location when only the locations name is uttered, or when the location
-#        is understood, but not the input transcript.
-#        """
-#
-#        # Get the right test input
-#        all_locs_data = self.test_data.get('all_locs', {})
-#
-#        # Go through each location and check if the intent recognizes its name
-#        # and all of its aliases
-#        for loc, data in self.locations.items():
+    def test_info(self):
+        """
+        Test whether the intent returns the correct information about a certain
+        location when only the locations name is uttered, or when the location
+        is understood, but not the input transcript.
+        """
 
-#    def test_return_fail(self):
-#        """
-#        Test for checking whether the intent returns a 'fail' response if the
-#        inputTranscript only consists of the name (or the inputTranscript is
-#        not recognized)
-#        """
-#        
-#        # Get the right test input
-#        all_locs_data = self.test_data.get('all_locs', {})
-#        # Create inputTranscript's for the test
-#        input_transes = [
-#            '{}',
-#            'something something {}',
-#        ]
-#
-#        for loc, data in self.locations.items():
-#            # Create the inputTranscripts and check them
-#            for trans in input_transes:
-#                trans = trans.format(loc).lower()
-#                self.update_input(
-#                    all_locs_data,
-#                    None,
-#                    trans
-#                )
-#                result = location.location_handler(all_locs_data)
-#                # Extract the result
-#                result = self.extract_response(result)
-#                # Create response message in case of fail
-#                msg = 'The output "{}" was not the fail response.'
-#                # Check whether the response is the same as the name
-#                self.assertTrue(
-#                    "unfortunately" in result.lower(),
-#                    msg.format(result))
-#            
-#        # Sanitize the data
-#        self.sanitize_input_data(all_locs_data)
+        # Get the right test input
+        all_locs_data = self.test_data.get('all_locs', {})
+
+        # Create a list of input transcripts that should result in the info
+        # being returned
+        input_transes = [
+            '{}',
+            'something something {}',
+            'this should work {}'
+        ]
+
+        # Go through each location and check if the intent recognizes its name
+        # and all of its aliases
+        for loc, data in self.locations.items():
+            aliases = data.get('aliases', [])
+            # Extract the info from the data and set to lowercase
+            info = data.get('info', None)
+            if not info:  # pragma: no cover
+                info = 'sorry'
+            info = info.lower()
+            for input_trans in input_transes:
+                for alias in aliases:
+                    # Update the input for the intent
+                    self.update_input(
+                        all_locs_data,
+                        alias,
+                        input_trans.format(alias),
+                    )
+                    result = location.location_handler(all_locs_data)
+                    # Set the result to lowercase for easier checking
+                    result = self.extract_response(result).lower()
+                    # Create formattable error response string
+                    msg = 'The info of {} ({}) is:\n\t{}\nbut got this response:\n\t{}'
+                    # Check whether the actual info corresponds to the response
+                    self.assertTrue(
+                        info in result,
+                        msg.format(alias, loc, info, result))
+
+        # After the test, sanitize the input data
+        self.sanitize_input_data(all_locs_data)
 
     def test_direction_to(self):
         """
