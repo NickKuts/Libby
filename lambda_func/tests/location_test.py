@@ -240,6 +240,20 @@ class TestLocation(unittest.TestCase):
         """
         self.none_existence(True)
 
+#    def test_info(self):
+#        """
+#        Test whether the intent returns the correct information about a certain
+#        location when only the locations name is uttered, or when the location
+#        is understood, but not the input transcript.
+#        """
+#
+#        # Get the right test input
+#        all_locs_data = self.test_data.get('all_locs', {})
+#
+#        # Go through each location and check if the intent recognizes its name
+#        # and all of its aliases
+#        for loc, data in self.locations.items():
+
 #    def test_return_fail(self):
 #        """
 #        Test for checking whether the intent returns a 'fail' response if the

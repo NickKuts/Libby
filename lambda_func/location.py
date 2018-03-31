@@ -20,8 +20,26 @@ with open(_sample_utts, 'r') as fp:
 
 # Set all utterances to be regex patterns
 for i in range(0, len(_samples)):
-    reg_str = _samples[i].replace('{place}', _re_patt)
+    s = _samples[i]
+    reg_str = s.replace('{place}', _re_patt)
+    reg_str = s.replace('{place_two}', '(.+)')
     _samples[i] = re.compile(reg_str)
+
+#    # First we check how many slot values are attached to this sample utterance
+#    s = _samples[i]
+#    am = s.count('{place', 0, len(s))
+#    # There are exactly two different types of sample utterances
+#    # first those that only have '{place}' and those that have both '{place}'
+#    # and '{place_two}'
+#    if am == 1:
+#        reg_str = s.replace('{place}', _re_patt())
+#        _samples[i] = re.compile(reg_str)
+#    elif am == 2:
+#        reg_str = s.replace('{place}', _re_patt(1))
+#        reg_str = reg_str.replace('{place_two}', _re_patt(2))
+#        _samples[i] = re.compile(reg_str)
+#    else:
+#        _samples[i] = re.compile(s)
 
     
 def _existence(name):
@@ -46,7 +64,7 @@ def _existence(name):
         aliases = location['aliases']
         for al in aliases:
             # Here we use our _ratio_ function to look how closely these match
-            temp = location_utils.ratio(al, name)
+            temp = location_utils.ratio(al.lower(), name)
             # If the score is higher, change the candidate
             if temp > score:
                 curr = location
@@ -234,25 +252,8 @@ def info(event):
     if find_info:
         return find_info
 
-    # Else we try to build something useful for the user
-    in_building = data.get('building', None)
-    if in_building:
-        # In case the name is somewhat different, but could still be found
-        # we return the first alias to the user
-        al_list = data.get('aliases', [])
-        if len(al_list) > 0:
-            # We search through the alias list to find the best suited candidate
-            find_closest = ''
-            curr_score = -1
-            for al in al_list:
-                rat = location_utils.ratio(name, al)
-                if rat > curr_score:
-                    find_closest = al
-                    curr_score = rat
-            return "{} can be found in the building {}".format(find_closest, in_building)
-
-    return "Unfortunately I am not able to find any information about {}" \
-           " but try to ask me something else about it".format(name)
+    return 'Unfortunately I am not able to find any information about {}' \
+           ' but try to ask me something else about it'.format(name)
 
 
 def _return_name(event):
@@ -413,5 +414,5 @@ def location_handler(event):
     # Default answer if all failed
     if not ans:
         ans = "Unfortunately I can't seem to find the location"
-    
+
     return util.elicit_intent({}, ans)
