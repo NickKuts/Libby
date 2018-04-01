@@ -21,9 +21,9 @@ with open(_sample_utts, 'r') as fp:
 # Set all utterances to be regex patterns
 for i in range(0, len(_samples)):
     _samples[i] = _samples[i].lower() \
-                             .replace('{place}', _re_patt.format('')) \
-                             .replace('{place_two}', _re_patt.format('_two'))
-    _samples[i] = '(.+)' + _samples[i] + '(.+)'
+                             .format(
+                                place=_re_patt.format(''), 
+                                place_two=_re_patt.format('_two'))
 
     
 def _existence(name):
