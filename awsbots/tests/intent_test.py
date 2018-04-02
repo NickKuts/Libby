@@ -1,10 +1,12 @@
 import unittest
 import boto3
 from intent_factory import IntentFactory
+import time
 
 class TestIntentFactory(unittest.TestCase):
     i = IntentFactory() 
     test_all = False
+    fname = 'intents/intent_test.json'
 
     def test_save(self):
         ret = self.i.save_intent('Weather')
@@ -17,31 +19,31 @@ class TestIntentFactory(unittest.TestCase):
         assert(ret['name'] == 'Weather')
 
     def test_load(self):
-        ret = self.i.load_intent_from_file('intents/weather1.json')
+        ret = self.i.load_intent_from_file(self.fname)
         assert(ret is not None)
 
     def test_create_update_remove(self):
         if self.test_all:
-            ret1 = self.i.create_intent('intents/weather1.json')
+            ret1 = self.i.create_intent(self.fname)
             assert(ret1 is not None)
             
             #There is a progress still ongoing
             time.sleep(10)
-            ret2 = self.i.update_intent('intents/weather1.json')
+            ret2 = self.i.update_intent(self.fname)
             assert(ret2 is not None)
 
             #There is a progress still ongoing
             time.sleep(60)
-            name = self.i.load_intent_from_file('intents/weather1.json')['name']
+            name = self.i.load_intent_from_file(self.fname)['name']
             ret3 = self.i.remove_intent(name)
             assert(ret3 is not None)
         
 
-def main():
+def main():  # pragma: no cover
     print("Main function")
 
 
-if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(TestUtilHelp)
+if __name__ == '__main__':  # pragma: no cover
+    suite = unittest.TestLoader().loadTestsFromTestCase(TestIntentFactory)
     unittest.TextTestRunner(verbosity=2).run(suite)
 
