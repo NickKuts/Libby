@@ -1,12 +1,12 @@
 {
-  "main": {
+  "undergraduate centre": {
     "aliases": [
       "r001",
       "kandi",
       "main",
       "päälafka",
-      "undergraduate centre",
-      "main building"
+      "main building",
+      "undergraduate centre"
     ],
     "building": null,
     "address": "Otakaari 1",
@@ -23,7 +23,7 @@
     "aliases": [
       "alvari"
     ],
-    "building": "main",
+    "building": "undergraduate centre",
     "address": "Otakaari 1",
     "osm": "node=301814516",
     "osm_meta": null,
@@ -34,11 +34,11 @@
     "lat": 60.185598,
     "info": "Alvari is a student restaurant near the main lobby of undergraduate centre"
   },
-  "Silinteri": {
+  "silinteri": {
     "aliases": [
       "silinteri"
     ],
-    "building": "main",
+    "building": "undergraduate centre",
     "address": "Otakaari 1",
     "osm": "node=5034218017",
     "osm_meta": null,
@@ -49,11 +49,11 @@
     "lat": 60.18629775,
     "info": "Silinteri is a restaurant inside the undergraduate centre"
   },
-  "Aino cafe": {
+  "aino cafe": {
     "aliases": [
       "aino cafe"
     ],
-    "building": "main",
+    "building": "undergraduate centre",
     "address": "Otakaari 1",
     "osm": "node=5004956486",
     "osm_meta": null,
@@ -64,11 +64,12 @@
     "lat": 60.18629775,
     "info": "Aino is a cafe located in the undergraduate centre"
   },
-  "Elissa cafe": {
+  "elissa cafe": {
     "aliases": [
+      "elissa",
       "elissa cafe"
     ],
-    "building": "main",
+    "building": "undergraduate centre",
     "address": "Otakaari 1",
     "osm": "node=5004956487",
     "osm_meta": null,
@@ -79,11 +80,11 @@
     "lat": 60.18629775,
     "info": "Elissa is a cafe located in the U-wing of the undergraduate centre"
   },
-  "Student services": {
+  "student services": {
     "aliases": [
       "student services"
     ],
-    "building": "main",
+    "building": "undergraduate centre",
     "address": "Otakaari 1",
     "osm": null,
     "osm_meta": null,
@@ -94,11 +95,11 @@
     "lat": 60.18629775,
     "info": "Student services can be found in the undergraduate centre"
   },
-  "IT Service Desk Kandi": {
+  "it service desk kandi": {
     "aliases": [
       "it service desk kandi"
     ],
-    "building": "main",
+    "building": "undergraduate centre",
     "address": "Otakaari 1",
     "osm": null,
     "osm_meta": null,
@@ -109,12 +110,14 @@
     "lat": 60.18629775,
     "info": "The IT service service desk can be found in the undergraduate centre"
   },
-  "studenthub": {
+  "learning hub": {
     "aliases": [
       "studenthub",
-      "student hub"
+      "student hub",
+      "hub",
+      "learning hub"
     ],
-    "building": "main",
+    "building": "undergraduate centre",
     "address": "Otakaari 1",
     "osm": 514232691,
     "osm_meta": null,
@@ -125,11 +128,11 @@
     "lat": 60.1864913,
     "info": "The student hub is a learning space inside the undergraduate centre. It's open around the clock"
   },
-  "Starting Point": {
+  "starting point": {
     "aliases": [
       "starting point"
     ],
-    "building": "main",
+    "building": "undergraduate centre",
     "address": "Otakaari 1",
     "osm": null,
     "osm_meta": null,
@@ -140,12 +143,12 @@
     "lat": 60.18629775,
     "info": "The middlepoint of the undergraduate centre"
   },
-  "A siipi Main": {
+  "a wing main": {
     "aliases": [
       "a siipi main",
       "a wing main"
     ],
-    "building": "main",
+    "building": "undergraduate centre",
     "address": "Otakaari 1",
     "osm": 514232744,
     "osm_meta": null,
@@ -156,12 +159,12 @@
     "lat": 60.1861672,
     "info": "The a wing is a wing of the main building, located on the east side. It often harbours art installations and has some computer labs equipped with 3D modeling software."
   },
-  "H siipi Main": {
+  "h wing main": {
     "aliases": [
       "h siipi main",
       "h wing main"
     ],
-    "building": "main",
+    "building": "undergraduate centre",
     "address": "Otakaari 1",
     "osm": 514232720,
     "osm_meta": null,
@@ -172,12 +175,12 @@
     "lat": 60.1854261,
     "info": "The h wing is a wing of the main building, located on the upper floors."
   },
-  "K siipi Main": {
+  "k siipi main": {
     "aliases": [
       "k siipi main",
       "k wing main"
     ],
-    "building": "main",
+    "building": "undergraduate centre",
     "address": "Otakaari 1",
     "osm": 540151861,
     "osm_meta": null,
@@ -188,12 +191,12 @@
     "lat": 60.185179500000004,
     "info": "The k wing is a wing of the main building."
   },
-  "M siipi Main": {
+  "m siipi main": {
     "aliases": [
       "m siipi main",
       "m wing main"
     ],
-    "building": "main",
+    "building": "undergraduate centre",
     "address": "Otakaari 1",
     "osm": 514232739,
     "osm_meta": null,
@@ -204,12 +207,12 @@
     "lat": 60.186132799999996,
     "info": "The m wing is a wing of the main building."
   },
-  "U siipi Main": {
+  "u siipi main": {
     "aliases": [
       "u siipi main",
       "u wing main"
     ],
-    "building": "main",
+    "building": "undergraduate centre",
     "address": "Otakaari 1",
     "osm": 514232732,
     "osm_meta": null,
@@ -220,12 +223,12 @@
     "lat": 60.18710705,
     "info": "The u wing is a wing of the main building, located in the northern parts."
   },
-  "Y siipi Main": {
+  "y siipi main": {
     "aliases": [
       "y siipi main",
       "y wing main"
     ],
-    "building": "main",
+    "building": "undergraduate centre",
     "address": "Otakaari 1",
     "osm": 514232725,
     "osm_meta": null,
@@ -236,11 +239,12 @@
     "lat": 60.18617725,
     "info": "The y wing is a wing of the main building, located in the centre of it."
   },
-  "raksa": {
+  "department of built environment": {
     "aliases": [
       "civil and environmental engineering",
-      "r002",
-      "raksa"
+      "raksa",
+      "department of civil and environmental engineering",
+      "department of built environment"
     ],
     "building": null,
     "address": "Rakentajanaukio 4",
@@ -253,12 +257,13 @@
     "lat": 60.187110849999996,
     "info": "Home building for students of civil and environmental engineering"
   },
-  "f-building": {
+  "building of physics": {
     "aliases": [
-      "r003",
       "f-talo",
       "f-building",
-      "fyssa"
+      "fyssa",
+      "physics building",
+      "building of physics"
     ],
     "building": null,
     "address": "Otakaari 3",
@@ -271,11 +276,11 @@
     "lat": 60.18796785,
     "info": "Physics building. It's north of the undergraduate centre"
   },
-  "Kvarkki": {
+  "kvarkki": {
     "aliases": [
       "kvarkki"
     ],
-    "building": "F",
+    "building": "building of physics",
     "address": "Otakaari 3",
     "osm": "node=577022359",
     "osm_meta": null,
@@ -286,10 +291,10 @@
     "lat": 60.18796785,
     "info": "kvarkki is a student restaurant located north of the undergraduate centre."
   },
-  "sähkö": {
+  "building of electrical engineering": {
     "aliases": [
-      "r004",
-      "sähkö"
+      "sähkö",
+      "building of electrical engineering"
     ],
     "building": null,
     "address": "Otakaari 5",
@@ -302,12 +307,13 @@
     "lat": 60.189196949999996,
     "info": "Home building for students of electrical engineering"
   },
-  "Elepaja": {
+  "electricity workshop": {
     "aliases": [
       "elepaja",
-      "sähköpaja"
+      "sähköpaja",
+      "electricity workshop"
     ],
-    "building": "r004",
+    "building": "building of electrical engineering",
     "address": "Otakaari 5",
     "osm": null,
     "osm_meta": null,
@@ -318,12 +324,11 @@
     "lat": 60.189196949999996,
     "info": "Electricity workshop is a place where one can build simple electronics"
   },
-  "K4": {
+  "fourth building of mechanical engineering": {
     "aliases": [
-      "r005",
       "k4",
-      "k4",
-      "aalto mechanical engineering 4"
+      "mechanical engineering 4",
+      "fourth building of mechanical engineering"
     ],
     "building": null,
     "address": "Sähkömiehentie 4",
@@ -336,12 +341,11 @@
     "lat": 60.1888272,
     "info": "One of the many buildings related to mechanical engineering"
   },
-  "K3": {
+  "third building of mechanical engineering": {
     "aliases": [
-      "r006",
       "k3",
-      "k3",
-      "aalto mechanical engineering 3"
+      "mechanical engineering 3",
+      "third building of mechanical engineering"
     ],
     "building": null,
     "address": "Puumiehenkuja 5",
@@ -354,12 +358,11 @@
     "lat": 60.18823485,
     "info": "One of the many buildings related to mechanical engineering"
   },
-  "K2": {
+  "second building of mechanical engineering": {
     "aliases": [
-      "r007",
       "k2",
-      "k2",
-      "aalto mechanical engineering 2"
+      "mechanical engineering 2",
+      "second building of mechanical engineering"
     ],
     "building": null,
     "address": "Puumiehenkuja 3",
@@ -372,13 +375,13 @@
     "lat": 60.1878711,
     "info": "One of the many buildings related to mechanical engineering"
   },
-  "K1": {
+  "first building of mechanical engineering": {
     "aliases": [
-      "r008",
       "k1",
       "kone",
-      "aalto mechanical engineering 1",
+      "mechanical engineering 1",
       "kone talo",
+      "first building of mechanical engineering",
       "konetalo"
     ],
     "building": null,
@@ -392,11 +395,11 @@
     "lat": 60.18731445,
     "info": "The home building for students of mechanical engineering"
   },
-  "sodexokone": {
+  "sodexo kone": {
     "aliases": [
-      "sodexokone"
+      "sodexo kone"
     ],
-    "building": "K1",
+    "building": "first building of mechanical engineering",
     "address": "Otakaari 4",
     "osm": "node=589913032",
     "osm_meta": null,
@@ -409,7 +412,6 @@
   },
   "nanotalo": {
     "aliases": [
-      "r009",
       "nanotalo"
     ],
     "building": null,
@@ -425,7 +427,6 @@
   },
   "ky espilä": {
     "aliases": [
-      "r010",
       "espilä",
       "ky espilä"
     ],
@@ -440,13 +441,12 @@
     "lat": 60.1874607,
     "info": "Espilä is where the ky board, employees and staff of the ky foundation work at"
   },
-  "kemma": {
+  "school of chemical engineering": {
     "aliases": [
-      "r011",
       "ke",
-      "r011",
       "aalto chemical engineering",
-      "kemma"
+      "kemma",
+      "school of chemical engineering"
     ],
     "building": null,
     "address": "Kemistintie 1",
@@ -463,7 +463,7 @@
     "aliases": [
       "maukas"
     ],
-    "building": "r011",
+    "building": "school of chemical engineering",
     "address": "Kemistintie 1",
     "osm": "node=2381695985",
     "osm_meta": null,
@@ -474,11 +474,11 @@
     "lat": 60.1835315,
     "info": "Restaurant located inside of the chemistry technics building"
   },
-  "r012": {
+  "building of materials science and technology": {
     "aliases": [
-      "r012",
       "vuori",
-      "aalto materials science and technology"
+      "aalto materials science and technology",
+      "building of materials science and technology"
     ],
     "building": null,
     "address": "Vuorimiehentie 2",
@@ -496,7 +496,7 @@
       "kasper",
       "sodexovuori"
     ],
-    "building": "r012",
+    "building": "building of materials science and technology",
     "address": "Vuorimiehentie 2",
     "osm": "node=2381696675",
     "osm_meta": null,
@@ -507,12 +507,11 @@
     "lat": 60.1828562,
     "info": "Restaurant inside the building of aalto materials science and technology"
   },
-  "r013": {
+  "building of forest products technology": {
     "aliases": [
-      "r013",
-      "r013",
       "puu",
-      "aalto forest products technology"
+      "aalto forest products technology",
+      "building of forest products technology"
     ],
     "building": null,
     "address": "Vuorimiehentie 1",
@@ -525,11 +524,10 @@
     "lat": 60.18156635,
     "info": "The building for department of forest products technology"
   },
-  "haukilahden lukio": {
+  "highschool of haukilahti": {
     "aliases": [
-      "r014",
-      "Haukilahden lukio",
-      "Highschool of haukilahti"
+      "haukilahden lukio",
+      "highschool of haukilahti"
     ],
     "building": null,
     "address": "Tekniikantie 3",
@@ -542,15 +540,15 @@
     "lat": 60.18087465000001,
     "info": "Highschool of haukilahti"
   },
-  "kirjasto": {
+  "learning center": {
     "aliases": [
-      "r015",
       "aalto-yliopiston kirjasto",
       "main library",
       "hh-center",
       "hh-keskus",
       "kirjasto",
       "aalto harald herlin learning center",
+      "library",
       "learning center"
     ],
     "building": null,
@@ -564,12 +562,13 @@
     "lat": 60.18474055,
     "info": "Harald Herlin learning center, commonly referenced as a library or main library"
   },
-  "Robert's Coffee": {
+  "roberts coffee": {
     "aliases": [
-      "Roberts",
-      "robert's coffee"
+      "roberts",
+      "robert's coffee",
+      "roberts coffee"
     ],
-    "building": "kirjasto",
+    "building": "learning center",
     "address": "Otaniementie 9",
     "osm": null,
     "osm_meta": null,
@@ -580,11 +579,11 @@
     "lat": 60.18474055,
     "info": "Cafe inside the harald herlin learning center"
   },
-  "r016": {
+  "building of marine technology": {
     "aliases": [
-      "r016",
-      "aalto ice tank",
-      "aalto marine technology"
+      "ice tank",
+      "marine technology",
+      "building of marine technology"
     ],
     "building": null,
     "address": "Tietotie 1",
@@ -599,7 +598,6 @@
   },
   "maari": {
     "aliases": [
-      "r017",
       "aalto maari building",
       "maarin talo",
       "maarintalo",
@@ -618,7 +616,6 @@
   },
   "saha": {
     "aliases": [
-      "r018",
       "saha"
     ],
     "building": null,
@@ -634,7 +631,7 @@
   },
   "dipoli": {
     "aliases": [
-      "r019",
+      "old main building",
       "fake main building",
       "dipoli"
     ],
@@ -709,11 +706,10 @@
     "lat": 60.18512695,
     "info": "Restaurant inside dipoli"
   },
-  "Otaniemen ostoskeskus": {
+  "otaniemi shopping center": {
     "aliases": [
       "mall",
-      "The shopping mall",
-      "r020",
+      "the shopping mall",
       "ostari",
       "otaniemen ostoskeskus",
       "otaniemi shopping center"
@@ -729,13 +725,13 @@
     "lat": 60.18406185,
     "info": "The mall of Otaniemi contains a grocery store, pharmacy, kiosk and a barbershop"
   },
-  "Alepa Otaniemi": {
+  "alepa": {
     "aliases": [
       "ruokakauppa",
       "grocery store",
-      "alepa otaniemi"
+      "alepa"
     ],
-    "building": "Otaniemen ostoskeskus",
+    "building": "Otaniemi shopping center",
     "address": "Otakaari 11",
     "osm": "node=301625473",
     "osm_meta": null,
@@ -746,13 +742,13 @@
     "lat": 60.18406185,
     "info": "The alepa in otaniemi can be found in the shopping center"
   },
-  "rkioski": {
+  "r kioski": {
     "aliases": [
       "kioski",
       "convenience store",
-      "rkioski"
+      "r kioski"
     ],
-    "building": "Otaniemen ostoskeskus",
+    "building": "otaniemi shopping center",
     "address": "Otakaari 11",
     "osm": "node=301625474",
     "osm_meta": null,
@@ -763,11 +759,11 @@
     "lat": 60.18406185,
     "info": "rkioski is a small kiosk in the otaniemi shopping center."
   },
-  "kynajapaperi": {
+  "kynä ja paperi": {
     "aliases": [
-      "kynajapaperi"
+      "kynä ja paperi"
     ],
-    "building": "Otaniemen ostoskeskus",
+    "building": "otaniemi shopping center",
     "address": "Otakaari 11",
     "osm": "node=4840360722",
     "osm_meta": null,
@@ -783,7 +779,7 @@
       "kinkkibuffa",
       "otafood"
     ],
-    "building": "Otaniemen ostoskeskus",
+    "building": "otaniemi shopping center",
     "address": "Otakaari 11",
     "osm": "node=5004956488",
     "osm_meta": null,
@@ -794,14 +790,15 @@
     "lat": 60.18406185,
     "info": "Otafood is a chinese restaurant located in the Otaniemi shopping center."
   },
-  "ATM": {
+  "atm": {
     "aliases": [
       "otto-automaatti",
       "pankkiautomaatti",
       "automated teller machine",
+      "automatic teller machine",
       "atm"
     ],
-    "building": "Otaniemen ostoskeskus",
+    "building": "otaniemi shopping center",
     "address": "Otakaari 11",
     "osm": "node=263964909",
     "osm_meta": null,
@@ -812,13 +809,12 @@
     "lat": 60.18406185,
     "info": "There is an Otto ATM located in the otaniemi shopping center."
   },
-  "r020-pharmacy": {
+  "pharmacy": {
     "aliases": [
-      "r020-pharmacy",
       "yliopiston apteekki",
       "pharmacy"
     ],
-    "building": "Otaniemen ostoskeskus",
+    "building": "otaniemi shopping center",
     "address": "Otakaari 11",
     "osm": "node=263964923",
     "osm_meta": null,
@@ -829,11 +825,9 @@
     "lat": 60.18406185,
     "info": "There is a pharmacy in the Otaniemi shopping center."
   },
-  "r024": {
+  "aalto architecture": {
     "aliases": [
-      "r024",
       "mt3",
-      "r024",
       "aalto architecture + helsinki medialab",
       "aalto architecture"
     ],
@@ -850,7 +844,6 @@
   },
   "design factory": {
     "aliases": [
-      "r025",
       "defa",
       "design factory"
     ],
@@ -870,7 +863,6 @@
       "pöhinä",
       "sauna",
       "pöhinä sauna",
-      "r026",
       "start up sauna"
     ],
     "building": null,
@@ -884,11 +876,10 @@
     "lat": 60.18055005,
     "info": "Start up sauna is a building where many events are held related to entrepreneurship"
   },
-  "r027": {
+  "architecture workshop": {
     "aliases": [
-      "r027",
       "arkkitehti paja",
-      "Architecture workshop"
+      "architecture workshop"
     ],
     "building": null,
     "address": "Metallimiehenkuja 4",
@@ -903,7 +894,6 @@
   },
   "otahalli": {
     "aliases": [
-      "r028",
       "otahalli"
     ],
     "building": null,
@@ -917,9 +907,8 @@
     "lat": 60.18422795,
     "info": "Otahalli is a large building near the shore. Its used mostly for sports"
   },
-  "Unisport": {
+  "unisport": {
     "aliases": [
-      "uni",
       "unisport"
     ],
     "building": "otahalli",
@@ -933,9 +922,8 @@
     "lat": 60.18422795,
     "info": "Unisport contains a variety of physical exercise possibilities"
   },
-  "Aalto Studios": {
+  "aalto Studios": {
     "aliases": [
-      "r029",
       "aalto studios"
     ],
     "building": null,
@@ -949,14 +937,11 @@
     "lat": 60.18902585,
     "info": "Aalto studios contain a variety of media studios"
   },
-  "T": {
+  "cs building": {
     "aliases": [
-      "r030",
-      "t",
       "subway building",
-      "cs",
-      "tikkitalo",
-      "aalto computer science"
+      "aalto computer science",
+      "cs building"
     ],
     "building": null,
     "address": "Konemiehentie 2",
@@ -969,12 +954,12 @@
     "lat": 60.18697,
     "info": "Department of computer science, better known as c s building or t talo"
   },
-  "Paniikki": {
+  "paniikki": {
     "aliases": [
       "panique computer lab",
       "paniikki"
     ],
-    "building": "T",
+    "building": "cs building",
     "address": "Konemiehentie 2",
     "osm": 91227653,
     "osm_meta": null,
@@ -985,13 +970,13 @@
     "lat": 60.18687665,
     "info": "The panique computer lab is the computer science departments own computer lab"
   },
-  "Sodexo": {
+  "sodexo cs": {
     "aliases": [
       "sodexo t talo",
       "sodexo t building",
-      "sodexo"
+      "sodexo cs"
     ],
-    "building": "T",
+    "building": "cs building",
     "address": "Konemiehentie 2",
     "osm": "node=580704688",
     "osm_meta": null,
@@ -1008,7 +993,7 @@
       "subi",
       "subway"
     ],
-    "building": "T",
+    "building": "cs building",
     "address": "Konemiehentie 2",
     "osm": "node=3575222399",
     "osm_meta": null,
@@ -1025,7 +1010,7 @@
       "library cs building",
       "cs building library"
     ],
-    "building": "T",
+    "building": "cs building",
     "address": "Konemiehentie 2",
     "osm": "node=5012868057",
     "osm_meta": null,
@@ -1036,9 +1021,8 @@
     "lat": 60.18697,
     "info": "A library inside the cs building"
   },
-  "oih": {
+  "open innovation house": {
     "aliases": [
-      "r032",
       "oih",
       "innovation house",
       "open innovation house"
@@ -1054,12 +1038,12 @@
     "lat": 60.187343299999995,
     "info": "Open innovation house is nowadays a shared learning facility between highschool, and university students"
   },
-  "oih_cafe": {
+  "oih cafe": {
     "aliases": [
-      "oih_cafe",
-      "innovation house cafe"
+      "innovation house cafe",
+      "oih cafe"
     ],
-    "building": "oih",
+    "building": "open innovation house",
     "address": "Maarintie 6",
     "osm": "node=5012868059",
     "osm_meta": null,
@@ -1070,9 +1054,8 @@
     "lat": 60.187343299999995,
     "info": "Cafe inside the open innovation house"
   },
-  "r034": {
+  "aalto water laboratory": {
     "aliases": [
-      "r034",
       "vesitalo",
       "aalto water laboratory"
     ],
@@ -1092,7 +1075,7 @@
       "fatlizard",
       "fat lizard"
     ],
-    "building": "r034",
+    "building": "aalto water laboratory",
     "address": "Tietotie 1 E",
     "osm": "node=5323641949",
     "osm_meta": null,
@@ -1103,9 +1086,8 @@
     "lat": 60.18564485,
     "info": "Fat lizard is a restaurant operated by a microbrewery under the same name"
   },
-  "r036": {
+  "micronova": {
     "aliases": [
-      "r036",
       "micronova"
     ],
     "building": null,
@@ -1119,11 +1101,11 @@
     "lat": 60.184766249999996,
     "info": "Micronova has two main cleanrooms for nanofabrication"
   },
-  "Nanofab": {
+  "nanofab": {
     "aliases": [
       "nanofab"
     ],
-    "building": "r036",
+    "building": "micronova",
     "address": "Tietotie 3",
     "osm": null,
     "osm_meta": null,
@@ -1134,12 +1116,13 @@
     "lat": 60.184766249999996,
     "info": "Laboratory inside the micronova building"
   },
-  "tuas": {
+  "tuas building": {
     "aliases": [
-      "r037",
       "tu",
       "as",
-      "tuas"
+      "tuas",
+      "department of industrial engineering",
+      "tuas building"
     ],
     "building": null,
     "address": "Maarintie 8",
@@ -1152,11 +1135,11 @@
     "lat": 60.1871553,
     "info": "Home building for students of industrial engineering"
   },
-  "Aalto Ventures Program": {
+  "aalto ventures program": {
     "aliases": [
       "aalto ventures program"
     ],
-    "building": "tuas",
+    "building": "tuas building",
     "address": "Maarintie 8",
     "osm": null,
     "osm_meta": null,
@@ -1167,11 +1150,11 @@
     "lat": 60.1871553,
     "info": "Aalto ventures program is located in the tuas building and exist for entrepreneurship education"
   },
-  "Amica TUAS": {
+  "amica tuas": {
     "aliases": [
       "amica tuas"
     ],
-    "building": "tuas",
+    "building": "tuas building",
     "address": "Maarintie 8",
     "osm": "node=580706218",
     "osm_meta": null,
@@ -1186,7 +1169,7 @@
     "aliases": [
       "library tuas"
     ],
-    "building": "tuas",
+    "building": "tuas building",
     "address": "Maarintie 8",
     "osm": "node=5012868058",
     "osm_meta": null,
@@ -1197,9 +1180,8 @@
     "lat": 60.1871553,
     "info": "Theres a library in tuas buildings first floor"
   },
-  "Aalto-yliopiston ylioppilaskunta": {
+  "aalto university student union": {
     "aliases": [
-      "r038",
       "ayy",
       "aalto-yliopiston ylioppilaskunta",
       "keto",
@@ -1218,11 +1200,10 @@
     "lat": 60.1846733,
     "info": "The cetral office of ayy handles student housing and facilities in Otaniemi"
   },
-  "r039": {
+  "aalto center entrepreneurship": {
     "aliases": [
-      "r039",
       "ace",
-      "Aalto center entrepreneurship"
+      "aalto center entrepreneurship"
     ],
     "building": null,
     "address": "Metallimiehenkuja 6-8",
@@ -1235,13 +1216,12 @@
     "lat": 60.18299815,
     "info": "Ace is for aalto entrepreneurship activities"
   },
-  "r040": {
+  "teknologföreningen": {
     "aliases": [
-      "r040",
       "urdsgjallar",
-      "r040",
       "täffä",
-      "tf"
+      "tf",
+      "teknologföreningen"
     ],
     "building": null,
     "address": "Otakaari 22",
@@ -1254,9 +1234,8 @@
     "lat": 60.186026150000004,
     "info": "Tf serves as a union for swedish native speaking student and täffä as a student restaurant"
   },
-  "Aalto Inn": {
+  "aalto inn": {
     "aliases": [
-      "r041",
       "aalto inn"
     ],
     "building": null,
@@ -1270,10 +1249,10 @@
     "lat": 60.184381200000004,
     "info": "Aalto inn is a long term residence for aalto affiliated visitors"
   },
-  "Ylioppilaiden terveydenhoitosäätiö": {
+  "student health service": {
     "aliases": [
-      "r042",
       "yhts",
+      "yths",
       "shvs",
       "fshs",
       "ylioppilaiden terveydenhoitosäätiö",
@@ -1292,7 +1271,6 @@
   },
   "chappel": {
     "aliases": [
-      "r043",
       "chappel"
     ],
     "building": null,
@@ -1306,10 +1284,9 @@
     "lat": 60.18936635,
     "info": "The house of daddy Jesus"
   },
-  "servinmokki": {
+  "servinmökki": {
     "aliases": [
-      "r044",
-      "servinmokki",
+      "servinmökki",
       "smökki"
     ],
     "building": null,
@@ -1323,11 +1300,38 @@
     "lat": 60.18842695,
     "info": "A large old building in the center of otaniemi that's used for student events"
   },
+  "ossinkulma": {
+    "aliases": [
+      "ossinkulma"
+    ],
+    "building": null,
+    "address": "Jämeräntaival 2",
+    "osm": null,
+    "osm_meta": null,
+    "type": null,
+    "parents": null,
+    "lon": 24.835288,
+    "lat": 60.188391,
+    "info": "Ossinkulma is a facility with sauna in the crossroads of jämeräntaival and otakaari"
+  },
+  "ossinsauna": {
+    "aliases": [
+      "ossinsauna"
+    ],
+    "building": "ossinkulma",
+    "address": "Jämeräntaival 2",
+    "osm": null,
+    "osm_meta": null,
+    "type": null,
+    "parents": "ossinkulma",
+    "lon": 24.835288,
+    "lat": 60.188391,
+    "info": "Ossinsauna is a sauna inside the ossinkulma"
+  },
   "rantasauna": {
     "aliases": [
-      "r045",
-      "rantasauna",
-      "rantsu"
+      "rantsu",
+      "rantasauna"
     ],
     "building": null,
     "address": "Vastaranta 1",
@@ -1340,9 +1344,9 @@
     "lat": 60.188227999999995,
     "info": "A sauna near the beach that is often used for student events"
   },
-  "Radisson Blu": {
+  "radisson blu": {
     "aliases": [
-      "r056",
+      "radisson",
       "radisson blu"
     ],
     "building": null,
@@ -1360,7 +1364,7 @@
     "aliases": [
       "ravintolaranta"
     ],
-    "building": "Radisson Blu",
+    "building": "radisson blu",
     "address": "Otaranta 2",
     "osm": "node=2071892285",
     "osm_meta": null,
@@ -1371,14 +1375,12 @@
     "lat": 60.1837079,
     "info": "Restaurant inside the radisson blu"
   },
-  "r067": {
+  "väre": {
     "aliases": [
-      "r067",
       "school of arts",
       "design and architecture",
       "school of business",
-      "väre",
-      "r067"
+      "väre"
     ],
     "building": null,
     "address": "Maarintie 13",
@@ -1391,12 +1393,9 @@
     "lat": 60.185421649999995,
     "info": "Väre is a new facility business and arts students"
   },
-  "metroA": {
+  "metro entrance a": {
     "aliases": [
-      "r069",
-      "metro centre",
-      "metro entrance a",
-      "metroa"
+      "metro entrance a"
     ],
     "building": null,
     "address": "Otaniementie 10",
@@ -1409,11 +1408,11 @@
     "lat": 60.1846405,
     "info": "One of the two metro entrances in Otaniemi. This one is just next to the learning center"
   },
-  "R-Kioski Metro A": {
+  "r kiosk metro": {
     "aliases": [
-      "r-kioski metro a"
+      "r kiosk metro"
     ],
-    "building": "metroA",
+    "building": "metro station",
     "address": null,
     "osm": "node=5317875517",
     "osm_meta": null,
@@ -1424,7 +1423,7 @@
     "lat": 60.1846405,
     "info": "R kiosk inside the metro station of otaniemi"
   },
-  "Metro entrance B": {
+  "metro entrance b": {
     "aliases": [
       "metro entrance b"
     ],
@@ -1439,22 +1438,22 @@
     "lat": 60.1853157,
     "info": "One of the two metro entrances in Otaniemi. This on is next to the fat lizard restaurant"
   },
-  "X-burger": {
+  "x burger": {
     "aliases": [
-      "x-burger"
+      "x burger"
     ],
-    "building": null,
+    "building": "otaniemi shopping center",
     "address": "Alvarin aukio 1",
     "osm": "node=82638832",
     "osm_meta": null,
     "opening_hours": null,
     "type": "restaurant",
     "parents": [],
-    "lon": 24.83092075,
-    "lat": 60.18406185,
+    "lon": null,
+    "lat": null,
     "info": "Burgerstand in the otaniemi shopping center"
   },
-  "Valimo": {
+  "valimo": {
     "aliases": [
       "tittybar",
       "valimo"
@@ -1470,7 +1469,7 @@
     "lat": 60.183644,
     "info": "Valimo is a restaurant"
   },
-  "Terveystalo Maari": {
+  "terveystalo maari": {
     "aliases": [
       "terveystalo maari"
     ],
@@ -1487,7 +1486,7 @@
   },
   "conversation room": {
     "aliases": [
-      "Talking box",
+      "talking box",
       "convroom",
       "conversation room"
     ],
@@ -1502,13 +1501,12 @@
     "lat": 60.18611695,
     "info": "Conversation room, also known as a big talking box next to the undergraduate centre"
   },
-  "Postilaatikko": {
+  "mailbox": {
     "aliases": [
-      "mail box",
       "postilaatikko",
-      "post box"
+      "mailbox"
     ],
-    "building": null,
+    "building": "otaniemi shopping center",
     "address": "Otakaari 11",
     "osm": "node=2379476285",
     "osm_meta": null,

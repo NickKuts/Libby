@@ -3,15 +3,13 @@ import re
 import util
 import location_utils
 
-
 # Open the JSON file containing all restaurant information
 _locations_json = 'locations.json'
 with open(_locations_json, 'r') as fp:
     _locations = json.load(fp)
 
-
 # Regex pattern for use in parser
-_re_patt = r'(?P<location{}>.+)'
+_re_patt = r'(?P<location>.+)'
 
 # Open the JSON file containing all sample utterances
 _sample_utts = 'sample_utterances.json'
@@ -20,15 +18,13 @@ with open(_sample_utts, 'r') as fp:
 
 # Set all utterances to be regex patterns
 for i in range(0, len(_samples)):
-    _samples[i] = _samples[i].lower() \
-                             .format(
-                                place=_re_patt.format(''), 
-                                place_two=_re_patt.format('_two'))
+    reg_str = _samples[i].replace('{place}', _re_patt)
+    _samples[i] = re.compile(reg_str)
 
-    
+
 def _existence(name):
     """
-    This function checks if the location can be found on disk, 
+    This function checks if the location can be found on disk,
     if not return None.
     :param name: the name of the location
     :return: the data of the name if it exists, otherwise None
@@ -48,13 +44,12 @@ def _existence(name):
         aliases = location['aliases']
         for al in aliases:
             # Here we use our _ratio_ function to look how closely these match
-            temp = location_utils.ratio(al.lower(), name)
+            temp = location_utils.ratio(al, name)
             # If the score is higher, change the candidate
             if temp > score:
                 curr = location
                 score = temp
 
-    # Finally return the closest match
     return curr
 
 
@@ -79,14 +74,14 @@ def address(event):
     find_addr = data.get('address', None)
     if find_addr:
         return 'The address of {} is {}'.format(
-                        name, find_addr.capitalize())
+            name, find_addr.capitalize())
 
     return addr
 
 
 def open_hours(event):
-    """ 
-    Simple function for returning opening hours of buildings, 
+    """
+    Simple function for returning opening hours of buildings,
     if they have them.
     :param event: the input event from Amazon Lex
     :return: a response depending on if the corresponding hours could be found
@@ -106,7 +101,7 @@ def open_hours(event):
     find_hours = data.get('opening_hours', None)
     if find_hours:
         return 'The opening hours for {} are the following: {}'.format(
-                        name, find_hours)
+            name, find_hours)
 
     return hours
 
@@ -118,30 +113,37 @@ def where_is(event):
     north side, west side, etc of Otaniemi
     """
 
-    slots, slot_names = find_slots(event)
+    slots = find_slots(event)
     if not slots:
         return "Sorry, I could not find that place"
 
-    # lat1 and lon1 are the coordinates of Alvarin aukio
+    # These are the coordinates of Alvarin aukio
     lat1, lon1 = 60.185739, 24.828786
 
-    # Takes the latitude and longitude of a given slots. Incase they are null, the function returns default answer
+    # Takes the latitude and longitude of the place given by user
     lat2, lon2 = slots[0]['lat'], slots[0]['lon']
 
     if not (lat2 and lon2):
         return "Sorry, I could not find where that is"
 
     # Takes the name of the place that user is looking for
-    place = slots[0]['aliases'][-1]
-    angle = location_utils.angle(lat1, lon1, lat2, lon2)
-    direction = location_utils.direction(angle)
+    location_name = slots[0]['aliases'][-1]
+    direction = location_utils.compass_point(lat1, lon1, lat2, lon2)
     distance = location_utils.distance(lat1, lon1, lat2, lon2)
+    building = slots[0]['building']
+
+    """
+    Incase user asks 'where is reima', the answer is 'reima is in dipoli'
+    this is more meaningful
+    """
+    if building:
+        return "{} is in the {}".format(location_name, building)
 
     # In case the place is in a distance of less than 100 metres, it's concidered to be "in the middle area"
     if distance <= 100:
-        return "{} is in the middle area of Otaniemi".format(place)
+        return "{} is in the middle area of Otaniemi".format(location_name)
 
-    return "{} is in the {} area of Otaniemi".format(place, direction)
+    return "{} is in the {} area of Otaniemi".format(location_name, direction)
 
 
 def find_slots(event):
@@ -150,28 +152,33 @@ def find_slots(event):
     checks whether there exists object for such value and if does, it appends the returned json objects into the array
     which is then returned at the end
     """
-    slot_names = []
-    slot_objects = []
+
     slots = event['currentIntent']['slots']
+    ret = []
     for slot in slots:
         if slots[slot]:
             slot_obj = _existence(slots[slot])
             if slot_obj:
-                slot_objects.append(slot_obj)
-                slot_names.append(slots[slot])
+                ret.append(slot_obj)
 
-    return slot_objects, slot_names
+    if ret:
+        return ret
+
+    parsed = _parse_trans(event['inputTranscript'])
+    existing_object = _existence(parsed)
+    return [existing_object]
 
 
 def direction_to(event):
     """
-    Tries to find relative path from start point to end location that user has provided
+    Uses the information in event and tries to provide the user with info between the two points
+    he or she has given to the libby
     """
 
     def helper(trans):
         """
         Little helper function to check whether user wants to get 'from a to b'
-        or then 'to a from b'
+        or 'to a from b'
         """
         word_array = reversed(trans.split(" "))
         ordering = 0
@@ -186,7 +193,7 @@ def direction_to(event):
         return ordering
 
     user_input = event['inputTranscript']
-    slot_values, slot_names = find_slots(event)
+    slot_values = find_slots(event)
 
     if len(slot_values) <= 1:
         return "Sorry, I could not find directions with these instructions"
@@ -194,7 +201,7 @@ def direction_to(event):
     lat1, lon1 = slot_values[0]['lat'], slot_values[0]['lon']
     lat2, lon2 = slot_values[1]['lat'], slot_values[1]['lon']
 
-    first_place, second_place = slot_names[0], slot_names[1]  # slot_values[0], slot_values[1]
+    first_place, second_place = slot_values[0]['aliases'][-1], slot_values[1]['aliases'][-1]
 
     if not ((lat1 and lon1) and (lat2 and lon2)):
         return "Sorry I could not route from {} to {}".format(first_place, second_place)
@@ -202,13 +209,16 @@ def direction_to(event):
     order = helper(user_input)
     distance = location_utils.distance(lat1, lon1, lat2, lon2)
 
+    if first_place == slot_values[1]['building']:
+        return "{} is in {}".format(second_place, first_place)
+    if second_place == slot_values[0]['building']:
+        return "{} is in {}".format(first_place, second_place)
+
     if order == -1:
-        angle = location_utils.angle(lat1, lon1, lat2, lon2)
-        direction = location_utils.direction(angle)
+        direction = location_utils.compass_point(lat1, lon1, lat2, lon2)
         return "{} is {} metres {} from {}".format(second_place, distance, direction, first_place)
     else:
-        angle = location_utils.angle(lat2, lon2, lat1, lon1)
-        direction = location_utils.direction(angle)
+        direction = location_utils.compass_point(lat1, lon1, lat2, lon2)
         return "{} is {} metres {} from {}".format(first_place, distance, direction, second_place)
 
 
@@ -224,23 +234,26 @@ def info(event):
     # Extract the name and data
     name, data = _process_name(event)
 
-    # We create an answer string in case everything fails
-    # (for example if something is wrong with our locations.json file)
-    resp = 'Unfortunately I am not able to find any information about {}' \
-           ' but try to ask me something else about it'.format(name)
-
     # If there is no data, then there is no location,
     # so we tell this to the user
     if not data:
-        return "Unfortunately I do not know such a location as {}".format(name)
+        return "Unfortunately I do not know such a location as {}".format(name)
 
-    # Else we try to extract the information and then return this
-    return data.get('info', resp)
+    # Else we try to extract the information
+    find_info = data.get('info', None)
+
+    # If there is prepared information about the location,
+    # we tell this to the user
+    if find_info:
+        return find_info
+
+    return 'Unfortunately I am not able to find any information about {}' \
+           ' but try to ask me something else about it'.format(name)
 
 
 def _return_name(event):
     """
-    This function simply returns the name of the location found in the query, 
+    This function simply returns the name of the location found in the query,
     if it exists.
     If the slot does not exist the function simply returns None.
     :param event: the input event from Amazon Lex
@@ -258,19 +271,20 @@ def _return_name(event):
             val = temp
 
     return val
-    
 
-def _checker(trans, place):
+
+def _checker(trans):
     """
     This function finds the correct function for the answer.
-    E.g. if the query of the user contains address the query is routed to the   
+    E.g. if the query of the user contains address the query is routed to the
     'address' function that finds the address.
     :param trans: the inputTranscript from the input data from Amazon Lex
     :return: the function dependent on the inputTranscript
     """
+
     def helper(strings):
-        """ 
-        Helper function for checking if any from list of strings are
+        """
+        Helper function for checking if a any from list of strings are
         contained in the inputTranscript.
         :param strings: a list of strings that correspond to a certain function
         :return: a boolean value if any elements exist in the string
@@ -280,19 +294,79 @@ def _checker(trans, place):
                 return True
         return False
 
-    # Create a list with strings that should lead to the address function 
+    # Create a list with strings that should lead to the address function
     # being used
     address_str = ['address', 'location']
 
     if helper(address_str):
         return address
-    if 'open' in trans and not 'open' in place:
+    if 'open' in trans:
         return open_hours
     if 'where is' in trans:
         return where_is
     if 'from' in trans and 'to' in trans:
         return direction_to
     return info
+
+
+def _parse_trans(trans):
+    """
+    Parse inputTranscript.
+    This function is used when Amazon Lex is not capable of finding the
+    correct slot value for an input. The function utilizes all sample
+    utterances (that it assumes have been processed already, i.e. put
+    as regex patterns) and checks through the inputTranscript with
+    regex patterns consisting of these utterances. However, some
+    utterances may be very similar, so the function saves all matches
+    and the corresponding regex pattern to then run the longest found
+    string through all regex patterns. This shaves of "unnecessary" parts
+    of each string.
+    :param trans: the inputTranscript to be parsed
+    :return: the extracted location name
+    """
+
+    # Save all matches here, they should be saved as tuples where the first
+    # element is the regex pattern and the second the string found
+    matches = []
+
+    # Go through each regex pattern
+    for sample in _samples:
+        m = sample.fullmatch(trans)
+        # The regex pattern is built such that the "found" building is saved
+        # under the parameter name '_locations'
+        if m:
+            try:
+                # We need to use a try-catch as some regex patterns from the
+                # sample utterances do not have the "string-finding" part, so
+                # no 'location' is found.
+                matches.append((sample, m.group('location')))
+            except IndexError:
+                pass
+
+    # Sort the array in-place, we need the longest string first so that the
+    # "shaving" works properly
+    matches.sort(key=lambda t: len(t[1]), reverse=True)
+    # Use an empty string placeholder in case no matches were found
+    longest = ''
+
+    # There should never be a case where no regex pattern matches, however,
+    # better safe than sorry
+    if len(matches) > 0:
+        longest = matches[0][1]
+        for reg in matches:
+            # Here is where the shaving happens, the longest string gets put
+            # through "stricter" regex patterns to that all unnecessities
+            # diminish
+            m = reg[0].fullmatch(longest)
+            if m:
+                try:
+                    # Same as above
+                    longest = m.group('location')
+                except IndexError:
+                    pass
+
+    # And finally return the shaved longest string (if such was found)
+    return longest
 
 
 def _process_name(event):
@@ -310,8 +384,7 @@ def _process_name(event):
     # First check if we can find the name through the slot value
     name = _return_name(event)
     # If not, check with the parser
-    if not name:
-        name = location_utils.parse_trans(event['inputTranscript'].lower(), _samples)
+    name = name if name else _parse_trans(event['inputTranscript'].lower())
     # And then try to extract the data from our local JSON file
     data = _existence(name)
 
@@ -328,10 +401,8 @@ def location_handler(event):
 
     # Extract the inputTranscript from the input event
     trans = event['inputTranscript']
-    # Also extract the slot value, in case we have to check for something in it
-    place = event['currentIntent']['slots'].get('place', None)
     # And send it to the checker to find the right function for handling
-    func = _checker(trans, str(place))
+    func = _checker(trans)
 
     # Save the response from the function
     ans = func(event)
