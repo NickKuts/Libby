@@ -11,19 +11,99 @@ json_dir = './api_testing/data_files/'
 
 
 """
-   AWS INPUT(SEARCH TERM)                     ->parse_subject()-->OUTPUT TO AWS
-                         \                   /           |        A        
-                          \                 /            |       /
-                           \               /             V      /
-                            ->subject_info()          find_info()<==>record()
-                                  A                     |  A
-                                  |                     |  |
-                                  |                     V  |
-    AWS INPUT(EXTRA INFO)--->extra_info()              parse_book()
+   AWS INPUT(SEARCH TERM)---->subject_info()---->parse_subject()-->OUTPUT TO AWS
+                                 A            A   |      |        A        
+                                 |           /    |      |       /
+                                 |          /     |      V      /
+                                 | author_search()|   find_info()
+                                 |    A           |     |  A
+                                 |    |           |     |  |
+                                 |    |           |     V  |
+    AWS INPUT(EXTRA INFO)--->extra_info()         |  locate_book()
+                                                  V
+    AWS INPUT(AUTHOR INFO)--->find_info_author()---->parse_author()-->OUTPUT
 """
 
 
-def parse_book(info):
+# Author intent use this.
+def find_info_author(intent):
+    text = intent['inputTranscript'].lower()
+    utterances = AS.load_file('author_utterances.txt')
+    to_drop = 0
+    # this takes utterances off
+    for line in utterances:
+        if text.startswith(line):
+            to_drop = len(line)
+            break
+
+    author_text = text[to_drop:].strip()
+
+    # this checks that author exists
+    author = AS.search(author_text)
+    request = lookfor(term=author)['json']
+
+    return parse_author(request, {'author': author})
+
+
+def parse_author(request, session_attributes):
+    """
+    :param request: JSON data from the Finna API
+    :param author: Author term of the current session
+    :param session_attributes: session attributes for current session if user
+    has given some
+    :return: Response to AWS server in JSON format
+    """
+
+    # if author was not found
+    author = session_attributes.get('author')
+    if not author:
+        message = "I'm sorry. I couldn't catch the author" + str(author) + \
+                  ". Please try again."
+        return util.elicit_intent({'author': author}, message)
+
+
+    result_count = request['resultCount']
+
+    # find all titles if title does not already exist in list. And sort them.
+    real_count = 0
+    find = []
+
+    for record in request['records']:
+        authors = record.get('nonPresenterAuthors')
+        has_written = False
+        for a in authors:
+            # print(a.get('name').lower(), " == ", author)
+            if a.get('name').lower() == author:
+                # print("has written:", author)
+                has_written = True
+                break
+        if has_written:
+            title = record.get('title')
+            if title:
+                if title is not find:
+                    find.append(title)
+                    real_count += 1
+
+    # at most three books
+    find = sorted(find)
+    print(str(find))
+    if len(find) > 3:
+        find = find[:3]
+        find.append("others")
+
+    message = author + " has written books " \
+                     + util.make_string_list(find)
+
+    # only one book was found
+    if result_count == 1:
+        message = author + " has written a book " + find[0]
+    # many books was found
+    else:
+        message = author + " has written books " + util.make_string_list(find)
+    return util.elicit_intent({'author': author}, message)
+
+
+def locate_book(info):
     """
     Parses the record's data and constructs a message from the data. Wanted
     info is given as a parameter in JSON format. Default info is data
@@ -32,23 +112,9 @@ def parse_book(info):
     :return: Message constructed from the data
     """
     ret = []
-    output = "Parse error"
-    print("info", info)
+    output = "I'm sorry, there was an problem with this book in the " \
+             "database parse error"
     for elem in info:
-        # print("elem: " + str(elem))
-        """
-        if 'name' in elem:
-            ret.append(elem['name'])
-            if len(ret) > 1:
-                output = "Authors of this book is "
-            else:
-                output = "Author of this book is "
-        elif re.compile('[0-9]{4}').match(str(elem)):
-            ret.append(elem)
-            output = "This book was published in "
-        else:
-        """
-        # print("elem: " + elem['value'])
         if re.compile("1/AALTO/([a-z])*/").match(elem['value']):
             ret.append(elem['translated'])
             output = "This book is located in "
@@ -58,77 +124,6 @@ def parse_book(info):
         if len(ret) == 2:
             ret = ret[1:]
     return output + util.make_string_list(ret)
-
-
-# Author intent use that.
-def find_info_author(intent):
-    text = intent['inputTranscript'].lower()
-    utterances = AS.load_file('author_utterances.txt')
-    to_drop = 0
-
-    # this takes utterances off
-    for line in utterances:
-        if text.startswith(line):
-            to_drop = len(line)
-            break
-
-    author_text = text[to_drop:].strip()
-    # this checks that author is real
-    author = find_author(author_text)
-    request = lookfor(term=author)['json']
-    # print("___result count___:", request['resultCount'], author)
-
-    return parse_author(request, author)
-
-
-def parse_author(request, author):
-    """
-    :param request: JSON data from the Finna API
-    :param author: Author term of the current session
-    :return: Response to AWS server in JSON format
-    """
-    if not author:
-        message = "I'm sorry. I couldn't catch the author you were looking " \
-                  "for. Please try again."
-        return util.elicit_intent({}, message)
-
-    result_count = request['resultCount']
-    # print("result parse subject ", result_count)
-    # print("author ", author)
-
-    # find all titles and sort them.
-    real_count = 0
-    find = []
-    while real_count < result_count and real_count < 20:
-        if request['records'][real_count]['title']:
-            title = request['records'][real_count]['title']
-        if title is not find:
-            find.append(title)
-        real_count += 1
-
-    # at most three books
-    find = sorted(find)
-    # find_finally = []
-    # count = 0
-    if result_count <= 3:
-        find = find[:real_count]
-    else:
-        find = find[:3]
-    """
-    while count < 3 and count < len(find):
-        take_off = find[(len(find)-count-1):]
-        if count < 0:
-            take_off = take_off[:(count-1)]
-        find_finally.append(take_off)
-        count += 1
-    """
-
-    if result_count > 3:
-        find.append("others")
-    message = author + " has written books " \
-                     + util.make_string_list(find)
-
-    return util.elicit_intent({'author': author}, message)
 
 
 def find_info(book_id, field='buildings'):
@@ -142,26 +137,31 @@ def find_info(book_id, field='buildings'):
     print("count", request['resultCount'])
     if request['status'] == 'OK':
         # print(request['json']['records'][0])
-        field_info = request['records'][0][field]
-        message = parse_book(field_info)
-        return util.elicit_intent({'book_id': book_id}, message)
+        message = locate_book(request['records'][0]['buildings'])
+        return util.elicit_intent({'book_id': book_id, 'author': None},
+                                  message)
     else:
-        return util.close({}, 'Fulfilled', "Something went wrong")
+        return util.close({'author': None}, 'Fulfilled', "Something went wrong")
 
 
-def parse_subject(request, subject, author=None):
+def parse_subject(request, subject, session_attributes={}):
     """
     :param request: JSON data from the Finna API
     :param subject: Subject or search term of the current session
+    :param session_attributes: session attributes for current session if user
+    has given some
     :return: Response to AWS server in JSON format
     """
     message = "Something went wrong"
+    author = session_attributes.get('author')
     if subject is "":
-        return util.elicit_intent({}, "I'm sorry. I was not able to catch "
-                                      "what book you wanted to find. Could "
-                                      "you please repeat.")
-    # if request['status'] == 'no info':
-    # message = "No extra info was found222"
+        if author:
+            return parse_author(request, {'author': author})
+        return util.elicit_intent(session_attributes, "I'm sorry. I was not "
+                                                      "able to catch what book"
+                                                      " you wanted to find. "
+                                                      "Could you please repeat."
+                                  )
     if request['status'] == 'OK':
         result_count = request['resultCount']
         print("result parse subject ", result_count)
@@ -202,10 +202,10 @@ def parse_subject(request, subject, author=None):
             else:
                 message = "I found " + str(result_count) + " books with " \
                           + subject + " by author " + author + ". Can you " \
-                        "give the publication date for example to narrow down" \
-                          " the search."
+                          "give the publication date for example to narrow " \
+                          "down the search."
  
-    return util.elicit_intent({'subject': subject}, message)
+    return util.elicit_intent({'subject': subject, 'author': author}, message)
 
 
 def subject_info(intent, extra_info=[]):
@@ -231,14 +231,13 @@ def subject_info(intent, extra_info=[]):
     text = text[to_drop:].strip()
     text_list = text.split(' ', len(text))
 
-    print("text_list: ", str(text_list))
+    # print("text_list: ", str(text_list))
 
     subject_list = []
     keywords = ["books", "book", "by", "published", "written"]
     keyword = ""
 
     # Find when the book name ends
-
     for word in text_list:
         if word not in keywords:
             subject_list.append(word)
@@ -249,20 +248,25 @@ def subject_info(intent, extra_info=[]):
 
     # Get all the keywords in the middle, so they can be
     # all be dropped at once, eg written by, books by
-
-    word = text_list[0]
-    while word in keywords:
-        text_list = text_list[1:]
+    text_list = text_list[len(subject_list):]
+    if text_list:
         word = text_list[0]
-        keyword += word + " "
+        while word in keywords:
+            keyword += word + " "
+            text_list = text_list[1:]
+            if text_list:
+                word = text_list[0]
+            else:
+                break
 
-    author_text = text[len(subject) + 1 + len(keyword):].strip()
-    author = find_author(author_text)
-
-    print("subject: ", subject)
-    print("Author text", author_text) 
-    print("Author:", author)
-    print("extra info", extra_info)
+    author_text = text[len(keyword):].strip()
+    author = AS.search(author_text)
+    if author is "":
+        author = None
+    # print("subject: ", subject)
+    # print("Author text", author_text)
+    # print("Author:", author)
+    # print("extra info", extra_info)
    
     # There might be old info in the extra_info (author), so 
     # we need to clear it
@@ -272,11 +276,15 @@ def subject_info(intent, extra_info=[]):
         extra_info += [
             "author:\"" + author + "\""
         ]
+    elif intent['sessionAttributes'].get('author'):
+        extra_info += [
+            "author:\"" + intent['sessionAttributes']['author'] + "\""
+        ]
 
     request = lookfor(term=subject, filter=extra_info)['json']
-    print("___result count___:", request['resultCount'], subject)
+    # print("___result count___:", request['resultCount'], subject)
     
-    return parse_subject(request, subject, author)
+    return parse_subject(request, subject, {'author': author})
 
 
 def extra_info(intent):
@@ -285,6 +293,7 @@ def extra_info(intent):
     :return: Response to AWS server in JSON format
     """
     subject = intent['sessionAttributes']['subject']
+    author = intent['sessionAttributes'].get('author')
     slots = intent['currentIntent']['slots']
     input = intent['inputTranscript']
     lower = 0
@@ -307,29 +316,23 @@ def extra_info(intent):
             upper) + "]\""
         extra_info = [date]
         request = lookfor(term=subject, filter=extra_info)['json']
+        session_attributes = {'lower': lower, 'upper': upper, 'author': author}
 
-        return parse_subject(request, subject) 
+        return parse_subject(request, subject, session_attributes)
     else:
         return author_search(intent, subject)
 
 
 def author_search(intent, subject):
 
-    author = find_author(intent['inputTranscript'])
+    author = AS.search(intent['inputTranscript'])
 
     if author:
         request = lookfor(subject, filter=["author:\"" + author + "\""])['json']
-        print("FILTER: " + "author:\"" + author + "\"")
-        return parse_subject(request, subject, author)
+        return parse_subject(request, subject, {'author': author})
 
-    return util.elicit_intent({'subject': subject},
+    return util.elicit_intent({'subject': subject, 'author': author},
                               "No extra information was given.")
-
-
-def find_author(text):
-    author = AS.search(text, False)
- 
-    return author
 
 
 def record(id, field=[], method='GET', pretty_print='0'):
