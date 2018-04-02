@@ -5,7 +5,7 @@ import time
 
 class TestIntentFactory(unittest.TestCase):
     i = IntentFactory() 
-    test_all = False
+    test_all = True
     fname = 'intents/intent_test.json'
 
     def test_save(self):
@@ -24,11 +24,12 @@ class TestIntentFactory(unittest.TestCase):
 
     def test_create_update_remove(self):
         if self.test_all:
+            time.sleep(10)
             ret1 = self.i.create_intent(self.fname)
             assert(ret1 is not None)
             
             #There is a progress still ongoing
-            time.sleep(10)
+            time.sleep(40)
             ret2 = self.i.update_intent(self.fname)
             assert(ret2 is not None)
 

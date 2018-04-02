@@ -4,7 +4,7 @@ import json
 
 class SlotFactory:
 
-    def __init__(self):
+    def __init__(self): 
         self.client = boto3.client('lex-models')
 
     def load_slot_from_file(self, fname):        
