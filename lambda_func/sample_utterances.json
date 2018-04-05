@@ -1,1 +1,21 @@
-["{place}", "where is {place}", "where can i find {place}", "where is the {place}", "where is", "is {place}", "address of {place}", "location of {place}", "address of", "address to", "where can i get food", "{place} openinghours", "opening hours of {place}", "how to get to {place}", "how can i get to {place}", "how does one get to {place}", "streetaddress of {place}", "street address of {place}", "to {place}", "how to get from {place} to {place_two}", "{place} {place_two}", "what is the address of {place}", "what's the address of {place}"]
+[
+    "{place}",
+    "where is {place}",
+    "where can i find {place}",
+    "where is the {place}",
+    "where is",
+    "address of {place}",
+    "location of {place}",
+    "where can i get food",
+    "{place} openinghours",
+    "opening hours of {place}",
+    "how to get to {place}",
+    "streetaddress of {place}",
+    "street address of {place}",
+    "how to get from {place} to {place_two}",
+    "{place} {place_two}",
+    "what is the address of {place}",
+    "what's the address of {place}",
+    "how to get to {place} from {place_two}",
+    "tell me about {place}"
+]

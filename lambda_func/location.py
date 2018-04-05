@@ -1,5 +1,4 @@
 import json
-import re
 import util
 import location_utils
 
@@ -9,7 +8,7 @@ with open(_locations_json, 'r') as fp:
     _locations = json.load(fp)
 
 # Regex pattern for use in parser
-_re_patt = r'(?P<location>.+)'
+_re_patt = r'(?P<location{}>.+)'
 
 # Open the JSON file containing all sample utterances
 _sample_utts = 'sample_utterances.json'
@@ -18,8 +17,8 @@ with open(_sample_utts, 'r') as fp:
 
 # Set all utterances to be regex patterns
 for i in range(0, len(_samples)):
-    reg_str = _samples[i].replace('{place}', _re_patt)
-    _samples[i] = re.compile(reg_str)
+    _samples[i] = _samples[i].replace('{place}', _re_patt.format('')).replace('{place_two}', _re_patt.format('_two'))
+#    _samples[i] = re.compile(reg_str)
 
 
 def _existence(name):
@@ -164,7 +163,7 @@ def find_slots(event):
     if ret:
         return ret
 
-    parsed = _parse_trans(event['inputTranscript'])
+    parsed = location_utils.parse_trans(event['inputTranscript'], _samples)
     existing_object = _existence(parsed)
     return [existing_object]
 
@@ -234,21 +233,26 @@ def info(event):
     # Extract the name and data
     name, data = _process_name(event)
 
+    resp = 'Unfortunately I am not able to find any information about {}' \
+           ' but try to ask me something else about it'.format(name)
+
     # If there is no data, then there is no location,
     # so we tell this to the user
     if not data:
         return "Unfortunately I do not know such a location as {}".format(name)
 
-    # Else we try to extract the information
-    find_info = data.get('info', None)
+    return data.get('info', resp)
 
-    # If there is prepared information about the location,
-    # we tell this to the user
-    if find_info:
-        return find_info
-
-    return 'Unfortunately I am not able to find any information about {}' \
-           ' but try to ask me something else about it'.format(name)
+#    # Else we try to extract the information
+#    find_info = data.get('info', None)
+#
+#    # If there is prepared information about the location,
+#    # we tell this to the user
+#    if find_info:
+#        return find_info
+#
+#    return 'Unfortunately I am not able to find any information about {}' \
+#           ' but try to ask me something else about it'.format(name)
 
 
 def _return_name(event):
@@ -273,7 +277,7 @@ def _return_name(event):
     return val
 
 
-def _checker(trans):
+def _checker(trans, place, place_two):
     """
     This function finds the correct function for the answer.
     E.g. if the query of the user contains address the query is routed to the
@@ -281,6 +285,8 @@ def _checker(trans):
     :param trans: the inputTranscript from the input data from Amazon Lex
     :return: the function dependent on the inputTranscript
     """
+
+    trans = trans.replace(place, '').replace(place_two, '')
 
     def helper(strings):
         """
@@ -300,73 +306,13 @@ def _checker(trans):
 
     if helper(address_str):
         return address
-    if 'open' in trans:
+    if 'open' in trans.replace(place, ''):#'open' in trans and 'open' in place:
         return open_hours
     if 'where is' in trans:
         return where_is
     if 'from' in trans and 'to' in trans:
         return direction_to
     return info
-
-
-def _parse_trans(trans):
-    """
-    Parse inputTranscript.
-    This function is used when Amazon Lex is not capable of finding the
-    correct slot value for an input. The function utilizes all sample
-    utterances (that it assumes have been processed already, i.e. put
-    as regex patterns) and checks through the inputTranscript with
-    regex patterns consisting of these utterances. However, some
-    utterances may be very similar, so the function saves all matches
-    and the corresponding regex pattern to then run the longest found
-    string through all regex patterns. This shaves of "unnecessary" parts
-    of each string.
-    :param trans: the inputTranscript to be parsed
-    :return: the extracted location name
-    """
-
-    # Save all matches here, they should be saved as tuples where the first
-    # element is the regex pattern and the second the string found
-    matches = []
-
-    # Go through each regex pattern
-    for sample in _samples:
-        m = sample.fullmatch(trans)
-        # The regex pattern is built such that the "found" building is saved
-        # under the parameter name '_locations'
-        if m:
-            try:
-                # We need to use a try-catch as some regex patterns from the
-                # sample utterances do not have the "string-finding" part, so
-                # no 'location' is found.
-                matches.append((sample, m.group('location')))
-            except IndexError:
-                pass
-
-    # Sort the array in-place, we need the longest string first so that the
-    # "shaving" works properly
-    matches.sort(key=lambda t: len(t[1]), reverse=True)
-    # Use an empty string placeholder in case no matches were found
-    longest = ''
-
-    # There should never be a case where no regex pattern matches, however,
-    # better safe than sorry
-    if len(matches) > 0:
-        longest = matches[0][1]
-        for reg in matches:
-            # Here is where the shaving happens, the longest string gets put
-            # through "stricter" regex patterns to that all unnecessities
-            # diminish
-            m = reg[0].fullmatch(longest)
-            if m:
-                try:
-                    # Same as above
-                    longest = m.group('location')
-                except IndexError:
-                    pass
-
-    # And finally return the shaved longest string (if such was found)
-    return longest
 
 
 def _process_name(event):
@@ -384,7 +330,7 @@ def _process_name(event):
     # First check if we can find the name through the slot value
     name = _return_name(event)
     # If not, check with the parser
-    name = name if name else _parse_trans(event['inputTranscript'].lower())
+    name = name if name else location_utils.parse_trans(event['inputTranscript'].lower(), _samples)
     # And then try to extract the data from our local JSON file
     data = _existence(name)
 
@@ -401,8 +347,15 @@ def location_handler(event):
 
     # Extract the inputTranscript from the input event
     trans = event['inputTranscript']
+    # Also extract the slot value, in case we have to check for something in it
+    place = event['currentIntent']['slots'].get('place', '')
+    place_two = event['currentIntent']['slots'].get('place_two', '')
+    if not place:
+        place = ''
+    if not place_two:
+        place_two = ''
     # And send it to the checker to find the right function for handling
-    func = _checker(trans)
+    func = _checker(trans, place, place_two)
 
     # Save the response from the function
     ans = func(event)

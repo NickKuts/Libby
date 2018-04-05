@@ -356,7 +356,7 @@ class TestLocation(unittest.TestCase):
     def _test_info_error(self):
         self.func_info_error(True)
 
-    def test_direction_to(self):
+    def _test_direction_to(self):
         """
         This test check whether our _direction_to_ function works properly.
         It iterates through all possible combinations and checks if these give a proper
@@ -431,9 +431,9 @@ class TestLocation(unittest.TestCase):
             event_response = location.location_handler(event)
             response = self.extract_response(event_response)
 
-            msg = "With one location being 'None' (other being {}) we got an answer not containing 'Sorry'"
+            msg = "With one location being 'None' (other being {}) we got an answer not containing 'Sorry':\n\t{}"
 
             self.assertTrue(
                 "Sorry" in response,
-                msg.format(loc)
+                msg.format(loc, response)
             )
