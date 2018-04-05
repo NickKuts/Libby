@@ -2,6 +2,7 @@ import json
 import util
 import location_utils
 
+
 # Open the JSON file containing all restaurant information
 _locations_json = 'locations.json'
 with open(_locations_json, 'r') as fp:
@@ -18,7 +19,9 @@ with open(_sample_utts, 'r') as fp:
 # Set all utterances to be regex patterns
 for i in range(0, len(_samples)):
     _samples[i] = _samples[i].replace('{place}', _re_patt.format('')).replace('{place_two}', _re_patt.format('_two'))
-#    _samples[i] = re.compile(reg_str)
+
+# This is the threshold for the score is low, i.e. we are "uncertain" of the location (see: __existence_) 
+_score_thres = 50
 
 
 def _existence(name):
@@ -26,7 +29,8 @@ def _existence(name):
     This function checks if the location can be found on disk,
     if not return None.
     :param name: the name of the location
-    :return: the data of the name if it exists, otherwise None
+    :return: the data of the name if it exists, otherwise None, along with its
+             score
     """
 
     # Set the name to lowercase for easier matching
@@ -49,7 +53,8 @@ def _existence(name):
                 curr = location
                 score = temp
 
-    return curr
+    # And finally return the 'best' candidate along with its score
+    return curr, score
 
 
 def address(event):
@@ -63,7 +68,7 @@ def address(event):
     addr = "Sorry, I could not find an address for that location"
 
     # Extract the name and data
-    name, data = _process_name(event)
+    name, data, score = _process_name(event)
 
     # Check if there exists any corresponding data
     if not data:
@@ -72,9 +77,15 @@ def address(event):
     # And finally check if this location has any address
     find_addr = data.get('address', None)
     if find_addr:
-        return 'The address of {} is {}'.format(
-            name, find_addr.capitalize())
+        # We also check whether the score for the location was low 
+        # (i.e. uncertain)
+        if score < _score_thres:
+            return 'I am not certain if you meant {}, but the ' \
+                    'address of this location is {}'.format(name, find_addr)
+        else:
+            return 'The address of {} is {}'.format(name, find_addr)
 
+    # And in a worst case scenario, we return the fail response
     return addr
 
 
@@ -90,7 +101,7 @@ def open_hours(event):
     hours = 'Sorry, I could not find any opening hours for this location'
 
     # Extract the name and data
-    name, data = _process_name(event)
+    name, data, score = _process_name(event)
 
     # Check if there actually existed any data in the first place
     if not data:
@@ -99,9 +110,15 @@ def open_hours(event):
     # And now check if the data includes any opening hours at all
     find_hours = data.get('opening_hours', None)
     if find_hours:
-        return 'The opening hours for {} are the following: {}'.format(
-            name, find_hours)
+        # We also check whether the score for the location was
+        # (i.e. uncertain)
+        if score < _score_thres:
+            return  'I am not certain if you meant {}, but the ' \
+                    'opening hours for {} are the following: {}'.format(name, find_hours)
+        else:
+            return 'The opening hours for {} are the following: {}'.format(name, find_hours)
 
+    # And in a worst case scenario, we return the fail response
     return hours
 
 
@@ -156,7 +173,7 @@ def find_slots(event):
     ret = []
     for slot in slots:
         if slots[slot]:
-            slot_obj = _existence(slots[slot])
+            slot_obj, score = _existence(slots[slot])
             if slot_obj:
                 ret.append(slot_obj)
 
@@ -164,7 +181,7 @@ def find_slots(event):
         return ret
 
     parsed = location_utils.parse_trans(event['inputTranscript'], _samples)
-    existing_object = _existence(parsed)
+    existing_object, score = _existence(parsed)
     return [existing_object]
 
 
@@ -231,28 +248,20 @@ def info(event):
     """
 
     # Extract the name and data
-    name, data = _process_name(event)
+    name, data, score = _process_name(event)
 
+    # This is the 'fail' response we give the user
     resp = 'Unfortunately I am not able to find any information about {}' \
            ' but try to ask me something else about it'.format(name)
 
-    # If there is no data, then there is no location,
-    # so we tell this to the user
-    if not data:
-        return "Unfortunately I do not know such a location as {}".format(name)
-
-    return data.get('info', resp)
-
-#    # Else we try to extract the information
-#    find_info = data.get('info', None)
-#
-#    # If there is prepared information about the location,
-#    # we tell this to the user
-#    if find_info:
-#        return find_info
-#
-#    return 'Unfortunately I am not able to find any information about {}' \
-#           ' but try to ask me something else about it'.format(name)
+    if score < _score_thres:
+        info = data.get('info', None)
+        if info:
+            return 'I am not certain if you meant {}, but this is the info I found: ' + info 
+        else:
+            return info
+    else:
+        return data.get('info', resp)
 
 
 def _return_name(event):
@@ -286,6 +295,9 @@ def _checker(trans, place, place_two):
     :return: the function dependent on the inputTranscript
     """
 
+    # Here we replace each name (if they were found) to ensure that we are 
+    # strictly checking the transcript for additional information, and not
+    # mistakenly with the name (e.g. 'open' in 'open innovation house')
     trans = trans.replace(place, '').replace(place_two, '')
 
     def helper(strings):
@@ -306,7 +318,7 @@ def _checker(trans, place, place_two):
 
     if helper(address_str):
         return address
-    if 'open' in trans.replace(place, ''):#'open' in trans and 'open' in place:
+    if 'open' in trans:
         return open_hours
     if 'where is' in trans:
         return where_is
@@ -324,36 +336,41 @@ def _process_name(event):
     After this it tries to extract the data that we have for the location, by
     help from the __existence_ function defined above.
     :param event: the input event from Amazon Lex
-    :return: both the name and corresponding data
+    :return: name, corresponding data, and score of the location
     """
 
     # First check if we can find the name through the slot value
     name = _return_name(event)
     # If not, check with the parser
-    name = name if name else location_utils.parse_trans(event['inputTranscript'].lower(), _samples)
+    if not name:
+        name = location_utils.parse_trans(event['inputTranscript'].lower(), _samples)
     # And then try to extract the data from our local JSON file
-    data = _existence(name)
+    data, score = _existence(name)
 
     # And return both the name (for future referencing) along with its data
-    return name, data
+    return name, data, score
 
 
 def location_handler(event):
     """
     This is the handler function for the Location intent.
     :param event: the input event (data) received from AWS Lex
-    :return: and ElicitIntent reponse
+    :return: an ElicitIntent reponse
     """
 
     # Extract the inputTranscript from the input event
     trans = event['inputTranscript']
-    # Also extract the slot value, in case we have to check for something in it
+
+    # Also extract the slot values, in case we have to check for something in them 
     place = event['currentIntent']['slots'].get('place', '')
     place_two = event['currentIntent']['slots'].get('place_two', '')
+
+    # Also, to be sure, we are checking in case they were assigned 'null' in the JSON file
     if not place:
         place = ''
     if not place_two:
         place_two = ''
+
     # And send it to the checker to find the right function for handling
     func = _checker(trans, place, place_two)
 
