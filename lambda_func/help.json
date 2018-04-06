@@ -1,9 +1,9 @@
 {
 
       "robert's coffee": "Hi! If you are interesting about roberts coffee, ask me roberts coffee categories or some drink.",
-      "location": "Hi! You can hear where is some building by asking me the name of the building",
-      "author": "Hi! you can hear author's books by telling me the name of the author",
-      "books": "Hi! getting more information about the book, tell me the name of the book",
+      "location": "Hi! You can hear where is some building by asking me the name of the building what you are looking for.",
+      "author": "Hi! you can hear author's books by telling me the name of the author what you are looking for.",
+      "books": "Hi! getting more information about the book, tell me the name of the book what you are looking for.",
       "weather": "Hi! If you are wondering the temperature, ask me about the weather."
 
 

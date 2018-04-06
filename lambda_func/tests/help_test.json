@@ -227,6 +227,39 @@
     "confirmationStatus": "None"
   },
   "inputTranscript": "how can i find books"
+  },
+  "help_random": {
+  "messageVersion": "1.0",
+  "invocationSource": "DialogCodeHook",
+  "userId": "acpjp2rzapq8m3qmstfa19skdkq06q3w",
+  "sessionAttributes": {
+
+  },
+  "requestAttributes": null,
+  "bot": {
+    "name": "Libby_dev",
+    "alias": "$LATEST",
+    "version": "$LATEST"
+  },
+  "outputDialogMode": "Text",
+  "currentIntent": {
+    "name": "Get_Help",
+    "slots": {
+      "what": "random"
+    },
+    "slotDetails": {
+      "what": {
+        "resolutions": [
+          {
+            "value": "random"
+          }
+        ],
+        "originalValue": "random"
+      }
+    },
+    "confirmationStatus": "None"
+  },
+  "inputTranscript": "how can i find random"
   }
 
 }
