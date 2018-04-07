@@ -179,39 +179,17 @@ class TestLocation(unittest.TestCase):
             # Saving formattable string from inputTranscript
             new_inp_tr = all_locs_data['inputTranscript']
     
-#            # Let's give the intent some real locations that it should 
-#            # have no data about
-#            locs = ['hamburg', 'shanghai', 'tokyo', 'australia']
-#            for loc in locs:
-#                # Update the input for the intent
-#                trans = input_transcript.format(loc)
-#                self.update_input(
-#                    all_locs_data,
-#                    None if place else loc,
-#                    new_inp_tr.format(trans)
-#                )
-#                result = location.location_handler(all_locs_data)
-#                result = self.extract_response(result)
-#                # Create response message in case of fail
-#                msg = 'The Location intent should not have found an address for: {}'
-#                # Check whether the response does NOT contain the location
-#                self.assertFalse(
-#                    loc in result,
-#                    msg.format(loc))
-    
             # Now, let's test with some random gibberish
             for i in range(0, 20):
                 # Create a random string consisting of random chars and nums
                 rndm_str = ''.join(  # The string will be of length 20
-                        random.choices(string.ascii_uppercase + string.digits, k=20)
-                )
+                        random.choices(string.ascii_uppercase + string.digits, k=20))
                 # Update the input for the intent
                 trans = input_transcript.format(rndm_str)
                 self.update_input(
                     all_locs_data,
                     None if place else rndm_str,
-                    new_inp_tr.format(trans)
-                )
+                    new_inp_tr.format(trans))
                 result = location.location_handler(all_locs_data)
                 result = self.extract_response(result)
                 # Create response message in case of fail
@@ -288,77 +266,69 @@ class TestLocation(unittest.TestCase):
         # After the test, sanitize the input data
         self.sanitize_input_data(all_locs_data)
 
-    def func_info_error(self, place=False):
+    def test_info_misunderstanding(self, slots=True):
         """
-        Helper function to avoid boilerplate code. This determines, by the
-        param `place`, if we should add the place as slot value.
-        :param place: should we add slot value (boolean)
+        The intent has a mechanism for checking how close some matches of words
+        are. With this test we intend to check if the intent actually reports
+        this to the user, e.g. we will give the intent some rubbish random 
+        words, and we'll check whether the intent states the closeness to the 
+        user. This also also doubles as a function for another test, i.e. 
+        `test_info_misunderstanding_no_slot`, see below.
+        :param slots: should we add the location as the slot value
         """
+
+        # Variables for determining test length
+        test_amount = 20
+        rndm_str_len = 20
 
         # Get the right test input
         all_locs_data = self.test_data.get('all_locs', {})
 
-        # Create some inputs that should result in error
+        # Create some inputs that should result in info being thrown out
         input_transes = [
-            'non-formattable string',
-            'nothing should work here {}',
-            '{}',
+            'tell me about {}',
+            '{}'
         ]
 
         for input_trans in input_transes:
-#            # Let's give the intent some real locations that it should
-#            # have no data about
-#            locs = ['hamburg', 'shanghai', 'tokyo', 'australia']
-#            for loc in locs:
-#                # Update the input for the intent
-#                trans = input_trans.format(loc)
-#                self.update_input(
-#                    all_locs_data,
-#                    loc if place else None,
-#                    trans
-#                )
-#                result = location.location_handler(all_locs_data)
-#                result = self.extract_response(result)
-#                # Create error message in case of fail
-#                msg = 'The Location intent should not have found info about "{}"'
-#                # Check whether the response contains the error
-#                self.assertTrue(
-#                    'unfortunately' in result.lower() and loc in result,
-#                    msg.format(loc))
-
-            # Now, let's test with some random gibberish
-            for i in range(0, 20):
-                # Create a random string consisiting of random chars and nums
+            # Let's run the test `test_amount` times
+            for i in range(0, test_amount):
+                # We'll create some random strings here for checking the info
                 rndm_str = ''.join(  # The string will be of length 20
-                        random. choices(string.ascii_letters + string.digits, k=20))
+                        random.choices(string.ascii_lowercase + string.digits, k=rndm_str_len))
                 # Update the input for the intent
                 trans = input_trans.format(rndm_str)
                 self.update_input(
                     all_locs_data,
-                    rndm_str if place else None,
+                    rndm_str if slots else None,
                     trans
                 )
                 result = location.location_handler(all_locs_data)
-                result = self.extract_response(result)
-                # Create error message in case of fail
-                msg = 'The Location intent should not have found info about "{}"\n' \
-                      'Response was: {}'
-                # Check whether the response contains the error
+                result = self.extract_response(result).lower()
+                # Create formattable error message in case of failure
+                msg = 'The Location intent should have either have been uncertain ' \
+                      'or found no info about {place}.\nResponse was: {resp}'
+                # And now check the result
                 self.assertTrue(
-                    'unfortunately' in result.lower() and rndm_str in result,
-                    msg.format(rndm_str, result))
-    
-            # After each iteratino of the outer loop, sanitize the input data
-            self.sanitize_input_data(all_locs_data)
-        # And after the test, sanitize inputs again
+                    'unfortunately' in result or 'i am not certain if you meant' in result,
+                    msg.format(place=rndm_str, resp=result))
+                # Now just to be sure, let's clean the inputs
+                self.sanitize_input_data(all_locs_data)
+
+        # And after the test we sanitize the inputs
         self.sanitize_input_data(all_locs_data)
 
-    def _test_info_error(self):
-        self.func_info_error(True)
-
-    def _test_direction_to(self):
+    def test_info_misunderstanding_no_slot(self):
         """
-        This test check whether our _direction_to_ function works properly.
+        This test is the same as `test_info_misunderstanding`, but here we do not
+        include the location name as a slot value for the intent, but we also
+        test the parser.
+        """
+        self.test_info_misunderstanding(False)
+
+    def test_direction_to(self):
+        """
+        This test checks whether our _direction_to_ function works properly.
         It iterates through all possible combinations and checks if these give a proper
         response.
         """
@@ -392,20 +362,35 @@ class TestLocation(unittest.TestCase):
             lat1, lon1 = data['lat'], data['lon']
             lat2, lon2 = data2['lat'], data2['lon']
 
-            msg = "with locations {} and {}\n" \
-                  "Response1 is equal to {}\n" \
-                  "Response2 is equal to {}".format(
-                        loc,
-                        loc2,
-                        response1,
-                        response2)
+            # Now we also have to check if one of the locations are located inside the other
+            # this will result in information about this instead
+            inside = 0
+            if data['building'] == loc2:
+                inside = 1
+            elif data2['building'] == loc:
+                inside = -1
+            # The string that should be the response if one location is inside another
+            ins_str = '{} is in {}'
+
+            # Error message
+            msg = 'with locations (loc) "{}" and (loc2) "{}"\n' \
+                  'Response1: {}\n' \
+                  'Response2: {}'.format(loc, loc2, response1, response2)
 
             if not ((lat1 and lon1) and (lat2 and lon2)):
                 self.assertTrue("Sorry" in response1, msg)
                 self.assertTrue("Sorry" in response2, msg)
-            else:
+            elif not inside:
                 self.assertTrue(response1.split(" ")[0] in loc2, msg)
                 self.assertTrue(response2.split(" ")[0] in loc, msg)
+            elif inside > 0:
+                ins_str = ins_str.format(loc, loc2)
+                self.assertTrue(response1 == ins_str, msg + '\nResponse should be: {}'.format(ins_str))
+                self.assertTrue(response2 == ins_str, msg + '\nResponse should be: {}'.format(ins_str))
+            else:
+                ins_str = ins_str.format(loc2, loc)
+                self.assertTrue(response1 == ins_str, msg + '\nResponse should be: {}'.format(ins_str))
+                self.assertTrue(response2 == ins_str, msg + '\nResponse should be: {}'.format(ins_str))
 
     def test_direction_to_inputs(self):
         """

@@ -381,8 +381,8 @@
       "kone",
       "mechanical engineering 1",
       "kone talo",
-      "first building of mechanical engineering",
-      "konetalo"
+      "konetalo",
+      "first building of mechanical engineering"
     ],
     "building": null,
     "address": "Otakaari 4",
@@ -1072,8 +1072,8 @@
   },
   "fatlizard": {
     "aliases": [
-      "fatlizard",
-      "fat lizard"
+      "fat lizard",
+      "fatlizard"
     ],
     "building": "aalto water laboratory",
     "address": "Tietotie 1 E",
@@ -1198,7 +1198,7 @@
     "parents": [],
     "lon": 24.83032645,
     "lat": 60.1846733,
-    "info": "The cetral office of ayy handles student housing and facilities in Otaniemi"
+    "info": "The central office of ayy handles student housing and facilities in Otaniemi"
   },
   "aalto center entrepreneurship": {
     "aliases": [
@@ -1286,8 +1286,8 @@
   },
   "servinmökki": {
     "aliases": [
-      "servinmökki",
-      "smökki"
+      "smökki",
+      "servinmökki"
     ],
     "building": null,
     "address": "Jämeräntaival 4",
