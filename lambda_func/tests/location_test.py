@@ -193,7 +193,7 @@ class TestLocation(unittest.TestCase):
                 result = location.location_handler(all_locs_data)
                 result = self.extract_response(result)
                 # Create response message in case of fail
-                msg = 'The Location intent should not have found an address for: {}\n' \
+                msg = 'The Location intent should not have data for: {}\n' \
                       'Response was: {}'
                 # Check whether the response does NOT contain the location
                 self.assertFalse(
@@ -205,7 +205,7 @@ class TestLocation(unittest.TestCase):
         # And after the test, sanitize inputs again
         self.sanitize_input_data(all_locs_data)
 
-    def _test_ans_slot(self):
+    def test_ans_slot(self):
         """
         Test the intent when it utilizes the slot value from the input data.
         """
@@ -408,7 +408,6 @@ class TestLocation(unittest.TestCase):
 
         for i in range(0, set_len):
             loc = set0[i][0]
-            data = set0[i][1]
 
             input0 = input_trans.format(loc)
 

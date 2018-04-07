@@ -3,10 +3,10 @@ from math import cos, sin, pi, atan2, sqrt
 import re
 
 directions = {
-    (337.5, 360): "North",
-    (0, 22.5): "North",
-    (22.5, 67.5): "North-East",
-    (67.5, 112.5): "East",
+    (337.5, 360):   "North",
+    (0, 22.5):      "North",
+    (22.5, 67.5):   "North-East",
+    (67.5, 112.5):  "East",
     (112.5, 157.5): "South-East",
     (157.5, 202.5): "South",
     (202.5, 247.5): "South-West",
@@ -15,13 +15,13 @@ directions = {
 }
 
 lengths = {
-    (0, 30): "",
-    (30, 100): "",
-    (100, 200): "",
-    (200, 400): "",
-    (400, 600): "",
-    (600, 850): "",
-    (850, 1100): "",
+    (0, 30):      "",
+    (30, 100):    "",
+    (100, 200):   "",
+    (200, 400):   "",
+    (400, 600):   "",
+    (600, 850):   "",
+    (850, 1100):  "",
     (1100, 1400): "",
     (1400, 2000): "",
     (2000, 3000): ""
@@ -104,10 +104,6 @@ def parse_trans(trans, samples):
     :param samples: the sample utterances that have been set to work with re
     :return: the extracted location name
     """
-
-    # Save all matches here, they should be saved as tuples where the first
-    # element is the regex pattern and the second the string found
-    matches = []
 
     # Save the best match (this far here)
     best = trans
@@ -211,3 +207,21 @@ def ratio(s1, s2):
     m = SequenceMatcher(None, s1, s2)
     # Now, `m` above will be a `double`, so we convert it to `int`
     return int(round(100 * m.ratio()))
+
+
+def parse_opening_hours(open_hours):
+    """
+    This function parses the hours that can be found for certain lcoations in
+    the `locations` JSON file. It parses the string into something that Amazon
+    Lex can pronounce and which is easy for the user to follow.
+    :param hours: a string of the hours that should be parsed
+    :return: a string that Amazon Lex can pronounce
+    """
+
+    # Let's prehandle the string a little bit
+    hours = list(map(lambda st: st.strip(), open_hours.split(';')))
+
+    # The regex pattern used
+    rex = r'(?P<days>\D\D-\D\D|\D\D|\B) (?P<opens>\d\d:\d\d)-(?P<closes>\d\d:\d\d)'
+    rex = r'(?P<group>((?P<months>\D\D\D-\D\D\D )?{r})|(PH off))'.format(r=rex)
+

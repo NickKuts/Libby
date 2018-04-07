@@ -12,7 +12,7 @@ with open(_locations_json, 'r') as fp:
 _re_patt = r'(?P<location{}>.+)'
 
 # Open the JSON file containing all sample utterances
-_sample_utts = 'sample_utterances.json'
+_sample_utts = 'location_sample_utterances.json'
 with open(_sample_utts, 'r') as fp:
     _samples = json.load(fp)
 
@@ -71,8 +71,8 @@ def address(event):
     name, data, score = _process_name(event)
 
     # Check if there exists any corresponding data
-    if not data:
-        return None
+    if not data:  # pragma: no cover
+        return None  # we do not cover this as this will not happen with our current configuration of the JSON file
 
     # And finally check if this location has any address
     find_addr = data.get('address', None)
@@ -80,8 +80,8 @@ def address(event):
         # We also check whether the score for the location was low 
         # (i.e. uncertain)
         if score < _score_thres:
-            return 'I am not certain if you meant {}, but the ' \
-                    'address of this location is {}'.format(name, find_addr)
+            return 'I am not certain if you meant {} (or something similar), but the ' \
+                    'address of this location is {}'.format(data['aliases'][-1], find_addr)
         else:
             return 'The address of {} is {}'.format(name, find_addr)
 
@@ -104,8 +104,8 @@ def open_hours(event):
     name, data, score = _process_name(event)
 
     # Check if there actually existed any data in the first place
-    if not data:
-        return None
+    if not data:  # pragma: no cover
+        return None  # we do not cover this as this will not happen with our current configuration of the JSON file
 
     # And now check if the data includes any opening hours at all
     find_hours = data.get('opening_hours', None)
@@ -113,8 +113,8 @@ def open_hours(event):
         # We also check whether the score for the location was
         # (i.e. uncertain)
         if score < _score_thres:
-            return  'I am not certain if you meant {}, but the ' \
-                    'opening hours for {} are the following: {}'.format(name, find_hours)
+            return 'I am not certain if you meant {} (or something similar), but the ' \
+                   'opening hours are the following: {}'.format(data['aliases'][-1], find_hours)
         else:
             return 'The opening hours for {} are the following: {}'.format(name, find_hours)
 
@@ -250,18 +250,21 @@ def info(event):
     # Extract the name and data
     name, data, score = _process_name(event)
 
+    # To be absolutely of no crashing, we have to check if the data exists
+    if not data:  # pragma: no cover
+        return None  # we do not cover this as this will not happen with our current configuration of the JSON file
+
     # This is the 'fail' response we give the user
     resp = 'Unfortunately I am not able to find any information about {}' \
            ' but try to ask me something else about it'.format(name)
 
     if score < _score_thres:
-        info = data.get('info', None)
-        if info:
-            return 'I am not certain if you meant {}, but this is the info I found: ' + info 
-        else:
-            return info
-    else:
-        return data.get('info', resp)
+        data_info = data.get('info', None)
+        if data_info:
+            return 'I am not certain if you meant {} (or something similar), ' \
+                    'but this is the info I found: {}'.format(data['aliases'][-1], data_info)
+
+    return data.get('info', resp)
 
 
 def _return_name(event):
@@ -378,7 +381,9 @@ def location_handler(event):
     ans = func(event)
 
     # Default answer if all failed
-    if not ans:
+    if not ans:  # pragma: no cover
+        # We are not convering this in the tests as this would require unproper JSON files to begin with.
+        # Currently we have everything configured as we want, so simulating this would be a little hard.
         ans = "Unfortunately I can't seem to find the location"
 
     return util.elicit_intent({}, ans)
