@@ -9,7 +9,7 @@ from lambda_func import location_utils
 # Find the path of this file
 _file_location = os.path.dirname(os.path.abspath(__file__))
 # Combine with the JSON file for sample utterances
-_sample_utterances = _file_location + '/../sample_utterances.json'
+_sample_utterances = _file_location + '/../location_sample_utterances.json'
 
 
 class TestLocationUtils(unittest.TestCase):
