@@ -20,7 +20,7 @@ def help_answer(intent):
         if what_name in data:
             message = data[what_name]
         else:
-            message = "I'm sorry, I didn't found" + what_name + "help. " \
+            message = "I'm sorry, I didn't found " + what_name + " help. " \
                     "You can ask me about the weather, roberts coffee menu, " \
                     "locations or more information about some book or author"
 
