@@ -110,6 +110,9 @@ def open_hours(event):
     # And now check if the data includes any opening hours at all
     find_hours = data.get('opening_hours', None)
     if find_hours:
+        # We format the opening hours properly
+        find_hours = location_utils.parse_opening_hours(find_hours)
+
         # We also check whether the score for the location was
         # (i.e. uncertain)
         if score < _score_thres:

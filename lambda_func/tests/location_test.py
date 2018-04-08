@@ -3,7 +3,7 @@ import json
 import os
 import random
 import string
-from lambda_func import location
+from lambda_func import location, location_utils
 
 
 # Below we use some _os.path_ functions to find JSON files
@@ -131,7 +131,9 @@ class TestLocation(unittest.TestCase):
             hours = data.get('opening_hours', None)
             if not hours:  # Same as above, a string with 'sorry' is returned
                 hours = 'sorry'  # if no hours exist
-            hours = hours.lower()
+            else:
+                hours = location_utils.parse_opening_hours(hours)
+#            hours = hours.lower()
             # Update the input for the intent
             trans = input_transcript.format(loc)
             self.update_input(

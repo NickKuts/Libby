@@ -27,6 +27,32 @@ lengths = {
     (2000, 3000): ""
 }
 
+# This dictionary contains formatting keys for the opening hours parser below
+hours_format = {
+    # Weekdays
+    'mo': 'monday',
+    'tu': 'tuesday',
+    'we': 'wednesday',
+    'th': 'thursday',
+    'fr': 'friday',
+    'sa': 'saturday',
+    'su': 'sunday',
+
+    # Months
+    'jan': 'january',
+    'feb': 'february',
+    'mar': 'march',
+    'apr': 'april',
+    'may': 'may',
+    'jun': 'june',
+    'jul': 'july',
+    'aug': 'august',
+    'sep': 'september',
+    'oct': 'october',
+    'nov': 'november',
+    'dec': 'december'
+}
+
 
 def to_radians(degs):
     """
@@ -219,9 +245,54 @@ def parse_opening_hours(open_hours):
     """
 
     # Let's prehandle the string a little bit
-    hours = list(map(lambda st: st.strip(), open_hours.split(';')))
+    hours = list(map(lambda st: st.strip().lower(), open_hours.split(';')))
 
     # The regex pattern used
-    rex = r'(?P<days>\D\D-\D\D|\D\D|\B) (?P<opens>\d\d:\d\d)-(?P<closes>\d\d:\d\d)'
-    rex = r'(?P<group>((?P<months>\D\D\D-\D\D\D )?{r})|(PH off))'.format(r=rex)
+    rex = r'((?P<days>\D\D-\D\D|\D\D|\B) )?(?P<opens>\d\d:\d\d)-(?P<closes>\d\d:\d\d)'
+    rex = r'(?P<group>((?P<months>\D\D\D-\D\D\D )?{r})|(ph off))'.format(r=rex)
+
+    # Now we try to find all matches in the opening_hours string
+    matches = []
+    for hour in hours:
+        m = re.search(rex, hour)
+        if m:  # We only add proper matches
+            matches.append(m)
+
+    # Now, let's start building the actual string.
+    # We save each formatted string into an array so we may easily create the response after
+    response = []
+    for match in matches:
+        if match.group('group') == 'ph off':
+            response.append('weekends off')
+        else:
+            # Intermediate placeholder for string building
+            resp = ''
+
+            months = match.group('months')
+            if months:
+                start, end = map(lambda m: hours_format[m.strip()], months.split('-'))
+                resp += 'from {} through {} '.format(start, end)
+
+            days = match.group('days')
+            if days:
+                days = days.split('-')
+                days = list(map(lambda h: hours_format[h], days))
+                if len(days) == 1:
+                    resp += 'on {} '.format(days[0])
+                else:
+                    start, end = days
+                    resp += 'on {} through {} '.format(start, end)
+
+            opens = match.group('opens')
+            closes = match.group('closes')
+            if opens and closes:
+                resp += 'opens {} and closes {} '.format(opens, closes)
+            
+            # Now, there may be occurences where the string is left empty,
+            # so we ensure that we only add it in case something got added
+            if resp:
+                response.append(resp)
+
+    # And finally return the built string
+    return ', '.join(map(lambda s: s.strip(), response))
 

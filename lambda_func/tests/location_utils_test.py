@@ -10,6 +10,8 @@ from lambda_func import location_utils
 _file_location = os.path.dirname(os.path.abspath(__file__))
 # Combine with the JSON file for sample utterances
 _sample_utterances = _file_location + '/../location_sample_utterances.json'
+# Combine with the JSON file for locations
+_locations = _file_location + '/../locations.json'
 
 
 class TestLocationUtils(unittest.TestCase):
@@ -280,4 +282,31 @@ class TestLocationUtils(unittest.TestCase):
                 self.assertTrue(
                     result == ans,
                     msg.format(samp, ans, result))
+
+    def test_parse_opening_hours(self):
+        """
+        This test checks whether the whether the function _parse_opening_hours_ 
+        works as expected.
+        """
+        
+        # Array for all opening hours
+        hours = []
+
+        # Get all locations' opening hours
+        with open(_locations, 'r') as fp:
+            locs = json.load(fp)
+            for _, data in locs.items():
+                hs = data.get('opening_hours', None)
+                if hs:
+                    hours.append(hs)
+
+        # Error message
+        msg = '"{}" did not yield a valid string'
+        
+        # We simply check that we are returned a string of length > 0
+        for hour in hours:
+            res = location_utils.parse_opening_hours(hour)
+            self.assertTrue(
+                len(res) > 0, 
+                msg.format(hour))
 
