@@ -17,8 +17,8 @@ def help_answer(intent):
     else:
         data = json.load(open('help.json'))
         what_name = intent['slots']['what']
-        if what_name in data[what_name]:
-                message = data[what_name]
+        if what_name in data:
+            message = data[what_name]
         else:
             message = "I'm sorry, I didn't found" + what_name + "help. " \
                     "You can ask me about the weather, roberts coffee menu, " \
