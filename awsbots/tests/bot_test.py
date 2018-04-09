@@ -38,11 +38,4 @@ class TestBotFactory(unittest.TestCase):
             ret3 = self.b.remove_bot(name)
             assert(ret3 is not None)
 
-def main():  # pragma: no cover
-    print("Main function")
-
-
-if __name__ == '__main__':  # pragma: no cover
-    suite = unittest.TestLoader().loadTestsFromTestCase(TestBotFactory)
-    unittest.TextTestRunner(verbosity=2).run(suite)
 

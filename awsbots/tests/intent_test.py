@@ -38,13 +38,4 @@ class TestIntentFactory(unittest.TestCase):
             name = self.i.load_intent_from_file(self.fname)['name']
             ret3 = self.i.remove_intent(name)
             assert(ret3 is not None)
-        
-
-def main():  # pragma: no cover
-    print("Main function")
-
-
-if __name__ == '__main__':  # pragma: no cover
-    suite = unittest.TestLoader().loadTestsFromTestCase(TestIntentFactory)
-    unittest.TextTestRunner(verbosity=2).run(suite)
 

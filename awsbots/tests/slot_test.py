@@ -45,12 +45,3 @@ class TestSlotFactory(unittest.TestCase):
             ret3 = self.s.remove_slot(name)
             assert(ret3 is not None)
 
-
-def main():  # pragma: no cover
-    print("Main function")
-
-
-if __name__ == '__main__':  # pragma: no cover
-    suite = unittest.TestLoader().loadTestsFromTestCase(TestSlotFactory)
-    unittest.TextTestRunner(verbosity=2).run(suite)
-
