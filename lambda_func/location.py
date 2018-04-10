@@ -133,7 +133,8 @@ def where_is(event):
     """
 
     slots = find_slots(event)
-    if not slots:
+    if not slots:  # pragma: no cover
+        # We keep this as future additions to the locations JSON file might trigger this
         return "Sorry, I could not find that place"
 
     # These are the coordinates of Alvarin aukio

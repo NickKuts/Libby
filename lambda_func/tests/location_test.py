@@ -346,53 +346,54 @@ class TestLocation(unittest.TestCase):
         set1 = list(self.locations.items())
         set_length = len(set1)
 
-        for i in range(0, set_length):
-            j = (i + 1) % set_length
-            loc, loc2 = set1[i][0], set1[j][0]
-            data, data2 = set1[i][1], set1[j][1]
-
-            input1, input2 = input_trans1.format(loc, loc2), input_trans2.format(loc, loc2)
-
-            event = self.input_values_to_location(dir_data, input1, loc, loc2)
-            event1_response = location.location_handler(event)
-            response1 = self.extract_response(event1_response)
-
-            event2 = self.input_values_to_location(dir_data, input2, loc, loc2)
-            event2_response = location.location_handler(event2)
-            response2 = self.extract_response(event2_response)
-
-            lat1, lon1 = data['lat'], data['lon']
-            lat2, lon2 = data2['lat'], data2['lon']
-
-            # Now we also have to check if one of the locations are located inside the other
-            # this will result in information about this instead
-            inside = 0
-            if data['building'] == loc2:
-                inside = 1
-            elif data2['building'] == loc:
-                inside = -1
-            # The string that should be the response if one location is inside another
-            ins_str = '{} is in {}'
-
-            # Error message
-            msg = 'with locations (loc) "{}" and (loc2) "{}"\n' \
-                  'Response1: {}\n' \
-                  'Response2: {}'.format(loc, loc2, response1, response2)
-
-            if not ((lat1 and lon1) and (lat2 and lon2)):
-                self.assertTrue("Sorry" in response1, msg)
-                self.assertTrue("Sorry" in response2, msg)
-            elif not inside:
-                self.assertTrue(response1.split(" ")[0] in loc2, msg)
-                self.assertTrue(response2.split(" ")[0] in loc, msg)
-            elif inside > 0:
-                ins_str = ins_str.format(loc, loc2)
-                self.assertTrue(response1 == ins_str, msg + '\nResponse should be: {}'.format(ins_str))
-                self.assertTrue(response2 == ins_str, msg + '\nResponse should be: {}'.format(ins_str))
-            else:
-                ins_str = ins_str.format(loc2, loc)
-                self.assertTrue(response1 == ins_str, msg + '\nResponse should be: {}'.format(ins_str))
-                self.assertTrue(response2 == ins_str, msg + '\nResponse should be: {}'.format(ins_str))
+        for ran, y in [(range(0, set_length), 1), (range(set_length - 1, -1, -1), -1)]:
+            for i in ran:
+                j = (i + y) % set_length
+                loc, loc2 = set1[i][0], set1[j][0]
+                data, data2 = set1[i][1], set1[j][1]
+    
+                input1, input2 = input_trans1.format(loc, loc2), input_trans2.format(loc, loc2)
+    
+                event = self.input_values_to_location(dir_data, input1, loc, loc2)
+                event1_response = location.location_handler(event)
+                response1 = self.extract_response(event1_response)
+    
+                event2 = self.input_values_to_location(dir_data, input2, loc, loc2)
+                event2_response = location.location_handler(event2)
+                response2 = self.extract_response(event2_response)
+    
+                lat1, lon1 = data['lat'], data['lon']
+                lat2, lon2 = data2['lat'], data2['lon']
+    
+                # Now we also have to check if one of the locations are located inside the other
+                # this will result in information about this instead
+                inside = 0
+                if data['building'] == loc2:
+                    inside = 1
+                elif data2['building'] == loc:
+                    inside = -1
+                # The string that should be the response if one location is inside another
+                ins_str = '{} is in {}'
+    
+                # Error message
+                msg = 'with locations (loc) "{}" and (loc2) "{}"\n' \
+                      'Response1: {}\n' \
+                      'Response2: {}'.format(loc, loc2, response1, response2)
+    
+                if not ((lat1 and lon1) and (lat2 and lon2)):
+                    self.assertTrue("Sorry" in response1, msg)
+                    self.assertTrue("Sorry" in response2, msg)
+                elif not inside:
+                    self.assertTrue(response1.split(" ")[0] in loc2, msg)
+                    self.assertTrue(response2.split(" ")[0] in loc, msg)
+                elif inside > 0:
+                    ins_str = ins_str.format(loc, loc2)
+                    self.assertTrue(response1 == ins_str, msg + '\nResponse should be: {}'.format(ins_str))
+                    self.assertTrue(response2 == ins_str, msg + '\nResponse should be: {}'.format(ins_str))
+                else:
+                    ins_str = ins_str.format(loc2, loc)
+                    self.assertTrue(response1 == ins_str, msg + '\nResponse should be: {}'.format(ins_str))
+                    self.assertTrue(response2 == ins_str, msg + '\nResponse should be: {}'.format(ins_str))
 
     def test_direction_to_inputs(self):
         """
@@ -423,3 +424,56 @@ class TestLocation(unittest.TestCase):
                 "Sorry" in response,
                 msg.format(loc, response)
             )
+
+    def test_where_is(self):
+        """
+        This test checks whether the implementation of _where_is_ works properly
+        """
+
+        # Get the rigth test input
+        all_locs_data = self.test_data.get('all_locs', {})
+
+        # Input transcript
+        input_trans = 'where is {}'
+
+        # Mid point of Otaniemi
+        const_lat = 60.185739
+        const_lon = 24.828786
+
+        for loc, data in self.locations.items():
+            aliases = data.get('aliases', [])
+            for alias in aliases:
+                self.update_input(
+                    all_locs_data,
+                    alias,
+                    input_trans.format(alias))
+                result = location.location_handler(all_locs_data)
+                # Extract the response
+                result = self.extract_response(result).lower()
+
+                build = data.get('building', None)
+                if build:
+                    self.assertTrue(
+                        '{} is in {}'.format(alias, build),
+                        'Response for {} was wrong:\n\t{}'.format(alias, result)
+                    )
+                else:
+                    # Extract data
+                    lat = data.get('lat', None)
+                    lon = data.get('lon', None)
+
+                    # Calc direction
+                    dist = location_utils.distance(const_lat, const_lon, lat, lon)
+
+                    # Get direction
+                    dire = location_utils.compass_point(const_lat, const_lon, lat, lon)
+
+                    # Error message
+                    msg = 'Where is did not respond as expected:\n\t{}'
+
+                    self.assertTrue(
+                        '{} is in the {} area of Otaniemi'.format(alias, 'middle' if dist <= 100 else dire),
+                        msg.format(result))
+
+        # Sanitize input for good measure
+        self.sanitize_input_data(all_locs_data)

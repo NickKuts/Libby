@@ -14,19 +14,6 @@ directions = {
     (292.5, 337.5): "North-West"
 }
 
-lengths = {
-    (0, 30):      "",
-    (30, 100):    "",
-    (100, 200):   "",
-    (200, 400):   "",
-    (400, 600):   "",
-    (600, 850):   "",
-    (850, 1100):  "",
-    (1100, 1400): "",
-    (1400, 2000): "",
-    (2000, 3000): ""
-}
-
 # This dictionary contains formatting keys for the opening hours parser below
 hours_format = {
     # Weekdays
@@ -240,7 +227,7 @@ def parse_opening_hours(open_hours):
     This function parses the hours that can be found for certain lcoations in
     the `locations` JSON file. It parses the string into something that Amazon
     Lex can pronounce and which is easy for the user to follow.
-    :param hours: a string of the hours that should be parsed
+    :param open_hours: a string of the hours that should be parsed
     :return: a string that Amazon Lex can pronounce
     """
 
@@ -270,7 +257,7 @@ def parse_opening_hours(open_hours):
 
             months = match.group('months')
             if months:
-                start, end = map(lambda m: hours_format[m.strip()], months.split('-'))
+                start, end = map(lambda mo: hours_format[mo.strip()], months.split('-'))
                 resp += 'from {} through {} '.format(start, end)
 
             days = match.group('days')
@@ -295,4 +282,3 @@ def parse_opening_hours(open_hours):
 
     # And finally return the built string
     return ', '.join(map(lambda s: s.strip(), response))
-
