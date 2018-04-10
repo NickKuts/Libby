@@ -1,7 +1,9 @@
 from os import path
+from ctypes import cdll
 import pyaudio
 from pocketsphinx.pocketsphinx import Decoder
 
+sensor = cdll.LoadLibrary('/usr/local/lib/libvl6180_pi.so')
 MODELDIR = "/rpi/lex/python/model/"
 PATHDIR = "/rpi/lex/python/"
 p = pyaudio.PyAudio()
@@ -15,7 +17,7 @@ decoder = Decoder(config)
 decoder.set_kws("kws", path.join(PATHDIR, 'keywords.txt'))
 decoder.set_lm_file("lm", path.join(PATHDIR, '0963.lm'))
 decoder.set_search("kws")
-
+sensor_handle = sensor.vl6180_initialise(1)
 
 def start(callback):
     # Decode streaming data.
@@ -26,6 +28,8 @@ def start(callback):
     stream.start_stream()
 
     while True:
+        if(sensor.get_distance(sensor_handle) < 100):
+            break;
         buf = stream.read(1024, exception_on_overflow=False)
         if buf:
             decoder.process_raw(buf, False, False)
