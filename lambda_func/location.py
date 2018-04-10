@@ -130,6 +130,8 @@ def where_is(event):
     This function is used for finding the relative direction of certain location, like smokki for example.
     The function treats the Alvarin Aukio as a center point of Otaniemi, and checks whether the given place is in the
     north side, west side, etc of Otaniemi
+    :param event: input event received from Amazon Lex
+    :return: reponse for user (i.e. string)
     """
 
     slots = find_slots(event)
@@ -152,10 +154,8 @@ def where_is(event):
     distance = location_utils.distance(lat1, lon1, lat2, lon2)
     building = slots[0]['building']
 
-    """
-    Incase user asks 'where is reima', the answer is 'reima is in dipoli'
-    this is more meaningful
-    """
+    # In case user asks 'where is reima', the answer is 'reima is in dipoli'
+    # this is more meaningful
     if building:
         return "{} is in the {}".format(location_name, building)
 
@@ -171,6 +171,8 @@ def find_slots(event):
     Goes trough value of every slot in input event, and incase the value of slot is other than null, it then
     checks whether there exists object for such value and if does, it appends the returned json objects into the array
     which is then returned at the end
+    :param event: input event from Amazon Lex
+    :return: a JSON object(s) inside a list
     """
 
     slots = event['currentIntent']['slots']
@@ -193,24 +195,24 @@ def direction_to(event):
     """
     Uses the information in event and tries to provide the user with info between the two points
     he or she has given to the libby
+    :param event: the input event from Amazon Lex
+    :return: a reponse to to the user about directions (string)
     """
 
     def helper(trans):
         """
         Little helper function to check whether user wants to get 'from a to b'
         or 'to a from b'
+        :param trans: input transcript from Amazon Lex
+        :return: a number being -1 or 1, depending on the ordering
         """
         word_array = reversed(trans.split(" "))
-        ordering = 0
         for word in word_array:
             if word.lower() == "to":
-                ordering = 1
-                break
+                return 1
             if word.lower() == "from":
-                ordering = -1
-                break
-
-        return ordering
+                return -1
+        return 0
 
     user_input = event['inputTranscript']
     slot_values = find_slots(event)
