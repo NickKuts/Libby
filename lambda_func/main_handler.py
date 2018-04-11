@@ -7,6 +7,7 @@ def lambda_handler(event, context):
     debug = False
     if debug:
         return util.debug(event)
+
     # intent = event['currentIntent']
     router = Router(event)
     
@@ -29,4 +30,3 @@ def lambda_handler(event, context):
     except Exception as e:
         error_message['dialogAction']['message']['content'] = "I'm sorry, I cannot answer that. Error was " + str(e)
         return error_message
- 
