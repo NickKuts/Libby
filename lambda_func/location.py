@@ -392,4 +392,4 @@ def location_handler(event):
         # Currently we have everything configured as we want, so simulating this would be a little hard.
         ans = "Unfortunately I can't seem to find the location"
 
-    return util.elicit_intent({}, ans)
+    return util.close({}, 'Fulfilled', ans)
