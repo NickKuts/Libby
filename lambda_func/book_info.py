@@ -2,6 +2,7 @@ import util
 import re
 from botocore.vendored import requests
 import author_search as AS
+import signal
 
 
 """This is the URL for the Finna API with a needed header for proper results"""
@@ -365,6 +366,11 @@ def record(id, field=[], method='GET', pretty_print='0'):
     return {'status_code': r.status_code, 'json': r.json()}
 
 
+def timeout_handler(signum, frame):
+    print("Timeouted!")
+    #raise Exception("TimeOutException")
+    raise RuntimeError('Timed out!')
+
 def lookfor(term="", field=[], filter=[], method='GET', pretty_print='0'):
     """
     Simple function for accessing the Finna API.
@@ -386,6 +392,10 @@ def lookfor(term="", field=[], filter=[], method='GET', pretty_print='0'):
         'prettyPrint': [pretty_print],
         'lng': ['en-gb']
     }
+    
+    signal.signal(signal.SIGALRM, timeout_handler)
+    # Allow 4 seconds to get a response back from finna api
+    signal.alarm(4)
 
     sess = requests.Session()
     sess.headers.update(__headers)
@@ -394,7 +404,12 @@ def lookfor(term="", field=[], filter=[], method='GET', pretty_print='0'):
     r = sess.request(url=__url + 'search', method=method)
     sess.close()
 
+    signal.alarm(0)
+
     print(r.url)
     # print(r.json())
     # print("result count: " + str(r.json()['resultCount']))
-    return {'status_code': r.status_code, 'json': r.json()}
+    res =  {'status_code': r.status_code, 'json': r.json()}
+    # print(res)
+    return res
+
