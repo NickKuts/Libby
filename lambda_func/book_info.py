@@ -58,8 +58,7 @@ def parse_author(request, session_attributes):
     # if author was not found
     author = session_attributes.get('author')
     if not author:
-        message = "I'm sorry. I couldn't catch the author" + str(author) + \
-                  ". Please try again."
+        message = "I'm sorry. I couldn't catch the author. Please try again."
         return util.elicit_intent({'author': author}, message)
 
     result_count = request['resultCount']
@@ -90,9 +89,6 @@ def parse_author(request, session_attributes):
     if len(find) > 3:
         find = find[:3]
         find.append("others")
-
-    message = author + " has written books " \
-                     + util.make_string_list(find)
 
     # only one book was found
     if result_count == 1:
