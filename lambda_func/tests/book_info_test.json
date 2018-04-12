@@ -159,6 +159,56 @@
     "subject": "lorslara",
     "url": "https://api.finna.fi/api/v1/search?lookfor=lorslara&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
   },
+  "findBooks": {
+    "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
+    "sessionAttributes": {},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "find books",
+    "currentIntent": {
+      "name": "FindBook",
+      "slots": {
+        "lower": null,
+        "upper": null,
+        "year": null
+      },
+      "confirmationStatus": "None"
+    },
+    "is_author": false,
+    "subject": "",
+    "url": "https://api.finna.fi/api/v1/search?lookfor=&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
+  },
+  "findBooksAuthor": {
+    "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
+    "sessionAttributes": {"author": "vogel, steven"},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "find books",
+    "currentIntent": {
+      "name": "FindBook",
+      "slots": {
+        "lower": null,
+        "upper": null,
+        "year": null
+      },
+      "confirmationStatus": "None"
+    },
+    "is_author": false,
+    "subject": "",
+    "url": "https://api.finna.fi/api/v1/search?lookfor=&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
+  },
   "yearExact": {
     "messageVersion": "1.0",
     "invocationSource": "DialogCodeHook",
@@ -386,6 +436,29 @@
     "is_author": true,
     "author": "atkinson, john",
     "url": "https://api.finna.fi/api/v1/search?lookfor=atkinson+john&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
+  },
+  "oneBook": {
+    "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
+    "sessionAttributes": {
+      "subject": ""
+    },
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "what books are written by ville alahuhta",
+    "currentIntent": {
+      "name": "Author",
+      "slots": {},
+      "confirmationStatus": "None"
+    },
+    "is_author": true,
+    "author": "alahuhta, ville",
+    "url": "https://api.finna.fi/api/v1/search?lookfor=alahuhta+ville&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
   }
 }
 
