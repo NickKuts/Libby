@@ -113,25 +113,40 @@
     "author": "salo, saija",
     "url": "https://api.finna.fi/api/v1/search?lookfor=sahkoa+ilmassa&filter[]=author:%22saija%2C+salo%22&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
   },
-  "findComputer":{
-	"messageVersion": "1.0",
-	"invocationSource": "DialogCodeHook",
-	"userId": "dlggnt8yeecl8nvum3hmksj04ef12d58",
-	"sessionAttributes": {},
-	"requestAttributes": null,
-	"bot": {
-		"name": "Libby_dev",
-		"alias": "$LATEST",
-		"version": "$LATEST"
-	},
-	"outputDialogMode": "Text",
-	"inputTranscript": "find computer books",
-	"currentIntent": {
-		"name": "FindBook",
-		"slots": {},
-		"slotDetails": {},
-		"confirmationStatus": "None"
-	},
+  "findCatBooks": {
+    "sessionAttributes": {},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "inputTranscript": "where can i find cat books",
+    "currentIntent": {
+      "name": "FindBook",
+      "slots": {},
+      "confirmationStatus": "None"
+    },
+    "is_author": false,
+    "subject": "cat",
+    "url": "https://api.finna.fi/api/v1/search?lookfor=cat&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
+  },
+  "findComputer": {
+    "messageVersion": "1.0",
+    "invocationSource": "DialogCodeHook",
+    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
+    "sessionAttributes": {},
+    "bot": {
+      "name": "Libby_dev",
+      "alias": "$LATEST",
+      "version": "$LATEST"
+    },
+    "outputDialogMode": "Text",
+    "inputTranscript": "find computer books",
+    "currentIntent": {
+      "name": "FindBook",
+      "slots": {},
+      "confirmationStatus": "None"
+    },
     "is_author": false,
     "subject": "computer",
     "url": "https://api.finna.fi/api/v1/search?lookfor=computer&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"

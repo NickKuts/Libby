@@ -1,0 +1,54 @@
+{
+	"name": "LibbyUnitTest",
+	"description": "A library assistant.",
+	"intents": [
+		{
+			"intentName": "Get_Drinks",
+			"intentVersion": "10"
+		},
+		{
+			"intentName": "Get_Help",
+			"intentVersion": "7"
+		},
+		{
+			"intentName": "Get_Categories",
+			"intentVersion": "6"
+		},
+		{
+			"intentName": "Weather",
+			"intentVersion": "17"
+		},
+		{
+			"intentName": "Get_Prices",
+			"intentVersion": "16"
+		},
+		{
+			"intentName": "Location",
+			"intentVersion": "16"
+		}
+	],
+	"clarificationPrompt": {
+		"messages": [
+			{
+				"contentType": "PlainText",
+				"content": "Sorry, can you please repeat that?"
+			}
+		],
+		"maxAttempts": 5
+	},
+	"abortStatement": {
+		"messages": [
+			{
+				"contentType": "PlainText",
+				"content": "Sorry, I could not understand. Goodbye."
+			}
+		]
+	},
+	"status": "READY",
+	"idleSessionTTLInSeconds": 900,
+	"voiceId": "Joanna",
+	"checksum": "3847c43f-4dc1-4f3e-a903-c9e6852675c6",
+	"version": "$LATEST",
+	"locale": "en-US",
+	"childDirected": false
+}

@@ -57,4 +57,3 @@ mkdir .aws
 cd .aws
 printf "[default]\nregion=eu-west-1" > config
 printf "[default]\naws_access_key_id = YOUR_ACCESS_KEY\naws_secret_access_key = YOUR_SECRET_KEY" > credentials
-

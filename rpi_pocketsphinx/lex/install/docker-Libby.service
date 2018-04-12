@@ -1,0 +1,12 @@
+[Unit]
+Description=Redis container
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+ExecStart=/usr/bin/docker start -a PROJECT_LIBBY
+ExecStop=/usr/bin/docker stop -t 2 PROJECT_LIBBY
+
+[Install]
+WantedBy=default.target

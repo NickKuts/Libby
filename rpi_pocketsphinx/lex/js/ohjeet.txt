@@ -1,5 +1,0 @@
-muista laittaa
-$export AUDIODEV=plughw:1
-
-
-seuraavaks testaa python3

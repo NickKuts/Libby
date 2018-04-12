@@ -2,6 +2,7 @@ import util
 import re
 from botocore.vendored import requests
 import author_search as AS
+import signal
 
 
 """This is the URL for the Finna API with a needed header for proper results"""
@@ -37,10 +38,9 @@ def find_info_author(intent):
             break
 
     author_text = text[to_drop:].strip()
+
     # this checks that author exists
-    print("INPUT IS:", author_text)
     author = AS.search(author_text)
-    print("AUTHOR IS:", author)
     request = lookfor(term=author)['json']
 
     return parse_author(request, {'author': author})
@@ -54,17 +54,20 @@ def parse_author(request, session_attributes):
     has given some
     :return: Response to AWS server in JSON format
     """
+
+    # if author was not found
     author = session_attributes.get('author')
     if not author:
-        message = "I'm sorry. I couldn't catch the author you were looking " \
-                  "for. Please try again."
+        message = "I'm sorry. I couldn't catch the author" + str(author) + \
+                  ". Please try again."
         return util.elicit_intent({'author': author}, message)
 
     result_count = request['resultCount']
 
-    # find all titles and sort them.
+    # find all titles if title does not already exist in list. And sort them.
     real_count = 0
     find = []
+
     for record in request['records']:
         authors = record.get('nonPresenterAuthors')
         has_written = False
@@ -91,6 +94,12 @@ def parse_author(request, session_attributes):
     message = author + " has written books " \
                      + util.make_string_list(find)
 
+    # only one book was found
+    if result_count == 1:
+        message = author + " has written a book " + find[0]
+    # many books was found
+    else:
+        message = author + " has written books " + util.make_string_list(find)
     return util.elicit_intent({'author': author}, message)
 
 
@@ -229,7 +238,6 @@ def subject_info(intent, extra_info=[]):
     keyword = ""
 
     # Find when the book name ends
-
     for word in text_list:
         if word not in keywords:
             subject_list.append(word)
@@ -267,6 +275,10 @@ def subject_info(intent, extra_info=[]):
     if author:
         extra_info += [
             "author:\"" + author + "\""
+        ]
+    elif intent['sessionAttributes'].get('author'):
+        extra_info += [
+            "author:\"" + intent['sessionAttributes']['author'] + "\""
         ]
 
     request = lookfor(term=subject, filter=extra_info)['json']
@@ -353,6 +365,11 @@ def record(id, field=[], method='GET', pretty_print='0'):
     return {'status_code': r.status_code, 'json': r.json()}
 
 
+def timeout_handler(signum, frame):
+    print("Timeouted!")
+    #raise Exception("TimeOutException")
+    raise RuntimeError('Timed out!')
+
 def lookfor(term="", field=[], filter=[], method='GET', pretty_print='0'):
     """
     Simple function for accessing the Finna API.
@@ -374,6 +391,10 @@ def lookfor(term="", field=[], filter=[], method='GET', pretty_print='0'):
         'prettyPrint': [pretty_print],
         'lng': ['en-gb']
     }
+    
+    signal.signal(signal.SIGALRM, timeout_handler)
+    # Allow 4 seconds to get a response back from finna api
+    signal.alarm(4)
 
     sess = requests.Session()
     sess.headers.update(__headers)
@@ -382,7 +403,12 @@ def lookfor(term="", field=[], filter=[], method='GET', pretty_print='0'):
     r = sess.request(url=__url + 'search', method=method)
     sess.close()
 
+    signal.alarm(0)
+
     print(r.url)
     # print(r.json())
     # print("result count: " + str(r.json()['resultCount']))
-    return {'status_code': r.status_code, 'json': r.json()}
+    res =  {'status_code': r.status_code, 'json': r.json()}
+    # print(res)
+    return res
+
