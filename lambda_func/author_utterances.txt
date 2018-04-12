@@ -4,6 +4,7 @@ tell me books written by
 tell me which books are written by
 tell me what books are written by
 tell me books by
+tell me some books by
 tell some books written by
 tell some books by
 list me books written by
