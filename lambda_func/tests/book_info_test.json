@@ -386,29 +386,6 @@
     "is_author": true,
     "author": "atkinson, john",
     "url": "https://api.finna.fi/api/v1/search?lookfor=atkinson+john&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
-  },
-  "differentStart": {
-    "messageVersion": "1.0",
-    "invocationSource": "DialogCodeHook",
-    "userId": "oize5wrex8ydsq0oyl81zqxftijd0w9l",
-    "sessionAttributes": {
-      "subject": ""
-    },
-    "bot": {
-      "name": "Libby_dev",
-      "alias": "$LATEST",
-      "version": "$LATEST"
-    },
-    "outputDialogMode": "Text",
-    "inputTranscript": "please list by me some books by sofia",
-    "currentIntent": {
-      "name": "Author",
-      "slots": {},
-      "confirmationStatus": "None"
-    },
-     "is_author": false,
-    "author": null,
-    "url": "https://api.finna.fi/api/v1/search?lookfor=sofia&filter[]=building%3A%220%2FAALTO%2F%22&page=1&limit=20&lng=en-gb"
   }
 }
 
