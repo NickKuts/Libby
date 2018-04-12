@@ -33,6 +33,7 @@ class IntentFactory:
 
         res = self.client.put_intent(**data)
         print('Successfully updated intent', data['name'])
+        return res
 
     def create_intent(self, fname):
  
@@ -67,6 +68,7 @@ class IntentFactory:
 
         real_res = self.client.put_intent(**data)
         print("Successfully created intent", name)
+        return real_res
 
     def get_intent(self, name, version='$LATEST'):
         response = self.client.get_intent(

@@ -2,6 +2,7 @@ import util
 import re
 from botocore.vendored import requests
 import author_search as AS
+import signal
 
 
 """This is the URL for the Finna API with a needed header for proper results"""
@@ -39,9 +40,7 @@ def find_info_author(intent):
     author_text = text[to_drop:].strip()
 
     # this checks that author exists
-    print("INPUT IS:", author_text)
-    author = AS.search(author_text)
-    print("AUTHOR IS:", author)
+    author = AS.search(author_text, False)
     request = lookfor(term=author)['json']
 
     return parse_author(request, {'author': author})
@@ -67,21 +66,27 @@ def parse_author(request, session_attributes):
     # find all titles if title does not already exist in list. And sort them.
     real_count = 0
     find = []
-    while real_count < result_count and real_count < 20:
-        if request['records'][real_count]['title']:
-            title = request['records'][real_count]['title']
 
-        # check that the book is written by this author
-
-        if title is not find:
-            find.append(title)
-        real_count += 1
-    find = sorted(find)
+    for record in request['records']:
+        authors = record.get('nonPresenterAuthors')
+        has_written = False
+        for a in authors:
+            # print(a.get('name').lower(), " == ", author)
+            if a.get('name').lower() == author:
+                # print("has written:", author)
+                has_written = True
+                break
+        if has_written:
+            title = record.get('title')
+            if title:
+                if title is not find:
+                    find.append(title)
+                    real_count += 1
 
     # at most three books
-    if result_count <= 3:
-        find = find[:real_count]
-    else:
+    find = sorted(find)
+    print(str(find))
+    if len(find) > 3:
         find = find[:3]
         find.append("others")
 
@@ -108,10 +113,10 @@ def locate_book(info):
     for elem in info:
         if re.compile("1/AALTO/([a-z])*/").match(elem['value']):
             ret.append(elem['translated'])
-            output = "This book is located in "
+            output = " is located in "
         elif re.compile("0/AALTO/([a-z])*").match(elem['value']):
             ret.append(elem['translated'])
-            output = "This book is located in "
+            output = " is located in "
         if len(ret) == 2:
             ret = ret[1:]
     return output + util.make_string_list(ret)
@@ -124,13 +129,15 @@ def find_info(book_id, field='buildings'):
     :return: Response to AWS server in JSON format
     """
     print("id", book_id)
-    request = record(book_id, field=['id', field])['json']
+    request = record(book_id, field=['id', 'shortTitle', field])['json']
     print("count", request['resultCount'])
     if request['status'] == 'OK':
         # print(request['json']['records'][0])
         message = locate_book(request['records'][0]['buildings'])
-        return util.elicit_intent({'book_id': book_id, 'author': None},
-                                  message)
+        title = request['records'][0]['shortTitle']
+        message = "".join([title, message])
+        return util.close({'book_id': book_id, 'author': None}, 'Fulfilled',
+                                                                message)
     else:
         return util.close({'author': None}, 'Fulfilled', "Something went wrong")
 
@@ -143,7 +150,6 @@ def parse_subject(request, subject, session_attributes={}):
     has given some
     :return: Response to AWS server in JSON format
     """
-    message = "Something went wrong"
     author = session_attributes.get('author')
     if subject is "":
         if author:
@@ -153,16 +159,19 @@ def parse_subject(request, subject, session_attributes={}):
                                                       " you wanted to find. "
                                                       "Could you please repeat."
                                   )
+
     if request['status'] == 'OK':
         result_count = request['resultCount']
-        print("result parse subject ", result_count)
-        print("subject ", subject)
+        # print("result parse subject ", result_count)
+        # print("subject ", subject)
         
         if result_count == 0: 
             message = "Oh I'm so sorry, no books was found with search term: "\
                         + subject
             if author:
                 message += " written by " + str(author)
+            return util.close({'subject': subject, 'author': author},
+                              'Fulfilled', message)
 
         elif result_count == 1:
             return find_info(request['records'][0]['id'])
@@ -184,7 +193,9 @@ def parse_subject(request, subject, session_attributes={}):
             else:
                 message = subject + " books can be found in " + \
                       util.make_string_list(find)
- 
+            return util.close({'subject': subject, 'author': author},
+                              'Fulfilled', message)
+
         else:
             if not author:
                 message = "I found " + str(result_count) + " books with term " \
@@ -195,8 +206,10 @@ def parse_subject(request, subject, session_attributes={}):
                           + subject + " by author " + author + ". Can you " \
                           "give the publication date for example to narrow " \
                           "down the search."
- 
-    return util.elicit_intent({'subject': subject, 'author': author}, message)
+            return util.elicit_intent({'subject': subject, 'author': author},
+                                      message)
+    else:
+        return util.close({'author': None}, 'Fulfilled', "Something went wrong")
 
 
 def subject_info(intent, extra_info=[]):
@@ -222,7 +235,7 @@ def subject_info(intent, extra_info=[]):
     text = text[to_drop:].strip()
     text_list = text.split(' ', len(text))
 
-    print("text_list: ", str(text_list))
+    # print("text_list: ", str(text_list))
 
     subject_list = []
     keywords = ["books", "book", "by", "published", "written"]
@@ -239,15 +252,19 @@ def subject_info(intent, extra_info=[]):
 
     # Get all the keywords in the middle, so they can be
     # all be dropped at once, eg written by, books by
-
-    word = text_list[0]
-    while word in keywords:
-        text_list = text_list[1:]
+    text_list = text_list[len(subject_list):]
+    if text_list:
         word = text_list[0]
-        keyword += word + " "
+        while word in keywords:
+            keyword += word + " "
+            text_list = text_list[1:]
+            if text_list:
+                word = text_list[0]
+            else:
+                break
 
-    author_text = text[len(subject) + 1 + len(keyword):].strip()
-    author = AS.search(author_text)
+    author_text = text[len(keyword):].strip()
+    author = AS.search(author_text, False)
     if author is "":
         author = None
     # print("subject: ", subject)
@@ -352,6 +369,12 @@ def record(id, field=[], method='GET', pretty_print='0'):
     return {'status_code': r.status_code, 'json': r.json()}
 
 
+def timeout_handler(signum, frame):
+    print("Timeouted!")
+    # raise Exception("TimeOutException")
+    raise RuntimeError('Timed out!')
+
+
 def lookfor(term="", field=[], filter=[], method='GET', pretty_print='0'):
     """
     Simple function for accessing the Finna API.
@@ -373,6 +396,10 @@ def lookfor(term="", field=[], filter=[], method='GET', pretty_print='0'):
         'prettyPrint': [pretty_print],
         'lng': ['en-gb']
     }
+    
+    signal.signal(signal.SIGALRM, timeout_handler)
+    # Allow 4 seconds to get a response back from finna api
+    signal.alarm(4)
 
     sess = requests.Session()
     sess.headers.update(__headers)
@@ -381,7 +408,12 @@ def lookfor(term="", field=[], filter=[], method='GET', pretty_print='0'):
     r = sess.request(url=__url + 'search', method=method)
     sess.close()
 
+    signal.alarm(0)
+
     print(r.url)
     # print(r.json())
     # print("result count: " + str(r.json()['resultCount']))
-    return {'status_code': r.status_code, 'json': r.json()}
+    res = {'status_code': r.status_code, 'json': r.json()}
+    # print(res)
+    return res
+

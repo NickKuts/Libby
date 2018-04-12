@@ -7,7 +7,7 @@ RUN apt-get update && \
     virtualenv git python-pyaudio sox python3-dev build-essential python-dev \
     mpg321 git-core alsa-utils portaudio19-dev python3-pyaudio \
     swig3.0 libatlas-base-dev swig libpulse-dev python3-setuptools \
-    python3-setuptools python3-pip
+    python3-setuptools python3-pip rpi.gpio
 
 COPY lex/requirements.txt /rpi/
 RUN pip3 install --upgrade wheel setuptools pip
