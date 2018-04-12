@@ -4,6 +4,7 @@ import weather
 import get_help
 import book_info
 import location
+import hello
 
 """
 This class takes intent as a parameter and finds what Libby should answer.
@@ -28,6 +29,7 @@ class Router:
                         "ExtraInfo": book_info.extra_info,
                         "Location": location.location_handler,
                         "Author": book_info.find_info_author,
+                        "Hello": hello.hello_handler,
                         }
     """
     This is where the magic happens. If a method needs for example the intent
