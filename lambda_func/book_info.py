@@ -40,7 +40,7 @@ def find_info_author(intent):
     author_text = text[to_drop:].strip()
 
     # this checks that author exists
-    author = AS.search(author_text)
+    author = AS.search(author_text, False)
     request = lookfor(term=author)['json']
 
     return parse_author(request, {'author': author})
@@ -264,7 +264,7 @@ def subject_info(intent, extra_info=[]):
                 break
 
     author_text = text[len(keyword):].strip()
-    author = AS.search(author_text)
+    author = AS.search(author_text, False)
     if author is "":
         author = None
     # print("subject: ", subject)
