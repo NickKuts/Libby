@@ -31,7 +31,8 @@ def find_info_author(intent):
     text = intent['inputTranscript'].lower()
     utterances = AS.load_file('author_utterances.txt')
     to_drop = 0
-    # this takes utterances off
+
+    # this takes utterances off if it will be found in author_utterances.txt
     for line in utterances:
         if text.startswith(line):
             to_drop = len(line)
@@ -39,13 +40,14 @@ def find_info_author(intent):
 
     author_text = text[to_drop:].strip()
 
-    # this checks that author exists
+    # this checks if author exists
     author = AS.search(author_text, False)
     request = lookfor(term=author)['json']
 
     return parse_author(request, {'author': author})
 
 
+# parse_author find author's books
 def parse_author(request, session_attributes):
     """
     :param request: JSON data from the Finna API
@@ -65,30 +67,29 @@ def parse_author(request, session_attributes):
 
     # find all titles if title does not already exist in list. And sort them.
     real_count = 0
-    find = []
+    books_written_by = []
 
     for record in request['records']:
         authors = record.get('nonPresenterAuthors')
         has_written = False
         if authors:
             for a in authors:
-                # print(a.get('name').lower(), " == ", author)
                 if a.get('name').lower() == author:
-                    # print("has written:", author)
                     has_written = True
                     break
             if has_written:
                 title = record.get('title')
                 if title:
-                    if title is not find:
-                        find.append(title)
+                    if title not in books_written_by:
+                        books_written_by.append(title)
                         real_count += 1
-    if len(find):
+    # if books list is empty
+    if not len(books_written_by):
         message = "I'm sorry, I didn't found any books written ny " + author
         return util.elicit_intent({}, message)
 
-    # at most three books
-    find = sorted(find)
+    # answer will be at most three books
+    find = sorted(books_written_by)
     print(str(find))
     if len(find) > 3:
         find = find[:3]
@@ -167,6 +168,7 @@ def parse_subject(request, subject, session_attributes={}):
     if request['status'] == 'OK':
         result_count = request['resultCount']
 
+        # no books was found with the subject
         if result_count == 0: 
             message = "Oh I'm so sorry, no books was found with search term: "\
                         + subject
@@ -177,27 +179,29 @@ def parse_subject(request, subject, session_attributes={}):
 
         elif result_count == 1:
             return find_info(request['records'][0]['id'])
-        
+        # if less than five books was found, will be checked all different
+        # locations in books way that there is not same locations twice.
         elif result_count < 5:
             real_count = 0
-            find = []
+            find_locations = []
             while real_count < result_count:
                 buildings = request['records'][real_count]['buildings']
                 for layer in buildings:
                     if re.compile("1/AALTO/([a-z])*/").match(layer['value']):
-                        if layer['translated'] not in find:
-                            find.append(layer['translated'])
+                        if layer['translated'] not in find_locations:
+                            find_locations.append(layer['translated'])
                 real_count += 1
 
+            # if author was also found.
             if author:
                 message = subject + " books by " + str(author) \
-                      + " can be found in " + util.make_string_list(find)
+                 + " can be found in " + util.make_string_list(find_locations)
             else:
                 message = subject + " books can be found in " + \
-                      util.make_string_list(find)
+                      util.make_string_list(find_locations)
             return util.close({'subject': subject, 'author': author},
                               'Fulfilled', message)
-
+        # there is more than five results, this ask more information from user
         else:
             if not author:
                 message = "I found " + str(result_count) + " books with term " \
@@ -406,7 +410,7 @@ def lookfor(term="", field=[], filter=[], method='GET', pretty_print='0'):
     
     signal.signal(signal.SIGALRM, timeout_handler)
     # Allow 4 seconds to get a response back from finna api
-    signal.alarm(4)
+    signal.alarm(5)
 
     sess = requests.Session()
     sess.headers.update(__headers)
