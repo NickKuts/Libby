@@ -113,7 +113,7 @@ def locate_book(info):
     """
     ret = []
     output = "I'm sorry, there was an problem with this book in the " \
-             "database parse error"
+             "database"
     for elem in info:
         if re.compile("1/AALTO/([a-z])*/").match(elem['value']):
             ret.append(elem['translated'])
@@ -128,15 +128,15 @@ def locate_book(info):
 
 def find_info(book_id, field='buildings'):
     """
+    Finds info from some book defined by book_id and constructs an output
+    message. Default information searched is the building(and only
+    information which can be searched atm).
     :param book_id: Id of the book
     :param field: Field which teh user is looking for
     :return: Response to AWS server in JSON format
     """
-    print("id", book_id)
     request = record(book_id, field=['id', 'shortTitle', field])['json']
-    print("count", request['resultCount'])
     if request['status'] == 'OK':
-        # print(request['json']['records'][0])
         message = locate_book(request['records'][0]['buildings'])
         title = request['records'][0]['shortTitle']
         message = "".join([title, message])
@@ -166,9 +166,7 @@ def parse_subject(request, subject, session_attributes={}):
 
     if request['status'] == 'OK':
         result_count = request['resultCount']
-        # print("result parse subject ", result_count)
-        # print("subject ", subject)
-        
+
         if result_count == 0: 
             message = "Oh I'm so sorry, no books was found with search term: "\
                         + subject
@@ -218,6 +216,8 @@ def parse_subject(request, subject, session_attributes={}):
 
 def subject_info(intent, extra_info=[]):
     """
+    This function parses the input from AWS and finds the subject(search
+    term) from the intent's inputTranscript.
     :param intent: the input intent
     :param extra_info: Given parameters to filter the data
     :return: Response to AWS server in JSON format
@@ -226,26 +226,28 @@ def subject_info(intent, extra_info=[]):
     text = intent['inputTranscript'].lower()
     utterances = AS.load_file('sample_utterances.txt')
 
+    # add "book" and "books" to every utterance
     for line in list(utterances):
         utterances.insert(0, line + " book")
         utterances.insert(0, line + " books")
 
+    # tells how many characters needs to be dropped before the subject starts
     to_drop = 0
 
     for line in utterances:
         if text.startswith(line):
             to_drop = len(line)
             break
+
+    # drops the characters and makes a list from the strings that are left
     text = text[to_drop:].strip()
     text_list = text.split(' ', len(text))
-
-    # print("text_list: ", str(text_list))
 
     subject_list = []
     keywords = ["books", "book", "by", "published", "written"]
     keyword = ""
 
-    # Find when the book name ends
+    # Find out when the book name ends
     for word in text_list:
         if word not in keywords:
             subject_list.append(word)
@@ -267,31 +269,27 @@ def subject_info(intent, extra_info=[]):
             else:
                 break
 
+    # search for an author from the rest of the characters
     author_text = text[len(keyword):].strip()
     author = AS.search(author_text, False)
     if author is "":
         author = None
-    # print("subject: ", subject)
-    # print("Author text", author_text)
-    # print("Author:", author)
-    # print("extra info", extra_info)
-   
+
     # There might be old info in the extra_info (author), so 
     # we need to clear it
     extra_info.clear()
 
+    # add the author to extra info so it can be used in the Finna API call
     if author:
-        extra_info += [
-            "author:\"" + author + "\""
-        ]
+        extra_info += ["author:\"" + author + "\""]
     elif intent['sessionAttributes'].get('author'):
         extra_info += [
             "author:\"" + intent['sessionAttributes']['author'] + "\""
         ]
 
+    # The Finna API call
     request = lookfor(term=subject, filter=extra_info)['json']
-    # print("___result count___:", request['resultCount'], subject)
-    
+
     return parse_subject(request, subject, {'author': author})
 
 
@@ -303,7 +301,7 @@ def extra_info(intent):
     subject = intent['sessionAttributes']['subject']
     author = intent['sessionAttributes'].get('author')
     slots = intent['currentIntent']['slots']
-    input = intent['inputTranscript']
+
     lower = 0
     upper = 9999
 
@@ -311,6 +309,7 @@ def extra_info(intent):
     slot_upper = slots.get('upper')
     slot_year = slots.get('year')
 
+    # Find out if there is a publish year in intent's slots'
     if slot_lower or slot_upper or slot_year:
         if slot_lower:
             lower = slot_lower
@@ -320,14 +319,21 @@ def extra_info(intent):
             lower = slot_year
             upper = slot_year
 
+        """
+        Add publication year range to extra info so it can be used in the 
+        Finna API. Default is from 0 to 9999.
+        """
         date = "search_daterange_mv:\"[" + str(lower) + " TO " + str(
             upper) + "]\""
         extra_info = [date]
+
+        # The Finna API call and update of session attributes
         request = lookfor(term=subject, filter=extra_info)['json']
         session_attributes = {'lower': lower, 'upper': upper, 'author': author}
 
         return parse_subject(request, subject, session_attributes)
     else:
+        # If there's no publication year in slots, search for author
         return author_search(intent, subject)
 
 
@@ -335,6 +341,7 @@ def author_search(intent, subject):
 
     author = AS.search(intent['inputTranscript'])
 
+    # If author is found, make an API call with it.
     if author:
         request = lookfor(subject, filter=["author:\"" + author + "\""])['json']
         return parse_subject(request, subject, {'author': author})
@@ -368,14 +375,10 @@ def record(id, field=[], method='GET', pretty_print='0'):
     r = sess.request(url=__url + 'record', method=method)
     sess.close()
 
-    # print(r.url)
-    # print(r.json())
     return {'status_code': r.status_code, 'json': r.json()}
 
 
 def timeout_handler(signum, frame):  # pragma: no cover
-    print("Timeouted!")
-    # raise Exception("TimeOutException")
     raise RuntimeError('Timed out!')
 
 
@@ -414,10 +417,5 @@ def lookfor(term="", field=[], filter=[], method='GET', pretty_print='0'):
 
     signal.alarm(0)
 
-    print(r.url)
-    # print(r.json())
-    # print("result count: " + str(r.json()['resultCount']))
     res = {'status_code': r.status_code, 'json': r.json()}
-    # print(res)
     return res
-

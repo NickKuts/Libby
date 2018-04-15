@@ -1,7 +1,7 @@
 import json
+
+
 # --------------- Helpers that build all of the responses ---------------------
-
-
 def close(session_attributes, fulfillment_state, message):
     return {
         'sessionAttributes': session_attributes,
@@ -16,22 +16,6 @@ def close(session_attributes, fulfillment_state, message):
     }
 
 
-"""
-NOT NEEDED YET
-def delegate(session_attributes, slots):
-    return {
-        'sessionAttributes': session_attributes,
-        "dialogAction": {
-            "type": "Delegate",
-            "slots": slots
-        }
-    }
-
-"""
-
-# TBD def confirmIntent():
-
-
 def elicit_intent(session_attributes, message):
     return {
         'sessionAttributes': session_attributes,
@@ -43,25 +27,6 @@ def elicit_intent(session_attributes, message):
             }
         }
     }
-
-
-"""
-NOT NEEDED YET
-def elicit_slot(session_attributes, message, slots, intent_name, slot_name):
-    return {
-        'sessionAttributes': session_attributes,
-        'dialogAction': {
-            'type': 'ElicitSlot',
-            'message': {
-                'contentType': 'PlainText',
-                'content': message
-            },
-            'slots': slots,
-            'intentName': intent_name,
-            'slotToElicit': slot_name
-        }
-    }
-"""
 
 
 def handle_session_end_request():
@@ -83,13 +48,11 @@ def debug(event):
     return response
 
 
-"""
-Takes list of strings as a parameter and parses it's elements to sound better
-in Libby's speech. For example: 4.50 -> 4 euros 50 cents  and 4.00 -> 4 euros
-"""
-
-
 def parse_prices(prices):
+    """
+    Takes list of strings as a parameter and parses it's elements to sound better
+    in Libby's speech. For example: 4.50 -> 4 euros 50 cents  and 4.00 -> 4 euros
+    """
     res = []
     for s in prices:
         price = list(s)
@@ -114,10 +77,10 @@ def is_number(s):
         return False
 
 
-def make_string_list(list):
-    if len(list) > 1:
-        ordered_list = sorted(list)
+def make_string_list(input_list):
+    if len(input_list) > 1:
+        ordered_list = sorted(input_list)
         last = ordered_list.pop()
         return ", ".join(ordered_list) + " and " + last
     else:
-        return list[0]
+        return input_list[0]
