@@ -70,18 +70,22 @@ def parse_author(request, session_attributes):
     for record in request['records']:
         authors = record.get('nonPresenterAuthors')
         has_written = False
-        for a in authors:
-            # print(a.get('name').lower(), " == ", author)
-            if a.get('name').lower() == author:
-                # print("has written:", author)
-                has_written = True
-                break
-        if has_written:
-            title = record.get('title')
-            if title:
-                if title is not find:
-                    find.append(title)
-                    real_count += 1
+        if authors:
+            for a in authors:
+                # print(a.get('name').lower(), " == ", author)
+                if a.get('name').lower() == author:
+                    # print("has written:", author)
+                    has_written = True
+                    break
+            if has_written:
+                title = record.get('title')
+                if title:
+                    if title is not find:
+                        find.append(title)
+                        real_count += 1
+    if len(find):
+        message = "I'm sorry, I didn't found any books written ny " + author
+        return util.elicit_intent({}, message)
 
     # at most three books
     find = sorted(find)

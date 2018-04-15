@@ -4,6 +4,7 @@ tell me books written by
 tell me which books are written by
 tell me what books are written by
 tell me books by
+tell me some books by
 tell some books written by
 tell some books by
 list me books written by
@@ -24,6 +25,8 @@ could you list some books written by
 could you list some books by
 could you list me some books written by
 could you list me some books by
+can you tell me some books written by
+can you tell me some books by
 can you tell me books written by
 can you tell me which books are written by
 can you tell me what books are written by
