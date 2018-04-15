@@ -13,20 +13,17 @@ class TestBookInfo(unittest.TestCase):
         for name in self.test_data:
             tests.append(name)
         for test in tests:
-            print("=========" + test + "========")
-            # print("test:", test)
+            # print("=========" + test + "========")
             test_input = self.test_data[test]
             is_author = test_input["is_author"]
             result = main_handler.lambda_handler(test_input, None)
-            # print("result: " + str(result))
+
             sess = requests.Session()
             sess.headers.update(self.headers)
+
             right_result = sess.request(url=test_input['url'],
                                         method='GET').json()
             sess.close()
-            # print("result: " + str(result))
-            # print("right result: " + str(right_result))
-            # assert(1 == 2)
 
             subject = test_input.get('subject', 'default subject')
             author = test_input.get('author')
