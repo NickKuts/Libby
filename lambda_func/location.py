@@ -240,7 +240,7 @@ def direction_to(event):
         direction = location_utils.compass_point(lat1, lon1, lat2, lon2)
         return "{} is {} metres {} from {}".format(second_place, distance, direction, first_place)
     else:
-        direction = location_utils.compass_point(lat1, lon1, lat2, lon2)
+        direction = location_utils.compass_point(lat2, lon2, lat1, lon1)
         return "{} is {} metres {} from {}".format(first_place, distance, direction, second_place)
 
 
@@ -307,7 +307,7 @@ def _checker(trans, place, place_two):
     # Here we replace each name (if they were found) to ensure that we are 
     # strictly checking the transcript for additional information, and not
     # mistakenly with the name (e.g. 'open' in 'open innovation house')
-    trans = trans.replace(place, '').replace(place_two, '')
+    trans = trans.replace(place, '').replace(place_two, '').lower()
 
     def helper(strings):
         """
