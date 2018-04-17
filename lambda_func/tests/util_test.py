@@ -9,10 +9,10 @@ class TestUtil(unittest.TestCase):
         assert (result['dialogAction']['message']['content'] is not None)
 
 
-def main():
+def main():  # pragma: no cover
     print("Main function")
 
 
-if __name__ == '__main__':
+if __name__ == '__main__':  # pragma: no cover
     suite = unittest.TestLoader().loadTestsFromTestCase(TestUtil)
     unittest.TextTestRunner(verbosity=2).run(suite)

@@ -1,4 +1,0 @@
-{
-  "tests/book_info_test.py::TestBookInfo::test_book_info": true,
-  "tests/weather_test.py::TestUtilDate::test_weather": true
-}

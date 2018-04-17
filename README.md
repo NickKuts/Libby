@@ -1,5 +1,6 @@
 # Libby
-Libby, the library assistant for Amazon Alexa.
+Libby is a voice assistant build with Amazon Lex. It can be used to get
+information regarding books, buildings, menus and weather in Otaniemi.
 
 Libby is a student project by Software Engineering students from Aalto University.
 

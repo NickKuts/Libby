@@ -1,0 +1,57 @@
+Language model created by QuickLM on Fri Mar 23 09:52:39 EDT 2018
+Copyright (c) 1996-2010 Carnegie Mellon University and Alexander I. Rudnicky
+
+The model is in standard ARPA format, designed by Doug Paul while he was at MITRE.
+
+The code that was used to produce this language model is available in Open Source.
+Please visit http://www.speech.cs.cmu.edu/tools/ for more information
+
+The (fixed) discount mass is 0.5. The backoffs are computed using the ratio method.
+This model based on a corpus of 8 sentences and 10 words
+
+\data\
+ngram 1=10
+ngram 2=16
+ngram 3=8
+
+\1-grams:
+-0.7782 </s> -0.3010
+-0.7782 <s> -0.2218
+-1.6812 LIBBI -0.2218
+-1.6812 LIBBY -0.2218
+-1.6812 LIBI -0.2218
+-1.6812 LIBII -0.2218
+-1.6812 LIBY -0.2218
+-1.6812 LIBYY -0.2218
+-1.6812 LIIBI -0.2218
+-1.6812 OK -0.2218
+
+\2-grams:
+-1.2041 <s> LIBBI 0.0000
+-1.2041 <s> LIBBY 0.0000
+-1.2041 <s> LIBI 0.0000
+-1.2041 <s> LIBII 0.0000
+-1.2041 <s> LIBY 0.0000
+-1.2041 <s> LIBYY 0.0000
+-1.2041 <s> LIIBI 0.0000
+-1.2041 <s> OK 0.0000
+-0.3010 LIBBI </s> -0.3010
+-0.3010 LIBBY </s> -0.3010
+-0.3010 LIBI </s> -0.3010
+-0.3010 LIBII </s> -0.3010
+-0.3010 LIBY </s> -0.3010
+-0.3010 LIBYY </s> -0.3010
+-0.3010 LIIBI </s> -0.3010
+-0.3010 OK </s> -0.3010
+
+\3-grams:
+-0.3010 <s> LIBBI </s>
+-0.3010 <s> LIBBY </s>
+-0.3010 <s> LIBI </s>
+-0.3010 <s> LIBII </s>
+-0.3010 <s> LIBY </s>
+-0.3010 <s> LIBYY </s>
+-0.3010 <s> LIIBI </s>
+-0.3010 <s> OK </s>
+
+\end\

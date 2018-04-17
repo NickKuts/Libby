@@ -4,7 +4,7 @@ import json
 
 class SlotFactory:
 
-    def __init__(self):
+    def __init__(self): 
         self.client = boto3.client('lex-models')
 
     def load_slot_from_file(self, fname):        
@@ -21,7 +21,7 @@ class SlotFactory:
         old_data = self.get_slot(data['name'])
         data['checksum'] = old_data['checksum']
 
-        arr = ['lastUpdatedDate', 'createdDate', 'version']
+        arr = ['lastUpdatedDate', 'ResponseMetadata', 'createdDate', 'version']
 
         for key in arr:
             try:
@@ -32,6 +32,8 @@ class SlotFactory:
         res = self.client.put_slot_type(**data)
         if res is not None:
             print("Successfully updated slot")
+
+        return res
 
     def create_slot(self, fname):
 
@@ -50,6 +52,8 @@ class SlotFactory:
 
         if res is not None:
             print("Successfully created slot")
+
+        return res
 
     def get_slot(self, name, version='$LATEST'):
         response = self.client.get_slot_type(

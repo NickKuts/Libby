@@ -1,6 +1,15 @@
 {
-      "robert's coffee": "I'm roberts coffee help. You can ask about drinks or categories. To get more information about the menu, ask roberts coffee categories.",
-      "weather": "I'm weather help. To get to know the temperature, ask about the weather.",
-      "location": "I'm location help. You can ask the address using the name of the building."
+
+      "robert's coffee": "Hi! If you are interested about roberts coffee, ask me about roberts coffee categories or drinks.",
+      "location": "Hi! I can tell you where buildings are located in Otaniemi. Start by asking location of the place you are looking for",
+      "author": "Hi! I can tell you what books an author has written. Start by asking which author's books you want to take closer look at.",
+      "books": "Hi! I can tell you where you can find a book. Start by asking about the book you are searching.",
+      "weather": "Hi! If you are wondering the temperature, ask me about the weather.",
+      "book":"Hi! I can tell you where you can find a book. Start by asking about the book you are searching.",
+      "temperature": "Hi! If you are wondering the temperature, ask me about the weather.",
+      "roberts":  "Hi! If you are interested about roberts coffee, ask me about roberts coffee categories or drinks.",
+      "coffee": "Hi! I can tell you prices of different drinks in Robert's Coffee. Start by asking about a category or drink."
+
+
 }
 
