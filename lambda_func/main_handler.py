@@ -28,5 +28,5 @@ def lambda_handler(event, context):
         return error_message
     except Exception as e:
         error_message['dialogAction']['message']['content'] = "I'm sorry, " \
-                                    "I cannot answer that. Error was " + str(e)
+                                    "I cannot answer that right now."
         return error_message
