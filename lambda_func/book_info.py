@@ -343,15 +343,15 @@ def extra_info(intent):
 
 def author_search(intent, subject):
 
-    author = AS.search(intent['inputTranscript'])
+    author = AS.search(intent['inputTranscript'], False)
 
     # If author is found, make an API call with it.
     if author:
         request = lookfor(subject, filter=["author:\"" + author + "\""])['json']
         return parse_subject(request, subject, {'author': author})
 
-    return util.elicit_intent({'subject': subject, 'author': author},
-                              "No extra information was given.")
+    return util.elicit_intent({'subject': subject},
+                              "Sorry, I didn't manage to narrow down the search with the extra information I was given.")
 
 
 def record(id, field=[], method='GET', pretty_print='0'):
